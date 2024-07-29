@@ -1,42 +1,63 @@
 :root {
-    --orange: FF7A00;
-    --pink: FF5EB3;
-    --blue: 6E52FF;
-    --violet: 9327FF;
-    --babyblue: 00BEE8;
-    --ligh-tgreen: 1FD7C1;
-    --dark-orange: FF745E;
-    --brown: FFA35E;
-    --pink: FC71FF;
-    --med-orange: FFC701;
-    --med-blue: 0038FF;
-    --neon-green: C3FF2B;
-    --yellow: FFE62B;
-    --light-red: FF4646;
-    --lieght-orange: FFBB2B; 
+    --orange: #FF7A00;
+    --pink: #FF5EB3;
+    --blue: #6E52FF;
+    --violet: #9327FF;
+    --babyblue: #00BEE8;
+    --ligh-tgreen: #1FD7C1;
+    --dark-orange: #FF745E;
+    --brown: #FFA35E;
+    --pink: #FC71FF;
+    --med-orange: #FFC701;
+    --med-blue: #0038FF;
+    --neon-green: #C3FF2B;
+    --yellow: #FFE62B;
+    --light-red: #FF4646;
+    --light-orange: #FFBB2B; 
+    --deep-grey: #2A3647;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
+body {
+    font-family: 'Figtree';
+    background-color: #F6F7F8;
+}
+
+input {
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 10px;
+    padding: 12px, 21px, 12px, 21px;
+    gap: 10px;
+}
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
 }
 
 .login {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    
+    align-items: center;
     width: 300px;
-    margin: 0 auto;
+    margin-top: 50px;
 }
 form.login-frontpage {
     display: flex;
     flex-direction: column;
 }
-button {
-
-}
+ 
 
 button.login-button-frontpage {
     width: 110px;
@@ -52,44 +73,63 @@ button.guest-button-frontpage {
     background-color: #ffffff;
     border-radius: 8px;
 }
-.buttons-frontpage {
 
+h2 {
+    font-size: 30px;
 }
 
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+.justify-content-center {
+    justify-content: center;
+}
 
 .login_center {
+    background-color: white;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border: 1px solid lightgray;
+
     height: 500px;
     width: 500px;
-
+    border-radius: 16px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-#animation-svg {
+.hundertVh {
+    height: 100vH;
+}
+
+#animated-svg {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100px;
-    height: 100px;
+    width: 500px;
+    height: 600px;
     transform: translate(-50%, -50%);
     animation: scale-and-move 2s forwards;
 }
 
 @keyframes scale-and-move {
     0% {
-        width: 100px;
-        height: 100px;
+        width: 500px;
+        height: 600px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(1);
     }
     100% {
-        width: 50px;
-        height: 50px;
+        width: 100px;
+        height: 122px;
         top: 0;
         left: 0;
-        transform: translate(0, 0) scale(0.5);
+        transform: translate(0, 0) scale(1);
     }
 }
+
