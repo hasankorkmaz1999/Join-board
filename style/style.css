@@ -16,6 +16,8 @@
     --lieght-orange: FFBB2B; 
 }
 
+
+
 .cursor-pointer {
     cursor: pointer;
 }
@@ -24,6 +26,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    
     width: 300px;
     margin: 0 auto;
 }
@@ -51,4 +54,42 @@ button.guest-button-frontpage {
 }
 .buttons-frontpage {
 
+}
+
+
+.login_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightgray;
+    height: 500px;
+    width: 500px;
+
+}
+
+#animation-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    animation: scale-and-move 2s forwards;
+}
+
+@keyframes scale-and-move {
+    0% {
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        width: 50px;
+        height: 50px;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0) scale(0.5);
+    }
 }
