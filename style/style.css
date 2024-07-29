@@ -15,6 +15,7 @@
     --light-red: #FF4646;
     --light-orange: #FFBB2B; 
     --deep-grey: #2A3647;
+    --deepest-grey: #091931;
 }
 
 html {
@@ -25,8 +26,6 @@ body {
     font-family: 'Figtree';
     background-color: #F6F7F8;
 }
-
-
 
 .cursor-pointer {
     cursor: pointer;
@@ -59,11 +58,6 @@ form.login-frontpage {
     display: none;
 }
 
-.underline-frontpage {
-
-}
-
-
 .checkbox-login, .checkbox-policy {
     cursor: pointer;
 }
@@ -91,9 +85,12 @@ button.login-button-frontpage:disabled {
 button.guest-button-frontpage {
     width: 177px;
     height: 48px;
-    color: #2A3647;
+    color: var(--deepest-grey);
     background-color: #ffffff;
     border-radius: 8px;
+    border: 1px solid var(--deepest-grey);
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 h2 {
@@ -108,6 +105,7 @@ h2 {
 .align-items-center {
     align-items: center;
 }
+
 .justify-content-center {
     justify-content: center;
 }
@@ -118,7 +116,6 @@ h2 {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-
     height: 493px;
     width: 652px;
     border-radius: 16px;
@@ -128,8 +125,6 @@ h2 {
 .hundertVh {
     height: 100vH;
 }
-
-
 
 #animated-svg {
     position: absolute;
@@ -183,7 +178,6 @@ h2 {
 	-webkit-animation: scale-up-hor-center 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	        animation: scale-up-hor-center 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
-
 
 .flex-input {
     border: 1px solid rgb(209, 209, 209);
