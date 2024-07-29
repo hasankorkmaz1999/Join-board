@@ -58,7 +58,17 @@
     <!-- Einbindung Footer -->
     <div id="footer-placeholder"></div>
 
-    
+    <script>
+        // Einbinden der Header- und Footer-Templates mit async function und await
+        async function loadTemplate(url, placeholderId) {
+            let response = await fetch(url);
+            let data = await response.text();
+            document.getElementById(placeholderId).innerHTML = data;
+        }
+        
+        loadTemplate('header.html', 'header-placeholder');
+        loadTemplate('footer.html', 'footer-placeholder');
+    </script>
 
 </body>
 </html>
