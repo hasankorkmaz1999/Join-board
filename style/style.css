@@ -74,9 +74,14 @@ form.login-frontpage {
 button.login-button-frontpage {
     width: 110px;
     height: 48px;
-    background-color: #2A3647;
+    background-color: #091931;
     color: #ffffff;
     border-radius: 8px;
+}
+
+button.login-button-frontpage:disabled {
+    background-color: #2A3647;
+    cursor: not-allowed;
 }
 
 button.guest-button-frontpage {
@@ -118,6 +123,8 @@ h2 {
 .hundertVh {
     height: 100vH;
 }
+
+
 
 #animated-svg {
     position: absolute;
