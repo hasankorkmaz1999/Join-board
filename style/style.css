@@ -207,7 +207,50 @@ h2 {
     width: 90px;
 }
 
+<<<<<<< HEAD
 input {
     outline: none;
     border: none;
 }
+=======
+#signupWindow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup_center {
+    width: 598px;
+    height: 630px;
+    top: 197px;
+    left: 421px;
+    background-color: white;
+    padding: 48px, 88px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    gap: 32px;
+}
+
+.signup-frontpage input {
+    width: 422px;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.accept-policy input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.accept-policy input {
+    margin-right: 10px;
+}
+
+
+>>>>>>> 779befbe17e1021379ed1d90cd272f26bf70d40e
