@@ -98,7 +98,6 @@ button.guest-button-frontpage {
 
 h2 {
     font-size: 61px;
-    border-bottom: 3px solid #29ABE2;
     font-weight: 700;
 }
 
@@ -202,3 +201,8 @@ h2 {
     margin-top: 32px;
 }
 
+.underline-frontpage {
+    border-bottom: 3px solid #29ABE2;
+    height: 3px;
+    width: 90px;
+}
