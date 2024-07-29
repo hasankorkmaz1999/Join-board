@@ -35,8 +35,8 @@
     <script>
         // Einbinden der Header- und Footer-Templates
         async function loadTemplate(url, placeholderId) {
-            const response = await fetch(url);
-            const data = await response.text();
+            let response = await fetch(url);
+            let data = await response.text();
             document.getElementById(placeholderId).innerHTML = data;
         }
 
