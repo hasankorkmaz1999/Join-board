@@ -227,6 +227,10 @@ h2 {
     gap: 32px;
 }
 
+.signup-frontpage {
+    height: 326px;
+}
+
 .signup-frontpage input {
     width: 422px;
     gap: 8px;
@@ -246,4 +250,23 @@ h2 {
     margin-right: 10px;
 }
 
+.signup-button-frontpage {
+    width: 126px;
+    height: 55px;
+    background-color: #2A3647;
+    color: white;
+    padding: 15px, 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 21px;
+    line-height: 25.2px;
+    font-weight: 700;
+}
+
+/* Spielerei: Nur für den Fall das Privacy Policy nicht akzeptiert wird */
+/* .signup-button-frontpage:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+} */
 
