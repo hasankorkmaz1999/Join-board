@@ -63,7 +63,12 @@ form.login-frontpage {
 .d-non {
     display: none;
 }
- 
+
+.underline-frontpage {
+
+}
+
+
 .checkbox-login {
 
 }
@@ -98,6 +103,7 @@ button.guest-button-frontpage {
 
 h2 {
     font-size: 30px;
+    border-bottom: 3px solid #29ABE2;
 }
 
 .d-flex {

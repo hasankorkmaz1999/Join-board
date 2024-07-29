@@ -18,8 +18,12 @@ function disableButtonLogin() {
     }
 }
 
-document.getElementById('login-email').addEventListener('input', disableButtonLogin);
-document.getElementById('login-password').addEventListener('input', disableButtonLogin);
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('login-email').addEventListener('input', disableButtonLogin);
+    document.getElementById('login-password').addEventListener('input', disableButtonLogin);
+    disableButtonLogin(); 
+});
+
 
 function showLogin(elementId) {
     setTimeout(() => {
