@@ -29,7 +29,7 @@ body {
 input {
     border: 1px solid rgb(209, 209, 209);
     border-radius: 10px;
-    padding: 12px, 21px, 12px, 21px;
+    padding: 12px 21px;
     gap: 10px;
 }
 
@@ -53,11 +53,23 @@ input {
     width: 300px;
     margin-top: 50px;
 }
+
 form.login-frontpage {
     display: flex;
     flex-direction: column;
+    gap: 32px;
 }
  
+.checkbox-login {
+
+}
+
+.remember-login {
+    display: flex;
+    align-items: center;
+    margin-left: 39px;
+    gap: 8px;
+}
 
 button.login-button-frontpage {
     width: 110px;
@@ -66,6 +78,7 @@ button.login-button-frontpage {
     color: #ffffff;
     border-radius: 8px;
 }
+
 button.guest-button-frontpage {
     width: 177px;
     height: 48px;

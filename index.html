@@ -38,8 +38,12 @@
             <div class="login">
                 
                 <form class="login-frontpage" onsubmit="loginFunction()">
-                    <input type="text" name="" id="login-email" placeholder="Email">
-                    <input type="text" name="" id="login-password" placeholder="Password">
+                    <input type="text" name="" id="login-email" placeholder="Email" required>
+                    <input type="text" name="" id="login-password" placeholder="Password" required>
+                        <div class="remember-login">
+                        <input type="checkbox" class="checkbox-login" required>
+                        <p>Remember me</p>
+                    </div>
                 </form>
             </div>
             <div class="buttons-frontpage">
