@@ -26,12 +26,7 @@ body {
     background-color: #F6F7F8;
 }
 
-input {
-    border: 1px solid rgb(209, 209, 209);
-    border-radius: 10px;
-    padding: 12px 21px;
-    gap: 10px;
-}
+input {}
 
 .cursor-pointer {
     cursor: pointer;
@@ -102,8 +97,9 @@ button.guest-button-frontpage {
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 61px;
     border-bottom: 3px solid #29ABE2;
+    font-weight: 700;
 }
 
 .d-flex {
@@ -188,3 +184,21 @@ h2 {
 	-webkit-animation: scale-up-hor-center 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	        animation: scale-up-hor-center 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
+
+
+.flex-input {
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 10px;
+    padding: 12px 21px;
+    gap: 10px;
+    width: 100%;
+    max-width: 420px;
+    display: unset;
+    display: flex;
+    align-items: center;
+}
+
+.buttons-frontpage {
+    margin-top: 32px;
+}
+
