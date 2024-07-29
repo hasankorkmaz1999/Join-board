@@ -2,6 +2,7 @@ window.onload = init;
 
 function init() {
     disableButtonLogin();
+    showLogin('loginWindow');
 }
 
 // Fehlermeldung für Login
@@ -19,3 +20,13 @@ function disableButtonLogin() {
 
 document.getElementById('login-email').addEventListener('input', disableButtonLogin);
 document.getElementById('login-password').addEventListener('input', disableButtonLogin);
+
+function showLogin(elementId) {
+    setTimeout(() => {
+        let element = document.getElementById(elementId);
+        if (element) {
+            element.classList.remove('d-none');
+            element.classList.add('scale-up-hor-center', 'd-flex', 'align-items-center', 'justify-content-center', 'hundertVh');
+        }
+    }, 1000);
+}

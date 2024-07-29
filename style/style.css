@@ -59,6 +59,10 @@ form.login-frontpage {
     flex-direction: column;
     gap: 32px;
 }
+
+.d-non {
+    display: none;
+}
  
 .checkbox-login {
 
@@ -153,3 +157,28 @@ h2 {
     }
 }
 
+@-webkit-keyframes scale-up-hor-center {
+    0% {
+      -webkit-transform: scaleX(0.4);
+              transform: scaleX(0.4);
+    }
+    100% {
+      -webkit-transform: scaleX(1);
+              transform: scaleX(1);
+    }
+  }
+  @keyframes scale-up-hor-center {
+    0% {
+      -webkit-transform: scaleX(0.4);
+              transform: scaleX(0.4);
+    }
+    100% {
+      -webkit-transform: scaleX(1);
+              transform: scaleX(1);
+    }
+  }
+
+.scale-up-hor-center {
+	-webkit-animation: scale-up-hor-center 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: scale-up-hor-center 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
