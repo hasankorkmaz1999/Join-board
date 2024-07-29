@@ -1,5 +1,4 @@
 // Fehlermeldung für Login
-
 function disableButtonLogin() {
     let mailInput = document.getElementById("DUMMY").value;
     let passwordInput = document.getElementById("DUMMY").value;
@@ -10,4 +9,3 @@ function disableButtonLogin() {
         button.disabled = true;
     }
 }
-
