@@ -18,6 +18,7 @@
     --deep-grey: #2A3647;
     --deepest-grey: #091931;
     --button-hover: #29ABE2;
+    --footer-grey: #A8A8A8;
     --black: #000000;
     --white: #ffffff;
 }
@@ -138,7 +139,7 @@ h2 {
 }
 
 .hundertVh {
-    height: 100vH;
+    height: 80vH;
 }
 
 #animated-svg {
@@ -328,4 +329,25 @@ input:-internal-autofill-selected {
 .error-message {
     font-size: 12px;
     font-family: 'Inter';
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-links a {
+    font-family: 'Inter';
+    font-weight: 400;
+    color: var(--footer-grey);
+    font-size: 16px;
+    line-height: 19.2px;
+    text-decoration: none;
+    padding: 8px;
+    gap: 8px;
+}
+
+.footer-links a:hover {
+    font-weight: bold;
+    color: var(--babyblue);
 }
