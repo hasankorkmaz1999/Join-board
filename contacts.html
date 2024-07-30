@@ -7,6 +7,7 @@
 
     <!-- fonts -->
     <link rel="stylesheet" href="./fonts/figtree/styles.css">
+    <link rel="stylesheet" href="./fonts/inter/styles.css">
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -14,9 +15,16 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
     <link rel="shortcut icon" href="favicon/favicon.ico">
+
+    <!-- styles-->
     <link rel="stylesheet" href="./style/contacts.css">
+    <link rel="stylesheet" href="/html/headerstyle.css">
+
+    <script src="./scripts/includeheader.js"></script>
 </head>
-<body>
+<body onload="includeHTML()">
+    <header w3-include-html="./html/header.html"></header>
+
     <div class="container">
         <div class="sidebar">
             <button class="add-contact-btn ">Add new contact <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,9 +86,17 @@
             </div>
         </div>
         <div class="main-content">
-            <h1>Contacts</h1>
-            <p>Better with a team</p>
+            <div class="contact-flex-header">
+                <h1>Contacts</h1>
+                <div class="vertical-seperator"></div>
+                <span class="subheadline">Better with a team</span>
+            </div>
+
+            <div id="contact-container" class="contact-container">Render</div>
+
         </div>
     </div>
+
+    <script src="./scripts/contacts.js"></script>
 </body>
 </html>
