@@ -24,9 +24,20 @@ async function renderData (URL) {
     content.innerHTML = ``; 
     if (data) {
         let contacts = data.demoUser.users.user1ID.contacts;
+        
         let contactKeys = Object.keys(contacts);
+        contactKeys.sort((a, b) => contacts[a].name.localeCompare(contacts[b].name));
+
+        let currentLetter = ''; // Ty
         for (let i = 0; i < contactKeys.length; i++) {
             const element = contacts[contactKeys[i]];
+
+            // Alpha
+            let firstLetter = element.name.charAt(0).toUpperCase();
+            if (firstLetter !== currentLetter) {
+                currentLetter = firstLetter;
+                content.innerHTML += `<div class="alphabet">${currentLetter}</div>`;
+            }
             console.log(element);
             content.innerHTML += renderContacts(element);
         }
