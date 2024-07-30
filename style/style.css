@@ -312,8 +312,3 @@ input {
     outline: none;
     border: none;
 }
-
-.error-message {
-    color: red;
-    display: none;
-}
