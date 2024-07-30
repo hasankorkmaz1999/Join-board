@@ -7,8 +7,8 @@ function init() {
 
 // Fehlermeldung für Login
 function disableButtonLogin() {
-    let mailInput = document.getElementById("login-email").value;
-    let passwordInput = document.getElementById("login-password").value;
+    let mailInput = document.getElementById("signup-email").value;
+    let passwordInput = document.getElementById("signup-password").value;
     let button = document.getElementById("loginButton");
 
     if (mailInput.length > 1 && passwordInput.length > 1) {
@@ -19,8 +19,8 @@ function disableButtonLogin() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('login-email').addEventListener('input', disableButtonLogin);
-    document.getElementById('login-password').addEventListener('input', disableButtonLogin);
+    document.getElementById('signup-email').addEventListener('input', disableButtonLogin);
+    document.getElementById('signup-password').addEventListener('input', disableButtonLogin);
     disableButtonLogin(); 
 });
 
@@ -34,4 +34,28 @@ function showLogin(elementId) {
         }
     }, 1000);
 }
+
+document.getElementById('loginButton').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    let email = document.getElementById('signup-email').value;
+    let password = document.getElementById('signup-password').value;
+    let errorMessage = document.getElementById('error-message');
+    errorMessage.style.display = 'none';
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        errorMessage.innerText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    if (password.length < 6) {
+        errorMessage.innerText = 'Passwort muss mindestens 6 Zeichen lang sein.';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    // form.submit(); // bei Bedarf ....
+});
 

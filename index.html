@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
-    <!-- script -->
-    <script src="scripts/script.js"></script>
+
     <!-- styles-->
     <link rel="stylesheet" href="style/reset.css">
     <link rel="stylesheet" href="style/style.css">
@@ -40,16 +39,16 @@
             <h2>Log in</h2>
             <div class="underline-frontpage"></div>
             <div class="login">
-                <form class="login-frontpage" onsubmit="return false;">
+                <form id="login-form" class="login-frontpage" onsubmit="return false;">
                     <div class="flex-input error-red">
-                        <input type="text" name="" id="login-email" placeholder="Email" minlength="6" pattern="[a-zA-Z0-9_.±]">
+                        <input type="text" name="signup-email" id="signup-email" placeholder="Email" minlength="6" pattern="[a-zA-Z0-9_.±]">
                         <img src="icons/mail.png" alt="E-Mail Icon">
                     </div>
                     <div class="flex-input error-red">
-                        <input type="password" name="" id="login-password" placeholder="Password" required>
+                        <input type="password" name="signup-password" id="signup-password" placeholder="Password" required>
                         <img src="icons/lock.png" alt="Lock Icon">
                     </div>
-                    <div class="error-message"></div>
+                    <div class="error-message" id="error-message" style="color: red; display: none;"></div>
                     <div class="remember-login">
                         <input type="checkbox" class="checkbox-login" required>
                         <p>Remember me</p>
@@ -57,7 +56,7 @@
                 </form>
             </div>
             <div class="buttons-frontpage">
-                <button id="loginButton" class="cursor-pointer button login-button-frontpage" disabled>Log in</button>
+                <button id="loginButton" type="submit" class="cursor-pointer button login-button-frontpage" disabled>Log in</button>
                 <button id="guestLoginButton" class="cursor-pointer button guest-button-frontpage"> Guest Log in</button>
             </div>
         </div>    
@@ -77,6 +76,9 @@
         loadTemplate('header.html', 'header-placeholder');
         loadTemplate('footer.html', 'footer-placeholder');
     </script>
+
+        <!-- script -->
+        <script src="scripts/script.js"></script>
 
 </body>
 </html>
