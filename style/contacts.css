@@ -112,6 +112,23 @@ svg {
     color: #ffffff;
 }
 
+.contact-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-details {
+    position: relative;
+    right: -100%;
+    transition: right 0.5s ease-in-out;
+}
+
+.contact-details.show {
+    right: 0;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
 .avatar {
     width: 40px;
     height: 40px;
@@ -124,9 +141,17 @@ svg {
     font-size: 14px;
 }
 
+.contact-details .avatar {
+    margin-bottom: 16px;
+    font-size: 21px;
+    height: 64px;
+    width: 64px;
+}
+
 .contact-info {
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .contact-name {
