@@ -10,12 +10,16 @@
     --pink: #FC71FF;
     --med-orange: #FFC701;
     --med-blue: #0038FF;
+    --emailblau: #007CEE;
     --neon-green: #C3FF2B;
     --yellow: #FFE62B;
     --light-red: #FF4646;
     --light-orange: #FFBB2B; 
     --deep-grey: #2A3647;
     --deepest-grey: #091931;
+    --button-hover: #29ABE2;
+    --black: #000000;
+    --white: #ffffff;
 }
 
 html {
@@ -299,6 +303,10 @@ input {
     cursor: not-allowed;
 } */
 
+input {
+    outline: none;
+}
+
 input[type="text"],
 input[type="password"] {
     background-color: transparent; 
@@ -310,6 +318,11 @@ input[type="password"]:focus {
     background-color: transparent; 
     outline: none; 
     border: none;
+}
+
+input:-internal-autofill-selected {
+    background-image: none !important;
+    background-color: white;
 }
 
 .error-message {

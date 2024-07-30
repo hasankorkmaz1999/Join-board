@@ -6,24 +6,30 @@
     <title>Join</title>
 
     <!-- styles-->
-    <link rel="stylesheet" href="style/reset.css">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/responsive.css">
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/responsive.css">
 
     <!-- fonts -->
-    <link rel="stylesheet" href="fonts/inter/styles.css">
-    <link rel="stylesheet" href="fonts/figtree/styles.css">
+    <link rel="stylesheet" href="../fonts/inter/styles.css">
+    <link rel="stylesheet" href="../fonts/figtree/styles.css">
 
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
-    <link rel="shortcut icon" href="favicon/favicon.ico">
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+    <link rel="manifest" href="../favicon/site.webmanifest">
+    <link rel="shortcut icon" href="../favicon/favicon.ico">
+    <link rel="stylesheet" href="../style/style.css">
+
+    <style>
+        main {
+            margin-left: 300px;
+        }
+    </style>
 </head>
 
-<body>
+<body onload="displayGreeting()">
 
     <!-- Einbindung Header -->
     <div id="header-placeholder"></div>
@@ -37,7 +43,7 @@
             </div>
             <div class="content-container">
                 <div class="card-container"></div>
-                <div class="greeting"></div>
+                <div id="greeting-message"></div>
             </div>
         </div>
     </main>
@@ -59,27 +65,25 @@
     </script>
 
 <script>
-    function displayGreeting() {
-        let greetingMessage = document.getElementById('greeting-message');
-        let currentHour = new Date().getHours();
-        let greeting;
+        function displayGreeting() {
+            let greetingMessage = document.getElementById('greeting-message');
+            let currentHour = new Date().getHours();
+            let greeting;
 
-        if (currentHour < 12) {
-            greeting = "Good morning";
-        } else if (currentHour < 18) {
-            greeting = "Good afternoon";
-        } else {
-            greeting = "Good evening";
-        }
+            if (currentHour < 12) {
+                greeting = "Good morning";
+            } else if (currentHour < 18) {
+                greeting = "Good afternoon";
+            } else {
+                greeting = "Good evening";
+            }
 
-        greetingMessage.innerText = greeting;
-}
-
-
+            greetingMessage.innerText = greeting;
+    }
 </script>
 
     <!-- script -->
-    <script src="scripts/script.js"></script>
+    <script src="../scripts/summary.js"></script>
 
 </body>
 </html>
