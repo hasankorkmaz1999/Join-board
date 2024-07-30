@@ -24,8 +24,8 @@ async function renderData (URL) {
     /* let content = document.getElementById("ID NAME"); */
     /* content.innerHTML = ``; */
     if (data && data.users && data.users.user1ID && data.users.user1ID.contact1ID) {
-        for (let i = 0; i < data.users.user1ID.contact1ID.length; i++) {
-            const element = data.users.user1ID.contact1ID[i];
+        for (let i = 0; i < data.demo-userAPI.users.user1ID.contact1ID.length; i++) {
+            const element = data.demo-userAPI.users.user1ID.contact1ID[i];
             console.log(element);
         }
     }
