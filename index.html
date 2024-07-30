@@ -41,14 +41,15 @@
             <div class="underline"></div>
             <div class="login">
                 <form class="login-frontpage" onsubmit="return false;">
-                    <div class="flex-input">
-                        <input type="text" name="" id="login-email" placeholder="Email" required>
+                    <div class="flex-input error-red">
+                        <input type="text" name="" id="login-email" placeholder="Email" minlength="6" pattern="[a-zA-Z0-9_.±]">
                         <img src="icons/mail.png" alt="E-Mail Icon">
                     </div>
-                    <div class="flex-input">
+                    <div class="flex-input error-red">
                         <input type="password" name="" id="login-password" placeholder="Password" required>
                         <img src="icons/lock.png" alt="Lock Icon">
                     </div>
+                    <div class="error-message"></div>
                     <div class="remember-login">
                         <input type="checkbox" class="checkbox-login" required>
                         <p>Remember me</p>
@@ -57,7 +58,7 @@
             </div>
             <div class="buttons-frontpage">
                 <button id="loginButton" class="cursor-pointer button login-button-frontpage" disabled>Log in</button>
-                <button id="" class="cursor-pointer button guest-button-frontpage"> Guest Log in</button>
+                <button id="guestLoginButton" class="cursor-pointer button guest-button-frontpage"> Guest Log in</button>
             </div>
         </div>    
     </div>
