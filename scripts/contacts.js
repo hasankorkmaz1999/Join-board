@@ -18,6 +18,8 @@ async function loadData(URL) {
     }
 }
 
+let activeContactId = null; // um den aktuell aktiven Kontakt zu verfolgen
+
 async function renderData (URL) {
     let data = await loadData(URL);
     let content = document.getElementById("renderContacts");
@@ -38,23 +40,32 @@ async function renderData (URL) {
                 content.innerHTML += `<div class="alphabet">${currentLetter}</div>`;
             }
             console.log(element);
-            content.innerHTML += renderContacts(element);
+            content.innerHTML += renderContacts(element, contactKeys[i]);
         }
     }
 }
 
 
-function renderContacts(element, index) {
-return  `
-            <div class="contact-item">
+function renderContacts(element, id) {
+    return  /*html*/`
+            <div class="contact-item" id="contact-${id}" onclick="openContact('${id}', '${element.name}', '${element.email}', '${element.phone}')">
                 <div class="avatar" style="background-color: ${avatarColors()};">${getInitials(element.name)}</div>
                 <div class="contact-info">
-                    <div id="contactname${index}" class="contact-name">${element.name}</div>
+                    <div class="contact-name">${element.name}</div>
                     <div class="contact-email">${element.email}</div>
                 </div>
             </div>
-    `
+    `;
 }
+
+function openContact(id, name, email, phone) {
+    // Entfernt die aktive Klasse vom vorherigen Kontakt
+    if (activeContactId) {
+        document.getElementById('contact-${activeContactId}').classList.remove('active');
+    }
+}
+
+
 
 function getInitials(name) {
     let initials = name.split(' ').map(word => word.charAt(0)).join('');
