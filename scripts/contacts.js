@@ -23,7 +23,7 @@ let activeContactId = null; // um den aktuell aktiven Kontakt zu verfolgen
 async function renderData (URL) {
     let data = await loadData(URL);
     let content = document.getElementById("renderContacts");
-    content.innerHTML = ``; 
+    content.innerHTML = ``;
     if (data) {
         let contacts = data.demoUser.users.user1ID.contacts;
         
@@ -43,8 +43,13 @@ async function renderData (URL) {
             content.innerHTML += renderContacts(element, contactKeys[i]);
         }
     }
+    disableSpinner();
 }
 
+function disableSpinner() {
+    let element = document.getElementById('spinner');
+    element.innerHTML = ``;
+}
 
 function renderContacts(element, id) {
     return  /*html*/`
