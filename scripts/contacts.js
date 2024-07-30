@@ -82,7 +82,7 @@ function openContact(id, name, email, phone) {
             <div class="avatar" style="background-color: ${avatarColors()};">${getInitials(name)}</div>
             <div class="contact-info">
                 <div class="contact-name">${name}</div>
-                <div class="contact-email">${email}</div>
+                <div class="contact-email"><a href="mailto:${email}"></a>${email}</div>
                 <div class="contact-phone">${phone || ''}</div>
             </div>
         </div>
