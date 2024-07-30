@@ -45,7 +45,7 @@ async function renderData (URL) {
 
 
 function renderContacts(element, index) {
-   return  `
+return  `
             <div class="contact-item">
                 <div class="avatar" style="background-color: ${avatarColors()};">${getInitials(element.name)}</div>
                 <div class="contact-info">
@@ -64,23 +64,13 @@ function getInitials(name) {
 let lastColorIndex = -1;
 
 function avatarColors() {
-
-    
-   
     const colors = [
         '#FF7A00', '#FF5EB3', '#6E52FF', '#00BEE8', '#C3FF2B', '#FF4646'
     ];
-
-    
     let colorIndex = (lastColorIndex + 1) % colors.length;
-
-   
     lastColorIndex = colorIndex;
-
-  
     return colors[colorIndex];
 }
-
 
 function openContact(element, index) {
     let contactcontainer = document.getElementById('contact-container');
