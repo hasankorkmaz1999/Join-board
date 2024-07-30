@@ -8,11 +8,32 @@
     <link src="../fonts/inter/styles.css">
     <link src="../fonts/figtree/styles.css">
     <link src="../style/headerstyle.css">
+    <style>
+        .help-icon-header {
+            width: 20px;
+            height: 20px;
+        }
+
+        .user-image-header {
+            width: 56px;
+            height: 56px;
+        }
+        .header-top {
+    height: 96px;
+    width: calc(100% - 232px);
+    margin-left: 232px;
+    box-shadow: 0 4px 4px rgba(177, 174, 174, 0.3);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+    </style>
 </head>
 <body>
     <header>
         <div class="header-top">
-          <div class="kanban"><p class="subheader-contact">Kanban Project Management Tool</p></div>
           
           <div class="user">
           <img class="help-icon-header" src="icons/headericons/help.png" alt="">
@@ -23,16 +44,7 @@
     
     
         
-        <div class="header-left">
-            <img class="join_logo" src="icons/headericons/joinlogo.png" alt="">
-             
-            <div class="headericons">
-               <p class="sidebarlist"> <img src="icons/headericons/summaryicon.png" alt="">Summary </p>
-               <p class="sidebarlist"> <img src="icons/headericons/addtaskicon.png" alt=""> Add Task </p>
-               <p class="sidebarlist"> <img src="icons/headericons/boardicon.png" alt=""> Board  </p>
-               <p class="sidebarlist"> <img src="icons/headericons/contactsicon.png" alt=""> Contacts </p>
 
-            </div>
 
             <div class="lastpart">
                 <p class="policies">Privacy Policy</p>
