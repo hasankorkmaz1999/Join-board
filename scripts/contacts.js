@@ -65,7 +65,8 @@ function openContact(id, name, email, phone) {
     }
 }
 
-
+    // Fügt die aktive Klasse zum aktuellen Kontakt hinzu
+    let contactElement = document.getElementById('contact-')
 
 function getInitials(name) {
     let initials = name.split(' ').map(word => word.charAt(0)).join('');
