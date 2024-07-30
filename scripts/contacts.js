@@ -28,11 +28,10 @@ async function renderData (URL) {
         let contactKeys = Object.keys(contacts);
         contactKeys.sort((a, b) => contacts[a].name.localeCompare(contacts[b].name));
 
-        let currentLetter = ''; // Ty
+        let currentLetter = '';
         for (let i = 0; i < contactKeys.length; i++) {
             const element = contacts[contactKeys[i]];
 
-            // Alpha
             let firstLetter = element.name.charAt(0).toUpperCase();
             if (firstLetter !== currentLetter) {
                 currentLetter = firstLetter;
@@ -45,12 +44,12 @@ async function renderData (URL) {
 }
 
 
-function renderContacts(element) {
+function renderContacts(element, index) {
    return  `
             <div class="contact-item">
-                <div class="avatar" style="background-color: #FFAB00;">${getInitials(element.name)}</div>
+                <div class="avatar" style="background-color: ${avatarColors()};">${getInitials(element.name)}</div>
                 <div class="contact-info">
-                    <div class="contact-name">${element.name}</div>
+                    <div id="contactname${index}" class="contact-name">${element.name}</div>
                     <div class="contact-email">${element.email}</div>
                 </div>
             </div>
@@ -60,4 +59,32 @@ function renderContacts(element) {
 function getInitials(name) {
     let initials = name.split(' ').map(word => word.charAt(0)).join('');
     return initials.toUpperCase();
+}
+
+let lastColorIndex = -1;
+
+function avatarColors() {
+
+    
+   
+    const colors = [
+        '#FF7A00', '#FF5EB3', '#6E52FF', '#00BEE8', '#C3FF2B', '#FF4646'
+    ];
+
+    
+    let colorIndex = (lastColorIndex + 1) % colors.length;
+
+   
+    lastColorIndex = colorIndex;
+
+  
+    return colors[colorIndex];
+}
+
+
+function openContact(element, index) {
+    let contactcontainer = document.getElementById('contact-container');
+    let contactname = document.getElementById('contactname${index}')
+    contactcontainer.innerHTML = `
+    <div> </div>`
 }

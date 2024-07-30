@@ -97,11 +97,13 @@ svg {
     align-items: center;
     gap: 16px;
     padding: 20px;
+    border-radius: 10px;
 
 }
 
 .contact-item:hover {
-    
+    background-color: rgba(175, 171, 171, 0.2);
+    cursor: pointer;
 }
 
 .avatar {
