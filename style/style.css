@@ -75,6 +75,7 @@ button.login-button-frontpage {
     background-color: #091931;
     color: #ffffff;
     border-radius: 8px;
+    font-weight: bold;
 }
 
 button.login-button-frontpage:disabled {
@@ -93,7 +94,17 @@ button.guest-button-frontpage {
     font-weight: bold;
 }
 
+#loginButton:hover {
+    background-color: var(--babyblue);
+}
+
+#guestLoginButton:hover {
+    border: 1px solid var(--babyblue);
+    color: var(--babyblue);
+}
+
 h2 {
+    font-family: 'Inter';
     font-size: 61px;
     font-weight: 700;
 }
@@ -187,6 +198,7 @@ h2 {
     border-bottom: 3px solid #29ABE2;
     height: 3px;
     width: 90px;
+    margin-top: 18px;
 }
 
 input {
@@ -287,8 +299,16 @@ input {
     cursor: not-allowed;
 } */
 
-input {
-    outline: none;
+input[type="text"],
+input[type="password"] {
+    background-color: transparent; 
+    border: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    background-color: transparent; 
+    outline: none; 
     border: none;
 }
 
