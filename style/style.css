@@ -179,18 +179,6 @@ h2 {
 	        animation: scale-up-hor-center 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
-.flex-input {
-    border: 1px solid rgb(209, 209, 209);
-    border-radius: 10px;
-    padding: 12px 21px;
-    gap: 10px;
-    width: 100%;
-    max-width: 420px;
-    display: unset;
-    display: flex;
-    align-items: center;
-}
-
 .buttons-frontpage {
     margin-top: 32px;
 }
@@ -216,16 +204,7 @@ input {
     display: unset;
     display: flex;
     align-items: center;
-}
-
-.buttons-frontpage {
-    margin-top: 32px;
-}
-
-.underline-frontpage {
-    border-bottom: 3px solid #29ABE2;
-    height: 3px;
-    width: 90px;
+    justify-content: space-between;
 }
 
 #signupWindow {
@@ -311,4 +290,8 @@ input {
 input {
     outline: none;
     border: none;
+}
+
+.error-message {
+    font-size: 400;
 }
