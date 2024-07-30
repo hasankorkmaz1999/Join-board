@@ -63,11 +63,14 @@ function renderContacts(element, id) {
     `;
 }
 
-
 function openContact(id, name, email, phone) {
-    // Entfernt die aktive Klasse vom vorherigen Kontakt
+    // Entfernt die aktive Klasse vom vorherigen Kontakt und setzt die Farbe des Namens zurück
     if (activeContactId) {
-        document.getElementById(`contact-${activeContactId}`).classList.remove('active');
+        // document.getElementById(`contact-${activeContactId}`).classList.remove('active');
+        let previousContactElement = document.getElementById(`contact-${activeContactId}`);
+        previousContactElement.classList.remove('active');
+        let previousContactNameElement = previousContactElement.querySelector('.contact-name');
+        previousContactNameElement.style.color = 'black'; // oder die Standardfarbe, die wir verwenden
     }
 
     // Fügt die aktive Klasse zum aktuellen Kontakt hinzu
@@ -75,9 +78,13 @@ function openContact(id, name, email, phone) {
     contactElement.classList.add('active');
     activeContactId = id;
 
+    // Setzt den Namen des Kontakts auf weiß
+    let contactNameElement = contactElement.querySelector('.contact-name');
+    contactNameElement.style.color = 'white';
+
     // Rendert die Kontaktdaten
     let contactContainer = document.getElementById('contact-container');
-    contactContainer.innerHTML = `
+    contactContainer.innerHTML = /*html*/`
         <div class="contact-details">
             <div class="avatar" style="background-color: ${avatarColors()};">${getInitials(name)}</div>
             <div class="contact-info">
