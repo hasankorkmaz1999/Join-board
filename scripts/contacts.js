@@ -58,15 +58,32 @@ function renderContacts(element, id) {
     `;
 }
 
+
 function openContact(id, name, email, phone) {
     // Entfernt die aktive Klasse vom vorherigen Kontakt
     if (activeContactId) {
-        document.getElementById('contact-${activeContactId}').classList.remove('active');
+        document.getElementById(`contact-${activeContactId}`).classList.remove('active');
     }
-}
 
     // Fügt die aktive Klasse zum aktuellen Kontakt hinzu
-    let contactElement = document.getElementById('contact-')
+    let contactElement = document.getElementById(`contact-${id}`);
+    contactElement.classList.add('active');
+    activeContactId = id;
+
+    // Rendert die Kontaktdaten
+    let contactContainer = document.getElementById('contact-container');
+    contactContainer.innerHTML = `
+        <div class="contact-details">
+            <div class="avatar" style="background-color: ${avatarColors()};">${getInitials(name)}</div>
+            <div class="contact-info">
+                <div class="contact-name">${name}</div>
+                <div class="contact-email">${email}</div>
+                <div class="contact-phone">${phone || ''}</div>
+            </div>
+        </div>
+    `;
+}
+
 
 function getInitials(name) {
     let initials = name.split(' ').map(word => word.charAt(0)).join('');
@@ -82,11 +99,4 @@ function avatarColors() {
     let colorIndex = (lastColorIndex + 1) % colors.length;
     lastColorIndex = colorIndex;
     return colors[colorIndex];
-}
-
-function openContact(element, index) {
-    let contactcontainer = document.getElementById('contact-container');
-    let contactname = document.getElementById('contactname${index}')
-    contactcontainer.innerHTML = `
-    <div> </div>`
 }
