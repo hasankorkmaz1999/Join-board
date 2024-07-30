@@ -293,5 +293,6 @@ input {
 }
 
 .error-message {
-    font-size: 400;
+    font-size: 12px;
+    font-family: 'Inter';
 }
