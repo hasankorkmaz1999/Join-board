@@ -63,6 +63,18 @@ function renderContacts(element, id) {
     `;
 }
 
+// Initialisiert ein Objekt, um die Hintergrundfarben der Avatare zu speichern
+const avatarColorsMap = {};
+
+// Funktion zum Abrufen oder Generieren einer Hintergrundfarbe für einen Kontakt
+function getAvatarColor(id) {
+    if (!avatarColorsMap[id]) {
+        avatarColorsMap[id] = avatarColors();
+    }
+    return avatarColorsMap[id];
+}
+
+
 function openContact(id, name, email, phone) {
     // Entfernt die aktive Klasse vom vorherigen Kontakt und setzt die Farbe des Namens zurück
     if (activeContactId) {
@@ -86,7 +98,7 @@ function openContact(id, name, email, phone) {
     let contactContainer = document.getElementById('contact-container');
     contactContainer.innerHTML = /*html*/`
         <div class="contact-details">
-            <div class="avatar" style="background-color: ${avatarColors()};">${getInitials(name)}</div>
+            <div class="avatar" style="background-color: ${getAvatarColor()};">${getInitials(name)}</div>
             <div class="contact-info">
                 <div class="contact-name">${name}</div>
                 <div class="contact-email"><a href="mailto:${email}"></a>${email}</div>
@@ -94,8 +106,14 @@ function openContact(id, name, email, phone) {
             </div>
         </div>
     `;
-}
 
+    // Animation aktivieren
+    setTimeout(() => {
+        const contactDetails = document.querySelector('.contact-details');
+        contactDetails.classList.add('show');
+    }, 0)
+
+}
 
 function getInitials(name) {
     let initials = name.split(' ').map(word => word.charAt(0)).join('');
