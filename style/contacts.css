@@ -239,3 +239,64 @@ span.subheadline {
     align-items: center;
     justify-content: center;
 }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(65, 64, 64, 0.2);
+    z-index: 999;
+  }
+
+  .contactForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 592px;
+    width: 1212px;
+    background-color: white;
+    border-radius: 20px;
+    
+  }
+
+  .contactFormLeft {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 467px;
+    height: 594px;
+    background-color: #2A3647;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+  }
+
+  .contactFormLeft img{
+   margin-left: 50px;
+  }
+
+
+
+  .joinnnlogocontact  {
+    height: 66px;
+    width: 55px;
+    margin-bottom: 10px;
+  }
+
+  .addcontacttext {
+  width: 371px;
+  height: 129px;
+  margin-bottom: 20px;
+}
+
+.vector5 {
+    width: 90px;
+}
+
+.d-none {
+    display: none;
+}

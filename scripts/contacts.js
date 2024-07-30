@@ -112,3 +112,14 @@ function avatarColors() {
     lastColorIndex = colorIndex;
     return colors[colorIndex];
 }
+
+
+function addNewContact() {
+    let overlay = document.getElementById('overlay');
+    overlay.classList.remove("d-none");
+    
+}
+
+function closeOverlay() {
+    overlay.classList.add("d-none");
+}
