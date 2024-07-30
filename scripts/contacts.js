@@ -9,7 +9,7 @@ function init() {
 
 async function loadData(URL) {
     try {
-        let response = await fetch(URL + ".JSON");
+        let response = await fetch(URL + ".json");
         let responseToJson = await response.json();
         console.log(responseToJson);
         return responseToJson;
@@ -23,9 +23,9 @@ async function renderData (URL) {
     let data = await loadData(URL);
     /* let content = document.getElementById("ID NAME"); */
     /* content.innerHTML = ``; */
-    if (data) {
+    if (data && data.users && data.users.user1ID && data.users.user1ID.contact1ID) {
         for (let i = 0; i < data.users.user1ID.contact1ID.length; i++) {
-            const element = data[i];
+            const element = data.users.user1ID.contact1ID[i];
             console.log(element);
         }
     }
