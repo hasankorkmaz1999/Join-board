@@ -3,6 +3,7 @@ window.onload = init;
 function init() {
     disableButtonLogin();
     showLogin('loginWindow');
+    showFooterLogin('footerAnimation');
 }
 
 // Fehlermeldung für Login
@@ -24,13 +25,23 @@ document.addEventListener('DOMContentLoaded', function() {
     disableButtonLogin(); 
 });
 
-
+//Animation für das öffnen der loginseite
 function showLogin(elementId) {
     setTimeout(() => {
         let element = document.getElementById(elementId);
         if (element) {
             element.classList.remove('d-none');
             element.classList.add('scale-up-hor-center', 'd-flex', 'align-items-center', 'justify-content-center', 'hundertVh');
+        }
+    }, 1000);
+}
+
+function showFooterLogin(elementId) {
+    setTimeout(() => {
+        let element = document.getElementById(elementId);
+        if (element) {
+            element.classList.remove('d-non');
+            element.classList.add('scale-up-hor-center', 'footer-links');
         }
     }, 1000);
 }
