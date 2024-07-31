@@ -30,10 +30,10 @@ body {
 }
 
 .headericons img {
-    margin-left: 50px;
-    margin-right: 10px;
-    height: 30px;
-    width: 30px;
+    margin-left: 40px;
+    margin-right: 16px;
+    height: 25px;
+    width: 25px;
 }
 
 .sidebarlist {
@@ -45,9 +45,18 @@ body {
     margin-bottom: 10px;
 }
 
+.sidebarlist a {
+    text-decoration: none;
+    color: var(--links-grey);
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+}
+
 .sidebarlist:hover {
     cursor: pointer;
-    background-color: var(--deepest-grey)
+    background-color: rgb(128, 126, 136, 0.2);
 }
 
 .lastpart {
