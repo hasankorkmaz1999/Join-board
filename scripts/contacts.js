@@ -179,7 +179,7 @@ async function editContacts(id) {
                 let phone = contact.phone;
                 let email = contact.email;
                 let renderEditView = document.getElementById('overlayEdit');
-                renderEditView.innerHTML = editContactForm(name, phone, email);
+                renderEditView.innerHTML = editContactForm(name, phone, email, id);
             } else {
                 console.error("No contact found with ID:", id);
             }
@@ -207,28 +207,63 @@ function closeEditOverlay() {
     );
 }
 
-function editContactForm(name, phone, email) {
+function editContactForm(name, phone, email, id) {
     return /*html*/`
         <div class="contactForm">
         <div class="contactFormLeft">
             <img class="joinnnlogocontact" src="./icons/Capa2Edit.svg" alt="">
             <img class="addcontacttext" src="./icons/Frame211Edit.svg" alt="">
         </div>
-
-        <div class="contactFormRight">
+        <form class="contactFormRight" onsubmit="finishEditContact('${id}'); return false;">
             <img src="./icons/contacticons/kontak.png" alt="">
-                    <div class="contactinputfields">
-                        <img  onclick="closeEditOverlay()" class="closeX" src="./icons/close.svg" alt="">
-                        <input value="${name}" class="inputfiledsname" placeholder="Name" type="text">
-                        <input value="${email}" class="inputfiledsemail" placeholder="Email" type="text">
-                        <input value="${phone}" class="inputfiledsphone" placeholder="Phone" type="text">
-
-                    <div class="contactbuttons">
-                        <button onclick="closeEditOverlay()" class="cancelbutton">Cancel  X</button>
-                        <button class="createbutton">Edit contact<img src="./icons/check.svg" alt=""></button>
-                    </div>
+            <div class="contactinputfields">
+                <img onclick="closeEditOverlay()" class="closeX" src="./icons/close.svg" alt="">
+                <input value="${name}" id="nameValue"  class="inputfiledsname" placeholder="Name" type="text" name="name">
+                <input value="${email}" id="emailValue" class="inputfiledsemail" placeholder="Email" type="text" name="email">
+                <input value="${phone}" id="phoneValue" class="inputfiledsphone" placeholder="Phone" type="text" name="phone">
+                <div class="contactbuttons">
+                    <button type="button" onclick="closeEditOverlay()" class="cancelbutton">Cancel X</button>
+                    <button type="submit" class="createbutton">Edit contact<img src="./icons/check.svg" alt=""></button>
                 </div>
             </div>
-        </div>
+        </form>
     `
+}
+
+function finishEditContact(id) {
+    // Hole die Werte aus den Eingabefeldern
+    let valueName = document.getElementById('nameValue').value;
+    let valueEmail = document.getElementById('emailValue').value;
+    let valuePhone = document.getElementById('phoneValue').value;
+
+    let updatedContact = {
+        name: valueName,
+        email: valueEmail,
+        phone: valuePhone
+    };
+
+    saveContact(id, updatedContact);
+}
+
+async function saveContact(id, contactData) {
+    try {
+        let response = await fetch(`${API}${editAPI}/${id}.json`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contactData)
+        });
+
+        if (!response.ok) {
+            throw new Error('Netzwerkantwort war nicht ok');
+        }
+
+        let responseData = await response.json();
+        console.log('Erfolgreich gespeichert:', responseData);
+        renderData(API);
+        closeEditOverlay();
+    } catch (error) {
+        console.error('Fehler beim Speichern des Kontakts:', error);
+    }
 }
