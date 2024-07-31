@@ -332,11 +332,15 @@ input:-internal-autofill-selected {
 }
 
 footer {
+    position: fixed;
     display: flex;
     justify-content: center;
+    bottom: 40px;
+    left: 0;
+    right: 0;
 }
 
-.footer-links a {
+li.footer-links a {
     font-family: 'Inter';
     font-weight: 400;
     color: var(--footer-grey);
@@ -347,7 +351,62 @@ footer {
     gap: 8px;
 }
 
-.footer-links a:hover {
+ul.footer-links {
+    display: flex;
+}
+
+li.footer-links a:hover {
     font-weight: bold;
     color: var(--babyblue);
+}
+
+.header-top {
+    height: 96px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 32px;
+    gap: 35px;
+    margin-right: 32px;
+}
+
+span.subheader-login {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--black);
+}
+
+.join_logo {
+    height: 121px;
+    width: 100px;
+    margin: 60px;
+}
+
+.policies {
+    font-size: 16px;
+    margin-left: 60px;
+    color: #C5C6C6;
+    
+}
+
+.policies:hover {
+    cursor: pointer;
+    color: #00BEE8;
+    transform: scale(1.1);
+}
+
+button.signup {
+    color: var(--white);
+    background-color: var(--deepest-grey);
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Inter';
+}
+
+button.signup:hover {
+    background-color: var(--babyblue);
 }
