@@ -53,9 +53,11 @@ function disableSpinner() {
 }
 
 function renderContacts(element, id) {
+    const color = getAvatarColor(id); // Holt die Farbe für diesen Kontakt
+
     return  /*html*/`
-            <div class="contact-item" id="contact-${id}" onclick="openContact('${id}', '${element.name}', '${element.email}', '${element.phone}')">
-                <div class="avatar" style="background-color: ${avatarColors()};">${getInitials(element.name)}</div>
+            <div class="contact-item" id="contact-${id}" data-color="${color}" onclick="openContact('${id}', '${element.name}', '${element.email}', '${element.phone}')">
+                <div class="avatar" style="background-color: ${color};">${getInitials(element.name)}</div>
                 <div class="contact-info">
                     <div class="contact-name">${element.name}</div>
                     <div class="contact-email">${element.email}</div>
@@ -79,7 +81,6 @@ function getAvatarColor(id) {
 function openContact(id, name, email, phone) {
     // Entfernt die aktive Klasse vom vorherigen Kontakt und setzt die Farbe des Namens zurück
     if (activeContactId) {
-        // document.getElementById(`contact-${activeContactId}`).classList.remove('active');
         let previousContactElement = document.getElementById(`contact-${activeContactId}`);
         previousContactElement.classList.remove('active');
         let previousContactNameElement = previousContactElement.querySelector('.contact-name');
@@ -95,9 +96,12 @@ function openContact(id, name, email, phone) {
     let contactNameElement = contactElement.querySelector('.contact-name');
     contactNameElement.style.color = 'white';
 
+    // Holt die Hintergrundfarbe des aktuellen Kontakts
+    const color = contactElement.getAttribute('data-color');
+
     // Rendert die Kontaktdaten
     let contactContainer = document.getElementById('contact-container');
-    contactContainer.innerHTML = renderBigView(id, name, email, phone);
+    contactContainer.innerHTML = renderBigView(id, name, email, phone, color);
 
     // Animation aktivieren
     setTimeout(
@@ -109,10 +113,10 @@ function openContact(id, name, email, phone) {
         }, 100);
 }
 
-function renderBigView(id, name, email, phone) {
+function renderBigView(id, name, email, phone, color) {
     return /*html*/`
         <div class="contact-details-big">
-        <div class="avatar" style="background-color: ${getAvatarColor()};">${getInitials(name)}</div>
+        <div class="avatar" style="background-color: ${color};">${getInitials(name)}</div>
             <div class="contact-info">
                 <div class="contact-name-big">${name}</div>
                     <div class="flex-card-big">
