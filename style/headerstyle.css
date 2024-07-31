@@ -39,8 +39,8 @@ body {
 
 .sidebarlist {
     height: 50px;
-    font-size: 20px;
-    color: #C5C6C6;
+    font-size: 16px;
+    color: var(--links-grey);
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -48,7 +48,7 @@ body {
 
 .sidebarlist:hover {
     cursor: pointer;
-    background-color: #2A3D59;
+    background-color: var(--deepest-grey)
    
 }
 
