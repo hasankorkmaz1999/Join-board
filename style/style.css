@@ -4,6 +4,7 @@
     --blue: #6E52FF;
     --violet: #9327FF;
     --babyblue: #00BEE8;
+    --body-background: #F6F7F8;
     --ligh-tgreen: #1FD7C1;
     --dark-orange: #FF745E;
     --brown: #FFA35E;
@@ -29,7 +30,9 @@ html {
 
 body {
     font-family: 'Figtree';
-    background-color: #F6F7F8;
+    background-color: var(--body-background);
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .cursor-pointer {
@@ -150,6 +153,8 @@ h2 {
     height: 600px;
     transform: translate(-50%, -50%);
     animation: scale-and-move 2s forwards;
+    margin-top: 80px;
+    margin-left: 77px;
 }
 
 @keyframes scale-and-move {
@@ -402,9 +407,10 @@ button.signup {
     color: var(--white);
     background-color: var(--deepest-grey);
     font-weight: 700;
-    padding: 10px 20px;
+    padding: 15px 16px;
     border-radius: 8px;
     font-family: 'Inter';
+    cursor: pointer;
 }
 
 button.signup:hover {
