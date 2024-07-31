@@ -267,9 +267,10 @@ svg {
     color: var(--deep-grey);
 }
 
-.delete-big a:hover, .edit-big a:hover {
+.delete-big:hover, .edit-big:hover {
     text-decoration: none;
     color: var(--babyblue);
+    cursor: pointer;
 }
 
 .flex-card-big {
