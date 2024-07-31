@@ -97,8 +97,18 @@ function openContact(id, name, email, phone) {
 
     // Rendert die Kontaktdaten
     let contactContainer = document.getElementById('contact-container');
-    contactContainer.innerHTML = /*html*/`
-        <div class="contact-details">
+    contactContainer.innerHTML = renderBigView(id, name, email, phone);
+
+    // Animation aktivieren
+    setTimeout(() => {
+        const contactDetails = document.querySelector('.contact-details');
+        contactDetails.classList.add('show');
+    }, 0)
+}
+
+function renderBigView(id, name, email, phone) {
+    return /*html*/`
+                <div class="contact-details">
             <div class="avatar" style="background-color: ${getAvatarColor()};">${getInitials(name)}</div>
             <div class="contact-info">
                 <div class="contact-name">${name}</div>
@@ -106,14 +116,7 @@ function openContact(id, name, email, phone) {
                 <div class="contact-phone">${phone || ''}</div>
             </div>
         </div>
-    `;
-
-    // Animation aktivieren
-    setTimeout(() => {
-        const contactDetails = document.querySelector('.contact-details');
-        contactDetails.classList.add('show');
-    }, 0)
-
+    `
 }
 
 function getInitials(name) {
