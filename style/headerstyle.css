@@ -4,21 +4,22 @@ body {
 }
 
 .header-left {
-    background-color: #2A3647;
+    background-color: var(--deep-grey);
     width: 232px;
     height: 100vh;
-    position: fixed; /* Damit der Bereich fixiert bleibt */
-    top: 0; /* Beginnt am oberen Rand */
-    left: 0; /* Beginnt am linken Rand */
-    z-index: 2; 
-   
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .join_logo {
     height: 121px;
     width: 100px;
     margin: 60px;
-
 }
 
 .headericons {
@@ -26,8 +27,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-   
 }
 
 .headericons img {
@@ -49,23 +48,20 @@ body {
 .sidebarlist:hover {
     cursor: pointer;
     background-color: var(--deepest-grey)
-   
 }
 
-
 .lastpart {
-    margin-top: 500px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    margin-bottom: 62px;
 }
 
 .policies {
     font-size: 16px;
     margin-left: 60px;
     color: #C5C6C6;
-    
 }
 
 .policies:hover {
@@ -89,17 +85,19 @@ body {
 
 .kanban {
    margin-left: 50px;
-   font-size: 20px;
-   
-    
+   font-size: 20px;  
 }
 
 .user {
     display: flex;
     align-items: center;
-   
 }
 
 .user img {
     margin-right: 20px;
+}
+
+.header-flex {
+    display: flex;
+    flex-direction: column;
 }
