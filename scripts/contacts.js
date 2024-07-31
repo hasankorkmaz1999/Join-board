@@ -190,7 +190,9 @@ function closeEditOverlay() {
     setTimeout(
         function() {
             let divID = document.getElementById('overlayEdit');
-            divID.classList.remove('d-none');
+            divID.classList.add('d-none');
+            divID.classList.remove('slide-in-right');
+            divID.classList.remove('slide-out-right');
         }, 500
     );
 }
