@@ -228,7 +228,23 @@ svg {
     color: var(--emailblau);
     font-weight: 400;
     line-height: 19.2px;
-   
+    cursor: pointer;
+}
+
+.contact-email-big a {
+    text-decoration: none;
+}
+
+.contact-email-big a:visited {
+    color: var(--emailblau);
+}
+
+.contact-email-big a:focus {
+    color: var(--emailblau);
+}
+
+.contact-email-big a:hover {
+    color: var(--emailblau);
 }
 
 .contact-details-big {
@@ -236,19 +252,19 @@ svg {
 }
 
 .edit-big {
-    background-image: url(../icons/edit.png);
+    background-image: url(../icons/edit.svg);
 }
 
 .delete-big {
-    background-image: url(../icons/delete.png);
+    background-image: url(../icons/delete.svg);
 }    
 
 .edit-big, .delete-big {
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
-    padding-left: 32px;
-    margin-right: 22px;
+    padding-left: 24px;
+    margin-right: 32px;
     font-size: 16px;
     font-weight: 400;
     color: var(--deep-grey);
@@ -271,6 +287,7 @@ svg {
     text-decoration: none;
     color: var(--babyblue);
     cursor: pointer;
+    filter: invert(57%) sepia(81%) saturate(749%) hue-rotate(152deg) brightness(98%) contrast(97%);
 }
 
 .flex-card-big {
@@ -282,6 +299,24 @@ svg {
 
 }
 
+.info-big {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    gap: 59px;
+    margin-top: 32px;
+    color: var(--black);
+}
+
+.phone-big,
+.email-big {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19.2px;
+    margin-top: 32px;
+    color: var(--black);
+    padding-bottom: 16px;
+}
 
 
 /************************************************/

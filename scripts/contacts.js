@@ -122,8 +122,10 @@ function renderBigView(id, name, email, phone) {
                 </div> 
             </div>
             <div class="contact-container-big">
-                <div class="">Contact Information</div>
+                <div class="info-big">Contact Information</div>
+                <div class="email-big">Email</div>
                 <div class="contact-email-big"><a href="mailto:${email}">${email}</a></div>
+                <div class="phone-big">Phone</div>
                 <div class="contact-phone-big">${phone || ''}</div>
             </div>
         </div>
