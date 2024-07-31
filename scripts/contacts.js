@@ -116,7 +116,7 @@ function renderBigView(id, name, email, phone) {
             <div class="contact-info">
                 <div class="contact-name-big">${name}</div>
                     <div class="flex-card-big">
-                        <div onclick="editContacts(${id})" class="edit-big">Edit</div>
+                        <div onclick="editContacts('${id}')" class="edit-big">Edit</div>
                         <div class="delete-big">Delete</div>
                     </div>
                 </div> 
