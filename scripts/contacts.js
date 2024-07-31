@@ -1,6 +1,7 @@
 let API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
 let userAPI = "";
 let demoAPI = "dummy-user/";
+let editAPI = "demoUser.users.user1ID.contacts";
 window.onload = init;
 
 function init() {
@@ -140,4 +141,25 @@ function addNewContact() {
 
 function closeOverlay() {
     overlay.classList.add("d-none");
+}
+
+async function editContacts(id) {
+    try {
+        let data = await loadData(API);
+        if (data) {
+            let contact = data.demoUser.users.user1ID.contacts[id];
+            if (contact) {
+                let name = contact.name;
+                let phone = contact.phone;
+                let email = contact.email;
+                console.log("Contact Details:", name, phone, email);
+            } else {
+                console.error("No contact found with ID:", id);
+            }
+        } else {
+            console.error("No data found");
+        }
+    } catch (error) {
+        console.error("Error in editContacts function:", error);
+    }
 }
