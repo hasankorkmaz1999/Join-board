@@ -152,11 +152,20 @@ function avatarColors() {
 function addNewContact() {
     let overlay = document.getElementById('overlay');
     overlay.classList.remove("d-none");
-    
+    overlay.classList.add('slide-in-right');
 }
 
 function closeOverlay() {
-    overlay.classList.add("d-none");
+    let divID = document.getElementById('overlay');
+    divID.classList.add('slide-out-right');
+    setTimeout(
+        function() {
+            let divID = document.getElementById('overlay');
+            divID.classList.add('d-none');
+            divID.classList.remove('slide-in-right');
+            divID.classList.remove('slide-out-right');
+        }, 500
+    );
 }
 
 //Kontakt bearbiten
