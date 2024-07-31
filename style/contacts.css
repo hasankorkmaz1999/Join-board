@@ -157,6 +157,7 @@ svg {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-left: 32px;
 }
 
 .contact-name {
@@ -200,9 +201,12 @@ svg {
 
 .contact-details-big .avatar {
     margin-bottom: 16px;
-    font-size: 21px;
+    font-size: 47px;
     height: 120px;
     width: 120px;
+    font-weight: 500;
+    line-height: 56.4px;
+    border-radius: 50%;
 }
 
 .contact-info-big {
@@ -391,7 +395,6 @@ span.subheadline {
     display: none;
 }
 
-<<<<<<< HEAD
 .contactFormRight {
     display: flex;
     justify-content: flex-start; /* Bild nach rechts ausrichten */
@@ -549,5 +552,3 @@ span.subheadline {
     background-color: rgb(237, 235, 235);
 }
 
-=======
->>>>>>> f5dd8bd4508dc868cc5139aeadd72f59233c9f58
