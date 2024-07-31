@@ -237,24 +237,48 @@ svg {
 
 .edit-big {
     background-image: url(../icons/edit.png);
+}
+
+.delete-big {
+    background-image: url(../icons/delete.png);
+}    
+
+.edit-big, .delete-big {
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
     padding-left: 32px;
     margin-right: 22px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--deep-grey);
 }
 
-.delete-big {
-    background-image: url(../icons/edit.png);
-    background-repeat: no-repeat;
-    width: 24px;
-    height: 24px;
-    padding-left: 32px;
+.edit-big:visited, .delete-big:visited {
+    color: var(--deep-grey);
+}
+
+.edit-big:active, .delete-big:active {
+    color: var(--deep-grey);
+}
+
+.delete-big a, .edit-big a {
+    text-decoration: none;
+    color: var(--deep-grey);
+}
+
+.delete-big a:hover, .edit-big a:hover {
+    text-decoration: none;
+    color: var(--babyblue);
 }
 
 .flex-card-big {
     display: flex;
     align-items: center;
+}
+
+.contact-container-big {
+    
 }
 
 

@@ -110,14 +110,19 @@ function renderBigView(id, name, email, phone) {
     return /*html*/`
         <div class="contact-details-big">
             <div class="avatar" style="background-color: ${getAvatarColor()};">${getInitials(name)}</div>
-            <div class="contact-info">
-                <div class="contact-name-big">${name}</div>
-                    <div class="flex-card-big">
-                        <div class="edit-big"><a href="">SEdit</a></div>
-                        <div class="delete-big">Delete</div>
-                    </div>
-                <div class="contact-email-big"><a href="mailto:${email}">${email}</a></div>
-                <div class="contact-phone-big">${phone || ''}</div>
+            <div class="">
+                <div class="contact-info">
+                    <div class="contact-name-big">${name}</div>
+                        <div class="flex-card-big">
+                            <div class="edit-big"><a href="">Edit</a></div>
+                            <div class="delete-big"><a href="">Delete</a></div>
+                        </div>
+                </div>
+                <div class="contact-container-big">
+                    <div class="">Contact Information</div>
+                    <div class="contact-email-big"><a href="mailto:${email}">${email}</a></div>
+                    <div class="contact-phone-big">${phone || ''}</div>
+                </div>
             </div>
         </div>
     `
