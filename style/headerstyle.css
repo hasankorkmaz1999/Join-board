@@ -73,12 +73,43 @@ body {
     color: #C5C6C6;
 }
 
+.policies a {
+    text-decoration: none;
+    color: #C5C6C6;
+}
+
 .policies:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.policies a:hover {
     cursor: pointer;
     color: #00BEE8;
     transform: scale(1.1);
 }
 
+.legal {
+    font-size: 16px;
+    margin-left: 60px;
+    color: #C5C6C6;
+}
+
+.legal a {
+    text-decoration: none;
+    color: #C5C6C6;
+}
+
+.legal:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.legal a:hover {
+    cursor: pointer;
+    color: #00BEE8;
+    transform: scale(1.1);
+}
 
 .header-top {
     height: 96px;
