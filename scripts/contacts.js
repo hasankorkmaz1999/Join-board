@@ -212,7 +212,7 @@ function editContactForm(name, phone, email) {
         <div class="contactForm">
         <div class="contactFormLeft">
             <img class="joinnnlogocontact" src="./icons/Capa2Edit.svg" alt="">
-            <img class="addcontacttext" src="./icons/Frame 211Edit.svg" alt="">
+            <img class="addcontacttext" src="./icons/Frame211Edit.svg" alt="">
         </div>
 
         <div class="contactFormRight">
