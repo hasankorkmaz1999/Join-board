@@ -103,7 +103,7 @@ function openContact(id, name, email, phone) {
     setTimeout(() => {
         const contactDetails = document.querySelector('.contact-details');
         contactDetails.classList.add('show');
-    }, 0)
+    }, 100)
 }
 
 function renderBigView(id, name, email, phone) {
