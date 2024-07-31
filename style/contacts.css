@@ -122,8 +122,9 @@ svg {
 
 .contact-details {
     position: relative;
-    right: -100%;
+    /* right: -100%; */
     transition: right 0.5s ease-in-out;
+    display: flex;
 }
 
 .contact-details.show {
@@ -147,8 +148,8 @@ svg {
 .contact-details .avatar {
     margin-bottom: 16px;
     font-size: 21px;
-    height: 64px;
-    width: 64px;
+    height: 120px;
+    width: 120px;
 }
 
 .contact-info {
