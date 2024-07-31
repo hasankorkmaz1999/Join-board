@@ -166,7 +166,8 @@ async function editContacts(id) {
                 let name = contact.name;
                 let phone = contact.phone;
                 let email = contact.email;
-                console.log("Contact Details:", name, phone, email);
+                let renderEditView = document.getElementById('overlayEdit');
+                renderEditView.innerHTML = editContactForm(name, phone, email);
             } else {
                 console.error("No contact found with ID:", id);
             }
@@ -176,4 +177,44 @@ async function editContacts(id) {
     } catch (error) {
         console.error("Error in editContacts function:", error);
     }
+    let editWindow = document.getElementById('overlayEdit');
+    editWindow.classList.remove('d-none');
+    editWindow.classList.add('slide-in-right');
+}
+
+function closeEditOverlay() {
+    let divID = document.getElementById('overlayEdit');
+    divID.classList.add('slide-out-right');
+    setTimeout(
+        function() {
+            let divID = document.getElementById('overlayEdit');
+            divID.classList.remove('d-none');
+        }, 500
+    );
+}
+
+function editContactForm(name, phone, email) {
+    return /*html*/`
+        <div class="contactForm">
+        <div class="contactFormLeft">
+            <img class="joinnnlogocontact" src="./icons/Capa2Edit.svg" alt="">
+            <img class="addcontacttext" src="./icons/Frame 211Edit.svg" alt="">
+        </div>
+
+        <div class="contactFormRight">
+            <img src="./icons/contacticons/kontak.png" alt="">
+                    <div class="contactinputfields">
+                        <img  onclick="closeEditOverlay()" class="closeX" src="./icons/close.svg" alt="">
+                        <input value="${name}" class="inputfiledsname" placeholder="Name" type="text">
+                        <input value="${email}" class="inputfiledsemail" placeholder="Email" type="text">
+                        <input value="${phone}" class="inputfiledsphone" placeholder="Phone" type="text">
+
+                    <div class="contactbuttons">
+                        <button onclick="closeEditOverlay()" class="cancelbutton">Cancel  X</button>
+                        <button class="createbutton">Edit contact<img src="./icons/check.svg" alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
 }
