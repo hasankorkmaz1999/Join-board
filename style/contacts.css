@@ -45,7 +45,7 @@ svg {
     width: 456px;
     padding: 20px;
     height: 100%;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.548);
+    /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.548); */
     overflow-y: auto;
 }
 
@@ -79,6 +79,7 @@ svg {
 
 .alphabet-list {
     margin-top: 20px;
+    /* margin-bottom: 180px; */
 }
 
 .alphabet {
@@ -324,3 +325,4 @@ span.subheadline {
 .d-none {
     display: none;
 }
+
