@@ -1,7 +1,9 @@
 let API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
 let userAPI = "";
 let demoAPI = "dummy-user/";
-let editAPI = "demoUser.users.user1ID.contacts";
+const editAPI = "demoUser/users/user1ID/contacts";
+const url = `${API}${editAPI}.json`;
+
 window.onload = init;
 
 function init() {
@@ -266,4 +268,33 @@ async function saveContact(id, contactData) {
     } catch (error) {
         console.error('Fehler beim Speichern des Kontakts:', error);
     }
+}
+
+
+
+// neuen Kontakt Hinzufügen
+async function createNewContact() {
+    const name = document.querySelector('.inputfiledsname').value.trim();
+    const email = document.querySelector('.inputfiledsemail').value.trim();
+    const phone = document.querySelector('.inputfiledsphone').value.trim();
+
+    if (!name || !email) {
+        alert("Bitte füllen Sie mindestens Name und Email aus.");
+        return;
+    }
+
+    const newContact = { name, email, phone: phone || '' };
+
+    let response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newContact)
+    });
+
+    const responseData = await response.json();
+
+    renderData(API);
+    closeOverlay();
 }
