@@ -249,6 +249,7 @@ svg {
 
 .contact-details-big {
     display: flex;
+    align-items: center;
 }
 
 .edit-big {
@@ -293,10 +294,6 @@ svg {
 .flex-card-big {
     display: flex;
     align-items: center;
-}
-
-.contact-container-big {
-
 }
 
 .info-big {
