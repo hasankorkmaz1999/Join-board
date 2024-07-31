@@ -1,6 +1,7 @@
 let API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
 let userAPI = "";
 let demoAPI = "dummy-user/";
+let editAPI = "demoUser.users.user1ID.contacts";
 window.onload = init;
 
 function init() {
@@ -96,23 +97,26 @@ function openContact(id, name, email, phone) {
 
     // Rendert die Kontaktdaten
     let contactContainer = document.getElementById('contact-container');
-    contactContainer.innerHTML = /*html*/`
-        <div class="contact-details">
-            <div class="avatar" style="background-color: ${getAvatarColor()};">${getInitials(name)}</div>
-            <div class="contact-info">
-                <div class="contact-name">${name}</div>
-                <div class="contact-email"><a href="mailto:${email}"></a>${email}</div>
-                <div class="contact-phone">${phone || ''}</div>
-            </div>
-        </div>
-    `;
+    contactContainer.innerHTML = renderBigView(id, name, email, phone);
 
     // Animation aktivieren
     setTimeout(() => {
         const contactDetails = document.querySelector('.contact-details');
         contactDetails.classList.add('show');
     }, 0)
+}
 
+function renderBigView(id, name, email, phone) {
+    return /*html*/`
+                <div class="contact-details">
+            <div class="avatar" style="background-color: ${getAvatarColor()};">${getInitials(name)}</div>
+            <div class="contact-info">
+                <div class="contact-name">${name}</div>
+                <div class="contact-email"><a href="mailto:${email}">${email}</a></div>
+                <div class="contact-phone">${phone || ''}</div>
+            </div>
+        </div>
+    `
 }
 
 function getInitials(name) {
@@ -140,4 +144,25 @@ function addNewContact() {
 
 function closeOverlay() {
     overlay.classList.add("d-none");
+}
+//Kontakt bearbiten
+async function editContacts(id) {
+    try {
+        let data = await loadData(API);
+        if (data) {
+            let contact = data.demoUser.users.user1ID.contacts[id];
+            if (contact) {
+                let name = contact.name;
+                let phone = contact.phone;
+                let email = contact.email;
+                console.log("Contact Details:", name, phone, email);
+            } else {
+                console.error("No contact found with ID:", id);
+            }
+        } else {
+            console.error("No data found");
+        }
+    } catch (error) {
+        console.error("Error in editContacts function:", error);
+    }
 }

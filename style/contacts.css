@@ -4,6 +4,7 @@
     --blue: #6E52FF;
     --violet: #9327FF;
     --babyblue: #00BEE8;
+    --body-background-grey: #f5f5f5;
     --ligh-tgreen: #1FD7C1;
     --dark-orange: #FF745E;
     --brown: #FFA35E;
@@ -18,13 +19,14 @@
     --deep-grey: #2A3647;
     --deepest-grey: #091931;
     --button-hover: #29ABE2;
+    --links-grey: #cdcdcd;
     --black: #000000;
     --white: #ffffff;
 }
 
 body {
     margin: 0;
-    overflow: hidden;
+    background-color: var(--body-background-grey);
 }
 
 *{
@@ -38,7 +40,7 @@ svg {
 
 .container {
     display: flex;
-    height: 100vh;
+    height: 85vh;
     margin-left: 230px;
 }
 
@@ -46,7 +48,7 @@ svg {
     width: 456px;
     padding: 20px;
     height: 100%;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.548);
+    /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.548); */
     overflow-y: auto;
 }
 
@@ -80,6 +82,7 @@ svg {
 
 .alphabet-list {
     margin-top: 20px;
+    /* margin-bottom: 180px; */
 }
 
 .alphabet {
@@ -121,6 +124,7 @@ svg {
     position: relative;
     right: -100%;
     transition: right 0.5s ease-in-out;
+    display: flex;
 }
 
 .contact-details.show {
@@ -144,8 +148,8 @@ svg {
 .contact-details .avatar {
     margin-bottom: 16px;
     font-size: 21px;
-    height: 64px;
-    width: 64px;
+    height: 120px;
+    width: 120px;
 }
 
 .contact-info {
@@ -324,6 +328,7 @@ span.subheadline {
     display: none;
 }
 
+<<<<<<< HEAD
 .contactFormRight {
     display: flex;
     justify-content: flex-start; /* Bild nach rechts ausrichten */
@@ -481,3 +486,5 @@ span.subheadline {
     background-color: rgb(237, 235, 235);
 }
 
+=======
+>>>>>>> f5dd8bd4508dc868cc5139aeadd72f59233c9f58
