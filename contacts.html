@@ -79,15 +79,41 @@
     </div>
 
 
-    <div onclick="closeOverlay()" id="overlay" class="overlay d-none">
+    <div id="overlay" class="overlay d-none">
+
+        
         <div class="contactForm">
+            
            <div class="contactFormLeft">
              <img class="joinnnlogocontact" src="./icons/headericons/joinlogo.png" alt="">
              <img class="addcontacttext" src="./icons/contacticons/addcontact.png" alt="">
              <img class="vector5" src="icons/contacticons/Vector 5.png" alt="">
            </div>
-           <div class="contactFormRight"></div>
+
+           <div class="contactFormRight">
+            <img src="./icons/contacticons/kontak.png" alt="">
+                  
+                  <div class="contactinputfields">
+                    
+                    <img  onclick="closeOverlay()" class="closeX" src="./icons/contacticons/Close.png" alt="">
+                
+                    <input class="inputfiledsname" placeholder="Name" type="text">
+                    <input class="inputfiledsemail" placeholder="Email" type="text">
+                    <input class="inputfiledsphone" placeholder="Phone" type="text">
+
+                      <div class="contactbuttons">
+                       <button class="cancelbutton">Cancel  X</button>
+                        
+                            
+                        <button class="createbutton">Create contact <img src="./icons/contacticons/check.png" alt=""></button>
+                       </div>
+                   </div>
+
+                   
+            </div>
+            
         </div>
+        
     </div>
     
     <script>

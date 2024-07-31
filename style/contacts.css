@@ -352,37 +352,35 @@ span.subheadline {
     width: 1212px;
     background-color: white;
     border-radius: 20px;
-    
-  }
+    display: flex; /* Flexbox-Layout hinzufügen */
+    overflow: hidden; /* Verhindert, dass Inhalt herausragt */
+}
 
-  .contactFormLeft {
+.contactFormLeft {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     width: 467px;
-    height: 594px;
+    height: 100%; /* Höhe auf 100% setzen, um das gesamte Popup auszufüllen */
     background-color: #2A3647;
     display: flex;
     flex-direction: column;
     justify-content: center;
-   
-  }
+}
 
-  .contactFormLeft img{
-   margin-left: 50px;
-  }
+.contactFormLeft img {
+    margin-left: 50px;
+}
 
-
-
-  .joinnnlogocontact  {
+.joinnnlogocontact {
     height: 66px;
     width: 55px;
     margin-bottom: 10px;
-  }
+}
 
-  .addcontacttext {
-  width: 371px;
-  height: 129px;
-  margin-bottom: 20px;
+.addcontacttext {
+    width: 371px;
+    height: 129px;
+    margin-bottom: 20px;
 }
 
 .vector5 {
@@ -393,3 +391,163 @@ span.subheadline {
     display: none;
 }
 
+<<<<<<< HEAD
+.contactFormRight {
+    display: flex;
+    justify-content: flex-start; /* Bild nach rechts ausrichten */
+    align-items: center; /* Vertikale Zentrierung */
+    flex: 1; /* Nimmt den restlichen verfügbaren Platz ein */
+    padding-right: 20px; /* Abstand vom rechten Rand */
+    height: 100%;
+    
+     
+}
+
+.contactFormRight img {
+    max-width: 100%;
+    height: auto;
+    margin-left: 100px;
+}
+
+.contactinputfields {
+    display: flex;
+    flex-direction: column;
+    margin-left: 90px;
+    
+}
+
+.inputfiledsname {
+    background-image: url('/icons/contacticons/person.png');
+    
+    padding: 13px;
+    gap: 10px;
+    font-size: 20px;
+    width: 322px;
+    height: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border-color: rgba(128, 125, 125, 0.1);
+    background-repeat: no-repeat;
+    background-position: right 10px center; 
+    transition: border-color 0.3s ease;
+}
+
+.inputfiledsname::placeholder { 
+    color: rgba(128, 125, 125, 0.5); 
+}
+
+.inputfiledsname:not(:placeholder-shown) {
+    border-color:  var(--babyblue); 
+}
+
+.inputfiledsemail {
+    background-image: url('/icons/contacticons/mail.png');
+    
+    padding: 13px;
+    gap: 10px;
+    font-size: 20px;
+    width: 322px;
+    height: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border-color: rgba(128, 125, 125, 0.1);
+    background-repeat: no-repeat;
+    background-position: right 10px center; 
+}
+
+.inputfiledsemail::placeholder { 
+    color: rgba(128, 125, 125, 0.5); 
+}
+
+.inputfiledsemail:not(:placeholder-shown) {
+    border-color:  var(--babyblue); 
+}
+
+
+.inputfiledsphone {
+    background-image: url('/icons/contacticons/call.png');
+   
+    padding: 13px;
+    gap: 10px;
+    font-size: 20px;
+    width: 322px;
+    height: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border-color: rgba(128, 125, 125, 0.1);
+    background-repeat: no-repeat;
+    background-position: right 10px center; 
+}
+
+.inputfiledsphone::placeholder { 
+    color: rgba(128, 125, 125, 0.5); 
+}
+
+.inputfiledsphone:not(:placeholder-shown) {
+    border-color:  var(--babyblue); 
+}
+
+.contactbuttons {
+    display: flex;
+    align-items: center;
+
+}
+
+.cancelbutton {
+    cursor: pointer;
+    font-size: 20px;
+    width: 110px;
+    height: 52px;
+    background-color: white;
+    border: 2px solid #D1D1D1; 
+    border-radius: 10px;
+    margin-right: 20px;
+    color: black; 
+    transition: border-color 0.3s ease, color 0.3s ease; 
+}
+
+.cancelbutton:hover {
+    border-color:  var(--babyblue);
+    color:  var(--babyblue); 
+}
+
+.createbutton {
+    cursor: pointer;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    color: white;
+    width: 170px;
+    height: 52px;
+    border-radius: 10px;
+    background-color: #2A3648;
+}
+
+.createbutton img {
+    margin: 0;
+}
+
+.createbutton:hover {
+    background-color: var(--babyblue);
+    border-color: var(--babyblue);
+}
+
+.closeX {
+    height: 32px;
+    width: 32px;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+}
+
+.closeX:hover {
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: rgb(237, 235, 235);
+}
+
+=======
+>>>>>>> f5dd8bd4508dc868cc5139aeadd72f59233c9f58
