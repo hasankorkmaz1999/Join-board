@@ -267,7 +267,7 @@ async function saveContact(id, contactData) {
 
         let responseData = await response.json();
         console.log('Erfolgreich gespeichert:', responseData);
-        renderData(API);
+        init();
         closeEditOverlay();
     } catch (error) {
         console.error('Fehler beim Speichern des Kontakts:', error);
@@ -299,6 +299,6 @@ async function createNewContact() {
 
     const responseData = await response.json();
 
-    renderData(API);
+    init();
     closeOverlay();
 }
