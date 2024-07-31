@@ -236,6 +236,27 @@ svg {
 
 }
 
+.edit-big {
+    background-image: url(../icons/edit.png);
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    padding-left: 32px;
+    margin-right: 22px;
+}
+
+.delete-big {
+    background-image: url(../icons/edit.png);
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    padding-left: 32px;
+}
+
+.flex-card-big {
+    display: flex;
+    align-items: center;
+}
 
 
 /************************************************/

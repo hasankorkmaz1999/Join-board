@@ -112,6 +112,10 @@ function renderBigView(id, name, email, phone) {
             <div class="avatar" style="background-color: ${getAvatarColor()};">${getInitials(name)}</div>
             <div class="contact-info">
                 <div class="contact-name-big">${name}</div>
+                    <div class="flex-card-big">
+                        <div class="edit-big"><a href="">SEdit</a></div>
+                        <div class="delete-big">Delete</div>
+                    </div>
                 <div class="contact-email-big"><a href="mailto:${email}">${email}</a></div>
                 <div class="contact-phone-big">${phone || ''}</div>
             </div>
