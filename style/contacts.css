@@ -118,6 +118,7 @@ svg {
 .contact-container {
     position: relative;
     overflow: hidden;
+    margin-top: 54px;
 }
 
 .contact-details {
@@ -172,6 +173,68 @@ svg {
    
 }
 
+.contact-details {
+    position: relative;
+    right: -100%;
+    transition: right 0.5s ease-in-out;
+    display: flex;
+}
+
+.contact-details.show {
+    right: 0;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.contact-details-big .avatar {
+    margin-bottom: 16px;
+    font-size: 21px;
+    height: 120px;
+    width: 120px;
+}
+
+.contact-info-big {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-name-big {
+    font-size: 47px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 56.4px;
+    font-family: 'Inter';
+}
+
+.contact-email-big {
+    font-size: 16px;
+    color: var(--emailblau);
+    font-weight: 400;
+    line-height: 19.2px;
+   
+}
+
+.contact-details-big {
+    display: flex;
+
+}
+
+
+
+/************************************************/
 .main-content {
     flex-grow: 1;
     padding: 40px;

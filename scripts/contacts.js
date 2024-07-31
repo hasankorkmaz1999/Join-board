@@ -108,12 +108,12 @@ function openContact(id, name, email, phone) {
 
 function renderBigView(id, name, email, phone) {
     return /*html*/`
-                <div class="contact-details">
+                <div class="contact-details-big">
             <div class="avatar" style="background-color: ${getAvatarColor()};">${getInitials(name)}</div>
             <div class="contact-info">
-                <div class="contact-name">${name}</div>
-                <div class="contact-email"><a href="mailto:${email}">${email}</a></div>
-                <div class="contact-phone">${phone || ''}</div>
+                <div class="contact-name-big">${name}</div>
+                <div class="contact-email-big"><a href="mailto:${email}">${email}</a></div>
+                <div class="contact-phone-big">${phone || ''}</div>
             </div>
         </div>
     `
