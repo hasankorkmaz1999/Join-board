@@ -158,6 +158,7 @@ function addNewContact() {
 function closeOverlay() {
     overlay.classList.add("d-none");
 }
+
 //Kontakt bearbiten
 async function editContacts(id) {
     try {
