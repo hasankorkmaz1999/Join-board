@@ -100,10 +100,13 @@ function openContact(id, name, email, phone) {
     contactContainer.innerHTML = renderBigView(id, name, email, phone);
 
     // Animation aktivieren
-    setTimeout(() => {
-        const contactDetails = document.querySelector('.contact-details');
-        contactDetails.classList.add('show');
-    }, 100)
+    setTimeout(
+        function() {
+            let divID = document.getElementById('contact-container');
+            divID.classList.remove('d-none');
+            divID.classList.add('slide-in-right');
+            divID.classList.add('contact-container');
+        }, 100);
 }
 
 function renderBigView(id, name, email, phone) {
