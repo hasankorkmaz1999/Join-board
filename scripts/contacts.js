@@ -45,7 +45,6 @@ async function renderData (URL) {
                 currentLetter = firstLetter;
                 content.innerHTML += `<div class="alphabet">${currentLetter}</div>`;
             }
-            console.log(element);
             content.innerHTML += renderContacts(element, contactKeys[i]);
         }
     }
@@ -245,7 +244,6 @@ async function saveContact(id, contactData) {
         }
 
         let responseData = await response.json();
-        console.log('Erfolgreich gespeichert:', responseData);
         init();
         closeEditOverlay();
         toastMessage("Contact has been revised");
@@ -298,7 +296,6 @@ async function createNewContact() {
             throw new Error('Netzwerkantwort war nicht ok');
         }
         const responseData = await response.json();
-        console.log('Erfolgreich gespeichert:', responseData);
         init();
         closeOverlay();
         toastMessage("new contact has been created");
@@ -328,7 +325,6 @@ async function deletContacts(id) {
         }
 
         let responseData = await response.json();
-        console.log('Erfolgreich gelöscht:', responseData);
         init();
         closeEditOverlay();
         toastMessage("Delete Successful");
