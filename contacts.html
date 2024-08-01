@@ -81,33 +81,31 @@
 
     <div id="overlay" class="overlay d-none">
         <div class="contactForm">
-            
-           <div class="contactFormLeft">
-             <img class="joinnnlogocontact" src="./icons/headericons/joinlogo.png" alt="Logo Join">
-             <img class="addcontacttext" src="./icons/contacticons/addcontact.png" alt="Contact">
-             <img class="vector5" src="icons/contacticons/Vector 5.png" alt="">
-           </div>
-
-           <div class="contactFormRight">
-            <img src="./icons/contacticons/kontak.png" alt="Icon User">
-                  
+            <div class="contactFormLeft">
+                <img class="joinnnlogocontact" src="./icons/Capa2Edit.svg" alt="Logo Join">
+                <img class="addcontacttext" src="./icons/Frame210AddContact.svg" alt="Contact">
+            </div>
+    
+            <div class="contactFormRight">
+                <img src="./icons/contacticons/kontak.png" alt="Icon User">
                 <div class="contactinputfields">
-                    
-                    <img onclick="closeOverlay()" class="closeX" src="./icons/contacticons/Close.png" alt="Icon Close">
-                
-                    <form action="">
-                        <input class="inputfiledsname" placeholder="Name" type="text">
-                        <input class="inputfiledsemail" placeholder="Email" type="text">
-                        <input class="inputfiledsphone" placeholder="Phone" type="text">
+                    <img onclick="closeOverlay()" class="closeX" src="./icons/close.svg" alt="Icon Close">
+                    <form action="" onsubmit="createNewContact(); return false;">
+                        <input id="inputfiledsname" class="inputfiledsname" placeholder="Name" type="text">
+                        <input id="inputfiledsemail" class="inputfiledsemail" placeholder="Email" type="text">
+                        <input id="inputfiledsphone" class="inputfiledsphone" placeholder="Phone" type="text">
+                        <div class="contactbuttons">
+                            <button type="button" onclick="closeOverlay()" class="cancelbutton">Cancel X</button>
+                            <button type="submit" class="createbutton">
+                                Create contact <img src="./icons/check.svg" alt="Icon check">
+                            </button>
+                        </div>
                     </form>
-
-                    <div class="contactbuttons">
-                        <button onclick="closeOverlay()" class="cancelbutton">Cancel  X</button>
-                        <button onclick="createNewContact()" class="createbutton">Create contact <img src="./icons/contacticons/check.png" alt="Icon check"></button>
-                    </div>
-                </div>   
+                </div>
             </div>
         </div>
+    </div>
+    
 
         
     </div>

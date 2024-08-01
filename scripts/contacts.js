@@ -238,18 +238,59 @@ function editContactForm(name, phone, email, id) {
 
 function finishEditContact(id) {
     // Hole die Werte aus den Eingabefeldern
-    let valueName = document.getElementById('nameValue').value;
-    let valueEmail = document.getElementById('emailValue').value;
-    let valuePhone = document.getElementById('phoneValue').value;
-
+    let valueName = document.getElementById('nameValue').value.trim();
+    let valueEmail = document.getElementById('emailValue').value.trim();
+    let valuePhone = document.getElementById('phoneValue').value.trim();
+    // Überprüfungen durchführen
+    if (!isValidLength(valueName, valueEmail, valuePhone)) {
+        alert("Alle Eingabewerte dürfen maximal 30 Zeichen lang sein.");
+        return;
+    }
+    if (!isValidEmail(valueEmail)) {
+        alert("Bitte eine gültige Email-Adresse eingeben.");
+        return;
+    }
+    if (!isValidPhone(valuePhone)) {
+        alert("Die Telefonnummer darf nur Zahlen und ein + enthalten.");
+        return;
+    }
+    // Eingaben sanitisieren
+    valueName = sanitizeInput(valueName);
+    valueEmail = sanitizeInput(valueEmail);
+    valuePhone = sanitizeInput(valuePhone);
+    // Aktualisierten Kontakt erstellen
     let updatedContact = {
         name: valueName,
         email: valueEmail,
         phone: valuePhone
     };
-
     saveContact(id, updatedContact);
 }
+
+//Überprüft die max. Länge
+function isValidLength(...values) {
+    return values.every(value => value.length <= 30);
+}
+
+// Funktion zur Validierung der Email-Adresse
+function isValidEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+// Funktion zur Validierung der Telefonnummer
+function isValidPhone(phone) {
+    const phonePattern = /^[\d+]+$/;
+    return phonePattern.test(phone);
+}
+
+// Funktion zur Sanitisierung der Eingaben
+function sanitizeInput(input) {
+    let element = document.createElement('div');
+    element.innerText = input;
+    return element.innerHTML;
+}
+
 
 async function saveContact(id, contactData) {
     try {
@@ -276,29 +317,77 @@ async function saveContact(id, contactData) {
 
 
 
-// neuen Kontakt Hinzufügen
+// neuen Kontakt hinzufügen
 async function createNewContact() {
-    const name = document.querySelector('.inputfiledsname').value.trim();
-    const email = document.querySelector('.inputfiledsemail').value.trim();
-    const phone = document.querySelector('.inputfiledsphone').value.trim();
-
-    if (!name || !email) {
-        alert("Bitte füllen Sie mindestens Name und Email aus.");
+    // Hole die Werte aus den Eingabefeldern
+    let valueName = document.getElementById('inputfiledsname').value.trim();
+    let valueEmail = document.getElementById('inputfiledsemail').value.trim();
+    let valuePhone = document.getElementById('inputfiledsphone').value.trim();
+    // Überprüfungen durchführen
+    if (!isValidLength(valueName, valueEmail, valuePhone)) {
+        alert("Alle Eingabewerte dürfen maximal 30 Zeichen lang sein.");
         return;
     }
+    if (!isValidEmail(valueEmail)) {
+        alert("Bitte eine gültige Email-Adresse eingeben.");
+        return;
+    }
+    if (!isValidPhone(valuePhone)) {
+        alert("Die Telefonnummer darf nur Zahlen und ein + enthalten.");
+        return;
+    }
+    // Eingaben sanitisieren
+    valueName = sanitizeInput(valueName);
+    valueEmail = sanitizeInput(valueEmail);
+    valuePhone = sanitizeInput(valuePhone);
+    // Neuen Kontakt erstellen
+    const newContact = {
+        name: valueName,
+        email: valueEmail,
+        phone: valuePhone || ''
+    };
+    try {
+        let response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newContact)
+        });
+        if (!response.ok) {
+            throw new Error('Netzwerkantwort war nicht ok');
+        }
+        const responseData = await response.json();
+        console.log('Erfolgreich gespeichert:', responseData);
+        init();
+        closeOverlay();
+    } catch (error) {
+        console.error('Fehler beim Hinzufügen des Kontakts:', error);
+    } finally {
+        // Eingabefelder leeren
+        document.getElementById('inputfiledsname').value = '';
+        document.getElementById('inputfiledsemail').value = '';
+        document.getElementById('inputfiledsphone').value = '';
+    }
+}
 
-    const newContact = { name, email, phone: phone || '' };
-
-    let response = await fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newContact)
-    });
-
-    const responseData = await response.json();
-
-    init();
-    closeOverlay();
+async function saveContact(id, contactData) {
+    try {
+        let response = await fetch(`${API}${editAPI}/${id}.json`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contactData)
+        });
+        if (!response.ok) {
+            throw new Error('Netzwerkantwort war nicht ok');
+        }
+        let responseData = await response.json();
+        console.log('Erfolgreich gespeichert:', responseData);
+        init();
+        closeEditOverlay();
+    } catch (error) {
+        console.error('Fehler beim Speichern des Kontakts:', error);
+    }
 }
