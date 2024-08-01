@@ -287,18 +287,37 @@ async function createNewContact() {
     let valueEmail = document.getElementById('inputfiledsemail').value.trim();
     let valuePhone = document.getElementById('inputfiledsphone').value.trim();
     
+    // Fehlernachrichten-Elemente
+    let nameError = document.getElementById('name-error');
+    let emailError = document.getElementById('email-error');
+    let phoneError = document.getElementById('phone-error');
+    
+    // Setze die Fehlernachrichten zurück
+    nameError.style.display = 'none';
+    emailError.style.display = 'none';
+    phoneError.style.display = 'none';
+
     // Überprüfungen durchführen
+    let hasError = false;
+
     if (!isValidLength(valueName, valueEmail, valuePhone)) {
-        alert("Alle Eingabewerte dürfen maximal 30 Zeichen lang sein.");
-        return;
+        nameError.innerText = "Name, E-Mail und Telefonnummer dürfen jeweils maximal 30 Zeichen lang sein.";
+        nameError.style.display = 'block';
+        hasError = true;
     }
     if (!isValidEmail(valueEmail)) {
-        alert("Bitte eine gültige Email-Adresse eingeben.");
-        return;
+        emailError.innerText = "Bitte eine gültige E-Mail-Adresse eingeben.";
+        emailError.style.display = 'block';
+        hasError = true;
     }
     if (!isValidPhone(valuePhone)) {
-        alert("Die Telefonnummer darf nur Zahlen und ein + enthalten.");
-        return;
+        phoneError.innerText = "Die Telefonnummer darf nur Zahlen und ein + enthalten.";
+        phoneError.style.display = 'block';
+        hasError = true;
+    }
+
+    if (hasError) {
+        return; // Falls ein Fehler vorliegt, beende die Funktion
     }
     
     // Eingaben sanitisieren
@@ -312,30 +331,24 @@ async function createNewContact() {
         email: valueEmail,
         phone: valuePhone || ''
     };
-    try {
-        let response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newContact)
-        });
-        if (!response.ok) {
-            throw new Error('Netzwerkantwort war nicht ok');
-        }
-        const responseData = await response.json();
-        init();
-        closeOverlay();
-        toastMessage("new contact has been created");
 
-    } catch (error) {
-        console.error('Fehler beim Hinzufügen des Kontakts:', error);
-    } finally {
-        // Eingabefelder leeren
-        document.getElementById('inputfiledsname').value = '';
-        document.getElementById('inputfiledsemail').value = '';
-        document.getElementById('inputfiledsphone').value = '';
-    }
+    let response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newContact)
+    });
+
+    const responseData = await response.json();
+    init();
+    closeOverlay();
+    toastMessage("Contact successfully created");
+
+    // Eingabefelder leeren
+    document.getElementById('inputfiledsname').value = '';
+    document.getElementById('inputfiledsemail').value = '';
+    document.getElementById('inputfiledsphone').value = '';
 }
 
 // Löscht einen Kontakt

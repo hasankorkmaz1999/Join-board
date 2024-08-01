@@ -516,7 +516,7 @@ span.subheadline {
     font-size: 20px;
     width: 322px;
     height: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border-radius: 10px;
     border-color: rgba(128, 125, 125, 0.1);
     background-repeat: no-repeat;
@@ -720,4 +720,11 @@ span.subheadline {
     text-align: center;
     margin-bottom: 40px;
     padding-top: 20px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    display: none; /* Standardmäßig ausgeblendet */
+    margin-bottom: 10px;
 }
