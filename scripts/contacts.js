@@ -1,7 +1,9 @@
 let API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
 let userAPI = "";
 let demoAPI = "dummy-user/";
-let editAPI = "demoUser.users.user1ID.contacts";
+const editAPI = "demoUser/users/user1ID/contacts";
+const url = `${API}${editAPI}.json`;
+
 window.onload = init;
 
 function init() {
@@ -53,9 +55,11 @@ function disableSpinner() {
 }
 
 function renderContacts(element, id) {
+    const color = getAvatarColor(id); // Holt die Farbe für diesen Kontakt
+
     return  /*html*/`
-            <div class="contact-item" id="contact-${id}" onclick="openContact('${id}', '${element.name}', '${element.email}', '${element.phone}')">
-                <div class="avatar" style="background-color: ${avatarColors()};">${getInitials(element.name)}</div>
+            <div class="contact-item" id="contact-${id}" data-color="${color}" onclick="openContact('${id}', '${element.name}', '${element.email}', '${element.phone}')">
+                <div class="avatar" style="background-color: ${color};">${getInitials(element.name)}</div>
                 <div class="contact-info">
                     <div class="contact-name">${element.name}</div>
                     <div class="contact-email">${element.email}</div>
@@ -79,7 +83,6 @@ function getAvatarColor(id) {
 function openContact(id, name, email, phone) {
     // Entfernt die aktive Klasse vom vorherigen Kontakt und setzt die Farbe des Namens zurück
     if (activeContactId) {
-        // document.getElementById(`contact-${activeContactId}`).classList.remove('active');
         let previousContactElement = document.getElementById(`contact-${activeContactId}`);
         previousContactElement.classList.remove('active');
         let previousContactNameElement = previousContactElement.querySelector('.contact-name');
@@ -95,9 +98,12 @@ function openContact(id, name, email, phone) {
     let contactNameElement = contactElement.querySelector('.contact-name');
     contactNameElement.style.color = 'white';
 
+    // Holt die Hintergrundfarbe des aktuellen Kontakts
+    const color = contactElement.getAttribute('data-color');
+
     // Rendert die Kontaktdaten
     let contactContainer = document.getElementById('contact-container');
-    contactContainer.innerHTML = renderBigView(id, name, email, phone);
+    contactContainer.innerHTML = renderBigView(id, name, email, phone, color);
 
     // Animation aktivieren
     setTimeout(
@@ -109,10 +115,10 @@ function openContact(id, name, email, phone) {
         }, 100);
 }
 
-function renderBigView(id, name, email, phone) {
+function renderBigView(id, name, email, phone, color) {
     return /*html*/`
         <div class="contact-details-big">
-        <div class="avatar" style="background-color: ${getAvatarColor()};">${getInitials(name)}</div>
+        <div class="avatar" style="background-color: ${color};">${getInitials(name)}</div>
             <div class="contact-info">
                 <div class="contact-name-big">${name}</div>
                     <div class="flex-card-big">
@@ -179,7 +185,7 @@ async function editContacts(id) {
                 let phone = contact.phone;
                 let email = contact.email;
                 let renderEditView = document.getElementById('overlayEdit');
-                renderEditView.innerHTML = editContactForm(name, phone, email);
+                renderEditView.innerHTML = editContactForm(name, phone, email, id);
             } else {
                 console.error("No contact found with ID:", id);
             }
@@ -207,28 +213,92 @@ function closeEditOverlay() {
     );
 }
 
-function editContactForm(name, phone, email) {
+function editContactForm(name, phone, email, id) {
     return /*html*/`
         <div class="contactForm">
         <div class="contactFormLeft">
             <img class="joinnnlogocontact" src="./icons/Capa2Edit.svg" alt="">
             <img class="addcontacttext" src="./icons/Frame211Edit.svg" alt="">
         </div>
-
-        <div class="contactFormRight">
+        <form class="contactFormRight" onsubmit="finishEditContact('${id}'); return false;">
             <img src="./icons/contacticons/kontak.png" alt="">
-                    <div class="contactinputfields">
-                        <img  onclick="closeEditOverlay()" class="closeX" src="./icons/close.svg" alt="">
-                        <input value="${name}" class="inputfiledsname" placeholder="Name" type="text">
-                        <input value="${email}" class="inputfiledsemail" placeholder="Email" type="text">
-                        <input value="${phone}" class="inputfiledsphone" placeholder="Phone" type="text">
-
-                    <div class="contactbuttons">
-                        <button onclick="closeEditOverlay()" class="cancelbutton">Cancel  X</button>
-                        <button class="createbutton">Edit contact<img src="./icons/check.svg" alt=""></button>
-                    </div>
+            <div class="contactinputfields">
+                <img onclick="closeEditOverlay()" class="closeX" src="./icons/close.svg" alt="">
+                <input value="${name}" id="nameValue"  class="inputfiledsname" placeholder="Name" type="text" name="name">
+                <input value="${email}" id="emailValue" class="inputfiledsemail" placeholder="Email" type="text" name="email">
+                <input value="${phone}" id="phoneValue" class="inputfiledsphone" placeholder="Phone" type="text" name="phone">
+                <div class="contactbuttons">
+                    <button type="button" onclick="closeEditOverlay()" class="cancelbutton">Cancel X</button>
+                    <button type="submit" class="createbutton">Edit contact<img src="./icons/check.svg" alt=""></button>
                 </div>
             </div>
-        </div>
+        </form>
     `
+}
+
+function finishEditContact(id) {
+    // Hole die Werte aus den Eingabefeldern
+    let valueName = document.getElementById('nameValue').value;
+    let valueEmail = document.getElementById('emailValue').value;
+    let valuePhone = document.getElementById('phoneValue').value;
+
+    let updatedContact = {
+        name: valueName,
+        email: valueEmail,
+        phone: valuePhone
+    };
+
+    saveContact(id, updatedContact);
+}
+
+async function saveContact(id, contactData) {
+    try {
+        let response = await fetch(`${API}${editAPI}/${id}.json`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contactData)
+        });
+
+        if (!response.ok) {
+            throw new Error('Netzwerkantwort war nicht ok');
+        }
+
+        let responseData = await response.json();
+        console.log('Erfolgreich gespeichert:', responseData);
+        init();
+        closeEditOverlay();
+    } catch (error) {
+        console.error('Fehler beim Speichern des Kontakts:', error);
+    }
+}
+
+
+
+// neuen Kontakt Hinzufügen
+async function createNewContact() {
+    const name = document.querySelector('.inputfiledsname').value.trim();
+    const email = document.querySelector('.inputfiledsemail').value.trim();
+    const phone = document.querySelector('.inputfiledsphone').value.trim();
+
+    if (!name || !email) {
+        alert("Bitte füllen Sie mindestens Name und Email aus.");
+        return;
+    }
+
+    const newContact = { name, email, phone: phone || '' };
+
+    let response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newContact)
+    });
+
+    const responseData = await response.json();
+
+    init();
+    closeOverlay();
 }

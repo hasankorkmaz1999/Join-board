@@ -57,10 +57,10 @@ body {
 }
 
 .headericons img {
-    margin-left: 50px;
-    margin-right: 10px;
-    height: 30px;
-    width: 30px;
+    margin-left: 40px;
+    margin-right: 16px;
+    height: 25px;
+    width: 25px;
 }
 
 .sidebarlist {
@@ -72,9 +72,18 @@ body {
     margin-bottom: 10px;
 }
 
+.sidebarlist a {
+    text-decoration: none;
+    color: var(--links-grey);
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+}
+
 .sidebarlist:hover {
     cursor: pointer;
-    background-color: var(--deepest-grey)
+    background-color: rgb(128, 126, 136, 0.2);
 }
 
 .lastpart {
@@ -91,12 +100,43 @@ body {
     color: #C5C6C6;
 }
 
+.policies a {
+    text-decoration: none;
+    color: #C5C6C6;
+}
+
 .policies:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.policies a:hover {
     cursor: pointer;
     color: #00BEE8;
     transform: scale(1.1);
 }
 
+.legal {
+    font-size: 16px;
+    margin-left: 60px;
+    color: #C5C6C6;
+}
+
+.legal a {
+    text-decoration: none;
+    color: #C5C6C6;
+}
+
+.legal:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.legal a:hover {
+    cursor: pointer;
+    color: #00BEE8;
+    transform: scale(1.1);
+}
 
 .header-top {
     height: 96px;
