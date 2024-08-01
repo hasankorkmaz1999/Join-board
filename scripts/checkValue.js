@@ -17,7 +17,10 @@ function isValidPhone(phone) {
 
 // Funktion zur Sanitisierung der Eingaben
 function sanitizeInput(input) {
-    let element = document.createElement('div');
-    element.innerText = input;
-    return element.innerHTML;
+    return input
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
 }
