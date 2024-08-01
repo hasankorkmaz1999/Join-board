@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,6 +115,7 @@
         <div class="toast-text" id="toast-text"></div>
     </div>
     
+
     <script>
         includeHTML();
     </script>
@@ -122,12 +123,11 @@
     <script>
     // Sandkasten von Marc
     function contactResponsive(id, name, email, phone) {
-        if (window.innerWidth >= 850) {
+        if (window.innerWidth <= 850) {
 
         document.getElementById('sidebar').style.display = 'none';
         document.getElementById('main-content').style.display = 'block';
 
-        // Optional: Setze das aktuelle Highlight
         let currentHighlightedDiv = document.querySelector('.contact-item.active');
         if (currentHighlightedDiv) {
             currentHighlightedDiv.classList.add('active');
@@ -135,8 +135,7 @@
 
         }
     }
-
-    // Funktion zum Schließen des Main-Contents und Anzeigen der Sidebar
+    
     function closeSingleContact() {
         document.getElementById('main-content').style.display = 'none';
         document.getElementById('sidebar').style.display = 'block';
@@ -148,14 +147,9 @@
     <script src="./scripts/checkValue.js"></script>
     <script src="./scripts/toastMsg.js"></script>
     <script src="./scripts/reloadPage.js"></script>
-<<<<<<< HEAD
-
-=======
     <script src="./scripts/templateContactHTML/editContactForm.js"></script>
     <script src="./scripts/templateContactHTML/renderBigView.js"></script>
-    <div id="toast-div" class="d-none">
-        <div class="toast-text" id="toast-text"></div>
-    </div>
->>>>>>> ae8e4698d76b60d7b3084d4b180831659f3b0ee4
+
+
 </body>
 </html>

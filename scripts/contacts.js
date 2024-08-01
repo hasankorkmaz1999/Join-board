@@ -117,7 +117,8 @@ function openContact(id, name, email, phone) {
             divID.classList.add('slide-in-right');
             divID.classList.add('contact-container');
         }, 100);
-        contactResponsive() 
+
+    contactResponsive(id, name, email, phone) // needed
 }
 
 function renderBigView(id, name, email, phone, color) {
