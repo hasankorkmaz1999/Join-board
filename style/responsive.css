@@ -125,9 +125,6 @@
     .join_logo {
         margin: 40px;
     }
-    .header-left {
-        width: 200px;
-    }
     .contact-email {
         font-size: 12px;
     }
@@ -137,6 +134,9 @@
     #sidebar {
         width: 90%;
     }
+    p.subheader-contact {
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 850px) {
@@ -145,5 +145,11 @@
     }
     #main-content {
         display: block;
+    }
+}
+
+@media (max-width: 660px) {
+    .subheader-contact {
+        display: none;
     }
 }
