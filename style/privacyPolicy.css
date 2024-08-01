@@ -7,6 +7,10 @@
     min-height: 100vh;
 }
 
+.main-content p {
+    margin-bottom: 32px;
+}
+
 .back-arrow {
     margin: 20px 0;
 }
