@@ -700,3 +700,23 @@ span.subheadline {
       opacity: 0;
     }
   }
+
+.toast {
+    background-color: var(--deepest-grey);
+    color: var(--white);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    width: 326px;
+    height: 74px;
+    /* margin: 0 auto; */
+    left: 0;
+    right: 0;
+    bottom: 40px;
+}
+.toast-text {
+    text-align: center;
+    margin-bottom: 40px;
+}
