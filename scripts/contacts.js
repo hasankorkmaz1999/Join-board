@@ -123,7 +123,7 @@ function renderBigView(id, name, email, phone, color) {
                 <div class="contact-name-big">${name}</div>
                     <div class="flex-card-big">
                         <div onclick="editContacts('${id}')" class="edit-big">Edit</div>
-                        <div class="delete-big">Delete</div>
+                        <div onclick="deletContacts('${id}')" class="delete-big">Delete</div>
                     </div>
                 </div> 
             </div>
@@ -365,5 +365,28 @@ async function saveContact(id, contactData) {
         closeEditOverlay();
     } catch (error) {
         console.error('Fehler beim Speichern des Kontakts:', error);
+    }
+}
+
+async function deletContacts(id) {
+    try {
+        let response = await fetch(`${API}${editAPI}/${id}.json`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Netzwerkantwort war nicht ok');
+        }
+
+        let responseData = await response.json();
+        console.log('Erfolgreich gelöscht:', responseData);
+        init();
+        closeEditOverlay();
+        toastMessage("Löschen Erfolgreich")
+    } catch (error) {
+        console.error('Fehler beim Löschen des Kontakts:', error);
     }
 }
