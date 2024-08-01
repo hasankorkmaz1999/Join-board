@@ -287,6 +287,7 @@ async function saveContact(id, contactData) {
         console.log('Erfolgreich gespeichert:', responseData);
         init();
         closeEditOverlay();
+        toastMessage("Contact has been revised");
     } catch (error) {
         console.error('Fehler beim Speichern des Kontakts:', error);
     }
@@ -338,6 +339,8 @@ async function createNewContact() {
         console.log('Erfolgreich gespeichert:', responseData);
         init();
         closeOverlay();
+        toastMessage("new contact has been created");
+
     } catch (error) {
         console.error('Fehler beim Hinzufügen des Kontakts:', error);
     } finally {
@@ -364,6 +367,7 @@ async function saveContact(id, contactData) {
         console.log('Erfolgreich gespeichert:', responseData);
         init();
         closeEditOverlay();
+        toastMessage("Contact has been edited");
     } catch (error) {
         console.error('Fehler beim Speichern des Kontakts:', error);
     }
@@ -386,7 +390,8 @@ async function deletContacts(id) {
         console.log('Erfolgreich gelöscht:', responseData);
         init();
         closeEditOverlay();
-        toastMessage("Löschen Erfolgreich");
+        toastMessage("Delete Successful");
+        reloadPage();
     } catch (error) {
         console.error('Fehler beim Löschen des Kontakts:', error);
     }
