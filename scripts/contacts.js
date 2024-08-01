@@ -6,10 +6,12 @@ const url = `${API}${editAPI}.json`;
 
 window.onload = init;
 
+// Initialisiert die Anwendung und ruft die Daten ab
 function init() {
     renderData(API);
 }
 
+// Lädt Daten von der angegebenen URL und gibt sie als JSON zurück
 async function loadData(URL) {
     try {
         let response = await fetch(URL + ".json");
@@ -23,6 +25,7 @@ async function loadData(URL) {
 
 let activeContactId = null; // um den aktuell aktiven Kontakt zu verfolgen
 
+// Rendert die Kontaktdaten auf der Seite
 async function renderData (URL) {
     let data = await loadData(URL);
     let content = document.getElementById("renderContacts");
@@ -49,15 +52,17 @@ async function renderData (URL) {
     disableSpinner();
 }
 
+// Deaktiviert den Lade-Spinner
 function disableSpinner() {
     let element = document.getElementById('spinner');
     element.innerHTML = ``;
 }
 
+// Rendert einen einzelnen Kontakt als HTML
 function renderContacts(element, id) {
     const color = getAvatarColor(id); // Holt die Farbe für diesen Kontakt
 
-    return  /*html*/`
+    return /*html*/`
             <div class="contact-item" id="contact-${id}" data-color="${color}" onclick="openContact('${id}', '${element.name}', '${element.email}', '${element.phone}')">
                 <div class="avatar" style="background-color: ${color};">${getInitials(element.name)}</div>
                 <div class="contact-info">
@@ -79,7 +84,7 @@ function getAvatarColor(id) {
     return avatarColorsMap[id];
 }
 
-
+// Öffnet die Detailansicht eines Kontakts
 function openContact(id, name, email, phone) {
     // Entfernt die aktive Klasse vom vorherigen Kontakt und setzt die Farbe des Namens zurück
     if (activeContactId) {
@@ -106,39 +111,15 @@ function openContact(id, name, email, phone) {
     contactContainer.innerHTML = renderBigView(id, name, email, phone, color);
 
     // Animation aktivieren
-    setTimeout(
-        function() {
-            let divID = document.getElementById('contact-container');
-            divID.classList.remove('d-none');
-            divID.classList.add('slide-in-right');
-            divID.classList.add('contact-container');
-        }, 100);
+    setTimeout(function() {
+        let divID = document.getElementById('contact-container');
+        divID.classList.remove('d-none');
+        divID.classList.add('slide-in-right');
+        divID.classList.add('contact-container');
+    }, 100);
 }
 
-function renderBigView(id, name, email, phone, color) {
-    return /*html*/`
-        <div class="contact-details-big">
-            <div class="back-button-big" onclick="closeSingleContact()"></div>
-            <div class="avatar" style="background-color: ${color};">${getInitials(name)}</div>
-                <div class="contact-info">
-                    <div class="contact-name-big">${name}</div>
-                    <div class="flex-card-big">
-                        <div onclick="editContacts('${id}')" class="edit-big">Edit</div>
-                        <div onclick="deletContacts('${id}')" class="delete-big">Delete</div>
-                    </div>
-                </div> 
-            </div>
-            <div class="contact-container-big">
-                <div class="info-big">Contact Information</div>
-                <div class="email-big">Email</div>
-                <div class="contact-email-big"><a href="mailto:${email}">${email}</a></div>
-                <div class="phone-big">Phone</div>
-                <div class="contact-phone-big">${phone || ''}</div>
-            </div>
-        </div>
-    `
-}
-
+// Holt die Initialen eines Namens
 function getInitials(name) {
     let initials = name.split(' ').map(word => word.charAt(0)).join('');
     return initials.toUpperCase();
@@ -146,6 +127,7 @@ function getInitials(name) {
 
 let lastColorIndex = -1;
 
+// Generiert eine Hintergrundfarbe für Avatare
 function avatarColors() {
     const colors = [
         '#FF7A00', '#FF5EB3', '#6E52FF', '#00BEE8', '#C3FF2B', '#FF4646'
@@ -155,27 +137,26 @@ function avatarColors() {
     return colors[colorIndex];
 }
 
-
+// Öffnet das Overlay zum Hinzufügen eines neuen Kontakts
 function addNewContact() {
     let overlay = document.getElementById('overlay');
     overlay.classList.remove("d-none");
     overlay.classList.add('slide-in-right');
 }
 
+// Schließt das Overlay
 function closeOverlay() {
     let divID = document.getElementById('overlay');
     divID.classList.add('slide-out-right');
-    setTimeout(
-        function() {
-            let divID = document.getElementById('overlay');
-            divID.classList.add('d-none');
-            divID.classList.remove('slide-in-right');
-            divID.classList.remove('slide-out-right');
-        }, 500
-    );
+    setTimeout(function() {
+        let divID = document.getElementById('overlay');
+        divID.classList.add('d-none');
+        divID.classList.remove('slide-in-right');
+        divID.classList.remove('slide-out-right');
+    }, 500);
 }
 
-//Kontakt bearbeiten
+// Lädt die Daten eines Kontakts zum Bearbeiten
 async function editContacts(id) {
     try {
         let data = await loadData(API);
@@ -201,47 +182,25 @@ async function editContacts(id) {
     editWindow.classList.add('slide-in-right');
 }
 
+// Schließt das Bearbeitungs-Overlay
 function closeEditOverlay() {
     let divID = document.getElementById('overlayEdit');
     divID.classList.add('slide-out-right');
-    setTimeout(
-        function() {
-            let divID = document.getElementById('overlayEdit');
-            divID.classList.add('d-none');
-            divID.classList.remove('slide-in-right');
-            divID.classList.remove('slide-out-right');
-        }, 500
-    );
+    setTimeout(function() {
+        let divID = document.getElementById('overlayEdit');
+        divID.classList.add('d-none');
+        divID.classList.remove('slide-in-right');
+        divID.classList.remove('slide-out-right');
+    }, 500);
 }
 
-function editContactForm(name, phone, email, id) {
-    return /*html*/`
-        <div class="contactForm">
-        <div class="contactFormLeft">
-            <img class="joinnnlogocontact" src="./icons/Capa2Edit.svg" alt="">
-            <img class="addcontacttext" src="./icons/Frame211Edit.svg" alt="">
-        </div>
-        <form class="contactFormRight" onsubmit="finishEditContact('${id}'); return false;">
-            <img src="./icons/contacticons/kontak.png" alt="">
-            <div class="contactinputfields">
-                <img onclick="closeEditOverlay()" class="closeX" src="./icons/close.svg" alt="">
-                <input value="${name}" id="nameValue"  class="inputfiledsname" placeholder="Name" type="text" name="name">
-                <input value="${email}" id="emailValue" class="inputfiledsemail" placeholder="Email" type="text" name="email">
-                <input value="${phone}" id="phoneValue" class="inputfiledsphone" placeholder="Phone" type="text" name="phone">
-                <div class="contactbuttons">
-                    <button type="button" onclick="closeEditOverlay()" class="cancelbutton">Cancel X</button>
-                    <button type="submit" class="createbutton">Edit contact<img src="./icons/check.svg" alt=""></button>
-                </div>
-            </div>
-        </form>
-    `
-}
-
+// Beendet das Bearbeiten eines Kontakts und speichert die Änderungen
 function finishEditContact(id) {
     // Hole die Werte aus den Eingabefeldern
     let valueName = document.getElementById('nameValue').value.trim();
     let valueEmail = document.getElementById('emailValue').value.trim();
     let valuePhone = document.getElementById('phoneValue').value.trim();
+    
     // Überprüfungen durchführen
     if (!isValidLength(valueName, valueEmail, valuePhone)) {
         alert("Alle Eingabewerte dürfen maximal 30 Zeichen lang sein.");
@@ -255,10 +214,12 @@ function finishEditContact(id) {
         alert("Die Telefonnummer darf nur Zahlen und ein + enthalten.");
         return;
     }
+    
     // Eingaben sanitisieren
     valueName = sanitizeInput(valueName);
     valueEmail = sanitizeInput(valueEmail);
     valuePhone = sanitizeInput(valuePhone);
+    
     // Aktualisierten Kontakt erstellen
     let updatedContact = {
         name: valueName,
@@ -268,7 +229,7 @@ function finishEditContact(id) {
     saveContact(id, updatedContact);
 }
 
-
+// Speichert einen Kontakt
 async function saveContact(id, contactData) {
     try {
         let response = await fetch(`${API}${editAPI}/${id}.json`, {
@@ -293,14 +254,13 @@ async function saveContact(id, contactData) {
     }
 }
 
-
-
-// neuen Kontakt hinzufügen
+// Neuen Kontakt hinzufügen
 async function createNewContact() {
     // Hole die Werte aus den Eingabefeldern
     let valueName = document.getElementById('inputfiledsname').value.trim();
     let valueEmail = document.getElementById('inputfiledsemail').value.trim();
     let valuePhone = document.getElementById('inputfiledsphone').value.trim();
+    
     // Überprüfungen durchführen
     if (!isValidLength(valueName, valueEmail, valuePhone)) {
         alert("Alle Eingabewerte dürfen maximal 30 Zeichen lang sein.");
@@ -314,10 +274,12 @@ async function createNewContact() {
         alert("Die Telefonnummer darf nur Zahlen und ein + enthalten.");
         return;
     }
+    
     // Eingaben sanitisieren
     valueName = sanitizeInput(valueName);
     valueEmail = sanitizeInput(valueEmail);
     valuePhone = sanitizeInput(valuePhone);
+    
     // Neuen Kontakt erstellen
     const newContact = {
         name: valueName,
@@ -351,28 +313,7 @@ async function createNewContact() {
     }
 }
 
-async function saveContact(id, contactData) {
-    try {
-        let response = await fetch(`${API}${editAPI}/${id}.json`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(contactData)
-        });
-        if (!response.ok) {
-            throw new Error('Netzwerkantwort war nicht ok');
-        }
-        let responseData = await response.json();
-        console.log('Erfolgreich gespeichert:', responseData);
-        init();
-        closeEditOverlay();
-        toastMessage("Contact has been edited");
-    } catch (error) {
-        console.error('Fehler beim Speichern des Kontakts:', error);
-    }
-}
-
+// Löscht einen Kontakt
 async function deletContacts(id) {
     try {
         let response = await fetch(`${API}${editAPI}/${id}.json`, {
