@@ -118,9 +118,10 @@ function openContact(id, name, email, phone) {
 function renderBigView(id, name, email, phone, color) {
     return /*html*/`
         <div class="contact-details-big">
-        <div class="avatar" style="background-color: ${color};">${getInitials(name)}</div>
-            <div class="contact-info">
-                <div class="contact-name-big">${name}</div>
+            <div class="back-button-big" onclick="closeSingleContact()"></div>
+            <div class="avatar" style="background-color: ${color};">${getInitials(name)}</div>
+                <div class="contact-info">
+                    <div class="contact-name-big">${name}</div>
                     <div class="flex-card-big">
                         <div onclick="editContacts('${id}')" class="edit-big">Edit</div>
                         <div onclick="deletContacts('${id}')" class="delete-big">Delete</div>
@@ -174,7 +175,7 @@ function closeOverlay() {
     );
 }
 
-//Kontakt bearbiten
+//Kontakt bearbeiten
 async function editContacts(id) {
     try {
         let data = await loadData(API);
