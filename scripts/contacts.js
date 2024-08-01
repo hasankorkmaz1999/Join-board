@@ -113,12 +113,13 @@ function openContact(id, name, email, phone) {
             divID.classList.add('slide-in-right');
             divID.classList.add('contact-container');
         }, 100);
+        contactResponsive() 
 }
 
 function renderBigView(id, name, email, phone, color) {
     return /*html*/`
         <div class="contact-details-big">
-            <div class="back-button-big" onclick="closeSingleContact()"></div>
+            
             <div class="avatar" style="background-color: ${color};">${getInitials(name)}</div>
                 <div class="contact-info">
                     <div class="contact-name-big">${name}</div>
@@ -128,6 +129,7 @@ function renderBigView(id, name, email, phone, color) {
                     </div>
                 </div> 
             </div>
+            
             <div class="contact-container-big">
                 <div class="info-big">Contact Information</div>
                 <div class="email-big">Email</div>

@@ -27,7 +27,7 @@
     <header w3-include-html="./html/header.html"></header>
 
     <div class="container">
-        <div class="sidebar">
+        <div id="sidebar" class="sidebar">
             <button onclick="addNewContact()" class="add-contact-btn ">Add new contact <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_71338_5843" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
                 <rect x="0.0683594" width="32" height="32" fill="#D9D9D9"/>
@@ -73,6 +73,7 @@
                 <h1>Contacts</h1>
                 <div class="vertical-seperator"></div>
                 <span class="subheadline">Better with a team</span>
+                <div class="back-button-big" onclick="closeSingleContact()"></div>
             </div>
 
             <div id="contact-container" class="d-none"></div>
@@ -108,8 +109,10 @@
     </div>
     </div>
     
-    <div id="overlayEdit" class="overlay d-none">
-        
+    <div id="overlayEdit" class="overlay d-none"></div>
+
+    <div id="toast-div" class="d-none">
+        <div class="toast-text" id="toast-text"></div>
     </div>
     
     <script>
@@ -118,10 +121,25 @@
 
     <script>
     // Sandkasten von Marc
+    function contactResponsive(id, name, email, phone) {
+        if (window.innerWidth >= 850) {
+
+        document.getElementById('sidebar').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+
+        // Optional: Setze das aktuelle Highlight
+        let currentHighlightedDiv = document.querySelector('.contact-item.active');
+        if (currentHighlightedDiv) {
+            currentHighlightedDiv.classList.add('active');
+        }
+
+        }
+    }
+
+    // Funktion zum Schließen des Main-Contents und Anzeigen der Sidebar
     function closeSingleContact() {
-        let container = document.getElementById("contact-container");
-        container.style.display = "none";
-        currentHighlightedDiv.classList.remove("highlighted");
+        document.getElementById('main-content').style.display = 'none';
+        document.getElementById('sidebar').style.display = 'block';
     }
     </script>
 
@@ -130,8 +148,6 @@
     <script src="./scripts/checkValue.js"></script>
     <script src="./scripts/toastMsg.js"></script>
     <script src="./scripts/reloadPage.js"></script>
-    <div id="toast-div" class="d-none">
-        <div class="toast-text" id="toast-text"></div>
-    </div>
+
 </body>
 </html>

@@ -4,7 +4,9 @@
 .back-button-big {
     background-image: url(../icons/arrow-left-line.svg);
     background-repeat: no-repeat;
-    
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
 
 @media (max-width: 1500px) {
@@ -134,4 +136,13 @@
 
 @media (max-width: 850px) {
 
+}
+
+@media (min-width: 850px) {
+    #sidebar {
+        display: block;
+    }
+    #main-content {
+        display: block;
+    }
 }
