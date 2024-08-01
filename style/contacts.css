@@ -271,6 +271,10 @@ svg {
     color: var(--deep-grey);
 }
 
+.edit-big {
+    padding-left: 34px;
+}
+
 .edit-big:visited, .delete-big:visited {
     color: var(--deep-grey);
 }
@@ -363,6 +367,12 @@ span.subheadline {
 .help-icon-header {
     width: 20px;
     height: 20px;
+    cursor: pointer;
+}
+
+.help-icon-header:hover {
+    width: 26px;
+    height: 26px;
 }
 
 .user-image-header {

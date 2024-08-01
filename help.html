@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join - Help</title>
+
+    <!-- styles-->
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/headerstyle.css">
+    <link rel="stylesheet" href="style/responsive.css">
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="fonts/inter/styles.css">
+    <link rel="stylesheet" href="fonts/figtree/styles.css">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+
+<style>
+    :root {
+        --orange: #FF7A00;
+        --pink: #FF5EB3;
+        --blue: #6E52FF;
+        --violet: #9327FF;
+        --babyblue: #00BEE8;
+        --body-background: #F6F7F8;
+        --ligh-tgreen: #1FD7C1;
+        --dark-orange: #FF745E;
+        --brown: #FFA35E;
+        --pink: #FC71FF;
+        --med-orange: #FFC701;
+        --med-blue: #0038FF;
+        --emailblau: #007CEE;
+        --neon-green: #C3FF2B;
+        --yellow: #FFE62B;
+        --light-red: #FF4646;
+        --light-orange: #FFBB2B; 
+        --deep-grey: #2A3647;
+        --deepest-grey: #091931;
+        --button-hover: #29ABE2;
+        --footer-grey: #A8A8A8;
+        --black: #000000;
+        --white: #ffffff;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter';
+    }
+
+    .container {
+        margin-left: 328px;
+        padding: 22px;
+    }
+
+    h1.help {
+        font-size: 61px;
+        font-weight: 700;
+        line-height: 73.2px;
+        color: var(--black);
+        margin-bottom: 32px;
+    }
+
+    h2.help {
+        font-size: 27px;
+        font-weight: 700;
+        line-height: 32.4px;
+        color: var(--black);
+        margin: 20px 0;
+    }
+
+    h3.help {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--black);
+    }
+
+    ol {
+        counter-reset: item;
+        list-style: none;
+    }
+
+    ol li {
+        counter-increment: item;
+        position: relative;
+    }
+
+    li {
+        padding-left: 42px;
+        padding-bottom: 22px;
+    }
+
+    ol li::before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0;
+        /* top: 0.3em;  */
+        font-weight: 700;
+        font-size: 27px;
+        line-height: 32.4px;
+        color: var(--black);
+    }
+
+    #bottom {
+        margin-bottom: 42px;
+    }
+
+
+    a {
+        color: var(--babyblue);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a:active,
+    a:focus,
+    a:visited,
+    a:hover {
+        color: var(--babyblue);
+        text-decoration: none;
+    }
+
+</style>
+
+</head>
+    
+<body onload="includeHTML()">
+
+    <header w3-include-html="./html/header.html"></header>
+
+    <div w3-include-html="./html/templateHelp.html"></div>
+
+
+
+    <script src="scripts/w3include.js"></script>
+</body>
+</html>

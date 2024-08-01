@@ -46,7 +46,7 @@ function showFooterLogin(elementId) {
     }, 1000);
 }
 
-// Login Form Validation (echte E-Mail Adresse mit mindestens 6 Zeichen)
+// Login Form Validation (echte E-Mail Adresse und Passwort mit mindestens 6 Zeichen)
 document.getElementById('loginButton').addEventListener('click', function(event) {
     event.preventDefault();
 

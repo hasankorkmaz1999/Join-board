@@ -1,0 +1,12 @@
+/* Contacts
+****************************************************/
+@media (max-width: 1200px) {
+    span.subheadline {
+        font-size: 22px;
+    }
+
+    h1 {
+        font-size: 51px;
+    }
+
+}
