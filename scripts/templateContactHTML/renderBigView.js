@@ -1,7 +1,6 @@
 function renderBigView(id, name, email, phone, color) {
     return /*html*/`
         <div class="contact-details-big">
-            <div class="back-button-big" onclick="closeSingleContact()"></div>
             <div class="avatar" style="background-color: ${color};">${getInitials(name)}</div>
                 <div class="contact-info">
                     <div class="contact-name-big">${name}</div>

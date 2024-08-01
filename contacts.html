@@ -149,6 +149,15 @@
         document.getElementById('sidebar').style.display = 'block';
        
     }
+
+
+    // Resize-Event-Listener von Claude (https://www.perplexity.ai) - habe selbst davon noch nie gehört
+    window.addEventListener('resize', function() {
+    if (window.innerWidth < 850) {
+        document.getElementById('main-content').style.display = 'none';
+        document.getElementById('sidebar').style.display = 'block';
+        }
+    });
     </script>
 
 

@@ -118,7 +118,7 @@ function openContact(id, name, email, phone) {
             divID.classList.add('contact-container');
         }, 100);
 
-    contactResponsive(id, name, email, phone) // needed
+    contactResponsive(id, name, email, phone) // needed in this function 
 }
 
 function renderBigView(id, name, email, phone, color) {
