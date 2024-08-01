@@ -1,5 +1,12 @@
 /* Contacts
 ****************************************************/
+
+.back-button-big {
+    background-image: url(../icons/arrow-left-line.svg);
+    background-repeat: no-repeat;
+    
+}
+
 @media (max-width: 1500px) {
     span.subheadline {
         font-size: 18px;
