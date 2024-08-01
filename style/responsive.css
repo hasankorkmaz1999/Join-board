@@ -1,12 +1,59 @@
 /* Contacts
 ****************************************************/
-@media (max-width: 1200px) {
+@media (max-width: 1500px) {
     span.subheadline {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 41px;
+    }
+    .contact-name-big {
         font-size: 22px;
     }
-
-    h1 {
-        font-size: 51px;
+    .contact-details-big .avatar {
+        font-size: 36px;
+        height: 80px;
+        width: 80px;
     }
+}
 
+@media (max-width: 1200px) {
+    span.subheadline {
+        display: none;
+    }
+    .vertical-seperator {
+        display: none;
+    }
+    .sidebar {
+        width: 400px !important;
+    }
+}
+
+@media (max-width: 1120px) {
+    .contact-details-big .avatar {
+        font-size: 22px;
+        height: 60px;
+        width: 60px;
+    }
+}
+
+@media (max-width: 1055px) {
+    .sidebar {
+    width: 360px !important;
+    overflow-y: unset;
+    }
+}
+
+@media (max-width: 1080px) {
+    .contact-details-big .avatar {
+        font-size: 22px;
+        height: 60px;
+        width: 60px;
+    }
+    .contact-info {
+        margin-left: 0px;
+    }
+    h1 {
+        font-size: 36px;
+    }
 }
