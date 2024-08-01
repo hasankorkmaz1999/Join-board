@@ -386,7 +386,7 @@ async function deletContacts(id) {
         console.log('Erfolgreich gelöscht:', responseData);
         init();
         closeEditOverlay();
-        toastMessage("Löschen Erfolgreich")
+        toastMessage("Löschen Erfolgreich");
     } catch (error) {
         console.error('Fehler beim Löschen des Kontakts:', error);
     }
