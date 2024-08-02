@@ -135,7 +135,6 @@
         if (currentHighlightedDiv) {
             currentHighlightedDiv.classList.add('active');
         }
-
         } else {
             document.getElementById('sidebar').style.display = 'block';
             document.getElementById('main-content').style.display = 'block'; 
@@ -143,10 +142,8 @@
     }
     
     function closeSingleContact() {
-
         document.getElementById('main-content').style.display = 'none';
         document.getElementById('sidebar').style.display = 'block';
-       
     }
 
     window.addEventListener('resize', function() {
@@ -164,6 +161,6 @@
     <script src="./scripts/templateContactHTML/editContactForm.js"></script>
     <script src="./scripts/templateContactHTML/renderBigView.js"></script>
     <script src="./scripts/loadData.js"></script>
-    
+
 </body>
 </html>
