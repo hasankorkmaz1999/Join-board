@@ -87,21 +87,6 @@ function disableSpinner() {
     element.innerHTML = ``;
 }
 
-// Initialisiert ein Objekt, um die Hintergrundfarben der Avatare zu speichern
-const avatarColorsMap = {};
-
-/**
- * Funktion zum Abrufen oder Generieren einer Hintergrundfarbe für einen Kontakt.
- * @param {string} id - Die ID des Kontakts.
- * @returns {string} Die Hintergrundfarbe des Avatars.
- */
-function getAvatarColor(id) {
-    if (!avatarColorsMap[id]) {
-        avatarColorsMap[id] = avatarColors();
-    }
-    return avatarColorsMap[id];
-}
-
 /**
  * Öffnet die Detailansicht eines Kontakts.
  * @param {string} id - Die ID des Kontakts.
@@ -519,18 +504,3 @@ async function deletContacts(id) {
     }
 }
 
-function mobileButtonChange(viewquery) {
-    let divElement = document.getElementById('editContactsMobile')
-    if (viewquery === true) {
-        if (window.innerWidth <= 550) {
-            divElement.classList.remove('d-non');
-            divElement.classList.add('edit-contact-mobile');
-        }
-    }
-    if (viewquery === false) {
-        if (window.innerWidth <= 550) {
-            divElement.classList.add('d-non');
-            divElement.classList.remove('edit-contact-mobile');
-        }
-    }
-}
