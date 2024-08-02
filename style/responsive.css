@@ -14,7 +14,7 @@
         font-size: 18px;
     }
     h1 {
-        font-size: 41px;
+        font-size: clamp(1.875rem, 1.3496rem + 2.6271vw, 3.8125rem);
     }
     .contact-name-big {
         font-size: 22px;
@@ -54,9 +54,6 @@
     }
     .contact-info {
         margin-left: 0px;
-    }
-    h1 {
-        font-size: 36px;
     }
 }
 
@@ -104,9 +101,6 @@
         height: 40px;
         width: 40px;
     }
-    h1 {
-        font-size: 30px;
-    }
     .contact-name-big {
         font-size: 16px;
     }
@@ -151,5 +145,18 @@
 @media (max-width: 660px) {
     .subheader-contact {
         display: none;
+    }
+}
+
+@media (max-width: 550px) {
+    header {
+        display: none;
+    }
+    #sidebar {
+        width: 90%;
+    }
+    .container {
+        margin-left: 0;
+        height: auto;
     }
 }
