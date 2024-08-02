@@ -387,14 +387,14 @@ span.subheadline {
 }
 
 .help-icon-header {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
 }
 
 .help-icon-header:hover {
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
 }
 
 .user-image-header {
