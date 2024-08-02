@@ -43,9 +43,6 @@
         height: 60px;
         width: 60px;
     }
-    span.subheadline {
-        display: none;
-    }
     .vertical-seperator {
         display: none;
     }
@@ -278,6 +275,13 @@
     }
     .edit-contact-mobile:hover {
         background-color: var(--deepest-grey);
+    }
+    .flex-card-big {
+        display: none;
+    }
+    .contact-details-big {
+        display: flex;
+        align-items: baseline;
     }
 }
 
