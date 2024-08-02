@@ -7,7 +7,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         height: 100vh;
-        /* width: 1212px; */
+        width: 100%;
         background-color: white;
         border-radius: 20px;
         display: flex;
@@ -23,16 +23,29 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: auto;
+        width: 100%;
+        padding-left: 12px;
     }
     .contactFormRight {
-        display: flex;
-        /* justify-content: flex-start; */
-        /* align-items: center; */
-        /* flex: 1; */
-        /* padding-right: 20px; */
-        /* height: 100%; */
+        padding-right: 0;
         flex-direction: column;
+    }
+    .contactinputfields {
+        margin-left: 0;
+        margin-top: 60px;
+    }
+    .inputfiledsname {
+        width: 80%;
+    }
+    p.create-mobile {
+        color: var(--white);
+    }
+    .inputfiledsemail {
+        background-image: url(/icons/contacticons/mail.png);
+        width: 80%;
+    }
+    .inputfiledsphone {
+        width: 80%;
     }
     .contactFormRight img {
         width: 120px;
@@ -40,10 +53,25 @@
         margin-left: 0;
         margin-top: -60px;
     }
+    .cancelbutton {
+        display: none;
+    }
+    img.check-icon-mobile {
+        width: 24px;
+        height: 24px;
+        margin: 0;
+    }
+    .createbutton {
+        display: flex;
+        color: var(--white);
+        width: 202px;
+        align-items: center;
+    }
     form {
         display: flex;
         flex-direction: column;
         align-items: center;
+        
     }
     .mobileEditorDeleteWindow {
         display: flex;
@@ -54,16 +82,35 @@
         background-color: white;
         border: 1px solid #eeeeee;
     }
-    .mobile-icon-corner-right {
-
-    }
     h1.mobile {
-
+        font-family: 'Inter';
+        font-size: 47px;
+        font-weight: 700;
+        line-height: 57.4px;
+        color: var(--white);
+        margin-bottom: -12px;
     }
     .mobile-underline {
-
+        border-bottom: 3px solid var(--button-hover);
+        height: 3px;
+        width: 90px;
     }
     .subheader-mobile {
+        font-family: 'Inter';
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
+        color: var(--white);
 
+    }
+    img.closeX {
+        width: 32px;
+        height: 32px;
+        margin-left: 0;
+        margin-top: 2px;
+        z-index: 10;
+        fill: white;
+        background-color: white;
+        z-index: 10;
     }
 }
