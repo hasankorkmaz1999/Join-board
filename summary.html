@@ -25,7 +25,7 @@
     <script src="./scripts/w3include.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); displayGreeting();">
     <header w3-include-html="./html/header.html"></header>
 
     <div id="main-content" class="main-content">
@@ -34,8 +34,40 @@
             <div class="vertical-seperator"></div>
             <span class="subheadline">Key Metrics at a Glance</span>
         </div>
-        <p>Struktur mit eigene CSS-Datei ist aufgebaut und vorbereitet für die Projektpahse 2...</p>
+        <p>Struktur mit eigene CSS-Datei ist aufgebaut und vorbereitet für die Projektphase 2...</p>
+
+        <div id="greeting-container" class="greeting-container greeting">
+            <div class="greeting">
+                <div class="greeting-flex-area">
+                    <span id="greeting-text">Good morning,</span>
+                    <h1>Sofia Müller</h1>
+                </div>
+            </div>
+            <div class="content-container">
+                <div class="card-container"></div>
+                <div id="greeting-message"></div>
+            </div>
+        </div>
+
     </div>
+
+    <script>
+        function displayGreeting() {
+            let greetingText = document.getElementById('greeting-text');
+            let currentHour = new Date().getHours();
+            let greeting;
+
+            if (currentHour < 12) {
+                greeting = "Good morning,";
+            } else if (currentHour < 18) {
+                greeting = "Good afternoon,";
+            } else {
+                greeting = "Good evening,";
+            }
+
+            greetingText.innerText = greeting;
+        }
+    </script>
 
     <script src="./scripts/summary.js"></script>
     <script src="./scripts/checkValue.js"></script>

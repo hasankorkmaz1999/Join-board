@@ -115,6 +115,12 @@ button.icon:hover {
     justify-content: center;
 }
 
+/* input,
+button {
+    border: unset;
+    font-size: 16px;
+} */
+
 input {
     outline: none;
     border: none;
