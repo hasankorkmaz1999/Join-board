@@ -1,0 +1,17 @@
+.main-content {
+    margin-top: 80px;
+    margin-left: 332px; /* Anpassung an die Breite der Seitenleiste */
+    margin-right: 120px;
+    padding: 20px;
+    background-color: var(--body-background-grey);
+    /* min-height: 100vh; */
+    height: 85vh;
+}
+
+.main-content p {
+    margin-bottom: 32px;
+}
+
+h1, h2, p {
+    color: var(--deep-grey);
+}
