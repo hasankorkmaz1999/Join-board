@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join - Board</title>
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="./fonts/figtree/styles.css">
+    <link rel="stylesheet" href="./fonts/inter/styles.css">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+
+    <!-- styles-->
+    <link rel="stylesheet" href="./style/contacts.css">
+    <link rel="stylesheet" href="./style/headerstyle.css">
+    <link rel="stylesheet" href="./style/responsive.css">
+    <link rel="stylesheet" href="./style/board.css">
+
+    <script src="./scripts/w3include.js"></script>
+</head>
+<body onload="includeHTML()">
+    <header w3-include-html="./html/header.html"></header>
+
+    <div id="main-content" class="main-content">
+        <div class="contact-flex-header">
+            <h1>Board</h1>
+        </div>
+        <p>Struktur mit eigene CSS-Datei ist aufgebaut und vorbereitet für die Projektpahse 2...</p>
+    </div>
+
+    <script src="./scripts/board.js"></script>
+    <script src="./scripts/checkValue.js"></script>
+    <script src="./scripts/toastMsg.js"></script>
+    <script src="./scripts/reloadPage.js"></script>
+    <script src="./scripts/templateContactHTML/editContactForm.js"></script>
+    <script src="./scripts/templateContactHTML/renderBigView.js"></script>
+    <script src="./scripts/loadData.js"></script>
+
+    <script>
+        includeHTML();
+    </script>
+
+</body>
+</html>

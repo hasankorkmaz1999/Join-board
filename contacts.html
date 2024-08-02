@@ -30,7 +30,7 @@
 
     <div class="container">
         <div id="sidebar" class="sidebar">
-            <button onclick="addNewContact()" class="add-contact-btn ">Add new contact <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button type="button" disabled onclick="addNewContact()" class="add-contact-btn " id="add-contact-btn">Add new contact <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_71338_5843" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
                 <rect x="0.0683594" width="32" height="32" fill="#D9D9D9"/>
                 </mask>
@@ -93,7 +93,7 @@
             </div>
     
             <div class="contactFormRight">
-                <img src="./icons/contacticons/kontak.png" alt="Icon User">
+                <img src="./icons/contacticons/kontakticon.svg" alt="Icon User">
                 <div class="contactinputfields">
                     <img onclick="closeOverlay()" class="closeX" src="./icons/close.svg" alt="Icon Close">
                     <form action="" onsubmit="createNewContact(); return false;">
@@ -116,8 +116,12 @@
         </div>
     </div>
     
-    <div id="overlayEdit" class="overlay d-none"></div>
+    <div id="overlayEdit" class="overlay d-none">
 
+
+
+    </div>
+    
     <div id="toast-div" class="d-none">
         <div class="toast-text" id="toast-text"></div>
     </div>

@@ -72,6 +72,15 @@ svg {
 
 }
 
+.add-contact-btn:disabled {
+    cursor: not-allowed;
+    background-color: var(--deep-grey);
+}
+
+.add-contact-btn:disabled:hover {
+    background-color: var(--deep-grey);
+}
+
 .add-contact-btn:hover {
     background-color: var(--button-hover);
 }
@@ -124,7 +133,7 @@ svg {
 .contact-details {
     position: relative;
     right: -100%;
-    transition: right 0.5s ease-in-out;
+    transition: right 0.75s ease-in-out;
     display: flex;
 }
 
@@ -406,13 +415,13 @@ span.subheadline {
     stroke-linecap: round;
     animation: travel var(--uib-speed) linear infinite;
     will-change: stroke-dasharray, stroke-dashoffset;
-    transition: stroke 0.5s ease;
+    transition: stroke 0.75s ease;
   }
 
   .track {
     stroke: var(--uib-color);
     opacity: var(--uib-bg-opacity);
-    transition: stroke 0.5s ease;
+    transition: stroke 0.75s ease;
   }
 
   @keyframes travel {
@@ -527,7 +536,7 @@ span.subheadline {
     border-color: rgba(128, 125, 125, 0.1);
     background-repeat: no-repeat;
     background-position: right 10px center; 
-    transition: border-color 0.3s ease;
+    transition: border-color 0.75s ease;
 }
 
 .inputfiledsname::placeholder { 

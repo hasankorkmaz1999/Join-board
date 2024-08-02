@@ -12,23 +12,6 @@
     margin-bottom: 32px;
 }
 
-.back-arrow {
-    margin: 20px 0;
-}
-
-.back-arrow img {
-    height: 20px;
-    width: 20px;
-}
-
 h1, h2, p {
     color: var(--deep-grey);
-}
-
-.back-arrow {
-    background-image: url(../icons/arrow-left-line.svg);
-    background-repeat: no-repeat;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
 }
