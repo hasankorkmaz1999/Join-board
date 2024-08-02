@@ -25,3 +25,39 @@ h1, h2, p {
 .contact-flex-header span {
     font-size: 27px;
 }
+
+/* Styles for the greeting message */
+#greeting-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    padding: 40px;
+    background-color: var(--light-grey);
+    border-radius: 8px;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+#greeting-container .greeting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    /* background-color: var(--white); */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.greeting h1 {
+    color:#29ABE2;
+    font-size: 64px;
+}
+
+#greeting-container .greeting-flex-area {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.greeting-flex-area span {
+    font-size: 47px;
+}
