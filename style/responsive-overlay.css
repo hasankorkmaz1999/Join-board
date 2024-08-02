@@ -48,8 +48,20 @@
         flex-direction: column;
         position: absolute;
         right: 20px;
-        z-index: 9999;
+        z-index: 10;
         background-color: white;
         border: 1px solid #eeeeee;
+    }
+    .mobile-icon-corner-right {
+
+    }
+    h1.mobile {
+
+    }
+    .mobile-underline {
+
+    }
+    .subheader-mobile {
+
     }
 }
