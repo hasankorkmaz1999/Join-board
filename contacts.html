@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="./style/contacts.css">
     <link rel="stylesheet" href="./style/headerstyle.css">
     <link rel="stylesheet" href="./style/responsive.css">
+    <link rel="stylesheet" href="./style/responsive-overlay.css">
 
     <script src="./scripts/w3include.js"></script>
 </head>
@@ -76,6 +77,7 @@
                     <h1>Contacts</h1>
                     <div class="vertical-seperator"></div>
                     <span class="subheadline">Better with a team</span>
+                    <div class="horizontal-seperator"></div>
                 </div>
                 <div class="back-button-big" onclick="closeSingleContact()"></div>
             </div>
@@ -128,12 +130,17 @@
 
     <!-- mobile -->
     <a onclick="addNewContact()">
-        <div class="add-contact-mobile"></div>
+        <div id="addNewContactMobile" class="add-contact-mobile"></div>
     </a>
 
     <a onclick="editContacts()">
-        <div class="edit-contact-mobile"></div>
+        <div id="editContactsMobile" class="d-non"></div>
     </a>
+
+    <div class="mobileEditorDeleteWindow" id="mobileEditorDeleteWindow">
+        <span><img src="./icons/edit.svg" alt="edit icon"> Edit</span>
+        <span><img src="./icons/delete.svg" alt="delete icon"> Delete</span>
+    </div>
 
     <div class="header-mobile">
         <a href="summary.html">
@@ -187,6 +194,7 @@
     function closeSingleContact() {
         document.getElementById('main-content').style.display = 'none';
         document.getElementById('sidebar').style.display = 'block';
+        mobileButtonChange(false);
     }
 
     window.addEventListener('resize', function() {

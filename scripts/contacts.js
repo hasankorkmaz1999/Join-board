@@ -1,20 +1,41 @@
+/**
+ * Die URL des Haupt-API-Endpunkts.
+ * @constant {string}
+ */
 let API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
-let userAPI = "";
-let demoAPI = "dummy-user/";
+
+/**
+ * Die URL des Endpunkts für das Bearbeiten von Kontakten.
+ * @constant {string}
+ */
 const editAPI = "demoUser/users/user1ID/contacts";
+
+/**
+ * Die vollständige URL für das Bearbeiten von Kontakten.
+ * @constant {string}
+ */
 const url = `${API}${editAPI}.json`;
 
+/**
+ * Initialisiert die Anwendung und ruft die Daten ab.
+ * Wird aufgerufen, wenn das Fenster geladen wird.
+ */
 window.onload = init;
 
-// Initialisiert die Anwendung und ruft die Daten ab
+/**
+ * Initialisiert die Anwendung und ruft die Daten ab.
+ */
 function init() {
     renderData(API);
 }
 
 let activeContactId = null; // um den aktuell aktiven Kontakt zu verfolgen
 
-// Rendert die Kontaktdaten auf der Seite
-async function renderData (URL) {
+/**
+ * Rendert die Kontaktdaten auf der Seite.
+ * @param {string} URL - Die URL, von der die Daten geladen werden.
+ */
+async function renderData(URL) {
     let data = await loadData(URL);
     let content = document.getElementById("renderContacts");
     content.innerHTML = ``;
@@ -26,6 +47,11 @@ async function renderData (URL) {
     addButton.disabled = false;
 }
 
+/**
+ * Rendert die Kontaktdaten.
+ * @param {Object} data - Die Kontaktdaten.
+ * @param {HTMLElement} content - Das HTML-Element, in dem die Daten angezeigt werden sollen.
+ */
 function renderContactsData(data, content) {
     let contacts = data.demoUser.users.user1ID.contacts;
     let contactKeys = Object.keys(contacts);
@@ -34,6 +60,13 @@ function renderContactsData(data, content) {
     renderContactsByLetter(contactKeys, contacts, content, currentLetter);
 }
 
+/**
+ * Rendert die Kontakte nach Buchstaben sortiert.
+ * @param {Array} contactKeys - Die Schlüssel der Kontakte.
+ * @param {Object} contacts - Die Kontaktdaten.
+ * @param {HTMLElement} content - Das HTML-Element, in dem die Daten angezeigt werden sollen.
+ * @param {string} currentLetter - Der aktuelle Buchstabe, nach dem sortiert wird.
+ */
 function renderContactsByLetter(contactKeys, contacts, content, currentLetter) {
     for (let i = 0; i < contactKeys.length; i++) {
         const element = contacts[contactKeys[i]];
@@ -46,16 +79,22 @@ function renderContactsByLetter(contactKeys, contacts, content, currentLetter) {
     }
 }
 
-// Deaktiviert den Lade-Spinner
+/**
+ * Deaktiviert den Lade-Spinner.
+ */
 function disableSpinner() {
     let element = document.getElementById('spinner');
     element.innerHTML = ``;
 }
 
-// Rendert einen einzelnen Kontakt als HTML
+/**
+ * Rendert einen einzelnen Kontakt als HTML.
+ * @param {Object} element - Die Kontaktdaten.
+ * @param {string} id - Die ID des Kontakts.
+ * @returns {string} Der HTML-Code des Kontakts.
+ */
 function renderContact(element, id) {
     const color = getAvatarColor(id); // Holt die Farbe für diesen Kontakt
-
     return /*html*/`
         <div class="contact-item" id="contact-${id}" data-color="${color}" onclick="openContact('${id}', '${element.name}', '${element.email}', '${element.phone}')">
             <div class="avatar" style="background-color: ${color};">${getInitials(element.name)}</div>
@@ -70,7 +109,11 @@ function renderContact(element, id) {
 // Initialisiert ein Objekt, um die Hintergrundfarben der Avatare zu speichern
 const avatarColorsMap = {};
 
-// Funktion zum Abrufen oder Generieren einer Hintergrundfarbe für einen Kontakt
+/**
+ * Funktion zum Abrufen oder Generieren einer Hintergrundfarbe für einen Kontakt.
+ * @param {string} id - Die ID des Kontakts.
+ * @returns {string} Die Hintergrundfarbe des Avatars.
+ */
 function getAvatarColor(id) {
     if (!avatarColorsMap[id]) {
         avatarColorsMap[id] = avatarColors();
@@ -78,14 +121,24 @@ function getAvatarColor(id) {
     return avatarColorsMap[id];
 }
 
-// Öffnet die Detailansicht eines Kontakts
+/**
+ * Öffnet die Detailansicht eines Kontakts.
+ * @param {string} id - Die ID des Kontakts.
+ * @param {string} name - Der Name des Kontakts.
+ * @param {string} email - Die E-Mail-Adresse des Kontakts.
+ * @param {string} phone - Die Telefonnummer des Kontakts.
+ */
 function openContact(id, name, email, phone) {
     deactivatePreviousContact();
     activateCurrentContact(id);
     renderContactDetails(id, name, email, phone);
     contactResponsive(id, name, email, phone);
+    mobileButtonChange(true);
 }
 
+/**
+ * Deaktiviert den vorherigen Kontakt.
+ */
 function deactivatePreviousContact() {
     if (activeContactId) {
         let previousContactElement = document.getElementById(`contact-${activeContactId}`);
@@ -95,6 +148,10 @@ function deactivatePreviousContact() {
     }
 }
 
+/**
+ * Aktiviert den aktuellen Kontakt.
+ * @param {string} id - Die ID des Kontakts.
+ */
 function activateCurrentContact(id) {
     let contactElement = document.getElementById(`contact-${id}`);
     contactElement.classList.add('active');
@@ -103,6 +160,13 @@ function activateCurrentContact(id) {
     contactNameElement.style.color = 'white';
 }
 
+/**
+ * Rendert die Detailansicht eines Kontakts.
+ * @param {string} id - Die ID des Kontakts.
+ * @param {string} name - Der Name des Kontakts.
+ * @param {string} email - Die E-Mail-Adresse des Kontakts.
+ * @param {string} phone - Die Telefonnummer des Kontakts.
+ */
 function renderContactDetails(id, name, email, phone) {
     const color = document.getElementById(`contact-${id}`).getAttribute('data-color');
     let contactContainer = document.getElementById('contact-container');
@@ -110,6 +174,9 @@ function renderContactDetails(id, name, email, phone) {
     activateAnimation();
 }
 
+/**
+ * Aktiviert die Animation der Detailansicht.
+ */
 function activateAnimation() {
     setTimeout(() => {
         let divID = document.getElementById('contact-container');
@@ -119,7 +186,11 @@ function activateAnimation() {
     }, 100);
 }
 
-// Holt die Initialen eines Namens
+/**
+ * Holt die Initialen eines Namens.
+ * @param {string} name - Der Name des Kontakts.
+ * @returns {string} Die Initialen des Namens.
+ */
 function getInitials(name) {
     let initials = name.split(' ').map(word => word.charAt(0)).join('');
     return initials.toUpperCase();
@@ -127,7 +198,10 @@ function getInitials(name) {
 
 let lastColorIndex = -1;
 
-// Generiert eine Hintergrundfarbe für Avatare
+/**
+ * Generiert eine Hintergrundfarbe für Avatare.
+ * @returns {string} Die generierte Farbe.
+ */
 function avatarColors() {
     const colors = [
         '#FF7A00', '#FF5EB3', '#6E52FF', '#00BEE8', '#C3FF2B', '#FF4646'
@@ -137,14 +211,18 @@ function avatarColors() {
     return colors[colorIndex];
 }
 
-// Öffnet das Overlay zum Hinzufügen eines neuen Kontakts
+/**
+ * Öffnet das Overlay zum Hinzufügen eines neuen Kontakts.
+ */
 function addNewContact() {
     let overlay = document.getElementById('overlay');
     overlay.classList.remove("d-none");
     overlay.classList.add('slide-in-right');
 }
 
-// Schließt das Overlay
+/**
+ * Schließt das Overlay.
+ */
 function closeOverlay() {
     let divID = document.getElementById('overlay');
     divID.classList.add('slide-out-right');
@@ -156,7 +234,10 @@ function closeOverlay() {
     }, 500);
 }
 
-// Lädt die Daten eines Kontakts zum Bearbeiten
+/**
+ * Lädt die Daten eines Kontakts zum Bearbeiten.
+ * @param {string} id - Die ID des Kontakts.
+ */
 async function editContacts(id) {
     try {
         let data = await loadData(API);
@@ -171,6 +252,11 @@ async function editContacts(id) {
     showEditOverlay();
 }
 
+/**
+ * Lädt die Daten des zu bearbeitenden Kontakts.
+ * @param {Object} data - Die Kontaktdaten.
+ * @param {string} id - Die ID des Kontakts.
+ */
 function loadEditData(data, id) {
     let contact = data.demoUser.users.user1ID.contacts[id];
     if (contact) {
@@ -184,13 +270,18 @@ function loadEditData(data, id) {
     }
 }
 
+/**
+ * Zeigt das Bearbeitungs-Overlay an.
+ */
 function showEditOverlay() {
     let editWindow = document.getElementById('overlayEdit');
     editWindow.classList.remove('d-none');
     editWindow.classList.add('slide-in-right');
 }
 
-// Schließt das Bearbeitungs-Overlay
+/**
+ * Schließt das Bearbeitungs-Overlay.
+ */
 function closeEditOverlay() {
     let divID = document.getElementById('overlayEdit');
     divID.classList.add('slide-out-right');
@@ -202,7 +293,10 @@ function closeEditOverlay() {
     }, 500);
 }
 
-// Beendet das Bearbeiten eines Kontakts und speichert die Änderungen
+/**
+ * Beendet das Bearbeiten eines Kontakts und speichert die Änderungen.
+ * @param {string} id - Die ID des Kontakts.
+ */
 function finishEditContact(id) {
     let { valueName, valueEmail, valuePhone } = getEditInputValues();
     let { nameError, emailError, phoneError } = resetEditErrors();
@@ -214,6 +308,10 @@ function finishEditContact(id) {
     }
 }
 
+/**
+ * Holt die Eingabewerte aus dem Bearbeitungsformular.
+ * @returns {Object} Die Eingabewerte.
+ */
 function getEditInputValues() {
     return {
         valueName: document.getElementById('nameValue').value.trim(),
@@ -222,6 +320,10 @@ function getEditInputValues() {
     };
 }
 
+/**
+ * Setzt die Fehleranzeige im Bearbeitungsformular zurück.
+ * @returns {Object} Die Fehleranzeige-Elemente.
+ */
 function resetEditErrors() {
     let nameError = document.getElementById('name-error-edit');
     let emailError = document.getElementById('email-error-edit');
@@ -232,6 +334,16 @@ function resetEditErrors() {
     return { nameError, emailError, phoneError };
 }
 
+/**
+ * Validiert die Eingabewerte im Bearbeitungsformular.
+ * @param {string} valueName - Der Name des Kontakts.
+ * @param {string} valueEmail - Die E-Mail-Adresse des Kontakts.
+ * @param {string} valuePhone - Die Telefonnummer des Kontakts.
+ * @param {HTMLElement} nameError - Das Element für die Namensfehleranzeige.
+ * @param {HTMLElement} emailError - Das Element für die E-Mail-Fehleranzeige.
+ * @param {HTMLElement} phoneError - Das Element für die Telefon-Fehleranzeige.
+ * @returns {boolean} Ob ein Fehler vorliegt.
+ */
 function validateEditInput(valueName, valueEmail, valuePhone, nameError, emailError, phoneError) {
     let hasError = false;
     if (!isValidLength(valueName, valueEmail, valuePhone)) {
@@ -252,6 +364,13 @@ function validateEditInput(valueName, valueEmail, valuePhone, nameError, emailEr
     return hasError;
 }
 
+/**
+ * Bereinigt die Eingabewerte und speichert den Kontakt.
+ * @param {string} id - Die ID des Kontakts.
+ * @param {string} valueName - Der Name des Kontakts.
+ * @param {string} valueEmail - Die E-Mail-Adresse des Kontakts.
+ * @param {string} valuePhone - Die Telefonnummer des Kontakts.
+ */
 function sanitizeAndSaveContact(id, valueName, valueEmail, valuePhone) {
     valueName = sanitizeInput(valueName);
     valueEmail = sanitizeInput(valueEmail);
@@ -260,7 +379,11 @@ function sanitizeAndSaveContact(id, valueName, valueEmail, valuePhone) {
     saveContact(id, updatedContact);
 }
 
-// Speichert einen Kontakt
+/**
+ * Speichert einen Kontakt.
+ * @param {string} id - Die ID des Kontakts.
+ * @param {Object} contactData - Die Kontaktdaten.
+ */
 async function saveContact(id, contactData) {
     try {
         let response = await fetch(`${API}${editAPI}/${id}.json`, {
@@ -284,7 +407,9 @@ async function saveContact(id, contactData) {
     }
 }
 
-// Neuen Kontakt hinzufügen
+/**
+ * Neuen Kontakt hinzufügen.
+ */
 async function createNewContact() {
     let { valueName, valueEmail, valuePhone } = getNewContactInputValues();
     let { nameError, emailError, phoneError } = resetNewContactErrors();
@@ -296,6 +421,10 @@ async function createNewContact() {
     }
 }
 
+/**
+ * Holt die Eingabewerte aus dem Formular für neue Kontakte.
+ * @returns {Object} Die Eingabewerte.
+ */
 function getNewContactInputValues() {
     return {
         valueName: document.getElementById('inputfiledsname').value.trim(),
@@ -304,6 +433,10 @@ function getNewContactInputValues() {
     };
 }
 
+/**
+ * Setzt die Fehleranzeige im Formular für neue Kontakte zurück.
+ * @returns {Object} Die Fehleranzeige-Elemente.
+ */
 function resetNewContactErrors() {
     let nameError = document.getElementById('name-error');
     let emailError = document.getElementById('email-error');
@@ -314,6 +447,16 @@ function resetNewContactErrors() {
     return { nameError, emailError, phoneError };
 }
 
+/**
+ * Validiert die Eingabewerte im Formular für neue Kontakte.
+ * @param {string} valueName - Der Name des Kontakts.
+ * @param {string} valueEmail - Die E-Mail-Adresse des Kontakts.
+ * @param {string} valuePhone - Die Telefonnummer des Kontakts.
+ * @param {HTMLElement} nameError - Das Element für die Namensfehleranzeige.
+ * @param {HTMLElement} emailError - Das Element für die E-Mail-Fehleranzeige.
+ * @param {HTMLElement} phoneError - Das Element für die Telefon-Fehleranzeige.
+ * @returns {boolean} Ob ein Fehler vorliegt.
+ */
 function validateNewContactInput(valueName, valueEmail, valuePhone, nameError, emailError, phoneError) {
     let hasError = false;
     if (!isValidLength(valueName, valueEmail, valuePhone)) {
@@ -334,6 +477,12 @@ function validateNewContactInput(valueName, valueEmail, valuePhone, nameError, e
     return hasError;
 }
 
+/**
+ * Bereinigt die Eingabewerte und erstellt einen neuen Kontakt.
+ * @param {string} valueName - Der Name des Kontakts.
+ * @param {string} valueEmail - Die E-Mail-Adresse des Kontakts.
+ * @param {string} valuePhone - Die Telefonnummer des Kontakts.
+ */
 function sanitizeAndCreateContact(valueName, valueEmail, valuePhone) {
     valueName = sanitizeInput(valueName);
     valueEmail = sanitizeInput(valueEmail);
@@ -342,6 +491,10 @@ function sanitizeAndCreateContact(valueName, valueEmail, valuePhone) {
     saveNewContact(newContact);
 }
 
+/**
+ * Speichert einen neuen Kontakt.
+ * @param {Object} newContact - Die Kontaktdaten.
+ */
 async function saveNewContact(newContact) {
     let response = await fetch(url, {
         method: "POST",
@@ -358,13 +511,10 @@ async function saveNewContact(newContact) {
     clearNewContactFields();
 }
 
-function clearNewContactFields() {
-    document.getElementById('inputfiledsname').value = '';
-    document.getElementById('inputfiledsemail').value = '';
-    document.getElementById('inputfiledsphone').value = '';
-}
-
-// Löscht einen Kontakt
+/**
+ * Löscht einen Kontakt.
+ * @param {string} id - Die ID des Kontakts.
+ */
 async function deletContacts(id) {
     try {
         let response = await fetch(`${API}${editAPI}/${id}.json`, {
@@ -385,5 +535,21 @@ async function deletContacts(id) {
         reloadPage();
     } catch (error) {
         console.error('Fehler beim Löschen des Kontakts:', error);
+    }
+}
+
+function mobileButtonChange(viewquery) {
+    let divElement = document.getElementById('editContactsMobile')
+    if (viewquery === true) {
+        if (window.innerWidth <= 550) {
+            divElement.classList.remove('d-non');
+            divElement.classList.add('edit-contact-mobile');
+        }
+    }
+    if (viewquery === false) {
+        if (window.innerWidth <= 550) {
+            divElement.classList.add('d-non');
+            divElement.classList.remove('edit-contact-mobile');
+        }
     }
 }

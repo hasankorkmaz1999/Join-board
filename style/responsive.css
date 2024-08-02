@@ -255,6 +255,7 @@
         border-radius: 50%;
         background-position: center;
         cursor: pointer;
+        z-index: 1;
     }
     .add-contact-mobile:hover {
         background-color: var(--deepest-grey);
@@ -272,6 +273,7 @@
         border-radius: 50%;
         background-position: center;
         cursor: pointer;
+        z-index: 1;
     }
     .edit-contact-mobile:hover {
         background-color: var(--deepest-grey);
@@ -283,5 +285,44 @@
         display: flex;
         align-items: baseline;
     }
+    .button-flex {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    span.subheadline {
+        font-size: 20px;
+    }
+    h1 {
+        font-size: 47px;
+        font-weight: 700;
+    }
+    .back-button-big {
+        background-image: url(../icons/arrow-left-line.svg);
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        margin-top: -20px;
+    }
+    .main-content {
+        padding: 40px 20px;
+    }
+    .horizontal-seperator {
+        border-bottom: 3px solid var(--button-hover);
+        width: 90px;
+        padding-top: 8px;
+    }
+    .contact-name-big {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 43.2px;
+    }
+    .contact-details-big .avatar {
+        font-size: 27px;
+        height: 80px;
+        width: 80px;
+    }
 }
+
 
