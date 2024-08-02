@@ -4,7 +4,8 @@
     margin-right: 120px;
     padding: 20px;
     background-color: var(--body-background-grey);
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: 85vh;
 }
 
 .main-content p {
