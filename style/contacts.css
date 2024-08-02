@@ -359,6 +359,12 @@ p.subheader-contact {
     justify-content: space-between;
 }
 
+.button-flex {
+    display: flex;
+    align-items: center;
+    
+}
+
 span.subheadline {
     font-weight: 400;
     font-size: 27px;

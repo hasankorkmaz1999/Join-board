@@ -8,6 +8,8 @@
     <!-- fonts -->
     <link rel="stylesheet" href="./fonts/figtree/styles.css">
     <link rel="stylesheet" href="./fonts/inter/styles.css">
+    <link rel="stylesheet" href="./fonts/open-sans/styles.css">
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -70,9 +72,11 @@
 
         <div id="main-content" class="main-content">
             <div class="contact-flex-header">
-                <h1>Contacts</h1>
-                <div class="vertical-seperator"></div>
-                <span class="subheadline">Better with a team</span>
+                <div class="button-flex">
+                    <h1>Contacts</h1>
+                    <div class="vertical-seperator"></div>
+                    <span class="subheadline">Better with a team</span>
+                </div>
                 <div class="back-button-big" onclick="closeSingleContact()"></div>
             </div>
 
@@ -116,6 +120,41 @@
 
     <div id="toast-div" class="d-none">
         <div class="toast-text" id="toast-text"></div>
+    </div>
+
+    <!-- mobile -->
+    <a onclick="addNewContact()">
+        <div class="add-contact-mobile"></div>
+    </a>
+
+    <a onclick="editContacts()">
+        <div class="edit-contact-mobile"></div>
+    </a>
+
+    <div class="header-mobile">
+        <a href="summary.html">
+            <div class="header-mobile-img"></div>
+        </a>
+        <a href="#">
+            <div class="user-image-header-mobile"></div>
+        </a>
+    </div>
+
+    <div class="footer-mobile">
+        <div class="menu-mobile">
+            <div class="mobile-menu-botton">
+                <img class="mobile-menu" src="./icons/mobile_summary.svg" alt="Icon Summary"><span class="mobile">Summary</span>
+            </div>
+            <div class="mobile-menu-botton">
+                <img class="mobile-menu" src="./icons/mobile_board.svg" alt="Icon Board"><span class="mobile">Board</span>
+            </div>
+            <div class="mobile-menu-botton">
+                <img class="mobile-menu" src="./icons/mobile_add_task.svg" alt="Icon Add Tasks"><span class="mobile">Add Tasks</span>
+            </div>
+            <div class="mobile-menu-botton">
+                <img class="mobile-menu" src="./icons/mobile_contacts.svg" alt="Icon Contacts"><span class="mobile">Contacts</span>
+            </div>
+        </div>
     </div>
     
 
