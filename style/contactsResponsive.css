@@ -283,7 +283,7 @@
     }
     .contact-details-big {
         display: flex;
-        align-items: baseline;
+        align-items: center;
     }
     .button-flex {
         display: flex;

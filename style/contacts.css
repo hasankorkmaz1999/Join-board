@@ -652,14 +652,13 @@ span.subheadline {
     height: 32px;
     width: 32px;
     position: fixed;
-    top: 40px;
-    right: 40px;
+    top: 20px;
+    right: 20px;
 }
 
 .closeX:hover {
     cursor: pointer;
-    border-radius: 20px;
-    background-color: rgb(237, 235, 235);
+    filter: invert(84%) sepia(5%) saturate(12%) hue-rotate(314deg) brightness(94%) contrast(103%);
 }
 
 .slide-in-right {
