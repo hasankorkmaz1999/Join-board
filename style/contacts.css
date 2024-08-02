@@ -72,6 +72,15 @@ svg {
 
 }
 
+.add-contact-btn:disabled {
+    cursor: not-allowed;
+    background-color: var(--deep-grey);
+}
+
+.add-contact-btn:disabled:hover {
+    background-color: var(--deep-grey);
+}
+
 .add-contact-btn:hover {
     background-color: var(--button-hover);
 }
