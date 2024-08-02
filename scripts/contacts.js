@@ -215,19 +215,39 @@ function finishEditContact(id) {
     let valueName = document.getElementById('nameValue').value.trim();
     let valueEmail = document.getElementById('emailValue').value.trim();
     let valuePhone = document.getElementById('phoneValue').value.trim();
+
+    let nameError = document.getElementById('name-error-edit');
+    let emailError = document.getElementById('email-error-edit');
+    let phoneError = document.getElementById('phone-error-edit');
+
+
+    nameError.style.display = 'none';
+    emailError.style.display = 'none';
+    phoneError.style.display = 'none';
+
+    // Überprüfungen durchführen
+    let hasError = false;
+
     
     // Überprüfungen durchführen
     if (!isValidLength(valueName, valueEmail, valuePhone)) {
-        alert("Alle Eingabewerte dürfen maximal 30 Zeichen lang sein.");
-        return;
+        nameError.innerText = "Name, E-Mail und Telefonnummer dürfen jeweils maximal 30 Zeichen lang sein.";
+        nameError.style.display = 'block';
+        hasError = true;
     }
     if (!isValidEmail(valueEmail)) {
-        alert("Bitte eine gültige Email-Adresse eingeben.");
-        return;
+        emailError.innerText = "Bitte eine gültige E-Mail-Adresse eingeben.";
+        emailError.style.display = 'block';
+        hasError = true;
     }
     if (!isValidPhone(valuePhone)) {
-        alert("Die Telefonnummer darf nur Zahlen und ein + enthalten.");
-        return;
+        phoneError.innerText = "Die Telefonnummer darf nur Zahlen und ein + enthalten.";
+        phoneError.style.display = 'block';
+        hasError = true;
+    }
+
+    if (hasError) {
+        return; // Falls ein Fehler vorliegt, beende die Funktion
     }
     
     // Eingaben sanitisieren

@@ -9,8 +9,11 @@ function editContactForm(name, phone, email, id) {
             <img src="./icons/contacticons/kontak.png" alt="">
             <div class="contactinputfields">
                 <img onclick="closeEditOverlay()" class="closeX" src="./icons/close.svg" alt="">
+                <span id="name-error-edit" class="error-message"></span>
                 <input value="${name}" id="nameValue"  class="inputfiledsname" placeholder="Name" type="text" name="name">
+                <span id="email-error-edit" class="error-message"></span>
                 <input value="${email}" id="emailValue" class="inputfiledsemail" placeholder="Email" type="text" name="email">
+                <span id="phone-error-edit" class="error-message"></span>
                 <input value="${phone}" id="phoneValue" class="inputfiledsphone" placeholder="Phone" type="text" name="phone">
                 <div class="contactbuttons">
                     <button type="button" onclick="closeEditOverlay()" class="cancelbutton">Cancel X</button>
