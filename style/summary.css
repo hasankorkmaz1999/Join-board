@@ -15,3 +15,13 @@
 h1, h2, p {
     color: var(--deep-grey);
 }
+
+.contact-flex-header {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.contact-flex-header span {
+    font-size: 27px;
+}
