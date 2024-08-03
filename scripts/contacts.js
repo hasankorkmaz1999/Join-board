@@ -328,11 +328,9 @@ async function saveContact(id, contactData) {
             },
             body: JSON.stringify(contactData)
         });
-
         if (!response.ok) {
             throw new Error('Netzwerkantwort war nicht ok');
         }
-
         await response.json();
         init();
         closeEditOverlay();
