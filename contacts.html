@@ -91,6 +91,7 @@
         <div class="contactForm">
             <div class="contactFormLeft">
                 <div class="mobile-icon-corner-right"></div>
+                <img class="logo-overlay" src="./icons/logo_with_blue.svg" alt="Join Logo">
                 <h1 class="mobile">Add contact</h1>
                 <p class="subheader-mobile">Tasks are better with a team!</p>
                 <div class="mobile-underline"></div>
@@ -100,7 +101,7 @@
                 <img src="./icons/contacticons/kontakticon.svg" alt="Icon User">
                 <div class="contactinputfields">
                     <img onclick="closeOverlay()" class="closeX" src="./icons/close.svg" alt="Icon Close">
-                    <form action="" onsubmit="createNewContact(); return false;">
+                    <form class="addContact" action="" onsubmit="createNewContact(); return false;">
                         <span id="name-error" class="error-message"></span>
                         <input id="inputfiledsname" class="inputfiledsname" placeholder="Name" type="text">
                         <span id="email-error" class="error-message"></span>

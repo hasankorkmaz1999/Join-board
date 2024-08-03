@@ -25,6 +25,8 @@
 }
 
 body {
+    max-width: 1920px;
+    width: 100%;
     margin: 0;
     background-color: var(--body-background-grey);
 }
@@ -474,7 +476,7 @@ span.subheadline {
     left: 50%;
     transform: translate(-50%, -50%);
     height: 592px;
-    width: 1212px;
+    width: 95%;
     background-color: white;
     border-radius: 20px;
     display: flex; 
@@ -484,7 +486,7 @@ span.subheadline {
 .contactFormLeft {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    width: 467px;
+    width: 40%;
     height: 100%; 
     background-color: #2A3647;
     display: flex;
@@ -495,6 +497,12 @@ span.subheadline {
 
 .contactFormLeft img {
     margin-left: 50px;
+}
+
+form.addContact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .joinnnlogocontact {
@@ -524,6 +532,7 @@ span.subheadline {
     flex: 1;
     padding-right: 20px;
     height: 100%;
+    width: 60%;
 }
 
 .contactFormRight img {
