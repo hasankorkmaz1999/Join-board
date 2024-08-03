@@ -3,34 +3,28 @@
  * @constant {string}
  */
 let API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
-
 /**
  * Die URL des Endpunkts für das Bearbeiten von Kontakten.
  * @constant {string}
  */
 const editAPI = "demoUser/users/user1ID/contacts";
-
 /**
  * Die vollständige URL für das Bearbeiten von Kontakten.
  * @constant {string}
  */
 const url = `${API}${editAPI}.json`;
-
 /**
  * Initialisiert die Anwendung und ruft die Daten ab.
  * Wird aufgerufen, wenn das Fenster geladen wird.
  */
 window.onload = init;
-
 /**
  * Initialisiert die Anwendung und ruft die Daten ab.
  */
 function init() {
     renderData(API);
 }
-
 let activeContactId = null; // um den aktuell aktiven Kontakt zu verfolgen
-
 /**
  * Rendert die Kontaktdaten auf der Seite.
  * @param {string} URL - Die URL, von der die Daten geladen werden.
@@ -46,7 +40,6 @@ async function renderData(URL) {
     let addButton = document.getElementById('add-contact-btn');
     addButton.disabled = false;
 }
-
 /**
  * Rendert die Kontaktdaten.
  * @param {Object} data - Die Kontaktdaten.
@@ -59,7 +52,6 @@ function renderContactsData(data, content) {
     let currentLetter = '';
     renderContactsByLetter(contactKeys, contacts, content, currentLetter);
 }
-
 /**
  * Rendert die Kontakte nach Buchstaben sortiert.
  * @param {Array} contactKeys - Die Schlüssel der Kontakte.
@@ -78,7 +70,6 @@ function renderContactsByLetter(contactKeys, contacts, content, currentLetter) {
         content.innerHTML += renderContact(element, contactKeys[i]);
     }
 }
-
 /**
  * Deaktiviert den Lade-Spinner.
  */
@@ -86,7 +77,6 @@ function disableSpinner() {
     let element = document.getElementById('spinner');
     element.innerHTML = ``;
 }
-
 /**
  * Öffnet die Detailansicht eines Kontakts.
  * @param {string} id - Die ID des Kontakts.
@@ -101,7 +91,6 @@ function openContact(id, name, email, phone) {
     contactResponsive(id, name, email, phone);
     mobileButtonChange(true);
 }
-
 /**
  * Deaktiviert den vorherigen Kontakt.
  */
@@ -113,7 +102,6 @@ function deactivatePreviousContact() {
         previousContactNameElement.style.color = 'black';
     }
 }
-
 /**
  * Aktiviert den aktuellen Kontakt.
  * @param {string} id - Die ID des Kontakts.
@@ -125,7 +113,6 @@ function activateCurrentContact(id) {
     let contactNameElement = contactElement.querySelector('.contact-name');
     contactNameElement.style.color = 'white';
 }
-
 /**
  * Rendert die Detailansicht eines Kontakts.
  * @param {string} id - Die ID des Kontakts.
@@ -139,7 +126,6 @@ function renderContactDetails(id, name, email, phone) {
     contactContainer.innerHTML = renderBigView(id, name, email, phone, color);
     activateAnimation();
 }
-
 /**
  * Aktiviert die Animation der Detailansicht.
  */
@@ -151,7 +137,6 @@ function activateAnimation() {
         divID.classList.remove('d-none');
     }, 50);
 }
-
 /**
  * Holt die Initialen eines Namens.
  * @param {string} name - Der Name des Kontakts.
@@ -161,9 +146,7 @@ function getInitials(name) {
     let initials = name.split(' ').map(word => word.charAt(0)).join('');
     return initials.toUpperCase();
 }
-
 let lastColorIndex = -1;
-
 /**
  * Generiert eine Hintergrundfarbe für Avatare.
  * @returns {string} Die generierte Farbe.
@@ -176,7 +159,6 @@ function avatarColors() {
     lastColorIndex = colorIndex;
     return colors[colorIndex];
 }
-
 /**
  * Öffnet das Overlay zum Hinzufügen eines neuen Kontakts.
  */
@@ -185,7 +167,6 @@ function addNewContact() {
     overlay.classList.remove("d-none");
     overlay.classList.add('slide-in-right');
 }
-
 /**
  * Schließt das Overlay.
  */
@@ -199,7 +180,6 @@ function closeOverlay() {
         divID.classList.remove('slide-out-right');
     }, 500);
 }
-
 /**
  * Lädt die Daten eines Kontakts zum Bearbeiten.
  * @param {string} id - Die ID des Kontakts.
@@ -217,7 +197,6 @@ async function editContacts(id) {
     }
     showEditOverlay();
 }
-
 /**
  * Lädt die Daten des zu bearbeitenden Kontakts.
  * @param {Object} data - Die Kontaktdaten.
@@ -235,7 +214,6 @@ function loadEditData(data, id) {
         console.error("No contact found with ID:", id);
     }
 }
-
 /**
  * Zeigt das Bearbeitungs-Overlay an.
  */
@@ -244,7 +222,6 @@ function showEditOverlay() {
     editWindow.classList.remove('d-none');
     editWindow.classList.add('slide-in-right');
 }
-
 /**
  * Schließt das Bearbeitungs-Overlay.
  */
@@ -258,7 +235,6 @@ function closeEditOverlay() {
         divID.classList.remove('slide-out-right');
     }, 500);
 }
-
 /**
  * Beendet das Bearbeiten eines Kontakts und speichert die Änderungen.
  * @param {string} id - Die ID des Kontakts.
@@ -266,14 +242,11 @@ function closeEditOverlay() {
 function finishEditContact(id) {
     let { valueName, valueEmail, valuePhone } = getEditInputValues();
     let { nameError, emailError, phoneError } = resetEditErrors();
-
     let hasError = validateEditInput(valueName, valueEmail, valuePhone, nameError, emailError, phoneError);
-
     if (!hasError) {
         sanitizeAndSaveContact(id, valueName, valueEmail, valuePhone);
     }
 }
-
 /**
  * Holt die Eingabewerte aus dem Bearbeitungsformular.
  * @returns {Object} Die Eingabewerte.
@@ -285,7 +258,6 @@ function getEditInputValues() {
         valuePhone: document.getElementById('phoneValue').value.trim()
     };
 }
-
 /**
  * Setzt die Fehleranzeige im Bearbeitungsformular zurück.
  * @returns {Object} Die Fehleranzeige-Elemente.
@@ -299,7 +271,6 @@ function resetEditErrors() {
     phoneError.style.display = 'none';
     return { nameError, emailError, phoneError };
 }
-
 /**
  * Validiert die Eingabewerte im Bearbeitungsformular.
  * @param {string} valueName - Der Name des Kontakts.
@@ -329,7 +300,6 @@ function validateEditInput(valueName, valueEmail, valuePhone, nameError, emailEr
     }
     return hasError;
 }
-
 /**
  * Bereinigt die Eingabewerte und speichert den Kontakt.
  * @param {string} id - Die ID des Kontakts.
@@ -344,7 +314,6 @@ function sanitizeAndSaveContact(id, valueName, valueEmail, valuePhone) {
     let updatedContact = { name: valueName, email: valueEmail, phone: valuePhone };
     saveContact(id, updatedContact);
 }
-
 /**
  * Speichert einen Kontakt.
  * @param {string} id - Die ID des Kontakts.
@@ -372,21 +341,17 @@ async function saveContact(id, contactData) {
         console.error('Fehler beim Speichern des Kontakts:', error);
     }
 }
-
 /**
  * Neuen Kontakt hinzufügen.
  */
 async function createNewContact() {
     let { valueName, valueEmail, valuePhone } = getNewContactInputValues();
     let { nameError, emailError, phoneError } = resetNewContactErrors();
-
     let hasError = validateNewContactInput(valueName, valueEmail, valuePhone, nameError, emailError, phoneError);
-
     if (!hasError) {
         sanitizeAndCreateContact(valueName, valueEmail, valuePhone);
     }
 }
-
 /**
  * Holt die Eingabewerte aus dem Formular für neue Kontakte.
  * @returns {Object} Die Eingabewerte.
@@ -398,7 +363,6 @@ function getNewContactInputValues() {
         valuePhone: document.getElementById('inputfiledsphone').value.trim()
     };
 }
-
 /**
  * Setzt die Fehleranzeige im Formular für neue Kontakte zurück.
  * @returns {Object} Die Fehleranzeige-Elemente.
@@ -412,7 +376,6 @@ function resetNewContactErrors() {
     phoneError.style.display = 'none';
     return { nameError, emailError, phoneError };
 }
-
 /**
  * Validiert die Eingabewerte im Formular für neue Kontakte.
  * @param {string} valueName - Der Name des Kontakts.
@@ -442,7 +405,6 @@ function validateNewContactInput(valueName, valueEmail, valuePhone, nameError, e
     }
     return hasError;
 }
-
 /**
  * Bereinigt die Eingabewerte und erstellt einen neuen Kontakt.
  * @param {string} valueName - Der Name des Kontakts.
@@ -457,7 +419,6 @@ function sanitizeAndCreateContact(valueName, valueEmail, valuePhone) {
     saveNewContact(newContact);
     
 }
-
 /**
  * Speichert einen neuen Kontakt.
  * @param {Object} newContact - Die Kontaktdaten.
@@ -470,20 +431,17 @@ async function saveNewContact(newContact) {
         },
         body: JSON.stringify(newContact)
     });
-
     await response.json();
     init();
     closeOverlay();
     toastMessage("Contact successfully created");
     clearNewContactFields();
 }
-
 function clearNewContactFields() {
     document.getElementById('inputfiledsname').value = ``;
     document.getElementById('inputfiledsemail').value = ``;
     document.getElementById('inputfiledsphone').value = ``;
 }
-
 /**
  * Löscht einen Kontakt.
  * @param {string} id - Die ID des Kontakts.
@@ -496,11 +454,9 @@ async function deletContacts(id) {
                 'Content-Type': 'application/json'
             }
         });
-
         if (!response.ok) {
             throw new Error('Netzwerkantwort war nicht ok');
         }
-
         await response.json();
         init();
         closeEditOverlay();
@@ -510,4 +466,3 @@ async function deletContacts(id) {
         console.error('Fehler beim Löschen des Kontakts:', error);
     }
 }
-
