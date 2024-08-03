@@ -144,13 +144,23 @@ function renderContactDetails(id, name, email, phone) {
  * Aktiviert die Animation der Detailansicht.
  */
 function activateAnimation() {
+    let divID = document.getElementById('contact-container');
+    divID.classList.add('slide-in-right');
+    divID.classList.add('contact-container');
     setTimeout(() => {
-        let divID = document.getElementById('contact-container');
         divID.classList.remove('d-none');
-        divID.classList.add('slide-in-right');
-        divID.classList.add('contact-container');
-    }, 100);
+    }, 50);
 }
+
+/* 
+function activateAnimation() {
+    let divID = document.getElementById('contact-container');
+    divID.classList.remove('d-none');
+    setTimeout(() => {
+        divID.classList.add('show'); // neue Klasse für die Animation
+    }, 50); // kleine Verzögerung für den Übergang
+}
+*/
 
 /**
  * Holt die Initialen eines Namens.

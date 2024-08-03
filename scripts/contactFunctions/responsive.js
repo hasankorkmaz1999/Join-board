@@ -31,18 +31,17 @@ function contactResponsive(id, name, email, phone) {
 }
 
 function closeSingleContact() {
-    let contactContainer = document.getElementById('contact-container')
+    let contactContainer = document.getElementById('contact-container');
     document.getElementById('sidebar').style.display = 'block';
     mobileButtonChange(false);
     contactContainer.classList.add('slide-out-right');
-    contactContainer.classList.add('contact-container');
     setTimeout(() => {
-        contactContainer.classList.add('d-non');
+        contactContainer.classList.add('d-none');
+        contactContainer.classList.remove('show'); // entfernt die Animationsklasse
         contactContainer.classList.remove('slide-in-right');
-        contactContainer.classList.remove('contact-container');
         contactContainer.classList.remove('slide-out-right');
         contactContainer.innerHTML = ``;
-    }, 650);
+    }, 650); // sicherstellen, dass dies mit der Dauer der Animation übereinstimmt
 }
 
 window.addEventListener('resize', function() {
