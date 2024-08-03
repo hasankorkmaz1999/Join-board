@@ -1,4 +1,8 @@
-// Lädt Daten von der angegebenen URL und gibt sie als JSON zurück
+/**
+ * Loads data from the given URL and returns it as JSON.
+ * @param {string} URL - The URL to fetch data from.
+ * @returns {Promise<Object|null>} The data from the URL as JSON, or null if an error occurs.
+ */
 async function loadData(URL) {
     try {
         let response = await fetch(URL + ".json");

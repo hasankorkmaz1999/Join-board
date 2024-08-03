@@ -4,14 +4,16 @@
 //  toastMessage("Hier kommt der text der msg");                              //
 //  dabei können wir das js überall nutzen                                    //
 ////////////////////////////////////////////////////////////////////////////////
-
 /* 
     <div id="toast-div" class="d-none">
         <div class="toast-text" id="toast-text"></div>
     </div>
 */
 
-
+/**
+ * Displays a toast message with the specified text.
+ * @param {string} msg - The message to display in the toast.
+ */
 function toastMessage(msg) {
     let toastBox = document.getElementById('toast-div');
     let toastMsg = document.getElementById('toast-text');

@@ -1,3 +1,7 @@
+/**
+ * Toggles the visibility of the mobile edit contacts button based on the viewport width.
+ * @param {boolean} viewquery - The query to check if the view is big or small.
+ */
 function mobileButtonChange(viewquery) {
     let divElement = document.getElementById('editContactsMobile')
     if (viewquery === true) {
@@ -14,6 +18,13 @@ function mobileButtonChange(viewquery) {
     }
 }
 
+/**
+ * Adjusts the contact view for responsive design based on the viewport width.
+ * @param {string} id - The unique ID of the contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email address of the contact.
+ * @param {string} phone - The phone number of the contact.
+ */
 function contactResponsive(id, name, email, phone) {
     if (window.innerWidth <= 850) {
 
@@ -30,6 +41,9 @@ function contactResponsive(id, name, email, phone) {
     }
 }
 
+/**
+ * Closes the single contact view and adjusts the layout.
+ */
 function closeSingleContact() {
     let contactContainer = document.getElementById('contact-container');
     document.getElementById('sidebar').style.display = 'block';
@@ -44,6 +58,9 @@ function closeSingleContact() {
     }, 650); // sicherstellen, dass dies mit der Dauer der Animation übereinstimmt
 }
 
+/**
+ * Opens the single contact view and adjusts the layout.
+ */
 window.addEventListener('resize', function() {
 if (window.innerWidth < 850) {
     document.getElementById('main-content').style.display = 'none';

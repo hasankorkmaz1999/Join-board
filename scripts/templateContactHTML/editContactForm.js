@@ -1,3 +1,11 @@
+/**
+ * Generates the HTML form to edit a contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} phone - The phone number of the contact.
+ * @param {string} email - The email address of the contact.
+ * @param {string} id - The unique ID of the contact.
+ * @returns {string} The HTML form for editing the contact.
+ */
 function editContactForm(name, phone, email, id) {
     return /*html*/`
         <div class="contactForm">

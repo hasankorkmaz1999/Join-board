@@ -1,3 +1,12 @@
+/**
+ * 
+ * @param {string} id - The unique ID of the contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email address of the contact.
+ * @param {string} phone - The phone number of the contact.
+ * @param {string} color - The color of the contact.
+ * @returns {string} The HTML for the big view of the contact.
+ */
 function renderBigView(id, name, email, phone, color) {
     return /*html*/`
         <div class="contact-details-big">
