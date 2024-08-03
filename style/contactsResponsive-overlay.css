@@ -1,6 +1,39 @@
 
-/* add contact overlay */
-@media (max-width: 750px) {
+@media (max-width: 1220px) {
+    .contactForm {
+        width: 95%;
+    }
+    .contactFormLeftFluid {
+        width: 40%;
+    }
+    .contactFormRight {
+        width: 60%;
+    }
+    .inputfiledsname,
+    .inputfiledsemail,
+    .inputfiledsphone  {
+        width: 95%;
+    }
+    .contactFormRight img {
+        margin-left: 10px;
+    }
+    .contactinputfields {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        align-items: center;
+        width: 250px;
+    }
+    .saveButton {
+        width: 101Px;
+    }
+    .cancelbutton {
+        width: 82px;
+    }
+}
+
+
+@media (max-width: 790px) {
     .contactForm {
         position: fixed;
         top: 50%;
@@ -29,6 +62,7 @@
     .contactFormRight {
         padding-right: 0;
         flex-direction: column;
+        justify-content: unset;
     }
     .contactinputfields {
         margin-left: 0;
@@ -101,6 +135,7 @@
         line-height: 57.4px;
         color: var(--white);
         margin-bottom: -12px;
+        color: var(--white);
     }
     .mobile-underline {
         border-bottom: 3px solid var(--button-hover);
@@ -113,7 +148,6 @@
         font-weight: 400;
         line-height: 24px;
         color: var(--white);
-
     }
     img.closeX {
         width: 32px;
@@ -127,23 +161,16 @@
     .saveButton {
         display: flex;
         color: var(--white);
-        width: 99px;
         align-items: center;
         height: 51px;
-    }
-    .saveButton {
         cursor: pointer;
         font-weight: 700;
-        display: flex;
-        align-items: center;
         justify-content: center;
         gap: 10px;
-        font-size: 16px;
-        color: white;
+        font-size: 20px;
         width: 101px;
-        height: 52px;
         border-radius: 10px;
-        background-color: #2A3648;
+        background-color: var(--deep-grey);
         border: unset;
     }
     .contactbuttons {
@@ -151,13 +178,11 @@
         align-items: center;
         justify-content: center;
     }
-    p.subheader-edit-mobile {
+    p.subheader-edit-mobile,
+    img.logo-overlay {
         display: none;
     }
-    .mobile-edit-underline {
-        padding-top: 16px;
-        border-bottom: 3px solid var(--button-hover);
-        height: 3px;
-        width: 90px;
-    }
+
 }
+
+

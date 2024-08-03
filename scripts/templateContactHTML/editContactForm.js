@@ -1,8 +1,9 @@
 function editContactForm(name, phone, email, id) {
     return /*html*/`
         <div class="contactForm">
-            <div class="contactFormLeft">
+            <div class="contactFormLeft contactFormLeftFluid">
                 <div class="mobile-icon-corner-right"></div>
+                <img class="logo-overlay" src="./icons/logo_with_blue.svg" alt="Join Logo">
                 <h1 class="mobile">Edit contact</h1>
                 <p class="subheader-edit-mobile">Tasks are better with a team!</p>
                 <div class="mobile-edit-underline"></div>

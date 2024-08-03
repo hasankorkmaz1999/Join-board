@@ -348,6 +348,17 @@ h1 {
     color: var(--black);
 }
 
+h1.mobile,
+.subheader-mobile {
+    color: var(--white);
+}
+
+.mobile-underline {
+    border-bottom: 3px solid var(--button-hover);
+    height: 3px;
+    width: 90px;
+}
+
 p {
     font-size: 18px;
     color: #777;
@@ -479,6 +490,7 @@ span.subheadline {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: 16px;
 }
 
 .contactFormLeft img {
@@ -507,12 +519,11 @@ span.subheadline {
 
 .contactFormRight {
     display: flex;
-    justify-content: flex-start; /* Bild nach rechts ausrichten */
-    align-items: center; /* Vertikale Zentrierung */
-    flex: 1; /* Nimmt den restlichen verfügbaren Platz ein */
-    padding-right: 20px; /* Abstand vom rechten Rand */
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+    padding-right: 20px;
     height: 100%;
-    
 }
 
 .contactFormRight img {
@@ -610,12 +621,12 @@ span.subheadline {
     font-size: 20px;
     width: 120px;
     height: 52px;
-    background-color: white;
-    border: 2px solid #D1D1D1; 
+    background-color: var(--white);
+    border: 1px solid var(--deep-grey);
     border-radius: 10px;
     margin-right: 20px;
-    color: black; 
-    transition: border-color 0.3s ease, color 0.3s ease; 
+    color: black;
+    transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 .cancelbutton:hover {
@@ -646,6 +657,24 @@ span.subheadline {
 .createbutton:hover {
     background-color: var(--babyblue);
     border-color: transparent;
+}
+
+.subheader-edit-mobile {
+    display: none;
+}
+
+.mobile-edit-underline {
+    padding-top: 16px;
+    border-bottom: 3px solid var(--button-hover);
+    height: 3px;
+    width: 90px;
+}
+
+img.logo-overlay {
+    width: 54px;
+    height: 66px;
+    margin: 0;
+    padding-bottom: 50px;
 }
 
 .saveButton {
