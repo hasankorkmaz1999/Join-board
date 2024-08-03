@@ -1,4 +1,6 @@
-// Initialisiert ein Objekt, um die Hintergrundfarben der Avatare zu speichern
+/**
+ * Funktion zum Generieren einer zufälligen Hintergrundfarbe.
+ */
 const avatarColorsMap = {};
 
 /**
