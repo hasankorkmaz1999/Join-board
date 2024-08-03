@@ -152,16 +152,6 @@ function activateAnimation() {
     }, 50);
 }
 
-/* 
-function activateAnimation() {
-    let divID = document.getElementById('contact-container');
-    divID.classList.remove('d-none');
-    setTimeout(() => {
-        divID.classList.add('show'); // neue Klasse für die Animation
-    }, 50); // kleine Verzögerung für den Übergang
-}
-*/
-
 /**
  * Holt die Initialen eines Namens.
  * @param {string} name - Der Name des Kontakts.
