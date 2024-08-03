@@ -525,7 +525,7 @@ span.subheadline {
     display: flex;
     flex-direction: column;
     margin-left: 90px;
-    
+    align-items: center;
 }
 
 .inputfiledsname {
@@ -644,6 +644,31 @@ span.subheadline {
 }
 
 .createbutton:hover {
+    background-color: var(--babyblue);
+    border-color: transparent;
+}
+
+.saveButton {
+    cursor: pointer;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    color: white;
+    width: 190px;
+    height: 52px;
+    border-radius: 10px;
+    background-color: #2A3648;
+    border: unset;
+}
+
+.saveButton img {
+    margin: 0;
+}
+
+.saveButton:hover {
     background-color: var(--babyblue);
     border-color: transparent;
 }
