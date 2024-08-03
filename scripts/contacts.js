@@ -455,6 +455,7 @@ function sanitizeAndCreateContact(valueName, valueEmail, valuePhone) {
     valuePhone = sanitizeInput(valuePhone);
     const newContact = { name: valueName, email: valueEmail, phone: valuePhone || '' };
     saveNewContact(newContact);
+    
 }
 
 /**
@@ -475,6 +476,12 @@ async function saveNewContact(newContact) {
     closeOverlay();
     toastMessage("Contact successfully created");
     clearNewContactFields();
+}
+
+function clearNewContactFields() {
+    document.getElementById('inputfiledsname').value = ``;
+    document.getElementById('inputfiledsemail').value = ``;
+    document.getElementById('inputfiledsphone').value = ``;
 }
 
 /**
