@@ -56,31 +56,48 @@ if (window.innerWidth < 850) {
 /* mobileEditorDeleteWindow */
 function editContactsMobile() {
     let mobileEditWindow = document.getElementById('mobileEditorDeleteWindow');
+    let overlay = document.getElementById('overlayformobile');
+
     mobileEditWindow.innerHTML = renderResponsiveEditButtons();
-    mobileEditWindow.classList.remove('d-non');
+    mobileEditWindow.classList.remove('d-none');
     mobileEditWindow.classList.add('slide-in-right');
+    overlay.classList.remove('d-non');
+    overlay.classList.add('overlayformobile');
+
     setTimeout(() => {
         mobileEditWindow.classList.add('mobileEditorDeleteWindow');
     }, 50);
+  
+    
+    
+
 }
 
+
 function renderResponsiveEditButtons() {
+   
+
     let id = document.getElementById('fullID');
     let fullID = id.innerText;
     return /*html*/`
-        <span onclick="editContacts('${fullID}')" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/edit.svg" alt="edit icon"> Edit</span>
-        <span onclick="deletContacts('${fullID}')" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/delete.svg" alt="delete icon"> Delete</span>
+        <span onclick="editContacts('${fullID}'); dummyClose();" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/edit.svg" alt="edit icon"> Edit</span>
+        <span onclick="deletContacts('${fullID}'); dummyClose();" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/delete.svg" alt="delete icon"> Delete</span>
     `
+    
 }
 
 function dummyClose() {
     let mobileEditWindow = document.getElementById('mobileEditorDeleteWindow');
+    let overlay = document.getElementById('overlayformobile');
+
     mobileEditWindow.classList.remove('slide-in-right');
     mobileEditWindow.classList.add('slide-out-right');
+    overlay.classList.remove('overlayformobile');
+
     setTimeout(() => {
-        mobileEditWindow.classList.add('d-non');
+        mobileEditWindow.classList.add('d-none');
         mobileEditWindow.classList.remove('mobileEditorDeleteWindow');
         mobileEditWindow.classList.remove('slide-out-right');
-        mobileEditWindow.innerHTML = ``;
+        overlay.classList.add('d-non');
     }, 200);
 }
