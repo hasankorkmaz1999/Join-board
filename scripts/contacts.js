@@ -104,7 +104,7 @@ function deactivatePreviousContact() {
     if (activeContactId) {
         let previousContactElement = document.getElementById(`contact-${activeContactId}`);
         previousContactElement.classList.remove('active');
-        let previousContactNameElement = previousContactElement.querySelector('.contact-name');
+        let previousContactNameElement = previousContactElement.getElementsByClassName('contact-name')[0];
         previousContactNameElement.style.color = 'black';
     }
 }
@@ -116,7 +116,7 @@ function activateCurrentContact(id) {
     let contactElement = document.getElementById(`contact-${id}`);
     contactElement.classList.add('active');
     activeContactId = id;
-    let contactNameElement = contactElement.querySelector('.contact-name');
+    let contactNameElement = contactElement.getElementsByClassName('contact-name')[0];
     contactNameElement.style.color = 'white';
 }
 /**
