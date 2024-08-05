@@ -444,7 +444,9 @@ async function deletContacts(id) {
         closeEditOverlay();
         toastMessage("Delete Successful");
         reloadPage();
+        
     } catch (error) {
         console.error('Error deleting contact:', error);
     }
+    
 }

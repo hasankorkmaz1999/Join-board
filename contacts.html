@@ -27,7 +27,7 @@
     <script src="./scripts/w3include.js"></script>
 </head>
 <body onload="includeHTML()">
-    <header w3-include-html="./html/header.html"></header>
+    <div w3-include-html="./html/header.html"></div>
 
     <div class="container">
         <div id="sidebar" class="sidebar">
@@ -101,7 +101,7 @@
                 <img src="./icons/contacticons/kontakticon.svg" alt="Icon User">
                 <div class="contactinputfields">
                     <img onclick="closeOverlay()" class="closeX" src="./icons/close.svg" alt="Icon Close">
-                    <form class="addContact" action="" onsubmit="createNewContact(); return false;">
+                    <form class="addContact" onsubmit="createNewContact(); return false;">
                         <span id="name-error" class="error-message"></span>
                         <input id="inputfiledsname" class="inputfiledsname" placeholder="Name" type="text">
                         <span id="email-error" class="error-message"></span>
@@ -156,16 +156,24 @@
     <div class="footer-mobile">
         <div class="menu-mobile">
             <div class="mobile-menu-botton">
-                <img class="mobile-menu" src="./icons/mobile_summary.svg" alt="Icon Summary"><span class="mobile">Summary</span>
+                <a href="" class="footoer-link">
+                    <img class="mobile-menu" src="./icons/mobile_summary.svg" alt="Icon Summary"><span class="mobile">Summary</span>
+                </a>
             </div>
             <div class="mobile-menu-botton">
-                <img class="mobile-menu" src="./icons/mobile_board.svg" alt="Icon Board"><span class="mobile">Board</span>
+                <a href="" class="footoer-link">
+                    <img class="mobile-menu" src="./icons/mobile_board.svg" alt="Icon Board"><span class="mobile">Board</span>
+                </a>
             </div>
             <div class="mobile-menu-botton">
-                <img class="mobile-menu" src="./icons/mobile_add_task.svg" alt="Icon Add Tasks"><span class="mobile">Add Tasks</span>
+                <a href="" class="footoer-link">
+                    <img class="mobile-menu" src="./icons/mobile_add_task.svg" alt="Icon Add Tasks"><span class="mobile">Add Tasks</span>
+                </a>
             </div>
             <div class="mobile-menu-botton">
-                <img class="mobile-menu" src="./icons/mobile_contacts.svg" alt="Icon Contacts"><span class="mobile">Contacts</span>
+                <a href="" class="footoer-link"></a>
+                    <img class="mobile-menu" src="./icons/mobile_contacts.svg" alt="Icon Contacts"><span class="mobile">Contacts</span>
+
             </div>
         </div>
     </div>

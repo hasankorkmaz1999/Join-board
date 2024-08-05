@@ -22,12 +22,12 @@
         font-size: clamp(1.875rem, 1.3496rem + 2.6271vw, 3.8125rem);
     }
     .contact-name-big {
-        font-size: 22px;
+        font-size: 47px;
     }
     .contact-details-big .avatar {
-        font-size: 36px;
-        height: 80px;
-        width: 80px;
+        font-size: 47px;
+        height: 120px;
+        width: 120px;
     }
 }
 
@@ -62,11 +62,6 @@
 }
 
 @media (max-width: 1100px) {
-    .contact-details-big .avatar {
-        font-size: 22px;
-        height: 60px;
-        width: 60px;
-    }
     .contact-info {
         margin-left: 0px;
     }
@@ -80,12 +75,12 @@
 
 @media (max-width: 1065px) {
     .contact-details-big .avatar {
-        font-size: 16px;
-        height: 50px;
-        width: 50px;
+        font-size: 36px;
+        height: 80px;
+        width: 80px;
     }
     .contact-name-big {
-        font-size: 18px;
+        font-size: 36px;
     }
 }
 
@@ -111,19 +106,19 @@
 }
 
 @media (max-width: 900px) {
-    .contact-details-big .avatar {
+    /* .contact-details-big .avatar {
         font-size: 16px;
         height: 40px;
         width: 40px;
     }
     .contact-name-big {
         font-size: 16px;
-    }
+    } */
     .edit-big, .delete-big {
         font-size: 14px;
     }
     .info-big {
-        font-size: 16px;
+        font-size: 20px;
     }
     .sidebar {
         width: 280px;
@@ -271,7 +266,7 @@
         height: 56px;
         position: fixed;
         right: 30px;
-        bottom: 120px;
+        top: 758px;
         border-radius: 50%;
         background-position: center;
         cursor: pointer;
@@ -289,7 +284,7 @@
         height: 56px;
         position: fixed;
         right: 30px;
-        bottom: 120px;
+        top: 758px;
         border-radius: 50%;
         background-position: center;
         cursor: pointer;
