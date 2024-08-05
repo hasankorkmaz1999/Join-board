@@ -53,3 +53,32 @@ if (window.innerWidth < 850) {
     document.getElementById('sidebar').style.display = 'block';
     }
 });
+/* mobileEditorDeleteWindow */
+function editContacts() {
+    let mobileEditWindow = document.getElementById('mobileEditorDeleteWindow');
+    mobileEditWindow.innerHTML = renderResponsiveEditButtons();
+    mobileEditWindow.classList.remove('d-non');
+    mobileEditWindow.classList.add('slide-in-right');
+    setTimeout(() => {
+        mobileEditWindow.classList.add('mobileEditorDeleteWindow');
+    }, 50);
+}
+
+function renderResponsiveEditButtons() {
+    return /*html*/`
+        <span class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/edit.svg" alt="edit icon"> Edit</span>
+        <span class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/delete.svg" alt="delete icon"> Delete</span>
+    `
+}
+
+function dummyClose() {
+    let mobileEditWindow = document.getElementById('mobileEditorDeleteWindow');
+    mobileEditWindow.classList.remove('slide-in-right');
+    mobileEditWindow.classList.add('slide-out-right');
+    setTimeout(() => {
+        mobileEditWindow.classList.add('d-non');
+        mobileEditWindow.classList.remove('mobileEditorDeleteWindow');
+        mobileEditWindow.classList.remove('slide-out-right');
+        mobileEditWindow.innerHTML = ``;
+    }, 200);
+}
