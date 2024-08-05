@@ -558,7 +558,7 @@ form.addContact {
 }
 
 .inputfiledsname {
-    background-image: url('/icons/contacticons/person.png');
+    background-image: url('../icons/contacticons/person.png');
     
     padding: 13px;
     gap: 10px;
@@ -582,8 +582,7 @@ form.addContact {
 }
 
 .inputfiledsemail {
-    background-image: url('/icons/contacticons/mail.png');
-    
+    background-image: url('../icons/contacticons/mail.png');
     padding: 13px;
     gap: 10px;
     font-size: 20px;
