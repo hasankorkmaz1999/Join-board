@@ -9,6 +9,7 @@
  */
 function renderBigView(id, name, email, phone, color) {
     return /*html*/`
+        <div id="dummyID" class="d-none">${id}</div>
         <div class="contact-details-big">
             <div class="avatar" style="background-color: ${color};">${getInitials(name)}</div>
                 <div class="contact-info">

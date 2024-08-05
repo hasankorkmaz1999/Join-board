@@ -65,9 +65,11 @@ function editContactsMobile() {
 }
 
 function renderResponsiveEditButtons() {
+    let id = document.getElementById('dummyID');
+    let fullID = id.innerText;
     return /*html*/`
-        <span class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/edit.svg" alt="edit icon"> Edit</span>
-        <span class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/delete.svg" alt="delete icon"> Delete</span>
+        <span onclick="editContacts('${fullID}')" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/edit.svg" alt="edit icon"> Edit</span>
+        <span onclick="deletContacts('${fullID}')" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/delete.svg" alt="delete icon"> Delete</span>
     `
 }
 
