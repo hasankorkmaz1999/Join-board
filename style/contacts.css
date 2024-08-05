@@ -268,6 +268,12 @@ button {
     align-items: center;
 }
 
+.footer-link {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .edit-big {
     background-image: url(../icons/edit.svg);
 }

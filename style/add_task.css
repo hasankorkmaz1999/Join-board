@@ -15,3 +15,24 @@
 h1, h2, p {
     color: var(--deep-grey);
 }
+
+
+.addTaskContainer {
+    margin-left: 240px;
+}
+
+.addTaskFlexHeader {}
+
+.addTaskH1 {}
+
+#addTaskLeftForm {}
+
+#addTaskRightForm {}
+
+#addTaskButtons {}
+
+#addTaskFlexButtons {
+    display: flex;
+    align-items: center;
+}
+
