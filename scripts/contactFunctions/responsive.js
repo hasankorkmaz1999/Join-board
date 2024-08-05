@@ -54,7 +54,7 @@ if (window.innerWidth < 850) {
     }
 });
 /* mobileEditorDeleteWindow */
-function editContacts() {
+function editContactsMobile() {
     let mobileEditWindow = document.getElementById('mobileEditorDeleteWindow');
     mobileEditWindow.innerHTML = renderResponsiveEditButtons();
     mobileEditWindow.classList.remove('d-non');
