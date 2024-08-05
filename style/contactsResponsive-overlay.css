@@ -34,7 +34,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.1); /* Halbdurchsichtiger Hintergrund */
+        background: rgba(0, 0, 0, 0.0); /* Halbdurchsichtiger Hintergrund */
         z-index: 1000; /* Hinter dem Popup */
     }
 
