@@ -488,6 +488,10 @@ span.subheadline {
     overflow: hidden; 
 }
 
+p.create-mobile {
+    color: var(--white);
+}
+
 .contactFormLeft {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -602,8 +606,8 @@ form.addContact {
 
 
 .inputfiledsphone {
-    background-image: url('/icons/contacticons/call.png');
-   
+    background-image: url('../icons/contacticons/call.png');
+
     padding: 13px;
     gap: 10px;
     font-size: 20px;

@@ -49,6 +49,12 @@
     }
 }
 
+@media (max-width: 1225px) {
+    .cancelbutton{
+        display: none;
+    }
+}
+
 @media (max-width: 1210px) {
     .sidebar {
         width: 400px;
