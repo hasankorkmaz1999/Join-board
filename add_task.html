@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./style/global.css">
     <link rel="stylesheet" href="./style/headerstyle.css">
     <link rel="stylesheet" href="./style/add_task.css">
-    <link rel="stylesheet" href="./style/responsive.css">
+    <link rel="stylesheet" href="./style/addTaskResponsive.css">
 
     <script src="./scripts/w3include.js"></script>
 </head>
@@ -31,31 +31,83 @@
         <div class="addTaskFlexHeader">
             <h1 class="addTaskH1">Add Task</h1>
         </div>
-        <div id="addTaskLeftForm" class="addTaskLeftForm">
-            <form class="addTask" onsubmit="addTask(); return false;">
-                <span id="addTaskTitle"></span>
-                <span id="" class="error-message"></span>
-                <input id="" class="inputfiledsname" placeholder="Enter a Title" type="text">
 
-                <span id="addTaskTitle"></span>
-                <span id="" class="error-message"></span>
-                <input id="" class="inputfiledsemail" placeholder="Enter a Description" type="text">
-
-                <span id="addTaskTitle"></span>
-                <span id="" class="error-message"></span>
-                <input id="" class="inputfiledsphone" placeholder="Phone" type="text">
-            </form>
-        </div>
-
-        <div id="addTaskRightForm" class="addTaskRightForm"></div>
-
+        <div class="addTaskFlexContainer">
+            <div id="addTaskLeftForm" class="addTaskLeftForm">
+                <form method="post">
+                    <div class="addTaskTitle">
+                        <label for="title">Title<span class="asterisk">*</span></label>
+                        <div class="inputAddTaskTitle">
+                            <input type="text" id="addTaskTitle" name="addTaskTitle addTaskInput" placeholder="Enter a title" required>
+                        </div>    
+                        <span id="" class="addTaskerrorMessage"></span>
+                    </div>
+    
+                    <div class="addTaskDescription">
+                        <label for="addTaskDescription">Description</label>
+                        <textarea id="description" name="description" placeholder="Enter a description" ></textarea>
+                    </div>
+    
+                    <div class="addTaskAssignedTo">
+                        <label for="category">Assigned to</label>
+                        <select id="category" name="category">
+                            <option value="">Select contacts to assign</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+    
+            <div id="addTaskRightForm" class="addTaskRightForm">
+                <form method="post">
+                    <div class="addTaskDate">
+                        <label for="title">Due date<span class="asterisk">*</span></label>
+                        <div class="addTaskDate">
+                            <input type="date" id="prioDate" name="prioDate">
+                        </div>    
+                        <span id="" class="addTaskerrorMessage"></span>
+                    </div>
+    
+                    <div class="addTaskPriority">
+                        <label for="category">Prio</label>
+                        <div class="prioFlex">
+                            <button class="urgent">Urgent</button>
+                            <button class="medium">Medium</button>
+                            <button class="low">Low</button>
+                        </div>
+                    </div>
+    
+                    <div class="addTaskCategory">
+                        <label for="category">Category<span class="asterisk">*</span></label>
+                        <select id="category" name="category">
+                            <option value="">Select task Category</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                        </select>
+                    </div>
+    
+                    <div class="addTaskSubtasks">
+                        <label for="subtasks">Subtasks</label>
+                        <input type="text" id="subtasks" name="subtasks" placeholder="Enter subtasks">
+                    </div>
+                </form>
+            </div>
+        
         <div id="addTaskButtons" class="addTaskRightButtons">
+            <p><span class="asterisk">*</span>This field is required</p>
             <div id="addTaskFlexButtons" class="addTaskFlexButtons">
-                <button>Clear</button>
-                <button>Create Task</button>
+                <button type="button" onclick="closeOverlay()" class="cancelbutton">Cancel X</button>
+                <button type="submit" class="createbutton">
+                    <p class="create-mobile">Create contact</p>
+                    <img class="check-icon-mobile" src="./icons/check.svg" alt="Icon check">
+                </button>
             </div>
         </div>
     </div>
+
 
     <script src="./scripts/addTask.js"></script>
     <script src="./scripts/checkValue.js"></script>
