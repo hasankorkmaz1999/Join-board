@@ -231,6 +231,7 @@ function finishEditContact(id) {
     if (!hasError) {
         sanitizeAndSaveContact(id, valueName, valueEmail, valuePhone);
     }
+    openContact(id, valueName, valueEmail, valuePhone);
 }
 /**
  * Gets the input values from the edit form.
