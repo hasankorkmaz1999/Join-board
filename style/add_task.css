@@ -1,6 +1,5 @@
 body {
     font-family: 'Inter';
-    background-color: var(--white);
 }
 
 h1, h2, p, p.create-mobile {
@@ -38,15 +37,21 @@ textarea, input[type="text"], select, input[type="date"] {
     box-sizing: border-box; */
 }
 
+.addTasktitle input,
 textarea#description {
     border-radius: 10px;
     height: 120px;
     border: 1px solid var(--border-grey);
     padding: 18px 16px;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
 }
 
-.addTaskDescription {
-    
+input#addTaskTitle {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
 }
 
 .addTaskH1 {
@@ -247,4 +252,26 @@ option {
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
+}
+
+.addTaskDateInner input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.addTaskDateInner input[type="date"] {
+    position: relative;
+    padding-right: 30px;
+    width: 100%;
+}
+
+.addTaskDateInner input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;  
+    height: 20px; 
 }
