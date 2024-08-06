@@ -1,6 +1,6 @@
 .main-content {
     margin-top: 80px;
-    margin-left: 332px; /* Anpassung an die Breite der Seitenleiste */
+    margin-left: 270px; /* Anpassung an die Breite der Seitenleiste */
     margin-right: 120px;
     padding: 20px;
     background-color: var(--body-background-grey);
@@ -199,3 +199,170 @@ h1, h2, p {
     }
   }
 /* Animation & Spinner ende */
+
+
+/*Style für das Suchfeld */
+
+.searchform {
+  display: flex;
+}
+
+.addtaskbutton {
+  cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 21px;
+  color: var(--white);
+  width: 180px;
+  height: 48px;
+  border-radius: 10px;
+  background-color: var(--deep-grey);
+  border: unset;
+  margin-left: 20px;
+  
+}
+
+.addtaskbutton:hover {
+  background-color: var(--babyblue);
+}
+
+
+
+.inputfieldfindtask {
+  width: 312px; 
+  height: 48px;
+  padding: 0 60px 0 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 20px;
+  
+ 
+}
+
+.inputfieldfindtask::placeholder {
+ 
+  color: rgb(212, 206, 206); /* Custom placeholder color */
+}
+
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+.background-image {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-image: url('../icons/boardicons/search.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  
+}
+
+.background-image:hover {
+  background-color: rgb(177, 175, 175, 0.2);
+  border-radius: 20px;
+
+}
+
+.background-image:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.divider {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 1px;
+  background-color: #ccc;
+  margin-right: 5px;
+}
+
+/*Style für die To do In Progress etc. Sektion */
+
+.boardsections {
+  margin-top: 80px;
+  margin-left: 260px; 
+  margin-right: 120px;
+ 
+  background-color: var(--body-background-grey);
+  display: flex;
+  justify-content: space-between;
+  
+ 
+
+}
+
+.boardsection {
+  width: 280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: row;
+  margin-left: 30px;
+  
+  
+}
+
+.boardsection img {
+ cursor: pointer;
+}
+
+.boardsection img:hover {
+  filter: invert(74%) sepia(11%) saturate(686%) hue-rotate(151deg) brightness(96%) contrast(92%);
+}
+
+.boardsectiontext {
+  width: 200px;
+  margin-right: 120px;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  color: #42526E;
+  font-size: 20px;
+  font-weight: 700;
+  
+}
+
+.boardsectiontextdone {
+  color: #42526E;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/*Style für das Add Task Overlay  */
+
+.overlayaddtask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(65, 64, 64, 0.2);
+  z-index: 999;
+}
+
+.addtaskpopup {
+  background-color: white;
+  width: 1116px;
+  height: 870px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  display: flex; 
+  overflow: hidden; 
+}
+

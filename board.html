@@ -33,12 +33,34 @@
             <h1>Board</h1>
         </div>
         <div>
-            <form onsubmit="return false;">
-                <input type="text" name="task" placeholder="Find Task">
-                <button type="submit">Submit</button>
+            <form class="searchform" onsubmit="return false;">
+              <div class="search-container">
+                <input class="inputfieldfindtask" type="text" name="task" placeholder="Find Task">
+                <div class="divider"></div>
+                <div class="background-image" onclick="findTask()"></div>
+              </div>
+              <button onclick="openAddTaskOverlay()" class="addtaskbutton">Add task <img src="./icons/boardicons/add.svg" alt=""></button>
             </form>
-        </div>
+          </div>
     </section>
+    
+    <section class="boardsections">
+    <div class="boardsection"><span class="boardsectiontext">To do</span><img src="icons\boardicons\plus button.svg" alt=""></div>
+    <div class="boardsection"><span class="boardsectiontextdone">In progress</span><img src="icons\boardicons\plus button.svg" alt=""></div>
+    <div class="boardsection"><span class="boardsectiontextdone">Await feedback</span><img src="icons\boardicons\plus button.svg" alt=""></div>
+    <div class="boardsection"><span class="boardsectiontextdone">Done</span></div>
+
+
+    </section>
+
+
+    <div onclick="closeAddTaskOverlay()" id="overlayforaddtask" class="overlayaddtask d-none">
+        <div class="addtaskpopup" ></div>
+    </div>
+
+
+
+
     <div class="main-content" id="renderData">
         <span>Dummy Render</span>
                 <!-- Hier werden die daten gerendetr der Tasks -->
@@ -77,7 +99,8 @@
     <script src="./scripts/templateContactHTML/renderBigView.js"></script>
     <script src="./scripts/loadData.js"></script>
     <script src="./scripts/boardFunctions/board.js"></script>
-
+    <script src=""></script>
+    
     <script>
         includeHTML();
     </script>

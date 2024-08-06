@@ -25,6 +25,10 @@ span.asterisk {
     margin-left: 332px;
 }
 
+.d-none {
+    display: none;
+}
+
 /* textarea#description,
 .inputAddTaskTitle,
 textarea, input[type="text"], select, input[type="date"] {
