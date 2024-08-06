@@ -130,15 +130,14 @@
                 </form>
             </div>
         </div>
-        
         <div id="addTaskButtons" class="addTaskRightButtons">
             <p><span class="asterisk">*</span>This field is required</p>
             <div id="addTaskFlexButtons" class="addTaskFlexButtons">
                 <button type="button" onclick="closeOverlay()" class="cancelbutton">Cancel X</button>
-                <button type="submit" class="createbutton">
+                <button type="button" onclick="addTask()" class="createbutton">
                     <p class="create-mobile">Create Task</p>
-                    <img onclick="addTask()" class="check-icon-mobile" src="./icons/check.svg" alt="Icon check">
-                </button>
+                    <img class="check-icon-mobile" src="./icons/check.svg" alt="Icon check">
+            </form>
             </div>
         </div>
     </div>
