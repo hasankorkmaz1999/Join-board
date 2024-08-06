@@ -14,11 +14,13 @@
     .contactinputfields {
         display: flex;
         flex-direction: column;
-        margin-left: 10px;
-        align-items: center;
+        margin-left: 0px;
+        align-items: flex-start;
+        justify-content: flex-start;
         width: 250px;
     }
     .saveButton {
+        margin-left: 80px;
         width: 101Px;
     }
     .cancelbutton {
@@ -49,6 +51,7 @@
         background-color: var(--white);
         border-radius: 20px;
         display: flex;
+        
         overflow: hidden;
         flex-direction: column;
         align-items: center;
@@ -62,8 +65,9 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         width: 100%;
-        padding-left: 18px;
+        
     }
     .contactFormRight {
         padding-right: 0;
@@ -75,17 +79,17 @@
         margin-top: 30px;
     }
     .inputfiledsname {
-        width: 80%;
+       
     }
     p.create-mobile {
         color: var(--white);
     }
     .inputfiledsemail {
         background-image: url(../icons/contacticons/mail.png);
-        width: 80%;
+       
     }
     .inputfiledsphone {
-        width: 80%;
+       
     }
     .contactFormRight img {
         width: 120px;
@@ -103,6 +107,7 @@
         color: var(--white);
         width: 202px;
         align-items: center;
+        margin-left: 15px;
     }
     form {
         display: flex;
@@ -139,18 +144,24 @@
         font-size: 47px;
         font-weight: 700;
         line-height: 57.4px;
+        margin-right: 40px;
         color: var(--white);
         margin-bottom: -12px;
         color: var(--white);
     }
     .mobile-underline {
+        
         border-bottom: 3px solid var(--button-hover);
         height: 3px;
         width: 90px;
+        position: relative;
+        right: 110px;
+        
     }
     .subheader-mobile {
         font-family: 'Inter';
         font-size: 20px;
+        margin-right: 40px;
         font-weight: 400;
         line-height: 24px;
         color: var(--white);
@@ -187,6 +198,37 @@
     p.subheader-edit-mobile,
     img.logo-overlay {
         display: none;
+    }
+
+    .mobile-edit-underline {
+       margin-right: 270px;
+    }
+
+    
+
+}
+
+
+@media (max-width: 370px) {
+   
+
+    .contactFormLeft {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        height: 25vH;
+        background-color: #2A3647;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        
+    }
+
+    .mobile-underline {
+       position: relative;
+       left: 1px;
+       margin-bottom: 30px;
     }
 
 }

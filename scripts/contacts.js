@@ -280,7 +280,7 @@ function validateEditInput(valueName, valueEmail, valuePhone, nameError, emailEr
         hasError = true;
     }
     if (!isValidPhone(valuePhone)) {
-        phoneError.innerText = "The phone number can only contain numbers and a +.";
+        phoneError.innerText = "Phone number can only contain numbers and a +.";
         phoneError.style.display = 'block';
         hasError = true;
     }
@@ -383,7 +383,7 @@ function validateNewContactInput(valueName, valueEmail, valuePhone, nameError, e
         hasError = true;
     }
     if (!isValidPhone(valuePhone)) {
-        phoneError.innerText = "The phone number can only contain numbers and a +.";
+        phoneError.innerText = "Phone number can only contain numbers and a +.";
         phoneError.style.display = 'block';
         hasError = true;
     }

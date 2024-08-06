@@ -357,10 +357,12 @@ h1 {
 
 h1.mobile,
 .subheader-mobile {
+    margin-left: 50px;
     color: var(--white);
 }
 
 .mobile-underline {
+    margin-left: 50px;
     border-bottom: 3px solid var(--button-hover);
     height: 3px;
     width: 90px;
@@ -494,7 +496,6 @@ p.create-mobile {
 
 .contactFormLeft {
     border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
     width: 40%;
     height: 100%; 
     background-color: #2A3647;
@@ -511,7 +512,8 @@ p.create-mobile {
 form.addContact {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .joinnnlogocontact {
@@ -521,6 +523,8 @@ form.addContact {
 }
 
 .addcontacttext {
+   
+
     width: 371px;
     height: 129px;
     margin-bottom: 20px;
@@ -554,8 +558,12 @@ form.addContact {
     display: flex;
     flex-direction: column;
     margin-left: 90px;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
 }
+
+
 
 .inputfiledsname {
     background-image: url('../icons/contacticons/person.png');
@@ -689,12 +697,15 @@ form.addContact {
     border-bottom: 3px solid var(--button-hover);
     height: 3px;
     width: 90px;
+    position: relative;
+    left: 50px;
 }
 
 img.logo-overlay {
+    margin-left: 50px;
     width: 54px;
     height: 66px;
-    margin: 0;
+    
     padding-bottom: 50px;
 }
 
