@@ -59,7 +59,7 @@ async function addTask() {
     };
 
     try {
-        let response = await fetch(addAPI, {
+        let response = await fetch(addAPI+".json", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
