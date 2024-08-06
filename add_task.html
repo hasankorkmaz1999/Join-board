@@ -38,7 +38,10 @@
             <div id="addTaskLeftForm" class="addTaskLeftForm">
                 <form method="post">
                     <div class="addTaskTitle">
-                        <label for="title">Title<span class="asterisk">*</span></label>
+                        <div class="flexhelper">
+                            <label for="addTaskTitle">Title</label>
+                            <span class="asterisk">*</span>
+                        </div>
                         <div class="inputAddTaskTitle">
                             <input type="text" id="addTaskTitle" name="addTaskTitle addTaskInput" placeholder="Enter a title" required>
                         </div>    
@@ -46,7 +49,7 @@
                     </div>
     
                     <div class="addTaskDescription">
-                        <label for="addTaskDescription">Description</label>
+                        <label for="description">Description</label>
                         <textarea id="description" name="description" placeholder="Enter a description" ></textarea>
                     </div>
     
@@ -67,12 +70,16 @@
             <div id="addTaskRightForm" class="addTaskRightForm">
                 <form method="post">
                     <div class="addTaskDate">
-                        <label for="title">Due date<span class="asterisk">*</span></label>
+                        <div class="flexhelper">
+                            <label for="prioDate">Due date</label>
+                            <span class="asterisk">*</span>
+                        </div>    
                         <div class="addTaskDateInner">
                             <input type="date" id="prioDate" name="prioDate" pattern="\d{2}-\d{2}-\d{4}">
                         </div>    
                         <span id="" class="addTaskerrorMessage"></span>
                     </div>
+                    
     
                     <div class="addTaskPriority">
                         <label for="category">Prio</label>
