@@ -55,11 +55,9 @@
     
                     <div class="addTaskAssignedTo">
                         <label for="category">Assigned to</label>
-                        <select id="category" name="category">
-                            <option value="">Select contacts to assign</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
+                        <select id="assignedto" name="category">
+                            <option value="null">Select contacts to assign</option>
+                            <!-- hier stehen alle kontakte -->
                         </select>
                     </div>
                 </form>
@@ -84,6 +82,7 @@
                     <div class="addTaskPriority">
                         <label for="category">Prio</label>
                         <div class="prioFlex">
+<<<<<<< HEAD
                             <form id="taskForm">
                                 <button type="button" onclick="setActive(this, 'urgent')" class="addTaskPrioButton prio-urgent">Urgent
                                     <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,16 +112,20 @@
                                 <input type="hidden" id="priority" name="priority">
                             </form>
                             
+=======
+                            <button type="button" id="urgent" class="prioButton">Urgent</button>
+                            <button type="button" id="medium" class="prioButton">Medium</button>
+                            <button type="button" id="low" class="prioButton">Low</button>
+>>>>>>> dc4fab1218266b3469adc3228003c54a1b915b1d
                         </div>
                     </div>
     
                     <div class="addTaskCategory">
                         <label for="category">Category<span class="asterisk">*</span></label>
                         <select id="category" name="category">
-                            <option value="">Select task Category</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
+                            <option value="null">Select task Category</option>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
                         </select>
                     </div>
     
@@ -140,14 +143,14 @@
                 <button type="button" onclick="closeOverlay()" class="cancelbutton">Cancel X</button>
                 <button type="submit" class="createbutton">
                     <p class="create-mobile">Create Task</p>
-                    <img class="check-icon-mobile" src="./icons/check.svg" alt="Icon check">
+                    <img onclick="addTask()" class="check-icon-mobile" src="./icons/check.svg" alt="Icon check">
                 </button>
             </div>
         </div>
     </div>
 
 
-    <script src="./scripts/addTask.js"></script>
+    <script src="./scripts/addTaskFunction/addTask.js"></script>
     <script src="./scripts/checkValue.js"></script>
     <script src="./scripts/toastMsg.js"></script>
     <script src="./scripts/reloadPage.js"></script>
