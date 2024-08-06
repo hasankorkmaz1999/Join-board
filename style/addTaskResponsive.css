@@ -1,8 +1,25 @@
-@media (max-width: 1080px) {
-
+@media (max-width: 1140px) {
+    .addTaskContainer {
+        margin-left: 232px;
+    }
+    .addTaskH1 { 
+        margin-left: 32px;
+    }
 }    
 
+@media (max-width: 1040px) {
+    .contentFlex {
+        display: flex;
+        width: 100%;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    #addTaskLeftForm, 
+    #addTaskRightForm {
+        width: 100%;
+    }
 
+}    
 
 @media (max-width: 768px) {
     .addTaskLeftForm, .addTaskRightForm {
@@ -24,3 +41,47 @@
         padding-top: 20px;
     }
 }
+
+@media (max-width: 640px) {
+    .header-left {
+        display: none;
+    }
+    .addTaskContainer,
+    .addTaskH1,
+    .header-top {
+        margin-left: 0;
+    }
+    .header-top {
+        width: 100%;
+    }
+    .addTaskH1 { 
+        margin-left: 32px;
+    }
+    .help-icon-header,
+    .subheader-contact {
+        display: none;
+    }
+}    
+
+@media (max-width: 576px) {
+    button.cancelbutton {
+        display: none;
+    }
+    .createbutton {
+        width: 183px;
+    }
+    .addTaskRightButtons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 46px;
+        width: 100%;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+    .addTaskH1 {
+        font-size: 41px;
+    }
+    input#subtasks, select#category, .addTaskAssignedTo select {
+        font-size: 16px;
+    }
+}    
