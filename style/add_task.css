@@ -281,3 +281,8 @@ option {
     display: flex;
     margin: 0;
 }
+
+.prioButton.selected {
+    background-color: #007bff; /* Beispiel-Farbe für ausgewählten Button */
+    color: white;
+}
