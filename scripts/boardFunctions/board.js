@@ -10,12 +10,23 @@ function init() {
 async function renderData(URL) {
     let data = await loadData(URL);
     console.log(data);
-    let content = document.getElementById("renderData");
+    let content = document.getElementById('renderData');
     content.innerHTML = ``;
     if (data) {
         renderTaskData(data, content);
     }
-/*     disableSpinner(); */
+    disableSpinner();
+}
+
+function disableSpinner() {
+    
+    let element = document.getElementById('spinner');
+    if (element === null) {
+        console.error("Spinner not found!");
+        
+    } else {
+        element.innerHTML = ``;
+    }
 }
 
 function renderTaskData(data, content) {
@@ -29,9 +40,9 @@ function renderTaskData(data, content) {
 }
 
 function renderDiv(task) {
- return `
-            <div class="task-title">${task.title}</div>
-            <div class="task-description">${task.description}</div>
-            <div class="task-due-date">${task.duedate}</div>
-        `;
+ return /*html*/`
+    <div class="task-title">${task.title}</div>
+    <div class="task-description">${task.description}</div>
+    <span>Hier muss der fortschritsbalken rein (muss via inline style css geamcht werdem)</span>
+ `
 }
