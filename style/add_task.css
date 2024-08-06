@@ -23,7 +23,6 @@ span.asterisk {
 
 .addTaskContainer {
     margin-left: 332px;
-    margin-top: 80px;
 }
 
 textarea#description,
@@ -281,6 +280,10 @@ option {
     margin: 0;
 }
 
+.addTaskCategory {
+    margin-bottom: 20px;
+}
+
 .addTaskPrioButton {
     width: 136px;
     height: 56px;
@@ -332,5 +335,5 @@ option {
     
 }
 .addTaskPrioButton.active svg path {
-    fill: white; /* Farbe im aktiven Zustand */
+    /* fill: white;  */
   }
