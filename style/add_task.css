@@ -64,6 +64,7 @@ textarea#description {
     justify-content: flex-end;
 }
 
+.addTaskDateInner,
 .inputAddTaskTitle {
     background-color: var(--white);
     height: 48px;
@@ -208,16 +209,6 @@ p.create-mobile {
     box-sizing: border-box; 
 }
 
-
-.addTaskAssignedTo select {
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid var(--border-grey);
-    padding: 12px 16px;
-    border-radius: 10px;
-    background-color: var(--white);
-}
-
 .vertical-line {
     height: 100%;
     width: 1px;
@@ -232,24 +223,23 @@ p.create-mobile {
     align-items: flex-start;
 }
 
-/* Versteckt den nativen Pfeil */
+
 .addTaskAssignedTo select {
-    appearance: none; /* Für moderne Browser */
-    -webkit-appearance: none; /* Für Safari */
-    -moz-appearance: none; /* Für Firefox */
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="black" stroke-width="1.5" d="M1 3.5l4 4 4-4"/></svg>') no-repeat right 10px center;
-    background-color: white; /* Hintergrundfarbe des Select-Feldes */
-    padding-right: 30px; /* Platz für den Pfeil */
+    appearance: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="black" stroke-width="1.5" d="M1 3.5l4 4 4-4"/></svg>') no-repeat right 20px center;
+    padding-right: 30px; 
     width: 100%;
     box-sizing: border-box;
-}
-
-
-.addTaskAssignedTo select {
-    padding: 10px;
+    border: 1px solid var(--border-grey);
+    border-radius: 10px;
+    background-color: var(--white);
+    padding: 10px 30px 10px 10px;
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
+    font-family: 'Inter';
 }
 
 option {
