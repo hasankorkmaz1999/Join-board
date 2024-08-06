@@ -44,3 +44,33 @@ function renderDiv(task) {
     <span>Hier muss der fortschritsbalken rein (muss via inline style css geamcht werdem)</span>
  `
 }
+
+// Funktion zum öffnen des Add Task Overlays
+
+function openAddTaskOverlay() {
+    let overlay = document.getElementById('overlayforaddtask');
+    overlay.classList.remove('d-none');
+    overlay.classList.add('slide-in-right');
+    
+    // Container, in den der addTaskContainer eingefügt werden soll
+    let popupContent = document.querySelector('.addtaskpopup');
+
+    // Der Inhalt, der eingefügt werden soll
+    let addTaskContent = document.getElementById('addTaskContainer');
+    
+    if (addTaskContent) {
+        popupContent.innerHTML = ''; // Vorherigen Inhalt entfernen, falls vorhanden
+        popupContent.appendChild(addTaskContent.cloneNode(true)); // Inhalt einfügen
+    }
+}
+
+function closeAddTaskOverlay() {
+    let overlay = document.getElementById('overlayforaddtask');
+    overlay.classList.add('d-none');
+    overlay.classList.remove('slide-in-right');
+    overlay.classList.add('slide-out-right');
+    
+    // Den Inhalt des Popups leeren oder anderweitig behandeln, falls nötig
+    let popupContent = document.querySelector('.addtaskpopup');
+    popupContent.innerHTML = ''; // Entfernt den dynamisch eingefügten Inhalt
+}
