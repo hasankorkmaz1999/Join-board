@@ -281,7 +281,6 @@ option {
     margin: 0;
 }
 
-<<<<<<< HEAD
 .addTaskPrioButton {
     width: 136px;
     height: 56px;
@@ -335,9 +334,3 @@ option {
 .addTaskPrioButton.active svg path {
     fill: white; /* Farbe im aktiven Zustand */
   }
-=======
-.prioButton.selected {
-    background-color: #007bff; /* Beispiel-Farbe für ausgewählten Button */
-    color: white;
-}
->>>>>>> dc4fab1218266b3469adc3228003c54a1b915b1d
