@@ -324,16 +324,11 @@ option {
 .addTaskPrioButton.active-low {
     background-color: #7AE229; 
     color: var(--white);
-
 }
 
 
-
-.addTaskPrioButton.active-urgent,
-.addTaskPrioButton.active-medium,
-.addTaskPrioButton.active-low {
-    
+.addTaskPrioButton.active-urgent svg path,
+.addTaskPrioButton.active-medium svg path,
+.addTaskPrioButton.active-low svg path {
+    fill: white; 
 }
-.addTaskPrioButton.active svg path {
-    /* fill: white;  */
-  }
