@@ -1,0 +1,32 @@
+{
+    "folders": [
+        {
+            "name": "backgroundcolorJS",
+            "link": "./backgroundcolorJS/index.html"
+        },
+        {
+            "name": "contactJS",
+            "link": "./contactJS/index.html"
+        },
+        {
+            "name": "loaddataJS",
+            "link": "./loaddataJS/index.html"
+        },
+        {
+            "name": "overlayJS",
+            "link": "./overlayJS/index.html"
+        },
+        {
+            "name": "responsiveJS",
+            "link": "./responsiveJS/index.html"
+        },
+        {
+            "name": "toastmsgJS",
+            "link": "./toastmsgJS/index.html"
+        },
+        {
+            "name": "valueJS",
+            "link": "./valueJS/index.html"
+        }
+    ]
+}
