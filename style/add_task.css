@@ -110,7 +110,6 @@ span.addTaskerrorMessage {
     display: flex;
     flex-direction: column;
     width: calc(45% - 332px);
-
     flex: 1;
     margin: 10px;
 }
@@ -228,7 +227,8 @@ p.create-mobile {
     align-items: flex-start;
 }
 
-
+input#subtasks,
+select#category,
 .addTaskAssignedTo select {
     appearance: none; 
     -webkit-appearance: none; 
@@ -276,8 +276,61 @@ option {
     height: 20px; 
 }
 
-
 .flexhelper {
     display: flex;
     margin: 0;
 }
+
+.addTaskPrioButton {
+    width: 136px;
+    height: 56px;
+    border-radius: 10px;
+    gap: 8px;
+    background-color: var(--white);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px) center;
+    background-size: 24px 24px;
+    padding: 12px;
+    padding-right: 40px;
+    border: 0;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.addTaskPrioButton:hover {
+    box-shadow: 3px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.addTaskPrioButton {
+    width: 136px;
+    height: 56px;
+    border-radius: 10px;
+    gap: 8px;
+    background-color: var(--white);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px) center;
+    background-size: 24px 24px;
+    padding: 12px;
+    padding-right: 40px;
+    border: 0;
+    cursor: pointer;
+}
+
+.addTaskPrioButton.active-urgent {background-color: #FF3D00; color: var(--white);}
+.addTaskPrioButton.active-medium {background-color: #FFA800; color: var(--white);}
+.addTaskPrioButton.active-low {
+    background-color: #7AE229; 
+    color: var(--white);
+
+}
+
+
+
+.addTaskPrioButton.active-urgent,
+.addTaskPrioButton.active-medium,
+.addTaskPrioButton.active-low {
+    
+}
+.addTaskPrioButton.active svg path {
+    fill: white; /* Farbe im aktiven Zustand */
+  }
