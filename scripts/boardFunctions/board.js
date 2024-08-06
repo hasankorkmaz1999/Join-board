@@ -45,32 +45,46 @@ function renderDiv(task) {
  `
 }
 
-// Funktion zum öffnen des Add Task Overlays
 
+
+// Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
 function openAddTaskOverlay() {
+    // Zeige das Overlay an
     let overlay = document.getElementById('overlayforaddtask');
     overlay.classList.remove('d-none');
-    overlay.classList.add('slide-in-right');
-    
-    // Container, in den der addTaskContainer eingefügt werden soll
-    let popupContent = document.querySelector('.addtaskpopup');
 
-    // Der Inhalt, der eingefügt werden soll
-    let addTaskContent = document.getElementById('addTaskContainer');
-    
-    if (addTaskContent) {
-        popupContent.innerHTML = ''; // Vorherigen Inhalt entfernen, falls vorhanden
-        popupContent.appendChild(addTaskContent.cloneNode(true)); // Inhalt einfügen
-    }
+    // Container für den dynamisch geladenen Inhalt
+    let popupContent = document.getElementsByClassName('addtaskpopup')[0];
+
+    // AJAX Request, um den Inhalt aus addtask.html zu laden
+    fetch('add_task.html')
+        .then(response => response.text())
+        .then(html => {
+            // Erstelle ein temporäres DOM-Element, um den HTML-Text zu parsen
+            let tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+
+            // Suche nach dem addTaskContainer und füge ihn ein
+            let addTaskContent = tempDiv.getElementsByTagName('div');
+            for (let i = 0; i < addTaskContent.length; i++) {
+                if (addTaskContent[i].id === 'addTaskContainer') {
+                    popupContent.innerHTML = ''; // Vorherigen Inhalt entfernen
+                    popupContent.appendChild(addTaskContent[i]); // Inhalt einfügen
+                    break;
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error loading add task content:', error);
+        });
 }
 
+// Funktion zum Schließen des Overlays
 function closeAddTaskOverlay() {
     let overlay = document.getElementById('overlayforaddtask');
     overlay.classList.add('d-none');
-    overlay.classList.remove('slide-in-right');
-    overlay.classList.add('slide-out-right');
-    
-    // Den Inhalt des Popups leeren oder anderweitig behandeln, falls nötig
-    let popupContent = document.querySelector('.addtaskpopup');
-    popupContent.innerHTML = ''; // Entfernt den dynamisch eingefügten Inhalt
+
+    // Entfernt den dynamisch eingefügten Inhalt
+    let popupContent = document.getElementsByClassName('addtaskpopup')[0];
+    popupContent.innerHTML = '';
 }

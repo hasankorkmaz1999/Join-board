@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="./style/headerstyle.css">
     <link rel="stylesheet" href="./style/responsive.css">
     <link rel="stylesheet" href="./style/board.css">
+    <link rel="stylesheet" href="./style/add_task.css">
 
     <script src="./scripts/w3include.js"></script>
 </head>
@@ -45,9 +46,9 @@
     </section>
     
     <section class="boardsections">
-    <div class="boardsection"><span class="boardsectiontext">To do</span><img src="icons\boardicons\plus button.svg" alt=""></div>
-    <div class="boardsection"><span class="boardsectiontextdone">In progress</span><img src="icons\boardicons\plus button.svg" alt=""></div>
-    <div class="boardsection"><span class="boardsectiontextdone">Await feedback</span><img src="icons\boardicons\plus button.svg" alt=""></div>
+    <div class="boardsection"><span class="boardsectiontext">To do</span><img onclick="openAddTaskOverlay()" src="icons\boardicons\plus button.svg" alt=""></div>
+    <div class="boardsection"><span class="boardsectiontextdone">In progress</span><img onclick="openAddTaskOverlay()" src="icons\boardicons\plus button.svg" alt=""></div>
+    <div class="boardsection"><span class="boardsectiontextdone">Await feedback</span><img onclick="openAddTaskOverlay()" src="icons\boardicons\plus button.svg" alt=""></div>
     <div class="boardsection"><span class="boardsectiontextdone">Done</span></div>
 
 
@@ -99,7 +100,7 @@
     <script src="./scripts/templateContactHTML/renderBigView.js"></script>
     <script src="./scripts/loadData.js"></script>
     <script src="./scripts/boardFunctions/board.js"></script>
-    <script src=""></script>
+   
     
     <script>
         includeHTML();
