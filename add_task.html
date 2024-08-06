@@ -6,8 +6,9 @@
     <title>Join - Add Task</title>
 
     <!-- fonts -->
-    <link rel="stylesheet" href="./fonts/figtree/styles.css">
-    <link rel="stylesheet" href="./fonts/inter/styles.css">
+    <link rel="stylesheet" href="fonts/figtree/styles.css">
+    <link rel="stylesheet" href="fonts/inter/styles.css">
+    <link rel="stylesheet" href="fonts/open-sans/styles.css">
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -17,15 +18,15 @@
     <link rel="shortcut icon" href="favicon/favicon.ico">
 
     <!-- styles-->
-    <link rel="stylesheet" href="./style/global.css">
-    <link rel="stylesheet" href="./style/headerstyle.css">
-    <link rel="stylesheet" href="./style/add_task.css">
-    <link rel="stylesheet" href="./style/addTaskResponsive.css">
+    <link rel="stylesheet" href="style/global.css">
+    <link rel="stylesheet" href="style/headerstyle.css">
+    <link rel="stylesheet" href="style/add_task.css">
+    <link rel="stylesheet" href="style/addTaskResponsive.css">
 
-    <script src="./scripts/w3include.js"></script>
+    <script src="scripts/w3include.js"></script>
 </head>
 <body onload="includeHTML()">
-    <header w3-include-html="./html/header.html"></header>
+    <div w3-include-html="html/header.html"></div>
 
     <div id="addTaskContainer" class="addTaskContainer">
         <div class="addTaskFlexHeader">
@@ -33,6 +34,7 @@
         </div>
 
         <div class="addTaskFlexContainer">
+            <div class="contentFlex">
             <div id="addTaskLeftForm" class="addTaskLeftForm">
                 <form method="post">
                     <div class="addTaskTitle">
@@ -59,6 +61,8 @@
                     </div>
                 </form>
             </div>
+
+            <div class="vertical-line"></div>
     
             <div id="addTaskRightForm" class="addTaskRightForm">
                 <form method="post">
@@ -95,13 +99,14 @@
                     </div>
                 </form>
             </div>
+        </div>
         
         <div id="addTaskButtons" class="addTaskRightButtons">
             <p><span class="asterisk">*</span>This field is required</p>
             <div id="addTaskFlexButtons" class="addTaskFlexButtons">
                 <button type="button" onclick="closeOverlay()" class="cancelbutton">Cancel X</button>
                 <button type="submit" class="createbutton">
-                    <p class="create-mobile">Create contact</p>
+                    <p class="create-mobile">Create Task</p>
                     <img class="check-icon-mobile" src="./icons/check.svg" alt="Icon check">
                 </button>
             </div>

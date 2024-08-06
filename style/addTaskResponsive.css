@@ -1,0 +1,21 @@
+
+@media (max-width: 768px) {
+    .addTaskLeftForm, .addTaskRightForm {
+        flex: 1 1 100%; 
+        border-right: none;
+        padding-left: 0;
+    }
+    .addTaskLeftForm {
+        width: 80%; 
+    }
+
+    .addTaskLeftForm {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .addTaskRightForm {
+        padding-top: 20px;
+    }
+}
