@@ -19,7 +19,14 @@
         width: 100%;
     }
 
-}    
+}
+
+@media (max-width: 810px) { 
+    button.cancelbutton {
+        display: none;
+    }
+
+}
 
 @media (max-width: 768px) {
     .addTaskLeftForm, .addTaskRightForm {
@@ -32,7 +39,6 @@
     }
 
     .addTaskLeftForm {
-        border-bottom: 1px solid #ccc;
         padding-bottom: 20px;
         margin-bottom: 20px;
     }
@@ -42,7 +48,7 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 680px) {
     .header-left {
         display: none;
     }
@@ -61,12 +67,16 @@
     .subheader-contact {
         display: none;
     }
+    .footer-mobile {
+        display: block;
+    }
+    .addTaskContainer {
+        margin-bottom: 70px;
+    }
 }    
 
 @media (max-width: 576px) {
-    button.cancelbutton {
-        display: none;
-    }
+
     .createbutton {
         width: 183px;
     }
@@ -81,7 +91,12 @@
     .addTaskH1 {
         font-size: 41px;
     }
+
+    input#addTaskTitle,
+    .addTasktitle input, textarea#description,
     input#subtasks, select#category, .addTaskAssignedTo select {
         font-size: 16px;
     }
+
+
 }    

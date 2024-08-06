@@ -32,30 +32,10 @@ function renderContacts(assignedTo) {
     `;
 }
 
-function setupPriorityButtons() {
-    let buttons = document.querySelectorAll('.prioButton');
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            buttons.forEach(btn => btn.classList.remove('selected'));
-            button.classList.add('selected');
-            document.getElementById('priority').value = button.id;
-        });
-    });
-}
-
-/* let response = await fetch(url, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(newContact)
-});
-await response.json(); */
-
 async function addTask() {
     let task = document.getElementById("addTaskTitle").value;
     let date = document.getElementById("prioDate").value;
-    let priority = document.querySelector('.prioButton.selected') ? document.querySelector('.prioButton.selected').id : null;
+    let priority = document.getElementById("priority").value;
     let category = document.getElementById("category").value;
     let assignedTo = document.getElementById("assignedto").value;
     let description = document.getElementById("description").value;
@@ -77,6 +57,7 @@ async function addTask() {
         progress: "todo",
         duedate: date,
     };
+
     try {
         let response = await fetch(addAPI, {
             method: "POST",
@@ -84,53 +65,9 @@ async function addTask() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
-        })
+        });
         await response.json();
     } catch (error) {
-        console.log(error);
-        
+        console.error("OH HIER IST EIN FEHLER PASSIERT :(", error);
     }
-    
 }
-
-/* async function addTask() {
-    let task = document.getElementById("addTaskTitle").value;
-    let date = document.getElementById("prioDate").value;
-    let priority = document.querySelector('.prioButton.selected') ? document.querySelector('.prioButton.selected').id : null;
-    let category = document.getElementById("category").value;
-    let assignedTo = document.getElementById("assignedto").value;
-    let description = document.getElementById("description").value;
-    let subtasks = document.getElementById("subtasks").value;
-
-    if (!task || !date || !priority || !category || !assignedTo) {
-        console.error("Error: One or more required fields are null.");
-        return;
-    }
-
-    let data = {
-        task: task,
-        date: date,
-        priority: priority,
-        category: category,
-        assignedto: { name: assignedTo },
-        description: description,
-        subtasks: [{ itsdone: false, title: subtasks }],
-        progress: "todo",
-        duedate: date,
-    };
-    try {
-        let response = await fetch(addAPI, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        await response.json();
-    } catch (error) {
-        console.log(error);
-        
-    }
-    
-}
- */
