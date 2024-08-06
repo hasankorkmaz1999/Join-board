@@ -11,15 +11,12 @@ async function renderData(URL) {
     let data = await loadData(URL);
     console.log(data);
     let content = document.getElementById('renderData');
-    content.innerHTML = ``;
     if (data) {
         renderTaskData(data, content);
     }
-    disableSpinner();
 }
 
 function disableSpinner() {
-    
     let element = document.getElementById('spinner');
     if (element === null) {
         console.error("Spinner not found!");
@@ -37,6 +34,7 @@ function renderTaskData(data, content) {
         let taskDiv = document.getElementById('renderData');
         taskDiv.innerHTML += renderDiv(task);
     }
+    disableSpinner();
 }
 
 function renderDiv(task) {

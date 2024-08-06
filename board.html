@@ -28,14 +28,20 @@
 <body onload="includeHTML()">
     <header w3-include-html="./html/header.html"></header>
 
-    <div id="main-content" class="main-content">
-        <div class="contact-flex-header">
+    <section class="main-content">
+        <div>
             <h1>Board</h1>
         </div>
-        <p>Struktur mit eigene CSS-Datei ist aufgebaut und vorbereitet für die Projektpahse  bla bla 2...</p>
-    </div>
-
+        <div>
+            <form onsubmit="return false;">
+                <input type="text" name="task" placeholder="Find Task">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
     <div class="main-content" id="renderData">
+        <span>Dummy Render</span>
+                <!-- Hier werden die daten gerendetr der Tasks -->
         <div id="spinner">
             <svg 
             class="spinner"
@@ -61,8 +67,6 @@
         </path>
         </svg>
     </div>
-        <span>Dummy Render</span>
-        <!-- Hier werden die daten gerendetr der Tasks -->
     </div>
 
     <script src="./scripts/board.js"></script>
