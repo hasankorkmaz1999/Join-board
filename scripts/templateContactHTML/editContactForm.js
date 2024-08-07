@@ -7,6 +7,8 @@
  * @returns {string} The HTML form for editing the contact.
  */
 function editContactForm(name, phone, email, id) {
+    let delID = document.getElementById('fullID');
+    let fullDelID = delID.innerText;
     return /*html*/`
         <div class="contactForm">
             <div class="contactFormLeft contactFormLeftFluid">
@@ -44,7 +46,7 @@ function editContactForm(name, phone, email, id) {
 
 
                     <div class="contactbuttons">
-                        <button type="button" onclick="closeEditOverlay()" class="cancelbutton">Delete</button>
+                        <button type="button" onclick="closeEditOverlay(); deletContacts('${fullDelID}')" class="cancelbutton">Delete</button>
                         <button type="submit" class="saveButton">Save<img class="check-icon-mobile" src="./icons/check.svg" alt="Icon check"></button>
                     </div>
                 </div>
