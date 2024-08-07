@@ -409,12 +409,17 @@ span.mobile {
 
 
 
+<<<<<<< HEAD
 
 
 
 
 
 input[id^="-"].assignedCheckbox,
+=======
+input[id^="-"].assignedCheckbox,
+/* Verstecke die eigentliche Checkbox */
+>>>>>>> aadc1f8edb6ace0801361eedfb53b8f52fb1f905
 input.assignedCheckbox[type="checkbox"] {
     display: none !important;
 }
