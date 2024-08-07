@@ -25,8 +25,7 @@
         width: 250px;
     }
     .saveButton {
-        margin-left: 80px;
-        width: 101Px;
+        width: 111Px;
     }
     .cancelbutton {
         width: 82px;
@@ -138,7 +137,6 @@
         font-size: 47px;
         font-weight: 700;
         line-height: 57.4px;
-        margin-right: 40px;
         color: var(--white);
         margin-bottom: -12px;
         color: var(--white);
@@ -214,5 +212,12 @@
        position: relative;
        left: 1px;
        margin-bottom: 30px;
+    }
+    h1.mobile, .subheader-mobile {
+        margin-left: 0;
+        color: var(--white);
+    }
+    .contactFormRight {
+        width: 90%;
     }
 }
