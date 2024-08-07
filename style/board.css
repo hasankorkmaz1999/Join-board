@@ -33,6 +33,51 @@ h1, h2, p {
     justify-content: center;
 }
 
+.progress-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    border: solid 1px var(--deep-grey);
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+/* #todo {
+  display: flex;
+  flex-direction: column;
+  border: 1px  solid var(--deep-grey);
+  padding: 10px;
+}
+
+#inprogress {
+  display: flex;
+  flex-direction: column;
+  border: 1px  solid var(--deep-grey);
+  padding: 10px;
+}
+
+#awaitfeedback {
+  display: flex;
+  flex-direction: column;
+  border: 1px  solid var(--deep-grey);
+  padding: 10px;
+}
+
+#done {
+  display: flex;
+  flex-direction: column;
+  border: 1px  solid var(--deep-grey);
+  padding: 10px;
+} */
+
+
 .toast-text {
     text-align: center;
     margin-bottom: 40px;
