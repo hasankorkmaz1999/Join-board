@@ -90,7 +90,7 @@ function openContact(id, name, email, phone) {
     renderContactDetails(id, name, email, phone);
     contactResponsive(id, name, email, phone);
     mobileButtonChange(true);
-    if (window.innerWidth <= 850) {
+    if (window.innerWidth <= 1000) {
     document.getElementById('main-content').style.display = 'block';
     document.getElementById('sidebar').style.display = 'none';
     document.getElementById('addNewContactMobile').style.display = 'none';

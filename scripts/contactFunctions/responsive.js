@@ -25,7 +25,7 @@ function mobileButtonChange(viewquery) {
  * @param {string} phone - The phone number of the contact.
  */
 function contactResponsive(id, name, email, phone) {
-    if (window.innerWidth <= 850) {
+    if (window.innerWidth <= 1000) {
         document.getElementById('sidebar').style.display = 'd-none';
         // document.getElementById('main-content').style.display = 'block';
 

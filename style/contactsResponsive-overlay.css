@@ -20,13 +20,9 @@
         flex-direction: column;
         margin-left: 0px;
         align-items: center;
-        
     }
     .saveButton {
         width: 111Px;
-    }
-    .cancelbutton {
-        width: 82px;
     }
 }
 
@@ -34,7 +30,7 @@
 
 }
 
-@media (max-width: 790px) {
+@media (max-width: 880px) {
     .cancelbutton {
         display: none;
     }
@@ -199,7 +195,6 @@
        margin-right: 270px;
     }
 }
-
 
 @media (max-width: 370px) {
     .contactFormLeft {

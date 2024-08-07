@@ -659,6 +659,24 @@ form.addContact {
     color:  var(--babyblue); 
 }
 
+.cancelbuttonEdit {
+    cursor: pointer;
+    font-size: 20px;
+    width: 120px;
+    height: 52px;
+    background-color: var(--white);
+    border: 1px solid var(--deep-grey);
+    border-radius: 10px;
+    margin-right: 20px;
+    color: black;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.cancelbuttonEdit:hover {
+    border-color:  var(--babyblue);
+    color:  var(--babyblue); 
+}
+
 .createbutton {
     cursor: pointer;
     font-weight: 700;

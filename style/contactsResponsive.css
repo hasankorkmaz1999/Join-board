@@ -1,6 +1,6 @@
 /* Contacts
 ****************************************************/
-#cancelButton {
+#cancelButtonEdit {
     display: none;
 }
 
@@ -120,7 +120,7 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .edit-big, .delete-big {
         font-size: 14px;
     }
@@ -162,13 +162,13 @@
 }
    
 
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
     #sidebar {
         width: 100%;
     } 
 }
 
-@media (min-width: 850px) {
+@media (min-width: 1000px) {
 
     #main-content,
     .contact-container {
