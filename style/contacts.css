@@ -856,6 +856,7 @@ img.logo-overlay {
     margin-top: 5px;
     white-space: normal; /* Erlaubt Zeilenumbruch */
     word-wrap: break-word;
+    width: 300px;
 }
 
 
@@ -866,6 +867,7 @@ img.logo-overlay {
     margin-top: 5px;
     white-space: normal; /* Erlaubt Zeilenumbruch */
     word-wrap: break-word;
+    width: 300px;
 }
 
 .error-messagephone {
@@ -875,6 +877,7 @@ img.logo-overlay {
     margin-top: 5px;
     white-space: normal; /* Erlaubt Zeilenumbruch */
     word-wrap: break-word;
+    width: 300px;
 }
 
 
