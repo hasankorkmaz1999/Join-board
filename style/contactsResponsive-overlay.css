@@ -1,8 +1,7 @@
+
 .d-none {
     display: none !important;
 }
-
-
 
 @media (max-width: 1220px) {
 
@@ -12,7 +11,7 @@
     .inputfiledsname,
     .inputfiledsemail,
     .inputfiledsphone  {
-        width: 95%;
+        width:70%;
     }
     .contactFormRight img {
         margin-left: 10px;
@@ -36,50 +35,39 @@
 
 
 @media (max-width: 790px) {
-   
     .error-messagename {
         color: red;
-    font-size: 0.9em;
-    display: none; /* Standardmäßig ausgeblendet */
-    margin-top: 5px;
-    white-space: normal; /* Erlaubt Zeilenumbruch */
-    word-wrap: break-word;
+        font-size: 0.9em;
+        display: none; 
+        margin-top: 5px;
+        white-space: normal;
+        word-wrap: break-word;
     }
-    
-    
     .error-messageemail {
         color: red;
-    font-size: 0.9em;
-    display: none; /* Standardmäßig ausgeblendet */
-    margin-top: 5px;
-    white-space: normal; /* Erlaubt Zeilenumbruch */
-    word-wrap: break-word;
+        font-size: 0.9em;
+        display: none; 
+        margin-top: 5px;
+        white-space: normal; 
+        word-wrap: break-word;
     }
-    
     .error-messagephone {
         color: red;
         font-size: 0.9em;
-        display: none; /* Standardmäßig ausgeblendet */
+        display: none; 
         margin-top: 5px;
-        white-space: normal; /* Erlaubt Zeilenumbruch */
+        white-space: normal; 
         word-wrap: break-word;
     }
-
-
-
-
-
     .overlayformobile {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.0); /* Halbdurchsichtiger Hintergrund */
-        z-index: 1000; /* Hinter dem Popup */
+        background: rgba(0, 0, 0, 0.0); 
+        z-index: 1000; 
     }
-
-
     .contactForm {
         position: fixed;
         top: 50%;
@@ -106,7 +94,6 @@
         justify-content: center;
         align-items: center;
         width: 100%;
-        
     }
     .contactFormRight {
         padding-right: 0;
@@ -117,19 +104,11 @@
         margin-left: 0;
         margin-top: 30px;
     }
-    .inputfiledsname {
-      
-    }
     p.create-mobile {
         color: var(--white);
     }
     .inputfiledsemail {
         background-image: url(../icons/contacticons/mail.png);
-        
-       
-    }
-    .inputfiledsphone {
-       
     }
     .contactFormRight img {
         width: 120px;
@@ -153,12 +132,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        
     }
-    
-    
-
-
     h1.mobile {
         font-family: 'Inter';
         font-size: 47px;
@@ -176,7 +150,6 @@
         width: 90px;
         position: relative;
         right: 110px;
-        
     }
     .subheader-mobile {
         font-family: 'Inter';
@@ -219,19 +192,13 @@
     img.logo-overlay {
         display: none;
     }
-
     .mobile-edit-underline {
        margin-right: 270px;
     }
-
-    
-
 }
 
 
 @media (max-width: 370px) {
-   
-
     .contactFormLeft {
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
@@ -242,15 +209,10 @@
         justify-content: center;
         align-items: flex-start;
         width: 100%;
-        
     }
-
     .mobile-underline {
        position: relative;
        left: 1px;
        margin-bottom: 30px;
     }
-
 }
-
-
