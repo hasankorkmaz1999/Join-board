@@ -1,36 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join - Add Task</title>
-
-    <!-- fonts -->
-    <link rel="stylesheet" href="fonts/figtree/styles.css">
-    <link rel="stylesheet" href="fonts/inter/styles.css">
-    <link rel="stylesheet" href="fonts/open-sans/styles.css">
-
-    <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
-    <link rel="shortcut icon" href="favicon/favicon.ico">
-
-    <!-- styles-->
-    <link rel="stylesheet" href="style/global.css">
-    <link rel="stylesheet" href="style/headerstyle.css">
-    <link rel="stylesheet" href="style/add_task.css">
-    <link rel="stylesheet" href="style/addTaskResponsive.css">
-
-    <script src="scripts/w3include.js"></script>
-</head>
-<body onload="includeHTML()">
-    <div w3-include-html="html/header.html"></div>
-
-
-    
-    <div id="addTaskContainer" class="addTaskContainer">
+function addTaskForm() {
+    return  /*html*/`
+     <div id="addTaskContainer" class="addTaskContainer">
         <div class="addTaskFlexHeader">
             <h1 class="addTaskH1">Add Task</h1>
         </div>
@@ -56,14 +26,11 @@
                     </div>
     
                     <div class="addTaskAssignedTo">
-                        <label for="assignedto">Assigned to</label>
-                        <!-- d-non muss ausgetaust werden mit d-flex -->
-                        <div>
-                            <button type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton">Select</button>
-                        </div>
-                        <div id="assignedto" class="assignedto-checkboxes d-non">
-                            <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
-                        </div>
+                        <label for="category">Assigned to</label>
+                        <select id="assignedto" name="category">
+                            <option value="null">Select contacts to assign</option>
+                            <!-- hier stehen alle kontakte -->
+                        </select>
                     </div>
                 </form>
             </div>
@@ -149,66 +116,7 @@
         </div>
     </div>
 
-    <div class="footer-mobile ">
-        <div class="menu-mobile">
-            <div class="mobile-menu-botton">
-                <a href="../summary.html" class="footer-link">
-                    <img class="mobile-menu" src="./icons/mobile_summary.svg" alt="Icon Summary">
-                    <span class="mobile">Summary</span>
-                </a>
-            </div>
-            <div class="mobile-menu-botton">
-                <a href="../board.html" class="footer-link">
-                    <img class="mobile-menu" src="./icons/mobile_board.svg" alt="Icon Board">
-                    <span class="mobile">Board</span>
-                </a>
-            </div>
-            <div class="mobile-menu-botton">
-                <a href="../add_task.html" class="footer-link">
-                    <img class="mobile-menu" src="./icons/mobile_add_task.svg" alt="Icon Add Tasks">
-                    <span class="mobile">Add Tasks</span>
-                </a>
-            </div>
-            <div class="mobile-menu-botton">
-                <a href="../contacts.html" class="footer-link">
-                    <img class="mobile-menu" src="./icons/mobile_contacts.svg" alt="Icon Contacts">
-                    <span class="mobile">Contacts</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div id="overlayAddTask" class="overlay d-none"></div>
-
-
-    <script src="./scripts/addTaskFunction/addTask.js"></script>
-    <script src="./scripts/checkValue.js"></script>
-    <script src="./scripts/toastMsg.js"></script>
-    <script src="./scripts/reloadPage.js"></script>
-    <script src="./scripts/templateContactHTML/editContactForm.js"></script>
-    <script src="./scripts/templateContactHTML/renderBigView.js"></script>
-    <script src="./scripts/loadData.js"></script>
-
-    <script>
-        includeHTML();
-    </script>
-
-    <script>
-        /* Auswahlbutton in addTask: Low, Medium, Urgent
-        *******************************************************/
-        function setActive(button, priority) {
-
-        let buttons = document.querySelectorAll('.addTaskPrioButton');
-        buttons.forEach(btn => {
-            btn.classList.remove('active-urgent', 'active-medium', 'active-low');
-        });
-
-        button.classList.add(`active-${priority}`);
-
-        let priorityInput = document.getElementById('priority');
-        priorityInput.value = priority;
-        }
-    </script>
-
-</body>
-</html>
+    
+    
+    `
+}

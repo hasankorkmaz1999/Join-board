@@ -565,15 +565,17 @@ form.addContact {
 
 
 
+
+
+
 .inputfiledsname {
     background-image: url('../icons/contacticons/person.png');
-    
     padding: 13px;
     gap: 10px;
     font-size: 20px;
     width: 322px;
     height: 20px;
-    margin-bottom: 20px;
+   margin-bottom: 40px;
     border-radius: 10px;
     border-color: rgba(128, 125, 125, 0.1);
     background-repeat: no-repeat;
@@ -596,7 +598,7 @@ form.addContact {
     font-size: 20px;
     width: 322px;
     height: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     border-radius: 10px;
     border-color: rgba(128, 125, 125, 0.1);
     background-repeat: no-repeat;
@@ -614,13 +616,13 @@ form.addContact {
 
 .inputfiledsphone {
     background-image: url('../icons/contacticons/call.png');
-
+    margin-bottom: 50px;
     padding: 13px;
     gap: 10px;
     font-size: 20px;
     width: 322px;
     height: 20px;
-    margin-bottom: 30px;
+   
     border-radius: 10px;
     border-color: rgba(128, 125, 125, 0.1);
     background-repeat: no-repeat;
@@ -828,12 +830,39 @@ img.logo-overlay {
     padding-top: 20px;
 }
 
-.error-message {
+.error-messagename {
+    position: absolute;
+    width: 350px;
+    top: 180px;
+    color: red;
+    font-size: 0.9em;
+    display: none; /* Standardmäßig ausgeblendet */
+    margin-bottom: 10px;
+    white-space: wrap; 
+}
+
+
+.error-messageemail {
+    position: absolute;
+    top: 275px;
     color: red;
     font-size: 0.9em;
     display: none; /* Standardmäßig ausgeblendet */
     margin-bottom: 10px;
 }
+
+.error-messagephone {
+    position: absolute;
+    top: 365px;
+    color: red;
+    font-size: 0.9em;
+    display: none; /* Standardmäßig ausgeblendet */
+    margin-bottom: 10px;
+}
+
+
+
+
 .slide-in-bottom {
 	-webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

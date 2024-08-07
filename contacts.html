@@ -102,13 +102,15 @@
                 <div class="contactinputfields">
                     <img onclick="closeOverlay()" class="closeX" src="./icons/close.svg" alt="Icon Close">
                     <form class="addContact" onsubmit="createNewContact(); return false;">
-                        <span id="name-error" class="error-message"></span>
-                        <input id="inputfiledsname" class="inputfiledsname" placeholder="Name" type="text">
-                        <span id="email-error" class="error-message"></span>
-                        <input id="inputfiledsemail" class="inputfiledsemail" placeholder="Email" type="text">
-                        <span id="phone-error" class="error-message"></span>
-                        <input id="inputfiledsphone" class="inputfiledsphone" placeholder="Phone" type="text">
                         
+                        <input id="inputfiledsname" class="inputfiledsname" placeholder="Name" type="text">
+                        <span id="name-error" class="error-messagename"></span>
+                       
+                        <input id="inputfiledsemail" class="inputfiledsemail" placeholder="Email" type="text">
+                        <span id="email-error" class="error-messageemail"></span>
+                       
+                        <input id="inputfiledsphone" class="inputfiledsphone" placeholder="Phone" type="text">
+                        <span id="phone-error" class="error-messagephone"></span>
                         <div class="contactbuttons">
                             <button type="button" onclick="closeOverlay()" class="cancelbutton">Cancel X</button>
                             <button type="submit" class="createbutton">
