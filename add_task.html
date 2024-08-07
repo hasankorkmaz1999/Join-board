@@ -56,11 +56,14 @@
                     </div>
     
                     <div class="addTaskAssignedTo">
-                        <label for="category">Assigned to</label>
-                        <select id="assignedto" name="category">
-                            <option value="null">Select contacts to assign</option>
-                            <!-- hier stehen alle kontakte -->
-                        </select>
+                        <label for="assignedto">Assigned to</label>
+                        <!-- d-non muss ausgetaust werden mit d-flex -->
+                        <div>
+                            <button type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton">Select</button>
+                        </div>
+                        <div id="assignedto" class="assignedto-checkboxes d-non">
+                            <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
+                        </div>
                     </div>
                 </form>
             </div>

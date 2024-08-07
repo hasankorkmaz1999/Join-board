@@ -21,13 +21,16 @@ async function getAssignedTo(data, content) {
     console.log(key);
     for (let i = 0; i < key.length; i++) {
         let assignedTo = data[key[i]];
-        content.innerHTML += renderContacts(assignedTo);
+        content.innerHTML += renderContacts(assignedTo, key[i]);
     }
 }
 
-function renderContacts(assignedTo) {
-    return /*html*/`
-        <option value="${assignedTo.name}">${assignedTo.name}</option>
+function renderContacts(assignedTo, key) {
+    return `
+        <div class="assignedto-item">
+            <label for="${key}">${assignedTo.name}</label>
+            <input type="checkbox" id="${key}" name="assignedto" value="${assignedTo.name}">
+        </div>
     `;
 }
 
@@ -36,11 +39,13 @@ async function addTask() {
     let date = document.getElementById("prioDate").value;
     let priority = document.getElementById("priority").value;
     let category = document.getElementById("category").value;
-    let assignedTo = document.getElementById("assignedto").value;
     let description = document.getElementById("description").value;
     let subtasks = document.getElementById("subtasks").value;
 
-    if (!task || !date || !priority || !category || !assignedTo) {
+    let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+    let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
+
+    if (!task || !date || !priority || !category || assignedTo.length === 0) {
         console.error("Error: One or more required fields are null.");
         return;
     }
@@ -50,7 +55,7 @@ async function addTask() {
         date: date,
         priority: priority,
         category: category,
-        assignedto: { name: assignedTo },
+        assignedto: assignedTo.map(name => ({ name })),
         description: description,
         subtasks: [{ itsdone: false, title: subtasks }],
         progress: "todo",
@@ -68,5 +73,16 @@ async function addTask() {
         await response.json();
     } catch (error) {
         console.error("OH HIER IST EIN FEHLER PASSIERT :(", error);
+    }
+}
+
+function showAssignedTo() {
+    let assignedto = document.getElementById('assignedto');
+    if (assignedto.classList.contains('d-flex')) {
+        assignedto.classList.remove('d-flex');
+        assignedto.classList.add('d-non');
+    } else {
+        assignedto.classList.remove('d-non');
+        assignedto.classList.add('d-flex');
     }
 }

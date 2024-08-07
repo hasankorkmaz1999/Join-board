@@ -365,3 +365,20 @@ span.mobile {
     display: flex;
     align-items: center;
 }
+
+.assignedto-checkboxes {
+    flex-direction: column;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.assignedto-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.assignedto-item label {
+    margin-left: 10px;
+}

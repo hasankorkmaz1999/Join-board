@@ -76,6 +76,10 @@ button.secondary:disabled {
     background-color: var(--deep-grey);
 }
 
+.d-flex {
+    display: flex;
+}
+
 button.icon {
     display: flex;
     align-items: center;
@@ -191,6 +195,10 @@ input.flex-input {
     position: relative;
     display: flex;
     justify-content: center;
+}
+
+.d-non {
+    display: none;
 }
 
 .toast-text {
