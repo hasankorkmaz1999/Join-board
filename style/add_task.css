@@ -75,7 +75,7 @@ input#addTaskTitle {
 
 .prioFlex {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .addTaskInput {
@@ -312,6 +312,7 @@ option {
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
+    padding-top: 6px;
 }
 
 img.mobile-menu {
