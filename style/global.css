@@ -29,7 +29,6 @@
 }
 
 body {
-    margin: 0;
     background-color: var(--body-background-grey);
     font-family: 'Inter';
     max-width: 1920px;

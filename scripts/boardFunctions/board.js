@@ -31,8 +31,23 @@ function renderTaskData(data, content) {
     for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
         let task = data[key];
-        let taskDiv = document.getElementById('renderData');
-        taskDiv.innerHTML += renderDiv(task);
+        let progress = task.progress;
+        let todoDIV = document.getElementById('todo');
+        let inprogressDIV = document.getElementById('inprogress');
+        let doneDIV = document.getElementById('done');
+        let awaitingfeedbackDIV = document.getElementById('awaitingfeedback');
+        if (progress === "todo") {
+            todoDIV.innerHTML += renderDivTodo(task);
+        }
+        if (progress === "inprogress") {
+            inprogressDIV.innerHTML += renderDivInprogress(task);
+        }
+        if (progress === "done") {
+            doneDIV.innerHTML += renderDivDone(task);
+        }
+        if (progress === "awaitingfeedback") {
+            awaitingfeedbackDIV.innerHTML += renderDivawaitingfeedback(task);
+        }
     }
     disableSpinner();
 }
@@ -72,9 +87,3 @@ function closeAddTaskOverlay() {
     let popupContent = document.getElementsByClassName('addtaskpopup')[0];
     popupContent.innerHTML = '';
 }
-
-
-   
-
-
-
