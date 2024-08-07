@@ -414,7 +414,7 @@ span.mobile {
 
 
 
-input[id^="-"].assignedCheckbox,
+/* input[id^="-"].assignedCheckbox,
 input.assignedCheckbox[type="checkbox"] {
     display: none !important;
 }
@@ -444,4 +444,4 @@ input.assignedCheckbox[type="checkbox"]:checked + label::after {
     color: #000 !important;
     text-align: center !important;
     line-height: 20px !important;
-}
+} */

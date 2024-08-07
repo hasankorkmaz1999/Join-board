@@ -1,4 +1,3 @@
-// Das ist ein Test für mich
 const addAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
 const assignedtoAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/contacts";
 
@@ -6,30 +5,49 @@ window.onload = init;
 
 function init() {
     renderData(assignedtoAPI);
-    setupPriorityButtons();
 }
 
 async function renderData(URL) {
-    let data = await loadData(URL);
-    console.log('Fetched data for assigned to:', data);
-    let content = document.getElementById('assignedto');
-    if (data) {
-        getAssignedTo(data, content);
+    try {
+        let data = await loadData(URL);
+        console.log(data);
+        let content = document.getElementById('assignedto');
+        if (data) {
+            getAssignedTo(data, content);
+        }
+    } catch (error) {
+        console.error("Fehler beim Laden der Daten:", error);
     }
 }
 
-async function getAssignedTo(data, content) {
-    let key = Object.keys(data);
-    console.log('Keys:', key);
-    for (let i = 0; i < key.length; i++) {
-        let assignedTo = data[key[i]];
-        content.innerHTML += renderContacts(assignedTo);
+async function loadData(URL) {
+    try {
+        let response = await fetch(URL + ".json");
+        if (!response.ok) {
+            throw new Error('Netzwerkantwort war nicht in Ordnung');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Fehler beim Abrufen der Daten:", error);
+        throw error;
     }
 }
 
-function renderContacts(assignedTo) {
-    return /*html*/`
-        <option value="${assignedTo.name}">${assignedTo.name}</option>
+function getAssignedTo(data, content) {
+    let keys = Object.keys(data);
+    console.log(keys);
+    for (let i = 0; i < keys.length; i++) {
+        let assignedTo = data[keys[i]];
+        content.innerHTML += renderContacts(assignedTo, keys[i]);
+    }
+}
+
+function renderContacts(assignedTo, key) {
+    return `
+        <div class="assignedto-item">
+            <label for="${key}">${assignedTo.name}</label>
+            <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}">
+        </div>
     `;
 }
 
@@ -38,13 +56,14 @@ async function addTask() {
     let date = document.getElementById("prioDate").value;
     let priority = document.getElementById("priority").value;
     let category = document.getElementById("category").value;
-    let assignedTo = document.getElementById("assignedto").value;
     let description = document.getElementById("description").value;
     let subtasks = document.getElementById("subtasks").value;
 
-    if (!task || !date || !priority || !category || !assignedTo) {
+    let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+    let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
+
+    if (!task || !date || !priority || !category || assignedTo.length === 0) {
         console.error("Error: One or more required fields are null.");
-        alert("Please fill in all required fields.");
         return;
     }
 
@@ -53,7 +72,7 @@ async function addTask() {
         date: date,
         priority: priority,
         category: category,
-        assignedto: { name: assignedTo },
+        assignedto: assignedTo.map(name => ({ name })),
         description: description,
         subtasks: [{ itsdone: false, title: subtasks }],
         progress: "todo",
@@ -68,52 +87,24 @@ async function addTask() {
             },
             body: JSON.stringify(data)
         });
-
-        if (response.ok) {
-            let responseData = await response.json();
-            console.log('Task added successfully:', responseData);
-            alert("Task added successfully!");
-        } else {
-            throw new Error('Failed to add task.');
-        }
+        await response.json();
     } catch (error) {
-        console.error("Error while adding task:", error);
-        alert("An error occurred while adding the task. Please try again.");
+        console.error("Fehler beim Hinzufügen der Aufgabe:", error);
     }
 }
 
-async function loadData(url) {
-    try {
-        let response = await fetch(url + ".json");
-        if (response.ok) {
-            let data = await response.json();
-            return data;
-        } else {
-            throw new Error('Failed to load data.');
-        }
-    } catch (error) {
-        console.error("Error loading data:", error);
-        alert("An error occurred while loading data. Please try again.");
+function showAssignedTo() {
+    let assignedto = document.getElementById('assignedto');
+    let arrowrInButton = document.getElementById('AssignedToButton');
+    if (assignedto.classList.contains('d-flex')) {
+        assignedto.classList.remove('d-flex');
+        assignedto.classList.add('d-non');
+        arrowrInButton.classList.add('down');
+        arrowrInButton.classList.remove('up');
+    } else {
+        assignedto.classList.remove('d-non');
+        assignedto.classList.add('d-flex');
+        arrowrInButton.classList.add('up');
+        arrowrInButton.classList.remove('down');
     }
-}
-
-function setupPriorityButtons() {
-    let buttons = document.querySelectorAll('.addTaskPrioButton');
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            setActive(button, button.textContent.toLowerCase());
-        });
-    });
-}
-
-function setActive(button, priority) {
-    let buttons = document.querySelectorAll('.addTaskPrioButton');
-    buttons.forEach(btn => {
-        btn.classList.remove('active-urgent', 'active-medium', 'active-low');
-    });
-
-    button.classList.add(`active-${priority}`);
-
-    let priorityInput = document.getElementById('priority');
-    priorityInput.value = priority;
 }

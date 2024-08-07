@@ -1,0 +1,62 @@
+/* CSS für Assigned to Drop-Down Menü */
+.assignedto-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.assignedto-item label {
+    margin-left: 10px;
+}
+
+.assignedto-item:hover {
+    background-color: lightgray;
+}
+
+.assignedCheckbox {
+    accent-color: #4CAF50; /* Beispiel grün für die Checkboxen, müssen wir noch anpassen! */
+    width: 16px;
+    height: 16px;
+}
+
+.assignedCheckbox:checked + label {
+    background-color: black;
+    color: white;
+}
+
+.assignedto-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* input[id^="-"].assignedCheckbox,
+input.assignedCheckbox[type="checkbox"] {
+    display: none !important;
+} */
+
+/* .assignedto-item label {
+    display: inline-block !important;
+    position: relative !important;
+    padding-right: 30px !important;
+    cursor: pointer !important;
+} */
+
+/* .assignedto-item label::after {
+    content: '' !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid #000 !important;
+    background-color: #fff !important;
+} */
+
+/* input.assignedCheckbox[type="checkbox"]:checked + label::after {
+    content: '✔' !important;
+    font-size: 16px !important;
+    color: #000 !important;
+    text-align: center !important;
+    line-height: 20px !important;
+} */
