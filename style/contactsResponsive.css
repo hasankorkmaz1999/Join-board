@@ -279,6 +279,9 @@
         font-size: 14px;
         line-height: 16.8px;
     }
+    span.mobile a {
+        text-decoration: none;
+    }
     .mobile-menu-botton:hover {
         background-color: var(--deepest-grey);
         color: var(--white) !important;
