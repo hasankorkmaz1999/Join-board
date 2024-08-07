@@ -29,7 +29,7 @@ function renderContacts(assignedTo, key) {
     return `
         <div class="assignedto-item">
             <label for="${key}">${assignedTo.name}</label>
-            <input type="checkbox" id="${key}" name="assignedto" value="${assignedTo.name}">
+            <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}">
         </div>
     `;
 }

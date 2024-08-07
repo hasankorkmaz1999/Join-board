@@ -104,10 +104,6 @@ span.addTaskerrorMessage {
     margin: 10px;
 }
 
-.addTaskRightForm {
-    /* padding-left: 20px; */
-}
-
 .addTaskRightButtons {
     display: flex;
     justify-content: space-between;
@@ -408,4 +404,43 @@ span.mobile {
 
 .down img{
     transform: rotate(0deg);
+}
+
+
+
+
+
+/* Verstecke die eigentliche Checkbox */
+input.assignedCheckbox[type="checkbox"] {
+    display: none !important;
+}
+
+/* Stelle sicher, dass das Label als Block angezeigt wird */
+.assignedto-item label {
+    display: inline-block !important;
+    position: relative !important;
+    padding-right: 30px !important; /* Platz für das Pseudoelement */
+    cursor: pointer !important; /* Zeiger zeigt an, dass das Label klickbar ist */
+}
+
+/* Erstelle das Pseudoelement für die Checkbox */
+.assignedto-item label::after {
+    content: '' !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid #000 !important; /* Rand der Checkbox */
+    background-color: #fff !important; /* Hintergrund der Checkbox */
+}
+
+/* Ändere das Pseudoelement, wenn die Checkbox angeklickt ist */
+input.assignedCheckbox[type="checkbox"]:checked + label::after {
+    content: '✔' !important; /* Das Häkchen */
+    font-size: 16px !important;
+    color: #000 !important; /* Farbe des Häkchens */
+    text-align: center !important;
+    line-height: 20px !important; /* Zentriert das Häkchen innerhalb der Checkbox */
 }
