@@ -110,7 +110,7 @@
 
 @media (max-width: 940px) {
     .sidebar {
-        width: 280px;
+        min-width: 320px;
     }
     .contact-name {
         font-size: 16px;
@@ -136,7 +136,7 @@
         font-size: 20px;
     }
     .sidebar {
-        width: 280px;
+        min-width: 320px;
     }
     .sidebarlist a {
         padding: 0;
@@ -147,30 +147,35 @@
     .contact-email {
         font-size: 12px;
     }
+    .main-content {
+        padding: 40px 20px;
+    }
 }
+
+@media (max-width: 1000px) {
+
+    p.subheader-contact {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .back-button-big {
+        display: none;
+    }
+}    
 
 @media (max-width: 850px) {
     #sidebar {
         width: 100%;
-    }
-    p.subheader-contact {
-        font-size: 16px;
-    }
-    /* .button-flex {
-        display: none;
-    } */
+    } 
 }
 
 @media (min-width: 850px) {
-    #sidebar {
-        display: block;
-    }
+
     #main-content,
     .contact-container {
         display: block;
-    }
-    .back-button-big {
-        display: none;
     }
 }
 
@@ -178,6 +183,7 @@
     .subheader-contact {
         display: none;
     }
+
 }
 
 @media (max-width: 550px) {
