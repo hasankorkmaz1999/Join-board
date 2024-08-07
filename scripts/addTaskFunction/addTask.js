@@ -5,7 +5,6 @@ window.onload = init;
 
 function init() {
     renderData(assignedtoAPI);
-    setupPriorityButtons();
 }
 
 async function renderData(URL) {
