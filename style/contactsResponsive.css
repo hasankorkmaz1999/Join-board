@@ -1,5 +1,10 @@
 /* Contacts
 ****************************************************/
+#cancelButton {
+    display: none;
+}
+
+
 
 .back-button-big {
     background-image: url(../icons/arrow-left-line.svg);
@@ -143,13 +148,19 @@
     p.subheader-contact {
         font-size: 16px;
     }
+    h1.mobile, .subheader-mobile {
+        margin-left: 0;
+
+    }
 }
 
 @media (min-width: 1000px) {
     .back-button-big {
         display: none;
     }
-}    
+
+}
+   
 
 @media (max-width: 850px) {
     #sidebar {
@@ -176,8 +187,6 @@
     .main-content {
         display: none;
     }
-
-
     .contact-flex-header {
         margin-top: 80px;
     }
@@ -195,7 +204,7 @@
         display: none;
     }
     #sidebar {
-        width: 90%;
+        min-width: 240px;
         overflow-y: unset;
         margin-top: 50px;
         margin-bottom: 80px;
@@ -380,6 +389,10 @@
         font-size: 27px;
         height: 80px;
         width: 80px;
+    }
+
+    .inputfiledsname, .inputfiledsemail, .inputfiledsphone {
+        width: 90%;
     }
 }
 

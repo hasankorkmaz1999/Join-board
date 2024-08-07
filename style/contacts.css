@@ -517,9 +517,8 @@ p.create-mobile {
 form.addContact {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    height: 350px;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .contactinputfieldsedit {
