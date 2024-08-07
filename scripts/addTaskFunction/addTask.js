@@ -78,11 +78,16 @@ async function addTask() {
 
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
+    let arrowrInButton = document.getElementById('AssignedToButton'); 
     if (assignedto.classList.contains('d-flex')) {
         assignedto.classList.remove('d-flex');
         assignedto.classList.add('d-non');
+        arrowrInButton.classList.add('down');
+        arrowrInButton.classList.remove('up');
     } else {
         assignedto.classList.remove('d-non');
         assignedto.classList.add('d-flex');
+        arrowrInButton.classList.add('up');
+        arrowrInButton.classList.remove('down');
     }
 }

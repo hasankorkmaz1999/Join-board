@@ -368,6 +368,8 @@ span.mobile {
     flex-direction: column;
     max-height: 200px;
     overflow: auto;
+    border: 1px	solid #d1d1d1;
+    border-radius: 10px;
 }
 
 .assignedto-item {
@@ -379,4 +381,30 @@ span.mobile {
 
 .assignedto-item label {
     margin-left: 10px;
+}
+
+.addTaskAssignedToButton {
+    background-color: var(--white);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 12px 21px 12px 21px;
+    border: 1px solid;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+
+.addTaskAssignedToButton img {
+    margin-left: auto;
+}
+
+.up img{
+    transform: rotate(180deg);
+}
+
+.down img{
+    transform: rotate(0deg);
 }
