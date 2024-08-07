@@ -47,6 +47,7 @@ h1, h2, p {
     border: solid 1px var(--deep-grey);
     border-radius: 6px;
     margin: 10px 0;
+    cursor: grab;
 }
 
 /* #todo {
