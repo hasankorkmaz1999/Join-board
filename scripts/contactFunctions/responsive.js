@@ -57,13 +57,16 @@ function closeSingleContact() {
         contactContainer.innerHTML = ``;
     }, 650);
 }
-// Event listener for window resize to adjust the view.
-window.addEventListener('resize', function() {
-    if (window.innerWidth < 850) {
-        document.getElementById('main-content').style.display = 'none';
-        document.getElementById('sidebar').style.display = 'block';
-    }
-});
+
+// // Event listener for window resize to adjust the view.
+// window.addEventListener('resize', function() {
+//     if (window.innerWidth < 850) {
+//         document.getElementById('main-content').style.display = 'none';
+//         document.getElementById('sidebar').style.display = 'block';
+//     }
+// });
+
+
 /**
  * Opens the mobile edit contacts window.
  */
