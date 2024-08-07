@@ -1,5 +1,11 @@
+.d-none {
+    display: none !important;
+}
+
+
 
 @media (max-width: 1220px) {
+
     .contactFormRight {
         width: 60%;
     }
@@ -30,6 +36,42 @@
 
 
 @media (max-width: 790px) {
+   
+    .error-messagename {
+        position: absolute;
+        width: 280px;
+        top: 465px;
+        color: red;
+        font-size: 0.9em;
+        display: none; /* Standardmäßig ausgeblendet */
+        margin-bottom: 10px;
+        white-space: wrap; 
+    }
+    
+    
+    .error-messageemail {
+        position: absolute;
+        top: 565px;
+        color: red;
+        font-size: 0.9em;
+        display: none; /* Standardmäßig ausgeblendet */
+        margin-bottom: 10px;
+    }
+    
+    .error-messagephone {
+        width: 270px;
+        position: absolute;
+        top: 665px;
+        color: red;
+        font-size: 0.9em;
+        display: none; /* Standardmäßig ausgeblendet */
+        margin-bottom: 10px;
+    }
+
+
+
+
+
     .overlayformobile {
         position: fixed;
         top: 0;
@@ -79,13 +121,14 @@
         margin-top: 30px;
     }
     .inputfiledsname {
-       
+       margin-bottom: 50px;
     }
     p.create-mobile {
         color: var(--white);
     }
     .inputfiledsemail {
         background-image: url(../icons/contacticons/mail.png);
+        margin-bottom: 50px;
        
     }
     .inputfiledsphone {
@@ -115,30 +158,10 @@
         align-items: center;
         
     }
-    .mobileEditorDeleteWindow {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        right: 50px;
-        z-index: 3500;
-        background-color: var(--white);
-        border-radius: 20px 20px 0px 20px;
-        padding: 12px;
-        top: 650px;
-    }
-    .mobileEditorButtons {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        padding-right: 10px;
-    }
-    .mobileEditorButtons:hover {
-        background-color: var(--body-background-grey);
-        border-radius: 20px;
-    }
-    img.mobileEditorButtons {
-        padding: 10px 12px;
-    }
+    
+    
+
+
     h1.mobile {
         font-family: 'Inter';
         font-size: 47px;
@@ -232,3 +255,5 @@
     }
 
 }
+
+

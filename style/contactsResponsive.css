@@ -14,6 +14,10 @@
     display: none;
 }
 
+.d-none {
+    display: none;
+}
+
 
 
 @media (max-width: 1500px) {
@@ -177,6 +181,11 @@
 }
 
 @media (max-width: 550px) {
+    .main-content {
+        display: none;
+    }
+
+
     .contact-flex-header {
         margin-top: 80px;
     }
@@ -268,39 +277,88 @@
         background-color: var(--deepest-grey);
         color: var(--white) !important;
     }
+
+    .fixed-button-container {
+        position: fixed;
+        bottom: 120px; /* Abstand vom unteren Rand */
+        right: 20px; /* Abstand vom rechten Rand */
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        z-index: 1; /* Höherer z-index, um sicherzustellen, dass der Button über anderen Elementen liegt */
+    }
+    
     .add-contact-mobile {
         background-image: url(../icons/person_add.svg);
         background-repeat: no-repeat;
         background-color: var(--deep-grey);
-        object-fit: cover;
         width: 56px;
         height: 56px;
-        position: fixed;
-        right: 30px;
-        top: 758px;
         border-radius: 50%;
         background-position: center;
         cursor: pointer;
-        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
     }
-    .add-contact-mobile:hover {
-        background-color: var(--deepest-grey);
-    }
+
     .edit-contact-mobile {
         background-image: url(../icons/mobile_edit.svg);
         background-repeat: no-repeat;
         background-color: var(--deep-grey);
-        object-fit: cover;
+        
         width: 56px;
         height: 56px;
-        position: fixed;
-        right: 30px;
-        top: 758px;
         border-radius: 50%;
         background-position: center;
         cursor: pointer;
-        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+       
     }
+
+
+
+
+
+    .mobileEditorDeleteWindow {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        
+        z-index: 3500;
+        background-color: var(--white);
+        border-radius: 20px 20px 0px 20px;
+        padding: 12px;
+        
+    }
+
+    .mobileEditorButtons {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+        padding-right: 10px;
+    }
+    .mobileEditorButtons:hover {
+        background-color: var(--body-background-grey);
+        border-radius: 20px;
+    }
+    img.mobileEditorButtons {
+        padding: 10px 12px;
+    }
+
+  
+
+
+    .add-contact-mobile:hover {
+        background-color: var(--deepest-grey);
+    }
+    
     .edit-contact-mobile:hover {
         background-color: var(--deepest-grey);
     }
@@ -350,3 +408,4 @@
         width: 80px;
     }
 }
+

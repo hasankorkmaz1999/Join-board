@@ -6,13 +6,13 @@ function mobileButtonChange(viewquery) {
     let divElement = document.getElementById('editContactsMobile');
     if (viewquery === true) {
         if (window.innerWidth <= 550) {
-            divElement.classList.remove('d-non');
+            divElement.classList.remove('d-none');
             divElement.classList.add('edit-contact-mobile');
         }
     }
     if (viewquery === false) {
         if (window.innerWidth <= 550) {
-            divElement.classList.add('d-non');
+            divElement.classList.add('d-none');
             divElement.classList.remove('edit-contact-mobile');
         }
     }
@@ -42,6 +42,7 @@ function contactResponsive(id, name, email, phone) {
  * Closes the single contact view and resets the view to show the sidebar.
  */
 function closeSingleContact() {
+    document.getElementById('addNewContactMobile').style.display = 'block';
     let contactContainer = document.getElementById('contact-container');
     document.getElementById('sidebar').style.display = 'block';
     document.getElementById('main-content').style.display = 'd-none';
@@ -114,3 +115,6 @@ function closeOverlayButton() {
         overlay.classList.add('d-non');
     }, 200);
 }
+
+
+

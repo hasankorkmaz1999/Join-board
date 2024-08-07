@@ -135,18 +135,24 @@
     </div>
 
     <!-- mobile -->
-    <a onclick="addNewContact()">
-        <div id="addNewContactMobile" class="add-contact-mobile"></div>
-    </a>
+    <div class="fixed-button-container">
+        <div id="addNewContactMobile" class="add-contact-mobile" onclick="addNewContact()"></div>
+    </div>
+
+
+
     <div id="overlayformobile" class="d-non" onclick="closeOverlayButton()"></div>
-    <a onclick="editContactsMobile()">
-        <div id="editContactsMobile" class="d-non">
-            
-        </div>
-    </a>
-   
-    <!-- <div id="overlayformobile" class="d-non" onclick="dummyClose()"></div> -->
-    <div class="d-non" id="mobileEditorDeleteWindow">
+
+    <div class="fixed-button-container">
+    
+        <div id="editContactsMobile" class="edit-contact-mobile  d-none"  onclick="editContactsMobile()"></div>
+       
+    </div>
+
+    <div id="mobileEditorDeleteWindow" class="fixed-button-container">
+    <div class="d-non" ></div>
+    </div>
+    
     
     </div>
 
