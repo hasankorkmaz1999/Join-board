@@ -153,6 +153,8 @@
 }
 
 @media (max-width: 1000px) {
+<<<<<<< HEAD
+=======
 
     p.subheader-contact {
         font-size: 16px;
@@ -166,6 +168,7 @@
 }    
 
 @media (max-width: 850px) {
+>>>>>>> 646d83c401814f0a6e9843692d5910e1c6225317
     #sidebar {
         width: 100%;
     } 
