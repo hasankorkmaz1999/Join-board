@@ -321,10 +321,6 @@ option {
     fill: white; 
 }
 
-.footer-mobile {
-    display: none;
-}
-
 .menu-mobile {
     display: flex;
     align-items: center;
@@ -367,9 +363,12 @@ span.mobile {
     background-color: var(--deep-grey);
 }
 
-
 .footer-link {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.footer-mobile {
+    display: none;
 }
