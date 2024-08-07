@@ -17,6 +17,7 @@
     #addTaskLeftForm, 
     #addTaskRightForm {
         width: 100%;
+        padding: 0;
     }
 
 }
@@ -132,6 +133,14 @@
         font-size: 12px;
     }
     .createbutton {
-        width: 140px;
+        width: 130px;
+    }
+    p.required {
+        font-size: 12px;
+    }
+    #createbutton {
+        margin: 0;
+        padding: 0;
+        gap: 0;
     }
 }
