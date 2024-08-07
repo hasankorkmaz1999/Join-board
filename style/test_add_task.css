@@ -18,19 +18,19 @@
 }
 
 .assignedCheckbox {
-    border-color: aliceblue;
     accent-color: #4CAF50; /* Beispiel grün für die Checkboxen, müssen wir noch anpassen! */
     width: 16px;
     height: 16px;
 }
 
 .assignedCheckbox:checked + label {
-    background-color: black;
+    background-color: #2a3647;
     color: white;
 }
 
 .assignedto-item input[type="checkbox"] {
     margin-right: 8px;
+    cursor: pointer;
 }
 
 /* input[id^="-"].assignedCheckbox,

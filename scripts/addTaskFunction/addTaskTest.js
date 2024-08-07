@@ -41,7 +41,7 @@ function getAssignedTo(data, content) {
         content.innerHTML += renderContacts(assignedTo, keys[i]);
     }
 
-    // Add event listeners after rendering contacts
+    // Event-Listener nach dem Rendern von Kontakten hinzufügen
     let checkboxes = document.querySelectorAll('.assignedCheckbox');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function () {
