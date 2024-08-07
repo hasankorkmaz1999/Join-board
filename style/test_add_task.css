@@ -4,10 +4,13 @@
     align-items: center;
     padding: 8px;
     cursor: pointer;
+    border-radius: 8px;
 }
 
 .assignedto-item label {
+    margin-top: 8px;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .assignedto-item:hover {
@@ -15,6 +18,7 @@
 }
 
 .assignedCheckbox {
+    border-color: aliceblue;
     accent-color: #4CAF50; /* Beispiel grün für die Checkboxen, müssen wir noch anpassen! */
     width: 16px;
     height: 16px;

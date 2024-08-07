@@ -40,6 +40,21 @@ function getAssignedTo(data, content) {
         let assignedTo = data[keys[i]];
         content.innerHTML += renderContacts(assignedTo, keys[i]);
     }
+
+    // Add event listeners after rendering contacts
+    let checkboxes = document.querySelectorAll('.assignedCheckbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            let parent = this.parentElement;
+            if (this.checked) {
+                parent.style.backgroundColor = 'black';
+                parent.style.color = 'white';
+            } else {
+                parent.style.backgroundColor = '';
+                parent.style.color = '';
+            }
+        });
+    });
 }
 
 function renderContacts(assignedTo, key) {
@@ -63,7 +78,7 @@ async function addTask() {
     let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 
     if (!task || !date || !priority || !category || assignedTo.length === 0) {
-        console.error("Error: One or more required fields are null.");
+        console.error("Fehler: Ein oder mehrere erforderliche Felder sind null.");
         return;
     }
 
