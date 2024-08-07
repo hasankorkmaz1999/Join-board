@@ -204,6 +204,7 @@ h1, h2, p {
 /*Style für das Suchfeld */
 
 .searchform {
+  margin-top: 30px;
   display: flex;
 }
 

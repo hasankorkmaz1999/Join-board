@@ -20,12 +20,18 @@ function editContactForm(name, phone, email, id) {
                 <img src="./icons/contacticons/kontak.png" alt="">
                 <div class="contactinputfields">
                     <img onclick="closeEditOverlay()" class="closeX" src="./icons/close.svg" alt="Icon close">
-                    <span id="name-error-edit" class="error-message"></span>
+                    <span id="name-error-edit" class="error-messagename"></span>
                     <input value="${name}" id="nameValue"  class="inputfiledsname" placeholder="Name" type="text" name="name">
-                    <span id="email-error-edit" class="error-message"></span>
+
+
+                    <span id="email-error-edit" class="error-messageemail"></span>
                     <input value="${email}" id="emailValue" class="inputfiledsemail" placeholder="Email" type="text" name="email">
-                    <span id="phone-error-edit" class="error-message"></span>
+
+
+                    <span id="phone-error-edit" class="error-messagephone"></span>
                     <input value="${phone}" id="phoneValue" class="inputfiledsphone" placeholder="Phone" type="text" name="phone">
+
+                    
                     <div class="contactbuttons">
                         <button type="button" onclick="closeEditOverlay()" class="cancelbutton">Delete</button>
                         <button type="submit" class="saveButton">Save<img class="check-icon-mobile" src="./icons/check.svg" alt="Icon check"></button>

@@ -56,27 +56,11 @@ function openAddTaskOverlay() {
     // Container für den dynamisch geladenen Inhalt
     let popupContent = document.getElementsByClassName('addtaskpopup')[0];
 
-    // AJAX Request, um den Inhalt aus addtask.html zu laden
-    fetch('add_task.html')
-        .then(response => response.text())
-        .then(html => {
-            // Erstelle ein temporäres DOM-Element, um den HTML-Text zu parsen
-            let tempDiv = document.createElement('div');
-            tempDiv.innerHTML = html;
+    // Rufe die addTaskForm Funktion auf, um den HTML-Inhalt zu erhalten
+    let htmlContent = addTaskForm();
 
-            // Suche nach dem addTaskContainer und füge ihn ein
-            let addTaskContent = tempDiv.getElementsByTagName('div');
-            for (let i = 0; i < addTaskContent.length; i++) {
-                if (addTaskContent[i].id === 'addTaskContainer') {
-                    popupContent.innerHTML = ''; // Vorherigen Inhalt entfernen
-                    popupContent.appendChild(addTaskContent[i]); // Inhalt einfügen
-                    break;
-                }
-            }
-        })
-        .catch(error => {
-            console.error('Error loading add task content:', error);
-        });
+    // Füge den HTML-Inhalt in das popupContent Div ein
+    popupContent.innerHTML = htmlContent;
 }
 
 // Funktion zum Schließen des Overlays
@@ -88,3 +72,9 @@ function closeAddTaskOverlay() {
     let popupContent = document.getElementsByClassName('addtaskpopup')[0];
     popupContent.innerHTML = '';
 }
+
+
+   
+
+
+
