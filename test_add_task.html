@@ -1,0 +1,131 @@
+<!-- Das ist ein Test für mich -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join - Add Task</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="fonts/figtree/styles.css">
+    <link rel="stylesheet" href="fonts/inter/styles.css">
+    <link rel="stylesheet" href="fonts/open-sans/styles.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style/global.css">
+    <link rel="stylesheet" href="style/headerstyle.css">
+    <link rel="stylesheet" href="style/add_task.css">
+    <link rel="stylesheet" href="style/addTaskResponsive.css">
+
+    <script src="scripts/w3include.js"></script>
+</head>
+<body onload="includeHTML()">
+    <div w3-include-html="html/header.html"></div>
+    
+    <div id="addTaskContainer" class="addTaskContainer">
+        <div class="addTaskFlexHeader">
+            <h1 class="addTaskH1">Add Task TEST</h1>
+        </div>
+
+        <div class="addTaskFlexContainer">
+            <div class="contentFlex">
+                <div id="addTaskLeftForm" class="addTaskLeftForm">
+                    <form method="post">
+                        <div class="addTaskTitle">
+                            <div class="flexhelper">
+                                <label for="addTaskTitle">Title</label>
+                                <span class="asterisk">*</span>
+                            </div>
+                            <div class="inputAddTaskTitle">
+                                <input type="text" id="addTaskTitle" name="addTaskTitle" class="addTaskInput" placeholder="Enter a title" required>
+                            </div>    
+                            <span id="" class="addTaskerrorMessage"></span>
+                        </div>
+
+                        <div class="addTaskDescription">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" placeholder="Enter a description"></textarea>
+                        </div>
+
+                        <div class="addTaskAssignedTo">
+                            <label for="category">Assigned to</label>
+                            <select id="assignedto" name="assignedto">
+                                <option value="null">Select contacts to assign</option>
+                                <!-- Hier stehen alle Kontakte -->
+                            </select>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="vertical-line"></div>
+
+                <div id="addTaskRightForm" class="addTaskRightForm">
+                    <form method="post">
+                        <div class="addTaskDate">
+                            <div class="flexhelper">
+                                <label for="prioDate">Due date</label>
+                                <span class="asterisk">*</span>
+                            </div>    
+                            <div class="addTaskDateInner">
+                                <input type="date" id="prioDate" name="prioDate" pattern="\d{2}-\d{2}-\d{4}">
+                            </div>    
+                            <span id="" class="addTaskerrorMessage"></span>
+                        </div>
+
+                        <div class="addTaskPriority">
+                            <label for="category">Prio</label>
+                            <div class="prioFlex">
+                                <form id="taskForm">
+                                    <button type="button" onclick="setActive(this, 'urgent')" class="addTaskPrioButton prio-urgent">Urgent
+                                        <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_209288_4288)">
+                                            <path d="M19.6528 15.2547C19.4182 15.2551 19.1896 15.1803 19.0007 15.0412L10.7487 8.958L2.49663 15.0412C2.38078 15.1267 2.24919 15.1887 2.10939 15.2234C1.96959 15.2582 1.82431 15.2651 1.68184 15.2437C1.53937 15.2223 1.40251 15.1732 1.27906 15.099C1.15562 15.0247 1.04801 14.927 0.96238 14.8112C0.876751 14.6953 0.814694 14.5637 0.780001 14.4239C0.745308 14.2841 0.738431 14.1388 0.759858 13.9963C0.781285 13.8538 0.830387 13.717 0.90462 13.5935C0.978853 13.47 1.07653 13.3624 1.19136 13.2768L9.93986 7.19352C10.1712 7.02408 10.4618 6.93262 10.7599 6.93262C11.0581 6.93262 11.3487 7.02408 11.58 7.19352L20.3285 13.2768C20.441 13.362 20.5382 13.4689 20.6116 13.5922C20.6849 13.7155 20.7322 13.8528 20.75 13.9952C20.7685 14.1371 20.7568 14.2818 20.7157 14.4207C20.6745 14.5596 20.605 14.6899 20.5111 14.8038C20.4172 14.9176 20.3013 15.0124 20.1716 15.0832C20.0419 15.1539 19.9012 15.1994 19.7569 15.2179C19.7227 15.2227 19.6878 15.225 19.6528 15.2248V15.2547Z" fill="white"/>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_209288_4288">
+                                            <rect width="20.5" height="15.5" fill="white" transform="translate(0.25)"/>
+                                            </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </button>
+                                    <button type="button" onclick="setActive(this, 'medium')" class="addTaskPrioButton prio-medium">Medium
+                                        <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_209288_4288)">
+                                            <path d="M19.6528 15.2547C19.4182 15.2551 19.1896 15.1803 19.0007 15.0412L10.7487 8.958L2.49663 15.0412C2.38078 15.1267 2.24919 15.1887 2.10939 15.2234C1.96959 15.2582 1.82431 15.2651 1.68184 15.2437C1.53937 15.2223 1.40251 15.1732 1.27906 15.099C1.15562 15.0247 1.04801 14.927 0.96238 14.8112C0.876751 14.6953 0.814694 14.5637 0.780001 14.4239C0.745308 14.2841 0.738431 14.1388 0.759858 13.9963C0.781285 13.8538 0.830387 13.717 0.90462 13.5935C0.978853 13.47 1.07653 13.3624 1.19136 13.2768L9.93986 7.19352C10.1712 7.02408 10.4618 6.93262 10.7599 6.93262C11.0581 6.93262 11.3487 7.02408 11.58 7.19352L20.3285 13.2768C20.441 13.362 20.5382 13.4689 20.6116 13.5922C20.6849 13.7155 20.7322 13.8528 20.75 13.9952C20.7685 14.1371 20.7568 14.2818 20.7157 14.4207C20.6745 14.5596 20.605 14.6899 20.5111 14.8038C20.4172 14.9176 20.3013 15.0124 20.1716 15.0832C20.0419 15.1539 19.9012 15.1994 19.7569 15.2179C19.7227 15.2227 19.6878 15.225 19.6528 15.2248V15.2547Z" fill="white"/>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_209288_4288">
+                                            <rect width="20.5" height="15.5" fill="white" transform="translate(0.25)"/>
+                                            </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </button>
+                                    <button type="button" onclick="setActive(this, 'low')" class="addTaskPrioButton prio-low">Low
+                                        <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_209288_4288)">
+                                            <path d="M19.6528 15.2547C19.4182 15.2551 19.1896 15.1803 19.0007 15.0412L10.7487 8.958L2.49663 15.0412C2.38078 15.1267 2.24919 15.1887 2.10939 15.2234C1.96959 15.2582 1.82431 15.2651 1.68184 15.2437C1.53937 15.2223 1.40251 15.1732 1.27906 15.099C1.15562 15.0247 1.04801 14.927 0.96238 14.8112C0.876751 14.6953 0.814694 14.5637 0.780001 14.4239C0.745308 14.2841 0.738431 14.1388 0.759858 13.9963C0.781285 13.8538 0.830387 13.717 0.90462 13.5935C0.978853 13.47 1.07653 13.3624 1.19136 13.2768L9.93986 7.19352C10.1712 7.02408 10.4618 6.93262 10.7599 6.93262C11.0581 6.93262 11.3487 7.02408 11.58 7.19352L20.3285 13.2768C20.441 13.362 20.5382 13.4689 20.6116 13.5922C20.6849 13.7155 20.7322 13.8528 20.75 13.9952C20.7685 14.1371 20.7568 14.2818 20.7157 14.4207C20.6745 14.5596 20.605 14.6899 20.5111 14.8038C20.4172 14.9176 20.3013 15.0124 20.1716 15.0832C20.0419 15.1539 19.9012 15.1994 19.7569 15.2179C19.7227 15.2227 19.6878 15.225 19.6528 15.2248V15.2547Z" fill="white"/>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_209288_4288">
+                                            <rect width="20.5" height="15.5" fill="white" transform="translate(0.25)"/>
+                                            </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </button>
+                                </form>
+                                <input type="hidden" id="priority" name="priority">
+                            </div>
+                        </div>
+
+                        <div class="addTaskCategory">
+                            <label for="category">Category</label>
+                            <select id="category" name="category">
+                                <option value="null">Select task category</option>
+                                <!-- hier gehts weiter... -->
