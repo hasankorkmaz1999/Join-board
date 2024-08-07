@@ -17,13 +17,20 @@
     #addTaskLeftForm, 
     #addTaskRightForm {
         width: 100%;
+        padding: 0;
     }
 
 }
 
 @media (max-width: 810px) { 
-    button.cancelbutton {
-        display: none;
+
+    #addTaskLeftForm, #addTaskRightForm {
+        padding-left: 0;
+    }
+    .addTaskRightButtons {
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column-reverse;
     }
 
 }
@@ -97,6 +104,43 @@
     input#subtasks, select#category, .addTaskAssignedTo select {
         font-size: 16px;
     }
+    .addTaskPrioButton {
+        width: 120px;
+        font-size: 14px;
+        margin: 0;
+        gap: 0;
+    }
+    svg {
+        width: 16px;
+    }
 
 
 }    
+
+@media (max-width: 360px) {
+    button.cancelbutton {
+        display: none;
+    }
+    .addTaskRightButtons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 46px;
+        width: 100%;
+        align-items: center;
+        flex-direction: row;
+    }
+    p.create-mobile {
+        font-size: 12px;
+    }
+    .createbutton {
+        width: 130px;
+    }
+    p.required {
+        font-size: 12px;
+    }
+    #createbutton {
+        margin: 0;
+        padding: 0;
+        gap: 0;
+    }
+}

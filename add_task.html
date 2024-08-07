@@ -133,10 +133,12 @@
             </div>
         </div>
         <div id="addTaskButtons" class="addTaskRightButtons">
-            <p class="required"><span class="asterisk">*</span>This field is required</p>
+            <div class="flex-asterisk">
+                <span class="asterisk">*</span><p class="required">This field is required</p>
+            </div>
             <div id="addTaskFlexButtons" class="addTaskFlexButtons">
                 <button type="button" onclick="closeOverlay()" class="cancelbutton">Cancel X</button>
-                <button type="button" onclick="addTask()" class="createbutton">
+                <button id="createbutton" type="button" onclick="addTask()" class="createbutton">
                     <p class="create-mobile">Create Task</p>
                     <img class="check-icon-mobile" src="./icons/check.svg" alt="Icon check">
             </form>
