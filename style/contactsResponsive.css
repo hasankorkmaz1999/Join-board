@@ -4,8 +4,6 @@
     display: none;
 }
 
-
-
 .back-button-big {
     background-image: url(../IMGicons/arrow-left-line.svg);
     background-repeat: no-repeat;
@@ -97,21 +95,12 @@
 }
 
 @media (max-width: 975px) {
-    .sidebar {
-
-    }
     .contact-name {
         font-size: 16px;
     }
 }
 
 @media (max-width: 940px) {
-    .sidebar {
-
-    }
-    #sidebar {
-
-    }
     .contact-name {
         font-size: 16px;
     }
@@ -399,5 +388,4 @@
         min-width: unset;
         width: 280px;
     }
-
 }
