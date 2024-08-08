@@ -1,11 +1,14 @@
 
+body {
+    font-family: 'Inter';
+}
+
 .main-content {
-    margin-top: 80px;
-    margin-left: 332px; 
-    margin-right: 120px;
+    margin-left: 280px; 
+    margin-right: 60px;
+    margin-bottom: 40px;
     padding: 20px;
     background-color: var(--body-background-grey);
-    height: 85vh;
 }
 
 .main-content p {
@@ -84,5 +87,53 @@ h1, h2, p {
     .footer-mobile {
         display: block;
     }
-
+    .footer-mobile {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background-color: var(--deep-grey);
+    }
+    .menu-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    .mobile-menu-botton {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px 6px;
+        border-radius: 12px;
+    }
+    .footer-link {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-decoration: none;
+    }
+    img.mobile-menu {
+        width: 24px;
+        height: 24px;
+        padding-bottom: 8px;
+    }
+    span.mobile {
+        font-family: 'Open Sans';
+        color: var(--links-grey);
+        font-size: 14px;
+        line-height: 16.8px;
+        font-weight: 400;
+    }
+    span.mobile a {
+        text-decoration: none;
+    }
+    .mobile-menu-botton:hover {
+        background-color: var(--deepest-grey);
+        color: var(--white) !important;
+    }
 }
