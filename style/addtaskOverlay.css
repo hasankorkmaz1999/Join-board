@@ -99,6 +99,7 @@ input#addTaskTitle {
 
 .prioDate {
     border: none;
+    cursor: pointer;
 }
 
 .prioFlex {
