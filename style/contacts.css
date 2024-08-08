@@ -548,7 +548,9 @@ form.addContact {
     display: none;
 }
 
-
+.d-non {
+    display: none;
+}
 
 .contactFormRight {
     display: flex;
