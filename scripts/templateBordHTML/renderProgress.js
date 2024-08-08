@@ -6,7 +6,7 @@ function renderDivTodo(task) {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
     return /*html*/`
-    <div class="task-cards">
+    <div class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
@@ -23,7 +23,7 @@ function renderDivInprogress(task) {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
     return /*html*/`
-    <div class="task-cards">
+    <div class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
@@ -40,7 +40,7 @@ function renderDivDone(task) {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
     return /*html*/`
-    <div class="task-cards">
+    <div class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
@@ -57,7 +57,7 @@ function renderDivawaitingfeedback(task) {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
     return /*html*/`
-    <div class="task-cards">
+    <div class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>

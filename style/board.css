@@ -8,6 +8,13 @@
     --user-story-blue: #0038FF;
 }
 
+.no-copy {
+    user-select: none;
+    -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+}
+
 .technical-green {
     background-color: var(--technical-green);
     color: var(--white);
