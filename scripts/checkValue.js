@@ -34,9 +34,9 @@ function isValidPhone(phone) {
  */
 function sanitizeInput(input) {
     return input
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
+        .replace(/&/g, " ")
+        .replace(/</g, " ")
+        .replace(/>/g, " ")
+        .replace(/"/g, " ")
+        .replace(/'/g, " ");
 }
