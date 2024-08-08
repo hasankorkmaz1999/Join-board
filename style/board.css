@@ -1,3 +1,31 @@
+:root {
+    --deep-grey: #42526E;
+    --deepest-grey: #1F2D3D;
+    --body-background-grey: #F4F6F8;
+    --white: #FFFFFF;
+    --babyblue: #00A6FB;
+    --technical-green: #1FD7C1;
+    --user-story-blue: #0038FF;
+}
+
+.technical-green {
+    background-color: var(--technical-green);
+    color: var(--white);
+    width: 60%;
+    padding: 5px;
+    border-radius: 8px;
+    gap: 10px;
+}
+
+.user-story-blue {
+    background-color: var(--user-story-blue);
+    color: var(--white);
+    width: 60%;
+    padding: 5px;
+    border-radius: 8px;
+    gap: 10px;
+}
+
 .main-content {
     margin-top: 80px;
     margin-left: 270px; /* Anpassung an die Breite der Seitenleiste */
@@ -37,11 +65,13 @@ h1, h2, p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 40px;
 }
 
 .task-cards {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-between;
     gap: 20px;
     border: solid 1px var(--deep-grey);
@@ -51,6 +81,8 @@ h1, h2, p {
     padding: 10px;
     gap: 24px;
 }
+
+
 
 /* #todo {
   display: flex;

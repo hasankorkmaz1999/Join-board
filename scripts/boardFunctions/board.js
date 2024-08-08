@@ -39,13 +39,13 @@ function renderTaskData(data, content) {
         if (progress === "todo") {
             todoDIV.innerHTML += renderDivTodo(task);
         }
-        if (progress === "inprogress") {
+        if (progress === "inProgress") {
             inprogressDIV.innerHTML += renderDivInprogress(task);
         }
         if (progress === "done") {
             doneDIV.innerHTML += renderDivDone(task);
         }
-        if (progress === "awaitingfeedback") {
+        if (progress === "AwaitingFeedback") {
             awaitingfeedbackDIV.innerHTML += renderDivawaitingfeedback(task);
         }
     }
