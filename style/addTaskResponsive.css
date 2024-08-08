@@ -118,9 +118,6 @@
 }    
 
 @media (max-width: 360px) {
-    button.cancelbutton {
-        display: none;
-    }
     .addTaskRightButtons {
         display: flex;
         justify-content: space-between;

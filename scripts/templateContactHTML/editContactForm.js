@@ -46,7 +46,7 @@ function editContactForm(name, phone, email, id) {
 
 
                     <div class="contactbuttons">
-                        <button type="button" onclick="closeEditOverlay(); deletContacts('${fullDelID}')" class="cancelbutton">Delete</button>
+                        <button type="button" onclick="closeEditOverlay(); deletContacts('${fullDelID}')" class="cancelbuttonEdit">Delete</button>
                         <button type="submit" class="saveButton">Save<img class="check-icon-mobile" src="./icons/check.svg" alt="Icon check"></button>
                     </div>
                 </div>
