@@ -78,7 +78,7 @@ async function addTask() {
     let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 
     if (!task || !date || !priority || !category || assignedTo.length === 0) {
-        console.error("Fehler: Ein oder mehrere erforderliche Felder sind null.");
+        console.error("Fehler: Ein oder mehrere erforderliche Felder sind null (nicht vergeben!).");
         return;
     }
 
@@ -103,6 +103,8 @@ async function addTask() {
             body: JSON.stringify(data)
         });
         await response.json();
+        console.log("Task successfully added:", data);
+        alert("Neue Aufgabe erfolgreich erstellt!");
     } catch (error) {
         console.error("Fehler beim Hinzufügen der Aufgabe:", error);
     }
