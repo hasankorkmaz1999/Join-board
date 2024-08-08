@@ -22,6 +22,7 @@ async function renderData(URL) {
 
 function disableSpinner() {
     let element = document.getElementById('spinner');
+    document.getElementById('laoding').classList.add('d-non');
     if (element === null) {
         console.error("Spinner not found!");
         
@@ -79,6 +80,7 @@ function updateData(URL, id, data) {
         },
         body: JSON.stringify(data)
     })
+    toastMessage("Task moved successfully!");
     init();
 }
 

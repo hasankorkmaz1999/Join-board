@@ -45,40 +45,7 @@
             </form>
           </div>
     </section>
-    
-    <section class="boardsections">
-    <div class="progress-window">
-        <div class="boardsection"><span class="boardsectiontext">To do</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
-        <div id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)"><!-- render todo --></div>
-    </div>
-    <div class="progress-window">
-        <div class="boardsection"><span class="boardsectiontextdone">In progress</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
-        <div id="inprogress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"><!-- render in progress --></div>
-    </div>
-    <div class="progress-window">
-        <div class="boardsection"><span class="boardsectiontextdone">Await feedback</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
-        <div id="awaitingfeedback" ondrop="moveTo('AwaitingFeedback')" ondragover="allowDrop(event)"><!-- render Await feedback --></div>
-    </div>
-    <div class="progress-window">
-        <div class="boardsection"><span class="boardsectiontextdone">Done</span></div>
-        <div id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)"><!-- render done --></div>
-    </div>
-    </section>
-
-
-    </section>
-
-
-    <div onclick="closeAddTaskOverlay()" id="overlayforaddtask" class="overlayaddtask d-none">
-        <div class="addtaskpopup" ></div>
-    </div>
-
-
-
-
-   <!--  <div class="main-content" id="renderData">
-        <span>Dummy Render</span>
-
+    <section id="laoding" class="laoding">
         <div id="spinner">
             <svg 
             class="spinner"
@@ -104,7 +71,44 @@
         </path>
         </svg>
     </div>
-    </div> -->
+    </section>
+    <section class="boardsections">
+    <div class="progress-window">
+        <div class="boardsection"><span class="boardsectiontext">To do</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
+        <div id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)"><!-- render todo --></div>
+    </div>
+    <div class="progress-window">
+        <div class="boardsection"><span class="boardsectiontextdone">In progress</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
+        <div id="inprogress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"><!-- render in progress --></div>
+    </div>
+    <div class="progress-window">
+        <div class="boardsection"><span class="boardsectiontextdone">Await feedback</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
+        <div id="awaitingfeedback" ondrop="moveTo('AwaitingFeedback')" ondragover="allowDrop(event)"><!-- render Await feedback --></div>        
+    </div>
+    <div class="progress-window">
+        <div class="boardsection"><span class="boardsectiontextdone">Done</span></div>
+        <div id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)"><!-- render done --></div>
+    </div>
+    
+    </section>
+
+
+    </section>
+
+
+    <div onclick="closeAddTaskOverlay()" id="overlayforaddtask" class="overlayaddtask d-none">
+        <div class="addtaskpopup" ></div>
+    </div>
+
+    <div id="toast-div" class="d-none">
+        <div class="toast-text" id="toast-text"></div>
+    </div>
+
+
+
+
+
+
 
     <script src="./scripts/board.js"></script>
     <script src="./scripts/checkValue.js"></script>
