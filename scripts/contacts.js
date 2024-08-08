@@ -176,13 +176,13 @@ async function editContacts(id) {
         let data = await loadData(API);
         if (data) {
             loadEditData(data, id);
+            showEditOverlay(); // Nur aufrufen, wenn die Daten erfolgreich geladen wurden.
         } else {
             console.error("No data found");
         }
     } catch (error) {
         console.error("Error in editContacts function:", error);
     }
-    showEditOverlay();
 }
 /**
  * Loads the data of the contact to be edited.
@@ -206,7 +206,7 @@ function loadEditData(data, id) {
  */
 function showEditOverlay() {
     let editWindow = document.getElementById('overlayEdit');
-    editWindow.classList.remove('d-none');
+    editWindow.classList.remove('d-non');
     editWindow.classList.add('slide-in-right');
 }
 /**
@@ -217,7 +217,7 @@ function closeEditOverlay() {
     divID.classList.add('slide-out-right');
     setTimeout(() => {
         let divID = document.getElementById('overlayEdit');
-        divID.classList.add('d-none');
+        divID.classList.add('d-non');
         divID.classList.remove('slide-in-right');
         divID.classList.remove('slide-out-right');
     }, 500);
