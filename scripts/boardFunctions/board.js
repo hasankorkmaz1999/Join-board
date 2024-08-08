@@ -52,15 +52,6 @@ function renderTaskData(data, content) {
     disableSpinner();
 }
 
-function renderDiv(task) {
- return /*html*/`
-    <div class="task-title">${task.title}</div>
-    <div class="task-description">${task.description}</div>
-    <span>Hier muss der fortschritsbalken rein (muss via inline style css geamcht werdem)</span>
- `
-}
-
-
 
 // Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
 function openAddTaskOverlay() {
