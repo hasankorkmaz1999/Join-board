@@ -19,6 +19,32 @@
     cursor: grab;
 }
 
+/*Style Boardseite einzelne Tasks  */
+.task-cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  border-radius: 24px;
+  margin: 10px 0;
+  cursor: pointer;
+  padding: 10px;
+  gap: 24px;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+}
+
+
+.task-title {
+  color: var(--deep-grey);
+  font-weight: 700;
+}
+
+.taskpriority {
+display: flex;
+justify-content: flex-end;
+}
+
 .technical-green {
     background-color: var(--technical-green);
     color: var(--white);
@@ -79,19 +105,7 @@ h1, h2, p {
   margin: 40px;
 }
 
-.task-cards {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 20px;
-    border-radius: 24px;
-    margin: 10px 0;
-    cursor: grab;
-    padding: 10px;
-    gap: 24px;
-    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-}
+
 
 .toast-text {
     text-align: center;
@@ -438,4 +452,39 @@ h1, h2, p {
 
   overflow: hidden; 
 }
+
+
+
+/*Style für das Single Task Overlay  */
+
+.overlaysingletask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(65, 64, 64, 0.2);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.singletaskpopup {
+  background-color: white;
+  width: 525px;
+  height: 870px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  display: flex; 
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  overflow: hidden; 
+}
+
 
