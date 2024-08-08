@@ -1,0 +1,443 @@
+h1 {
+    margin-left: 20px;
+    
+    
+}
+
+.closeXaddtask {
+    height: 32px;
+    width: 32px;
+    position: fixed;
+    top: 60px;
+    right: 40px;
+
+}
+
+
+.closeXaddtask:hover {
+    cursor: pointer;
+   background-color: #eae7e7;
+   border-radius: 20px;
+}
+
+.subtasksinput {
+    border-radius: 10px;
+   
+    border: 1px solid lightgray !important;
+    padding: 18px 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    outline: none; /* Removes default focus outline */
+}
+
+
+
+.addTaskContainerOverlay {
+    padding: 50px;
+}
+
+textarea {
+    border: none;
+    outline: none;
+}
+
+.addTaskDescription .textareaO {
+    border-radius: 10px;
+    height: 120px;
+    border: 1px solid lightgray !important;
+    padding: 18px 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    outline: none; /* Removes default focus outline */
+}
+
+.addTaskDescription .textareaO:focus {
+    border: 1px solid lightgray !important; /* Ensures border remains on focus */
+    outline: none; /* Ensures no outline on focus */
+}
+
+
+input#addTaskTitle {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+    border: none;
+    outline: none;
+}
+
+
+
+.addTaskH1 {
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 73.2px;
+    font-family: 'Inter';
+}
+
+#addTaskFlexButtons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.addTaskDateInner {
+    background-color: var(--white);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 12px 21px 12px 21px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    
+    
+}
+
+.prioDate {
+    border: none;
+}
+
+.prioFlex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addTaskInput {
+    width: 90%;
+    height: 20px;
+}
+
+span.addTaskerrorMessage {
+    color: var(--light-red);
+}
+
+.addTaskFlexContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#addTaskLeftForm,
+#addTaskRightForm {
+    display: flex;
+    flex-direction: column;
+    width: calc(45% - 332px);
+    flex: 1;
+    margin: 10px;
+}
+
+.addTaskRightButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 46px;
+    width: 100%;
+    align-items: baseline;
+}
+
+.addTaskFlexButtons button, .addTaskPriority button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.addTaskPriority {
+    margin: 10px 0;
+}
+
+form div {
+    margin-bottom: 30px;
+}
+
+.createbutton {
+    cursor: pointer;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 21px;
+    color: var(--white);
+    width: 214px;
+    height: 52px;
+    border-radius: 10px;
+    background-color: var(--deep-grey);
+    border: unset;
+}
+
+p.create-mobile {
+    color: var(--white);
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.createbutton img {
+    margin: 0;
+}
+
+.createbutton:hover {
+    background-color: var(--babyblue);
+    border-color: transparent;
+}
+
+.cancelbutton {
+    cursor: pointer;
+    font-size: 20px;
+    width: 120px;
+    height: 52px;
+    background-color: var(--white);
+    border: 1px solid var(--deep-grey);
+    border-radius: 10px;
+    margin-right: 20px;
+    color: var(--black);
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.cancelbutton:hover {
+    border-color:  var(--babyblue);
+    color:  var(--babyblue); 
+}
+
+.addTaskLeftForm {
+    width: 100%;
+    margin: 0 auto; 
+}
+
+
+.addTaskDescription {
+    width: 100%;
+    margin-bottom: 20px; 
+}
+
+
+
+.vertical-line {
+    height: 100%;
+    width: 1px;
+    background-color: var(--border-grey);
+    margin: 0 20px;
+}
+
+.contentFlex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+input#subtasks,
+select#category,
+.addTaskAssignedTo select {
+    appearance: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="black" stroke-width="1.5" d="M1 3.5l4 4 4-4"/></svg>') no-repeat right 20px center;
+    padding-right: 30px; 
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-grey);
+    border-radius: 10px;
+    background-color: var(--white);
+    padding: 10px 30px 10px 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    font-family: 'Inter';
+}
+
+option {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.addTaskDateInner input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.addTaskDateInner input[type="date"] {
+    position: relative;
+    padding-right: 30px;
+    width: 100%;
+}
+
+.addTaskDateInner input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;  
+    height: 20px; 
+}
+
+.flexhelper {
+    display: flex;
+    margin: 0;
+}
+
+.addTaskCategory {
+    margin-bottom: 20px;
+}
+
+
+.selectcategory {
+    border-radius: 10px;
+    border: 1px solid lightgray !important;
+    padding: 18px 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    outline: none; /* Removes default focus outline */
+}
+
+.addTaskPrioButton:hover {
+    box-shadow: 3px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.addTaskPrioButton {
+    width: 136px;
+    height: 56px;
+    border-radius: 10px;
+    gap: 8px;
+    background-color: var(--white);
+    padding: 12px;
+    padding-right: 40px;
+    font-size: 20px;
+    font-weight: 400;
+    border: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+  
+  svg {
+    margin-left: auto;
+  }
+
+.addTaskPrioButton.active-urgent {background-color: #FF3D00; color: var(--white);}
+.addTaskPrioButton.active-medium {background-color: #FFA800; color: var(--white);}
+.addTaskPrioButton.active-low {
+    background-color: #7AE229; 
+    color: var(--white);
+}
+
+
+.addTaskPrioButton.active-urgent svg path,
+.addTaskPrioButton.active-medium svg path,
+.addTaskPrioButton.active-low svg path {
+    fill: white; 
+}
+
+.menu-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-top: 6px;
+}
+
+img.mobile-menu {
+    width: 24px;
+    height: 24px;
+    padding-bottom: 8px;
+}
+.mobile-menu-botton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 6px;
+    border-radius: 12px;
+}
+span.mobile {
+    font-family: 'Open Sans';
+    color: var(--links-grey);
+    font-size: 14px;
+    line-height: 16.8px;
+}
+.mobile-menu-botton:hover {
+    background-color: var(--deepest-grey);
+    color: var(--white) !important;
+}
+
+.footer-mobile {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: var(--deep-grey);
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer-mobile {
+    display: none;
+}
+
+.flex-asterisk {
+    display: flex;
+    align-items: center;
+}
+
+.assignedto-checkboxes {
+    flex-direction: column;
+    max-height: 200px;
+    overflow: auto;
+    border: 1px	solid #d1d1d1;
+    border-radius: 10px;
+}
+
+.assignedto-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.assignedto-item label {
+    margin-left: 10px;
+}
+
+.addTaskAssignedToButton {
+    background-color: var(--white);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 12px 21px 12px 21px;
+    border: 1px solid;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+
+.addTaskAssignedToButton img {
+    margin-left: auto;
+}
+
+.up img{
+    transform: rotate(180deg);
+}
+
+.down img{
+    transform: rotate(0deg);
+}
+

@@ -398,6 +398,9 @@ h1, h2, p {
   width: 100%;
   background-color: rgba(65, 64, 64, 0.2);
   z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .addtaskpopup {
@@ -410,6 +413,9 @@ h1, h2, p {
   transform: translate(-50%, -50%);
   border-radius: 20px;
   display: flex; 
+  justify-content: flex-start;
+  align-items: flex-start;
+
   overflow: hidden; 
 }
 

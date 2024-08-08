@@ -87,3 +87,9 @@ function closeAddTaskOverlay() {
     let popupContent = document.getElementsByClassName('addtaskpopup')[0];
     popupContent.innerHTML = '';
 }
+
+// Funktion um auf das Overlay klicken zu können ohne das es sich schließt
+
+function doNotClose(event) {
+    event.stopPropagation();
+  }
