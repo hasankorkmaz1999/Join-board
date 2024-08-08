@@ -102,12 +102,33 @@ button.guest-button-frontpage {
     font-weight: bold;
 }
 
+button.guest-button-frontpage a {
+    text-decoration: none;
+    color: var(--deepest-grey);
+}
+
 #loginButton:hover {
     background-color: var(--babyblue);
 }
 
 #guestLoginButton:hover {
     border: 1px solid var(--babyblue);
+    color: var(--babyblue);
+}
+
+p.privacy-link a {
+    color: var(--babyblue);
+    text-decoration: none;
+}
+
+p.privacy-link a:hover {
+    color: var(--babyblue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.guest-button-frontpage:hover,
+button#guestLoginButton a:hover {
     color: var(--babyblue);
 }
 
