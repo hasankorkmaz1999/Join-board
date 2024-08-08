@@ -1,5 +1,6 @@
 let taskAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
 let contactAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/contacts";
+let cureentDraggedElement;
 
 window.onload = init;
 
@@ -8,11 +9,14 @@ function init() {
 }
 
 async function renderData(URL) {
+    document.getElementById('todo').innerHTML = ``;
+    document.getElementById('inprogress').innerHTML = ``;
+    document.getElementById('done').innerHTML = ``;
+    document.getElementById('awaitingfeedback').innerHTML = ``;
     let data = await loadData(URL);
     console.log(data);
-    let content = document.getElementById('renderData');
     if (data) {
-        renderTaskData(data, content);
+        renderTaskData(data);
     }
 }
 
@@ -26,7 +30,7 @@ function disableSpinner() {
     }
 }
 
-function renderTaskData(data, content) {
+function renderTaskData(data) {
     let keys = Object.keys(data);
     for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
@@ -37,21 +41,46 @@ function renderTaskData(data, content) {
         let doneDIV = document.getElementById('done');
         let awaitingfeedbackDIV = document.getElementById('awaitingfeedback');
         if (progress === "todo") {
-            todoDIV.innerHTML += renderDivTodo(task);
+            todoDIV.innerHTML += renderDivTodo(task, key);
         }
         if (progress === "inProgress") {
-            inprogressDIV.innerHTML += renderDivInprogress(task);
+            inprogressDIV.innerHTML += renderDivInprogress(task, key);
         }
         if (progress === "done") {
-            doneDIV.innerHTML += renderDivDone(task);
+            doneDIV.innerHTML += renderDivDone(task, key);
         }
         if (progress === "AwaitingFeedback") {
-            awaitingfeedbackDIV.innerHTML += renderDivawaitingfeedback(task);
+            awaitingfeedbackDIV.innerHTML += renderDivawaitingfeedback(task, key);
         }
     }
     disableSpinner();
 }
 
+function startDragging(id) {
+    cureentDraggedElement = id;
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function moveTo(category) {
+    let data = {
+        progress: category
+    }
+    updateData(taskAPI, cureentDraggedElement, data);
+}
+
+function updateData(URL, id, data) {
+    fetch(`${URL}/${id}.json`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    init();
+}
 
 // Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
 function openAddTaskOverlay() {
