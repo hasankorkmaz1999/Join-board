@@ -23,12 +23,9 @@
 </head>
 
 <body>
-    <header>
-        <div class="header-top">
-            <span class="subheader-login">Not a Join user?</span>
-            <button class="signup"><a href="signup.html">Sign up</a></button>
-        </div>
-    </header>
+
+        <div class="header-top"></div>
+
 
     <svg class="margin-top-10 margin-left-10" id="animated-svg" width="101" height="122" viewBox="0 0 101 122" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M71.6721 0H49.5143V25.4923H71.6721V0Z" fill="#2A3647"/>
@@ -40,11 +37,15 @@
     </svg>
 
     <div id="loginWindow" class="d-non">
-        <div class="login_center">
-            <h2>Log in</h2>
+        <div class="login_center signup_center">
+            <h2>Sign up</h2>
             <div class="underline-frontpage"></div>
             <div class="login">
                 <form id="login-form" class="login-frontpage" onsubmit="return false;">
+                    <div class="flex-input error-red">
+                        <input type="text" name="signup-email" id="signup-name" placeholder="Name" minlength="6">
+                        <img src="icons/mail.png" alt="E-Mail Icon">
+                    </div>
                     <div class="flex-input error-red">
                         <input type="text" name="signup-email" id="signup-email" placeholder="Email" minlength="6" pattern="[a-zA-Z0-9_.±]">
                         <img src="icons/mail.png" alt="E-Mail Icon">
@@ -53,16 +54,19 @@
                         <input type="password" name="signup-password" id="signup-password" placeholder="Password" required>
                         <img src="icons/lock.png" alt="Lock Icon">
                     </div>
+                    <div class="flex-input error-red">
+                        <input type="password" name="signup-password" id="confirm-signup-password" placeholder="Confirm Password" required>
+                        <img src="icons/lock.png" alt="Lock Icon">
+                    </div>
                     <div class="error-message" id="error-message" style="color: red; display: none;"></div>
                     <div class="remember-login">
                         <input type="checkbox" class="checkbox-login" required>
-                        <p>Remember me</p>
+                        <p>I accept the <a href="privacyPolicy.html">Privacy policy</a></p>
                     </div>
                 </form>
             </div>
             <div class="buttons-frontpage">
-                <button id="loginButton" type="submit" class="cursor-pointer button login-button-frontpage" disabled>Log in</button>
-                <button id="guestLoginButton" class="cursor-pointer button guest-button-frontpage">Guest Log in</button>
+                <button id="loginButton" type="submit" class="cursor-pointer button login-button-frontpage" disabled>Sign up</button>
             </div>
         </div>    
     </div>
