@@ -80,6 +80,7 @@ function updateData(URL, id, data) {
         },
         body: JSON.stringify(data)
     })
+    toastMessage("Task moved successfully!");
     init();
 }
 

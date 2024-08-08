@@ -93,37 +93,6 @@ h1, h2, p {
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
-
-
-/* #todo {
-  display: flex;
-  flex-direction: column;
-  border: 1px  solid var(--deep-grey);
-  padding: 10px;
-}
-
-#inprogress {
-  display: flex;
-  flex-direction: column;
-  border: 1px  solid var(--deep-grey);
-  padding: 10px;
-}
-
-#awaitfeedback {
-  display: flex;
-  flex-direction: column;
-  border: 1px  solid var(--deep-grey);
-  padding: 10px;
-}
-
-#done {
-  display: flex;
-  flex-direction: column;
-  border: 1px  solid var(--deep-grey);
-  padding: 10px;
-} */
-
-
 .toast-text {
     text-align: center;
     margin-bottom: 40px;
