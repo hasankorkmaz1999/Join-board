@@ -1,0 +1,38 @@
+
+@media (max-width: 500px) {
+    .header-top {
+        position: fixed;
+        bottom: 80px;
+        left: 0;
+        right: 0;
+    }
+    #animated-svg {
+        width: 64px;
+        height: 78px;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    .hundertVh {
+        height: 80vH;
+        width: 90%;
+        margin: 0 auto;
+    }
+    img.form-image {
+
+    }
+    .flex-input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+    }
+    form.login-frontpage {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        width: 98%;
+    }
+
+}

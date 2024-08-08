@@ -242,9 +242,7 @@ input {
     border-radius: 10px;
     padding: 12px 21px;
     gap: 10px;
-    width: 100%;
     max-width: 420px;
-    display: unset;
     display: flex;
     align-items: center;
     justify-content: space-between;
