@@ -137,50 +137,6 @@
         </div>
     </div>
 
-    <div id="overlayEdit" class="overlay d-none">
-        <div class="contactForm">
-            <div class="contactFormLeft">
-                <div class="mobile-icon-corner-right"></div>
-                <img class="logo-overlay" src="./IMGicons/logo_with_blue.svg" alt="Join Logo">
-                <h1 class="mobile">Add contact</h1>
-                <p class="subheader-mobile">Tasks are better with a team!</p>
-                <div class="mobile-underline"></div>
-            </div>
-    
-            <div class="contactFormRight">
-                <img src="./IMGicons/contactIMGicons/kontakticon.svg" alt="Icon User">
-                <div class="contactinputfields">
-                    <img onclick="closeOverlay()" class="closeX" src="./IMGicons/close.svg" alt="Icon Close">
-                    <form class="addContact" onsubmit="createNewContact(); return false;">
-                        
-                        <div class="form-group">
-                        <input id="inputfiledsname" class="inputfiledsname" placeholder="Name" type="text">
-                        <span id="name-error" class="error-messagename"></span>
-                        </div>
-
-                        <div class="form-group">
-                        <input id="inputfiledsemail" class="inputfiledsemail" placeholder="Email" type="text">
-                        <span id="email-error" class="error-messageemail"></span>
-                        </div>
-
-                        <div class="form-group">
-                        <input id="inputfiledsphone" class="inputfiledsphone" placeholder="Phone" type="text">
-                        <span id="phone-error" class="error-messagephone"></span>
-                        </div>
-
-                        <div class="contactbuttons">
-                            <button id="cancelButtonEdit" type="button" onclick="closeOverlay()" class="cancelbuttonEdit">Cancel X</button>
-                            <button type="submit" class="createbutton">
-                                <p class="create-mobile">Create contact</p>
-                                <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    
 
     
     <div id="toast-div" class="d-none">
