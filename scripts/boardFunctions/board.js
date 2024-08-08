@@ -105,13 +105,9 @@ function openAddTaskOverlay() {
 function closeAddTaskOverlay() {
     let overlay = document.getElementById('overlayforaddtask');
     overlay.classList.remove('slide-out-right');
-    setTimeout(() => {
-        let overlay = document.getElementById('overlayforaddtask');
         overlay.classList.add('d-none');
         overlay.classList.remove('slide-in-right');
         overlay.classList.remove('slide-out-right');
-    }, 500);
-    // Entfernt den dynamisch eingefügten Inhalt
     let popupContent = document.getElementsByClassName('addtaskpopup')[0];
     popupContent.innerHTML = '';
     
@@ -126,25 +122,19 @@ function doNotClose(event) {
 
 // Funktion zum öffnen einer Task im Board
 
-function openSingleTaskOverlay() {
+function openSingleTaskOverlay(taskData) {
     let overlay = document.getElementById('overlayforsingletask');
     overlay.classList.remove('d-none');
     overlay.classList.add('slide-in-right');
-    // Container für den dynamisch geladenen Inhalt
     let popupContent = document.getElementsByClassName('singletaskpopup')[0];
-
-    // Rufe die addTaskForm Funktion auf, um den HTML-Inhalt zu erhalten
-    let htmlContent = addSingleTaskForm();
-
-    // Füge den HTML-Inhalt in das popupContent Div ein
+    let htmlContent = addSingleTaskForm(taskData.taskTitle, taskData.taskDescription, taskData.taskPriority, taskData.taskCategoryHTML);
     popupContent.innerHTML = htmlContent;
 }
+
 
 function closeSingleTaskOverlay() {
     let overlay = document.getElementById('overlayforsingletask');
     overlay.classList.add('d-none');
-
-    // Entfernt den dynamisch eingefügten Inhalt
     let popupContent = document.getElementsByClassName('singletaskpopup')[0];
     popupContent.innerHTML = '';
 }

@@ -19,6 +19,55 @@
     cursor: grab;
 }
 
+/*Style Boardseite einzelne Tasks sobald man draufklickt und sich das overlay öffnet */
+.taskCategoryHTML {
+  margin-bottom: 50px;
+  font-size: 24px;
+  
+}
+
+.single-task-content {
+  margin-top: 10px;
+  padding: 30px;
+  width: 450px;
+  
+}
+
+.taskTitleOverlay {
+  font-size: 70px;
+}
+
+.nurtest {
+  margin-bottom: 200px;
+}
+
+.editanddeletetask {
+  
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 150px;
+}
+
+.editbuttontask {
+  background-image: url(../IMGicons/edit.svg);
+}
+
+.deletebuttontask {
+  background-image: url(../IMGicons/delete.svg);
+}
+
+.editbuttontask, .deletebuttontask {
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  padding-left: 24px;
+  margin-right: 32px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--deep-grey);
+}
+
+
 /*Style Boardseite einzelne Tasks  */
 .task-cards {
   display: flex;
@@ -29,7 +78,7 @@
   border-radius: 24px;
   margin: 10px 0;
   cursor: pointer;
-  padding: 10px;
+  padding: 20px;
   gap: 24px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
@@ -46,6 +95,8 @@ justify-content: flex-end;
 }
 
 .technical-green {
+ 
+   text-align: center;
     background-color: var(--technical-green);
     color: var(--white);
     width: 60%;
@@ -55,9 +106,11 @@ justify-content: flex-end;
 }
 
 .user-story-blue {
+  
+   text-align: center;
     background-color: var(--user-story-blue);
     color: var(--white);
-    width: 60%;
+    width: 45%;
     padding: 5px;
     border-radius: 8px;
     gap: 10px;
@@ -472,6 +525,7 @@ h1, h2, p {
 }
 
 .singletaskpopup {
+
   background-color: white;
   width: 525px;
   height: 870px;
@@ -483,7 +537,7 @@ h1, h2, p {
   display: flex; 
   justify-content: flex-start;
   align-items: flex-start;
-
+ 
   overflow: hidden; 
 }
 
