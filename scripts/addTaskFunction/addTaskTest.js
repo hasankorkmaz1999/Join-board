@@ -57,9 +57,12 @@ function getAssignedTo(data, content) {
     });
 }
 
+// Render Contacts so optimiert, dass man die initialien einsehen kann bei Assigned to
 function renderContacts(assignedTo, key) {
-    return `
+    let initials = assignedTo.name.split(' ').map(name => name[0]).join('');
+    return /*html*/`
         <div class="assignedto-item">
+        <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; background-color: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center;">${initials}</div>
             <label for="${key}">${assignedTo.name}</label>
             <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}">
         </div>
@@ -103,7 +106,7 @@ async function addTask() {
             body: JSON.stringify(data)
         });
         await response.json();
-        console.log("Task successfully added:", data);
+        console.log("Task successfully added:", data); // console.log mit Alert zur Überwachung eingebaut
         alert("Neue Aufgabe erfolgreich erstellt!");
     } catch (error) {
         console.error("Fehler beim Hinzufügen der Aufgabe:", error);
