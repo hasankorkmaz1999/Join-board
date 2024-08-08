@@ -130,6 +130,12 @@ h1, h2, p {
     padding-top: 20px;
 }
 
+.laoding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .spinner {
     --uib-size: 37px;
     --uib-color: black;
