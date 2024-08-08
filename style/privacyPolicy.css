@@ -1,10 +1,10 @@
+
 .main-content {
     margin-top: 80px;
-    margin-left: 332px; /* Anpassung an die Breite der Seitenleiste */
+    margin-left: 332px; 
     margin-right: 120px;
     padding: 20px;
     background-color: var(--body-background-grey);
-    /* min-height: 100vh; */
     height: 85vh;
 }
 
@@ -31,4 +31,58 @@ h1, h2, p {
     width: 30px;
     height: 30px;
     cursor: pointer;
+}
+
+.joinLogo {
+    display: none;
+}
+
+.footer-mobile {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .header-left {
+        display: none;
+    }
+    .main-content {
+        margin: 10px 10px 40px 10px;
+        height: auto;
+    }
+    .header-top {
+        width: 100%;
+        margin-left: 0;
+    }
+    h1 {
+        font-size: 47px;
+        font-weight: 700;
+        line-height: 56.4px;
+    }
+    h2 {
+        font-size: 27px;
+        font-weight: 700;
+        line-height: 32.4px;
+    }
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.2px;
+    }
+    .subheader-contact,
+    .kanban, .user {
+        display: none;
+    }
+    .joinLogo {
+        display: block;
+        width: 39px;
+        height: 39px;
+        position: absolute;
+        top: 16px;
+        z-index: 20;
+        left: 16px;
+    }
+    .footer-mobile {
+        display: block;
+    }
+
 }
