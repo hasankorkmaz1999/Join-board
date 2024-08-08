@@ -18,19 +18,39 @@
 }
 
 .assignedCheckbox {
-    accent-color: #4CAF50; /* Beispiel grün für die Checkboxen, müssen wir noch anpassen! */
+    /* accent-color: #4CAF50; */
+    appearance: none; /* Entfernt den Standardstil */
     width: 16px;
     height: 16px;
+
+    border-radius: 4px;
+    border: 2px solid #777777; /* Standardrahmenfarbe */
+    background-color: transparent;
+    cursor: pointer;
 }
 
-.assignedCheckbox:checked + label {
+/* Stil für eine ausgewählte Checkbox */
+.assignedCheckbox.checked {
+    border-color: white; /* Weißer Rahmen */
+    background-color: #2A3647; /* Gleiche Hintergrundfarbe wie das ausgewählte Element */
+}
+
+/* .assignedCheckbox:checked + label {
     background-color: black;
     color: white;
+} */
+
+/* Häkchen-Stil */
+.assignedCheckbox.checked::after {
+    content: "✓";
+    font-size: 22px;
+    color: white; /* Weißes Häkchen */
+    display: block;
+    text-align: center;
+    line-height: 14px;
 }
 
 .assignedto-item input[type="checkbox"] {
-
-    
     margin-right: 8px;
     cursor: pointer;
 }
