@@ -307,7 +307,7 @@ h1, h2, p {
   transform: translateY(-50%);
   width: 30px;
   height: 30px;
-  background-image: url('../icons/boardicons/search.svg');
+  background-image: url('../IMGicons/boardicons/search.svg');
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;

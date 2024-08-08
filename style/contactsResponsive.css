@@ -7,7 +7,7 @@
 
 
 .back-button-big {
-    background-image: url(../icons/arrow-left-line.svg);
+    background-image: url(../IMGicons/arrow-left-line.svg);
     background-repeat: no-repeat;
     width: 30px;
     height: 30px;
@@ -226,7 +226,7 @@
         align-items: center;
     }
     .header-mobile-img {
-        background-image: url(../icons/mobile_join_logo.svg);
+        background-image: url(../IMGicons/mobile_join_logo.svg);
         background-repeat: no-repeat;
         width: 32px;
         height: 39px;
@@ -235,7 +235,7 @@
         cursor: pointer;
     }
     .user-image-header-mobile {
-        background-image: url(../icons/mobile_user_profile.svg);
+        background-image: url(../IMGicons/mobile_user_profile.svg);
         background-repeat: no-repeat;
         background-size: cover;
         width: 56px;
@@ -288,7 +288,7 @@
         z-index: 1; 
     }
     .add-contact-mobile {
-        background-image: url(../icons/person_add.svg);
+        background-image: url(../IMGicons/person_add.svg);
         background-repeat: no-repeat;
         background-color: var(--deep-grey);
         width: 56px;
@@ -302,7 +302,7 @@
         z-index: 10000;
     }
     .edit-contact-mobile {
-        background-image: url(../icons/mobile_edit.svg);
+        background-image: url(../IMGicons/mobile_edit.svg);
         background-repeat: no-repeat;
         background-color: var(--deep-grey);
         width: 56px;
@@ -365,7 +365,7 @@
         font-weight: 700;
     }
     .back-button-big {
-        background-image: url(../icons/arrow-left-line.svg);
+        background-image: url(../IMGicons/arrow-left-line.svg);
         background-repeat: no-repeat;
         width: 30px;
         height: 30px;
