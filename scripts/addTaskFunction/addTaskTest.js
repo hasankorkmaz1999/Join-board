@@ -41,7 +41,7 @@ function getAssignedTo(data, content) {
         content.innerHTML += renderContacts(assignedTo, keys[i]);
     }
 
-    // Event-Listener nach dem Rendern von Kontakten hinzufügen
+    // Event-Listener nach dem Rendern der Kontakte hinzufügen
     let checkboxes = document.querySelectorAll('.assignedCheckbox');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function () {
@@ -61,9 +61,9 @@ function getAssignedTo(data, content) {
 function renderContacts(assignedTo, key) {
     let initials = assignedTo.name.split(' ').map(name => name[0]).join('');
     return /*html*/`
-        <div class="assignedto-item">
-        <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; background-color: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center;">${initials}</div>
-            <label for="${key}">${assignedTo.name}</label>
+        <div class="assignedto-item" style="display: flex; align-items: center;">
+        <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; background-color: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">${initials}</div>
+            <label for="${key}" style="flex: 1;">${assignedTo.name}</label>
             <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}">
         </div>
     `;
