@@ -93,12 +93,12 @@ function getAssignedTo(data, content) {
 function renderContacts(assignedTo, key) {
     let initials = assignedTo.name.split(' ').map(name => name[0]).join('');
     return /*html*/`
-        <div class="assignedto-item" style="display: flex; align-items: center; cursor: pointer;">
-            <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; background-color: #29ABE2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+        <div class="assignedto-item" style="display: flex; align-items: center; margin-right: 4px; padding-right: 10px; cursor: pointer;">
+            <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; margin-left: 8px; background-color: #29ABE2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
                 ${initials}
             </div>
             <!-- <label for="${key}" style="flex: 1; cursor: pointer;">${assignedTo.name}</label> -->
-            <div style="flex: 1; cursor: pointer;">${assignedTo.name}</div>
+            <div style="flex: 1; margin-left: 4px; cursor: pointer;">${assignedTo.name}</div>
             <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}" style="cursor: pointer;">
         </div>
     `;
