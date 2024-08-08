@@ -37,29 +37,29 @@
         <path d="M90.3358 118.593V104.76H93.0629L95.9946 110.461C96.7493 111.952 97.4207 113.483 98.0058 115.049C97.8524 113.337 97.7843 111.368 97.7843 109.177V104.76H100.034V118.593H97.4945L94.5288 112.772C93.7436 111.243 93.0437 109.671 92.4323 108.064C92.4323 109.776 92.5516 111.711 92.5516 114.09V118.576L90.3358 118.593Z" fill="#2A3647"/>
     </svg>
 
-    <div id="loginWindow" class="d-non">
+    <div id="loginWindow" class="d-non signup-markup">
         <div class="login_center signup_center">
             <h2>Sign up</h2>
             <div class="underline-frontpage"></div>
             <div class="login">
                 <form id="login-form" class="login-frontpage" onsubmit="return false;">
                     <div class="flex-input error-red">
-                        <input type="text" name="signup-email" id="signup-name" placeholder="Name" minlength="6">
-                        <img src="IMGicons/mail.png" alt="E-Mail Icon">
+                        <input type="text" name="signup-name" id="signup-name" placeholder="Name" minlength="6">
+                        <img src="IMGicons/person.svg" alt="Name Icon">
                     </div>
                     <div class="flex-input error-red">
                         <input type="text" name="signup-email" id="signup-email" placeholder="Email" minlength="6" pattern="[a-zA-Z0-9_.±]">
-                        <img src="IMGicons/mail.png" alt="E-Mail Icon">
+                        <img src="IMGicons/mail.svg" alt="E-Mail Icon">
                     </div>
                     <div class="flex-input error-red">
                         <input type="password" name="signup-password" id="signup-password" placeholder="Password" required>
-                        <img src="IMGicons/lock.png" alt="Lock Icon">
+                        <img src="IMGicons/lock.svg" alt="Lock Icon">
                     </div>
                     <div class="flex-input error-red">
-                        <input type="password" name="signup-password" id="confirm-signup-password" placeholder="Confirm Password" required>
-                        <img src="IMGicons/lock.png" alt="Lock Icon">
+                        <input type="password" name="confirm-signup-password" id="confirm-signup-password" placeholder="Confirm Password" required>
+                        <img src="IMGicons/lock.svg" alt="Lock Icon">
                     </div>
-                    <div class="error-message" id="error-message" style="color: red; display: none;"></div>
+                    <div class="error-message" id="error-message" style="color: var(--light-red); display: none;"></div>
                     <div class="remember-login">
                         <input type="checkbox" class="checkbox-login" required>
                         <p class="privacy-link">I accept the <a href="privacyPolicy.html">Privacy policy</a></p>
@@ -73,8 +73,8 @@
     </div>
     <footer class="legal-notice">
         <ul class="footer-links">
-            <li class="footer-links"><a href="privacyPolicy.html">Privacy Policy</a></li>
-            <li class="footer-links"><a href="legalNotice.html">Legal notice</a></li>
+            <li class="footer-links"><a href="privacyPolicy.html" target="_blank">Privacy Policy</a></li>
+            <li class="footer-links"><a href="legalNotice.html" target="_blank">Legal notice</a></li>
         </ul>
     </footer>
 

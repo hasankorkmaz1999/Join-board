@@ -17,16 +17,12 @@
         width: 90%;
         margin: 0 auto;
     }
-    img.form-image {
-
-    }
     .flex-input {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: row;
         flex-wrap: nowrap;
-
     }
     form.login-frontpage {
         display: flex;
@@ -34,5 +30,41 @@
         gap: 32px;
         width: 98%;
     }
+    .signup-markup {
+        height: 100vH;
+    }
 
+
+
+    .flex-input {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        max-width: 100%;
+    }
+    .flex-input input[type="text"] {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .flex-input img.form-image {
+        width: 24px;
+        height: 24px;
+        margin-left: 10px;
+    }
+    .flex-input {
+        padding: 8px;
+    }
+    .flex-input input[type="password"],
+    .flex-input input[type="text"] {
+        padding: 8px;
+        font-size: 14px;
+    }
+    .flex-input img.form-image {
+        width: 20px;
+        height: 20px;
+        margin-left: 8px;
+    }
 }
