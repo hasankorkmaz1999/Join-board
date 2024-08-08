@@ -33,6 +33,30 @@ async function loadData(URL) {
     }
 }
 
+// function getAssignedTo(data, content) {
+//     let keys = Object.keys(data);
+//     console.log(keys);
+//     for (let i = 0; i < keys.length; i++) {
+//         let assignedTo = data[keys[i]];
+//         content.innerHTML += renderContacts(assignedTo, keys[i]);
+//     }
+
+//     // Event-Listener nach dem Rendern der Kontakte hinzufügen
+//     let checkboxes = document.querySelectorAll('.assignedCheckbox');
+//     checkboxes.forEach(checkbox => {
+//         checkbox.addEventListener('change', function () {
+//             let parent = this.parentElement;
+//             if (this.checked) {
+//                 parent.style.backgroundColor = 'black';
+//                 parent.style.color = 'white';
+//             } else {
+//                 parent.style.backgroundColor = '';
+//                 parent.style.color = '';
+//             }
+//         });
+//     });
+// }
+
 function getAssignedTo(data, content) {
     let keys = Object.keys(data);
     console.log(keys);
@@ -40,31 +64,42 @@ function getAssignedTo(data, content) {
         let assignedTo = data[keys[i]];
         content.innerHTML += renderContacts(assignedTo, keys[i]);
     }
-
+    
     // Event-Listener nach dem Rendern der Kontakte hinzufügen
-    let checkboxes = document.querySelectorAll('.assignedCheckbox');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function () {
-            let parent = this.parentElement;
-            if (this.checked) {
-                parent.style.backgroundColor = 'black';
-                parent.style.color = 'white';
+    let items = document.getElementsByClassName('assignedto-item');
+    for (let i = 0; i < items.length; i++) {
+        items[i].addEventListener('click', function (e) {
+            // Verhindern, dass das Klicken auf das Element die Checkbox toggelt
+            if (e.target.tagName !== 'INPUT') {
+                let checkbox = this.getElementsByTagName('input')[0];
+                checkbox.checked = !checkbox.checked;
+            }
+            
+            let checkbox = this.getElementsByTagName('input')[0];
+            if (checkbox.checked) {
+                this.style.backgroundColor = '#2A3647'; // Verwendung des spezifischen Hex-Farbcodes
+                this.style.color = 'white';
+                checkbox.classList.add('checked');
             } else {
-                parent.style.backgroundColor = '';
-                parent.style.color = '';
+                this.style.backgroundColor = '';
+                this.style.color = '';
+                checkbox.classList.remove('checked');
             }
         });
-    });
+    }
 }
 
 // Render Contacts so optimiert, dass man die initialien einsehen kann bei Assigned to
 function renderContacts(assignedTo, key) {
     let initials = assignedTo.name.split(' ').map(name => name[0]).join('');
     return /*html*/`
-        <div class="assignedto-item" style="display: flex; align-items: center;">
-        <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; background-color: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">${initials}</div>
-            <label for="${key}" style="flex: 1;">${assignedTo.name}</label>
-            <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}">
+        <div class="assignedto-item" style="display: flex; align-items: center; cursor: pointer;">
+            <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; background-color: #29ABE2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                ${initials}
+            </div>
+            <!-- <label for="${key}" style="flex: 1; cursor: pointer;">${assignedTo.name}</label> -->
+            <div style="flex: 1; cursor: pointer;">${assignedTo.name}</div>
+            <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}" style="cursor: pointer;">
         </div>
     `;
 }
