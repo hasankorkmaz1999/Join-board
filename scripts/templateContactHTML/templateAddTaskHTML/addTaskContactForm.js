@@ -1,8 +1,9 @@
 function addTaskForm() {
     return  /*html*/`
-     <div id="addTaskContainer" class="addTaskContainer">
+      <div id="addTaskContainer" class="addTaskContainerOverlay"  onclick="doNotClose(event)">
         <div class="addTaskFlexHeader">
             <h1 class="addTaskH1">Add Task</h1>
+            <img onclick="closeAddTaskOverlay()" class="closeXaddtask" src="./icons/close.svg" alt="Icon Close">
         </div>
 
         <div class="addTaskFlexContainer">
@@ -22,15 +23,15 @@ function addTaskForm() {
     
                     <div class="addTaskDescription">
                         <label for="description">Description</label>
-                        <textarea id="description" name="description" placeholder="Enter a description" ></textarea>
+                        <textarea class="textareaO" id="description" name="description" placeholder="Enter a description" ></textarea>
                     </div>
     
                     <div class="addTaskAssignedTo">
-                        <label for="category">Assigned to</label>
-                        <select id="assignedto" name="category">
-                            <option value="null">Select contacts to assign</option>
-                            <!-- hier stehen alle kontakte -->
-                        </select>
+                        <label for="assignedto">Assigned to</label>
+                            <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./icons/arrow_drop_down.svg" alt="arrow_drop_down"></button>
+                        <div id="assignedto" class="assignedto-checkboxes d-non">
+                            <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
+                        </div>
                     </div>
                 </form>
             </div>
@@ -45,7 +46,7 @@ function addTaskForm() {
                             <span class="asterisk">*</span>
                         </div>    
                         <div class="addTaskDateInner">
-                            <input type="date" id="prioDate" name="prioDate" pattern="\d{2}-\d{2}-\d{4}">
+                            <input class="prioDate" type="date" id="prioDate" name="prioDate" pattern="\d{2}-\d{2}-\d{4}">
                         </div>    
                         <span id="" class="addTaskerrorMessage"></span>
                     </div>
@@ -88,7 +89,7 @@ function addTaskForm() {
     
                     <div class="addTaskCategory">
                         <label for="category">Category<span class="asterisk">*</span></label>
-                        <select id="category" name="category">
+                        <select class="selectcategory" id="category" name="category">
                             <option value="null">Select task Category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
@@ -97,7 +98,7 @@ function addTaskForm() {
     
                     <div class="addTaskSubtasks">
                         <label for="subtasks">Subtasks</label>
-                        <input type="text" id="subtasks" name="subtasks" placeholder="Enter subtasks">
+                        <input class="subtasksinput" type="text" id="subtasks" name="subtasks" placeholder="Enter subtasks">
                     </div>
                 </form>
             </div>
@@ -114,9 +115,5 @@ function addTaskForm() {
             </form>
             </div>
         </div>
-    </div>
-
-    
-    
-    `
+    </div>`
 }

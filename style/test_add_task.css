@@ -24,11 +24,13 @@
 }
 
 .assignedCheckbox:checked + label {
-    background-color: #2a3647;
+    background-color: black;
     color: white;
 }
 
 .assignedto-item input[type="checkbox"] {
+
+    
     margin-right: 8px;
     cursor: pointer;
 }

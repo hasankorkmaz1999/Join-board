@@ -20,13 +20,57 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
     <link rel="shortcut icon" href="favicon/favicon.ico">
-    
+
+    <style>
+        #preloader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #loginWindow,
+        .header-top {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .loaded #loginWindow, .header-top {
+            opacity: 1;
+        }
+
+    </style>
 </head>
 
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
 <body>
-
-        <div class="header-top"></div>
-
+    <header>
+        <div class="header-top">
+            <span class="subheader-login">Not a Join user?</span>
+            <button class="signup"><a href="signup.html">Sign up</a></button>
+        </div>
+    </header>
 
     <svg class="margin-top-10 margin-left-10" id="animated-svg" width="101" height="122" viewBox="0 0 101 122" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M71.6721 0H49.5143V25.4923H71.6721V0Z" fill="#2A3647"/>
@@ -38,36 +82,29 @@
     </svg>
 
     <div id="loginWindow" class="d-non">
-        <div class="login_center signup_center">
-            <h2>Sign up</h2>
+        <div class="login_center">
+            <h2>Log in</h2>
             <div class="underline-frontpage"></div>
             <div class="login">
                 <form id="login-form" class="login-frontpage" onsubmit="return false;">
                     <div class="flex-input error-red">
-                        <input type="text" name="signup-email" id="signup-name" placeholder="Name" minlength="6">
-                        <img src="IMGicons/mail.png" alt="E-Mail Icon">
-                    </div>
-                    <div class="flex-input error-red">
                         <input type="text" name="signup-email" id="signup-email" placeholder="Email" minlength="6" pattern="[a-zA-Z0-9_.±]">
-                        <img src="IMGicons/mail.png" alt="E-Mail Icon">
+                        <img class ="form-image" src="IMGicons/mail.png" alt="E-Mail Icon">
                     </div>
                     <div class="flex-input error-red">
                         <input type="password" name="signup-password" id="signup-password" placeholder="Password" required>
-                        <img src="IMGicons/lock.png" alt="Lock Icon">
-                    </div>
-                    <div class="flex-input error-red">
-                        <input type="password" name="signup-password" id="confirm-signup-password" placeholder="Confirm Password" required>
-                        <img src="IMGicons/lock.png" alt="Lock Icon">
+                        <img class ="form-image" src="IMGicons/lock.png" alt="Lock Icon">
                     </div>
                     <div class="error-message" id="error-message" style="color: red; display: none;"></div>
                     <div class="remember-login">
                         <input type="checkbox" class="checkbox-login" required>
-                        <p class="privacy-link">I accept the <a href="privacyPolicy.html">Privacy policy</a></p>
+                        <p>Remember me</p>
                     </div>
                 </form>
             </div>
             <div class="buttons-frontpage">
-                <button id="loginButton" type="submit" class="cursor-pointer button login-button-frontpage" disabled>Sign up</button>
+                <button id="loginButton" type="submit" class="cursor-pointer button login-button-frontpage" disabled>Log in</button>
+                <button id="guestLoginButton" class="cursor-pointer button guest-button-frontpage"><a href="summary.html">Guest Log in</a></button>
             </div>
         </div>    
     </div>
@@ -77,6 +114,13 @@
             <li class="footer-links"><a href="legalNotice.html">Legal notice</a></li>
         </ul>
     </footer>
+
+    <script>
+        window.addEventListener("load", function() {
+            document.getElementById("preloader").style.display = "none";
+            document.body.classList.add("loaded");
+        });
+    </script>
 
     <!-- script -->
     <script src="scripts/script.js"></script>
