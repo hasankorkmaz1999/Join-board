@@ -15,6 +15,10 @@
             -ms-user-select: none;
 }
 
+.draggable-true {
+    cursor: grab;
+}
+
 .technical-green {
     background-color: var(--technical-green);
     color: var(--white);

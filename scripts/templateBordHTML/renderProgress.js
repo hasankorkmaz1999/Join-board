@@ -1,4 +1,4 @@
-function renderDivTodo(task) {
+function renderDivTodo(task, key) {
     if (task.category === "Technical Task") {
         typHTML = `<span class="technical-green">${task.category}</span>`;
     }
@@ -6,7 +6,7 @@ function renderDivTodo(task) {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
     return /*html*/`
-    <div class="task-cards no-copy">
+    <div draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
@@ -15,7 +15,7 @@ function renderDivTodo(task) {
     `
 }
 
-function renderDivInprogress(task) {
+function renderDivInprogress(task, key) {
     if (task.category === "Technical Task") {
         typHTML = `<span class="technical-green">${task.category}</span>`;
     }
@@ -23,7 +23,7 @@ function renderDivInprogress(task) {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
     return /*html*/`
-    <div class="task-cards no-copy">
+    <div draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
@@ -32,7 +32,7 @@ function renderDivInprogress(task) {
     `
 }
 
-function renderDivDone(task) {
+function renderDivDone(task, key) {
     if (task.category === "Technical Task") {
         typHTML = `<span class="technical-green">${task.category}</span>`;
     }
@@ -40,7 +40,7 @@ function renderDivDone(task) {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
     return /*html*/`
-    <div class="task-cards no-copy">
+    <div draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
@@ -49,7 +49,7 @@ function renderDivDone(task) {
     `
 }
 
-function renderDivawaitingfeedback(task) {
+function renderDivawaitingfeedback(task, key) {
     if (task.category === "Technical Task") {
         typHTML = `<span class="technical-green">${task.category}</span>`;
     }
@@ -57,7 +57,7 @@ function renderDivawaitingfeedback(task) {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
     return /*html*/`
-    <div class="task-cards no-copy">
+    <div draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
