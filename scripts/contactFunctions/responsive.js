@@ -93,8 +93,8 @@ function renderResponsiveEditButtons() {
     let id = document.getElementById('fullID');
     let fullID = id.innerText;
     return /*html*/`
-        <span onclick="editContacts('${fullID}'); closeOverlayButton();" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/edit.svg" alt="edit icon"> Edit</span>
-        <span onclick="deletContacts('${fullID}'); closeOverlayButton();" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./icons/delete.svg" alt="delete icon"> Delete</span>
+        <span onclick="editContacts('${fullID}'); closeOverlayButton();" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./IMGicons/edit.svg" alt="edit icon"> Edit</span>
+        <span onclick="deletContacts('${fullID}'); closeOverlayButton();" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./IMGicons/delete.svg" alt="delete icon"> Delete</span>
     `;
 }
 /**

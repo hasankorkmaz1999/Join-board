@@ -26,7 +26,7 @@ h1, h2, p {
 }
 
 .back-arrow {
-    background-image: url(../icons/arrow-left-line.svg);
+    background-image: url(../IMGicons/arrow-left-line.svg);
     background-repeat: no-repeat;
     width: 30px;
     height: 30px;

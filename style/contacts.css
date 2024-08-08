@@ -280,11 +280,11 @@ span.mobile a {
 }
 
 .edit-big {
-    background-image: url(../icons/edit.svg);
+    background-image: url(../IMGicons/edit.svg);
 }
 
 .delete-big {
-    background-image: url(../icons/delete.svg);
+    background-image: url(../IMGicons/delete.svg);
 }    
 
 .edit-big, .delete-big {
@@ -580,7 +580,7 @@ form.addContact {
 }
 
 .inputfiledsname {
-    background-image: url('../icons/contacticons/person.png');
+    background-image: url('../IMGicons/contacticons/person.png');
     padding: 13px;
     font-size: 20px;
     width: 322px;
@@ -599,7 +599,7 @@ form.addContact {
 
 
 .inputfiledsemail {
-    background-image: url('../icons/contacticons/mail.png');
+    background-image: url('../IMGicons/contacticons/mail.png');
     padding: 13px;
     font-size: 20px;
     width: 322px;
@@ -617,7 +617,7 @@ form.addContact {
 
 
 .inputfiledsphone {
-    background-image: url('../icons/contacticons/call.png');
+    background-image: url('../IMGicons/contacticons/call.png');
     padding: 13px;
     font-size: 20px;
     width: 322px;

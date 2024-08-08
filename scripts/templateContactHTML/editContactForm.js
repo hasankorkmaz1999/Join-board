@@ -13,7 +13,7 @@ function editContactForm(name, phone, email, id) {
         <div class="contactForm">
             <div class="contactFormLeft contactFormLeftFluid">
                 <div class="mobile-icon-corner-right"></div>
-                <img class="logo-overlay" src="./icons/logo_with_blue.svg" alt="Join Logo">
+                <img class="logo-overlay" src="./IMGicons/logo_with_blue.svg" alt="Join Logo">
                 <h1 class="mobile">Edit contact</h1>
                 <p class="subheader-edit-mobile">Tasks are better with a team!</p>
                 <div class="mobile-edit-underline"></div>
@@ -23,9 +23,9 @@ function editContactForm(name, phone, email, id) {
 
           
             <form class="contactFormRight" onsubmit="finishEditContact('${id}'); return false;">
-                <img src="./icons/contacticons/kontak.png" alt="">
+                <img src="./IMGicons/contacticons/kontak.png" alt="">
                 <div class="contactinputfieldsedit">
-                    <img onclick="closeEditOverlay()" class="closeX" src="./icons/close.svg" alt="Icon close">
+                    <img onclick="closeEditOverlay()" class="closeX" src="./IMGicons/close.svg" alt="Icon close">
 
 
                     <div class="form-group">
@@ -47,7 +47,7 @@ function editContactForm(name, phone, email, id) {
 
                     <div class="contactbuttons">
                         <button type="button" onclick="closeEditOverlay(); deletContacts('${fullDelID}')" class="cancelbuttonEdit">Delete</button>
-                        <button type="submit" class="saveButton">Save<img class="check-icon-mobile" src="./icons/check.svg" alt="Icon check"></button>
+                        <button type="submit" class="saveButton">Save<img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check"></button>
                     </div>
                 </div>
             </form>
