@@ -3,7 +3,7 @@ function addTaskForm() {
       <div id="addTaskContainer" class="addTaskContainerOverlay"  onclick="doNotClose(event)">
         <div class="addTaskFlexHeader">
             <h1 class="addTaskH1">Add Task</h1>
-            <img onclick="closeAddTaskOverlay()" class="closeXaddtask" src="./icons/close.svg" alt="Icon Close">
+            <img onclick="closeAddTaskOverlay()" class="closeXaddtask" src="./IMGicons/close.svg" alt="Icon Close">
         </div>
 
         <div class="addTaskFlexContainer">
@@ -28,7 +28,7 @@ function addTaskForm() {
     
                     <div class="addTaskAssignedTo">
                         <label for="assignedto">Assigned to</label>
-                            <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./icons/arrow_drop_down.svg" alt="arrow_drop_down"></button>
+                            <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./IMGicons/arrow_drop_down.svg" alt="arrow_drop_down"" alt="arrow_drop_down"></button>
                         <div id="assignedto" class="assignedto-checkboxes d-non">
                             <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
                         </div>
@@ -111,7 +111,7 @@ function addTaskForm() {
                 <button type="button" onclick="closeOverlay()" class="cancelbutton">Cancel X</button>
                 <button id="createbutton" type="button" onclick="addTask()" class="createbutton">
                     <p class="create-mobile">Create Task</p>
-                    <img class="check-icon-mobile" src="./icons/check.svg" alt="Icon check">
+                    <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
             </form>
             </div>
         </div>
