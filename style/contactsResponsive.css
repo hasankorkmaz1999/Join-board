@@ -4,8 +4,6 @@
     display: none;
 }
 
-
-
 .back-button-big {
     background-image: url(../IMGicons/arrow-left-line.svg);
     background-repeat: no-repeat;
@@ -97,21 +95,12 @@
 }
 
 @media (max-width: 975px) {
-    .sidebar {
-        min-width: 320px;
-    }
     .contact-name {
         font-size: 16px;
     }
 }
 
 @media (max-width: 940px) {
-    .sidebar {
-        min-width: 320px;
-    }
-    #sidebar {
-        min-width: 320px;
-    }
     .contact-name {
         font-size: 16px;
     }
@@ -128,7 +117,7 @@
         font-size: 20px;
     }
     .sidebar {
-        min-width: 320px;
+        width: 95%;
     }
     .sidebarlist a {
         padding: 0;
@@ -163,9 +152,7 @@
    
 
 @media (max-width: 1000px) {
-    #sidebar {
-        width: 100%;
-    } 
+
 }
 
 @media (min-width: 1000px) {
@@ -204,7 +191,7 @@
         display: none;
     }
     #sidebar {
-        min-width: 240px;
+        width: 90%;
         overflow-y: unset;
         margin-top: 50px;
         margin-bottom: 80px;
@@ -396,3 +383,9 @@
     }
 }
 
+@media (max-width: 330px) {
+    #sidebar {
+        min-width: unset;
+        width: 280px;
+    }
+}

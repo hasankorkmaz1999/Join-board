@@ -255,10 +255,6 @@ input {
     height: 100vh;
 }
 
-.signup-markup {
-    
-}
-
 .signup_center {
     width: 500px;
     background-color: var(--white);
