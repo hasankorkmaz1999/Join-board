@@ -30,10 +30,11 @@
 
 }
 
-@media (max-width: 880px) {
+@media (max-width: 1000px) {
     .cancelbutton {
         display: none;
     }
+
     .inputfiledsname, .inputfiledsemail, .inputfiledsphone {
         width: 90%;
     }

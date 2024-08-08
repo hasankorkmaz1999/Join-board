@@ -52,7 +52,6 @@ async function addTask() {
 
     let data = {
         task: task,
-        date: date,
         priority: priority,
         category: category,
         assignedto: assignedTo.map(name => ({ name })),
