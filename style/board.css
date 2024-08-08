@@ -81,12 +81,12 @@ h1, h2, p {
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-    border: solid 1px var(--deep-grey);
     border-radius: 24px;
     margin: 10px 0;
     cursor: grab;
     padding: 10px;
     gap: 24px;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
 
