@@ -72,46 +72,79 @@ body {
   
 }
 
-.single-task-content {
-  margin-top: 10px;
-  padding: 30px;
-  width: 450px;
+.dueDate {
+  margin-left: 20px;
+  color: #000000;
+}
+
+.taskPriority {
+  margin-left: 20px;
+  color: #000000;
   
 }
 
+.single-task-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 30px;
+  width: 450px;
+  height: 860px;
+  
+}
+
+.Subtasks {
+  margin-bottom: 150px;
+}
+
 .taskTitleOverlay {
+  margin-top: 0px;
   font-size: 70px;
 }
 
 .nurtest {
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 
 .editanddeletetask {
   
   display: flex;
+  
   justify-content: flex-end;
+  align-items: flex-end;
   
 }
 
 .editbuttontask {
   background-image: url(../IMGicons/edit.svg);
   cursor: pointer;
+  margin-left: 30px;
 }
 
 .deletebuttontask {
   background-image: url(../IMGicons/delete.svg);
   cursor: pointer;
+ 
+  
+}
+
+.deletebuttontask:hover {
+  filter: brightness(0) saturate(100%) invert(38%) sepia(85%) saturate(509%) hue-rotate(174deg) brightness(95%) contrast(92%);
+}
+
+.editbuttontask:hover {
+  filter: brightness(0) saturate(100%) invert(38%) sepia(85%) saturate(509%) hue-rotate(174deg) brightness(95%) contrast(92%);
 }
 
 .editbuttontask, .deletebuttontask {
+ 
   background-repeat: no-repeat;
   width: 24px;
   height: 24px;
   padding-left: 24px;
   margin-right: 32px;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--deep-grey);
 }
 
