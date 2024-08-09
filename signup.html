@@ -20,6 +20,16 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
     <link rel="shortcut icon" href="favicon/favicon.ico">
+    <style>
+        .h2helper {
+            width: 90%;
+        }
+
+        .break {
+            width: 10%;
+            padding-left: 12px;
+        }
+    </style>
     
 </head>
 
@@ -39,7 +49,15 @@
 
     <div id="loginWindow" class="d-non signup-markup">
         <div class="login_center signup_center">
-            <h2>Sign up</h2>
+            <div class="flexhelper">
+                <div class="break">
+                    <a href="javascript:history.back()"><div class="back-arrow"></div></a>
+                </div>
+                <div class="h2helper">
+                    <h2>Sign up</h2>
+                </div>
+            </div>
+
             <div class="underline-frontpage"></div>
             <div class="login">
                 <form id="login-form" class="login-frontpage" onsubmit="return false;">
