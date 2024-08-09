@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+:root {
+    --orange: #FF7A00;
+    --pink: #FF5EB3;
+    --blue: #6E52FF;
+    --violet: #9327FF;
+    --babyblue: #00BEE8;
+    --background-prio: #FFA800;
+    --body-background: #F6F7F8;
+    --body-background-grey: #f5f5f5;
+    --border-grey: #d1d1d1;
+    --ligh-tgreen: #1FD7C1;
+    --dark-orange: #FF745E;
+    --brown: #FFA35E;
+    --pink: #FC71FF;
+    --med-orange: #FFC701;
+    --med-blue: #0038FF;
+    --emailblau: #007CEE;
+    --neon-green: #C3FF2B;
+    --yellow: #FFE62B;
+    --light-red: #FF4646;
+    --light-orange: #FFBB2B;
+    --deep-grey: #2A3647;
+    --deepest-grey: #091931;
+    --button-hover: #29ABE2;
+    --footer-grey: #A8A8A8;
+    --links-grey: #cdcdcd;
+    --black: #000000;
+    --white: #ffffff;
+}
+
+.menu-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-top: 6px;
+}
+
+img.mobile-menu {
+    width: 24px;
+    height: 24px;
+    padding-bottom: 8px;
+}
+.mobile-menu-botton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 6px;
+    border-radius: 12px;
+}
+span.mobile {
+    font-family: 'Open Sans';
+    color: var(--links-grey);
+    font-size: 14px;
+    line-height: 16.8px;
+}
+
+.mobile-menu-botton:hover {
+    background-color: var(--deepest-grey);
+    color: var(--white) !important;
+}
+
+.footer-mobile {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: var(--deep-grey);
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.footer-mobile {
+    display: none;
+}
+
+@media (max-width: 680px) {
+    .footer-mobile {
+        display: block;
+    }
+}    
+
+</style>
+
+</head>
+<body>
+
+<div class="footer-mobile">
+    <div class="menu-mobile">
+        <div class="mobile-menu-botton">
+            <a href="../summary.html" class="footer-link">
+                <img class="mobile-menu" src="./../IMGicons/mobile_summary.svg" alt="Icon Summary">
+                <span class="mobile">Summary</span>
+            </a>
+        </div>
+        <div class="mobile-menu-botton">
+            <a href="../board.html" class="footer-link">
+                <img class="mobile-menu" src="./../IMGicons/mobile_board.svg" alt="Icon Board">
+                <span class="mobile">Board</span>
+            </a>
+        </div>
+        <div class="mobile-menu-botton">
+            <a href="../add_task.html" class="footer-link">
+                <img class="mobile-menu" src="./../IMGicons/mobile_add_task.svg" alt="Icon Add Tasks">
+                <span class="mobile">Add Tasks</span>
+            </a>
+        </div>
+        <div class="mobile-menu-botton">
+            <a href="../contacts.html" class="footer-link">
+                <img class="mobile-menu" src="./../IMGicons/mobile_contacts.svg" alt="Icon Contacts">
+                <span class="mobile">Contacts</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

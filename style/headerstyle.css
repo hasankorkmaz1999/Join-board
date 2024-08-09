@@ -182,28 +182,70 @@ a.active_footer {
     flex-direction: column;
 }
 
+a.abc {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.2px;
+}
+
 
 #nav-summary {
     background-image: url('./../IMGicons/headericons/iconSummary.svg');
-    background-color: #091931;
     background-repeat: no-repeat;
     background-position: 50px center; 
     background-size: 30px 30px; 
 }
-
 #nav-summary:hover {
-    background-image: url('./../IMGicons/headericons/iconSummaryHover.svg');
+    background-image: url('./../IMGicons/headericons/iconSummaryActive.svg');
     background-color: #091931;
     background-repeat: no-repeat;
     color: var(--white);
 }
+a.active_summary:hover {color: var(--white);}
+a.active_summary {padding-left: 90px;}
 
-
-
-a.active_summary:hover {
+#nav-add-task {
+    background-image: url('./../IMGicons/headericons/iconAddTask.svg');
+    background-repeat: no-repeat;
+    background-position: 50px center; 
+    background-size: 30px 30px; 
+}
+#nav-add-task:hover {
+    background-image: url('./../IMGicons/headericons/iconAddTaskActive.svg');
+    background-color: #091931;
+    background-repeat: no-repeat;
     color: var(--white);
 }
-a.active_summary {
+a.active_addtask:hover {color: var(--white);}
+a.active_addtask  {padding-left: 90px;}
 
-    padding-left: 100px;
+#nav-board {
+    background-image: url('./../IMGicons/headericons/iconBoard.svg');
+    background-repeat: no-repeat;
+    background-position: 50px center; 
+    background-size: 30px 30px; 
 }
+#nav-board:hover {
+    background-image: url('./../IMGicons/headericons/iconBoardActive.svg');
+    background-color: #091931;
+    background-repeat: no-repeat;
+    color: var(--white);
+}
+a.active_board:hover {color: var(--white);}
+a.active_board {padding-left: 90px;}
+
+#nav-contacts {
+    background-image: url('./../IMGicons/headericons/iconContacts.svg');
+    background-repeat: no-repeat;
+    background-position: 50px center; 
+    background-size: 30px 30px; 
+}
+#nav-contacts:hover {
+    background-image: url('./../IMGicons/headericons/iconContactsActive.svg');
+    background-color: #091931;
+    background-repeat: no-repeat;
+    color: var(--white);
+}
+a.active_contacts:hover {color: var(--white);}
+a.active_contacts {padding-left: 90px;}
