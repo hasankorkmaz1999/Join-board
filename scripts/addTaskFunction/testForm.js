@@ -2,6 +2,8 @@ function validateAndSanitizeForm() {
     return new Promise((resolve, reject) => {
         const taskTitle = document.getElementById("addTaskTitle");
         const taskTitleError = document.getElementById("taskTitleError");
+        const duedateError = document.getElementById("duedateError");
+        const categoryError = document.getElementById("addTaskCategoryError");
         const description = document.getElementById("description");
         const date = document.getElementById("prioDate");
         const category = document.getElementById("category");
@@ -18,9 +20,22 @@ function validateAndSanitizeForm() {
             taskTitleError.classList.add('d-none');
         }
 
-        if (!date.value.trim() || !category.value || category.value === "null") {
-            alert("Bitte füllen Sie alle erforderlichen Felder aus.");
+        if (!date.value.trim()) {
+            duedateError.classList.remove('d-non');
+            duedateError.classList.add('addTaskerrorMessage');
             isValid = false;
+        } else {
+            duedateError.classList.remove('addTaskerrorMessage');
+            duedateError.classList.add('d-non');
+        }
+
+        if (!category.value || category.value === "null") {
+            categoryError.classList.remove('d-non');
+            categoryError.classList.add('addTaskerrorMessage');
+            isValid = false;
+        } else {
+            categoryError.classList.remove('addTaskerrorMessage');
+            categoryError.classList.add('d-non');
         }
 
         if (!isValid) {
