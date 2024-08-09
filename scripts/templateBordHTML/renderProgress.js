@@ -50,7 +50,7 @@ function renderDivTodo(task, key) {
     };
 
     return /*html*/`
-    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)})' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
+    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
@@ -88,7 +88,7 @@ function renderDivInprogress(task, key) {
 
 
     return /*html*/`
-    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)})' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
+    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
@@ -125,7 +125,7 @@ function renderDivDone(task, key) {
 
 
     return /*html*/`
-    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)})' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
+    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
@@ -157,7 +157,7 @@ function renderDivawaitingfeedback(task, key) {
     
 
     return /*html*/`
-    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)})' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
+    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>

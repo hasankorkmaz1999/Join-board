@@ -65,15 +65,17 @@
   
   display: flex;
   justify-content: flex-end;
-  margin-top: 150px;
+  
 }
 
 .editbuttontask {
   background-image: url(../IMGicons/edit.svg);
+  cursor: pointer;
 }
 
 .deletebuttontask {
   background-image: url(../IMGicons/delete.svg);
+  cursor: pointer;
 }
 
 .editbuttontask, .deletebuttontask {

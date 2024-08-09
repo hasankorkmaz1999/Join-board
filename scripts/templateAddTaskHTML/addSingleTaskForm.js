@@ -1,4 +1,5 @@
-function addSingleTaskForm(taskData) {
+function addSingleTaskForm(taskData, key) {
+   
     return /*html*/`
         <img onclick="closeSingleTaskOverlay()" class="closeXaddtask" src="./IMGicons/close.svg" alt="Icon Close">
         <div class="single-task-content">
@@ -10,7 +11,7 @@ function addSingleTaskForm(taskData) {
             <p class="nurtest">Assigned To:</p>
             <p class="">Subtasks</p>
             <div class="editanddeletetask">
-                <div class="deletebuttontask">Delete</div>
+                <div onclick='deleteTask("${key}")' class="deletebuttontask">Delete</div>
                 <div class="editbuttontask">Edit</div>
             </div>
         </div>

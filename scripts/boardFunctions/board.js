@@ -122,20 +122,17 @@ function doNotClose(event) {
 
 // Funktion zum öffnen einer Task im Board
 
-function openSingleTaskOverlay(taskData) {
+function openSingleTaskOverlay(taskData, key) {
     let overlay = document.getElementById('overlayforsingletask');
     overlay.classList.remove('d-none');
     overlay.classList.add('slide-in-right');
     
-    // Container für den dynamisch geladenen Inhalt
     let popupContent = document.getElementsByClassName('singletaskpopup')[0];
-
-    // Füge das Datum hinzu, wenn du die Funktion aufrufst
-    let htmlContent = addSingleTaskForm(taskData);
-
-    // Füge den HTML-Inhalt in das popupContent Div ein
+    
+    let htmlContent = addSingleTaskForm(taskData, key);
     popupContent.innerHTML = htmlContent;
 }
+
 
 
 
@@ -153,3 +150,29 @@ function calculateProgress(subtasks) {
     const completedTasks = subtasks.filter(subtask => subtask.itsdone).length;
     return (completedTasks / subtasks.length) * 100; // Prozentualer Fortschritt
 }
+
+
+
+async function deleteTask(taskKey) {
+   
+    const deleteAPI = `https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes/${taskKey}.json`;
+
+    try {
+        const response = await fetch(deleteAPI, {
+            method: "DELETE"
+        });
+
+        const responseData = await response.json();
+
+        if (response.ok) {
+            console.log(`Task with key ${taskKey} deleted successfully`);
+            closeSingleTaskOverlay();
+            location.reload(); 
+        } else {
+            console.error("Error deleting task:", response.statusText);
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
