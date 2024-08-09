@@ -1,4 +1,20 @@
 
+.back-arrow {
+    background-image: url(../IMGicons/arrow-left-line.svg);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.flexhelper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+
 @media (max-width: 500px) {
     .header-top {
         position: fixed;

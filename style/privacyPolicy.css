@@ -58,6 +58,10 @@ a.help:hover {
     font-weight: bold;
 }
 
+.contact-flex-header {
+    margin-top: 80px;
+}
+
 @media (max-width: 800px) {
     .header-left {
         display: none;
