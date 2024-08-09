@@ -105,34 +105,34 @@ function renderContacts(assignedTo, key) {
 }
 
 async function addTask() {
-    let task = document.getElementById("addTaskTitle").value;
-    let date = document.getElementById("prioDate").value;
-    let priority = document.getElementById("priority").value;
-    let category = document.getElementById("category").value;
-    let description = document.getElementById("description").value;
-    let subtasks = document.getElementById("subtasks").value;
-
-    let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
-    let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
-
-    if (!task || !date || !priority || !category || assignedTo.length === 0) {
-        console.error("Fehler: Ein oder mehrere erforderliche Felder sind null (nicht vergeben!).");
-        return;
-    }
-
-    let data = {
-        task: task,
-        date: date,
-        priority: priority,
-        category: category,
-        assignedto: assignedTo.map(name => ({ name })),
-        description: description,
-        subtasks: [{ itsdone: false, title: subtasks }],
-        progress: "todo",
-        duedate: date,
-    };
-
     try {
+        // Warten auf die Validierung und bereinigte Werte erhalten
+        const sanitizedValues = await validateAndSanitizeForm();
+
+        const task = sanitizedValues.taskTitle;
+        const date = sanitizedValues.date;
+        const priority = document.getElementById("priority").value;
+        const category = sanitizedValues.category;
+        const description = sanitizedValues.description;
+        const subtasks = sanitizedValues.subtasks;
+
+        let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+        let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
+
+        // Erstellen des Datenobjekts für die Aufgabe
+        let data = {
+            task: task,
+            date: date,
+            priority: priority,
+            category: category,
+            assignedto: assignedTo.map(name => ({ name })),
+            description: description,
+            subtasks: [{ itsdone: false, title: subtasks }],
+            progress: "todo",
+            duedate: date,
+        };
+
+        // Senden der Daten an die API
         let response = await fetch(addAPI + ".json", {
             method: "POST",
             headers: {
@@ -140,13 +140,16 @@ async function addTask() {
             },
             body: JSON.stringify(data)
         });
+
         await response.json();
-        console.log("Task successfully added:", data); // console.log mit Alert zur Überwachung eingebaut
+        console.log("Task successfully added:", data);
         alert("Neue Aufgabe erfolgreich erstellt!");
+
     } catch (error) {
-        console.error("Fehler beim Hinzufügen der Aufgabe:", error);
+        console.error("Fehler bei der Validierung oder beim Hinzufügen der Aufgabe:", error);
     }
 }
+
 
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');

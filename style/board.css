@@ -43,6 +43,26 @@ body {
     cursor: grab;
 }
 
+
+/*Style Boardseite Progressbar  */
+.progress-bar-container {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 10px;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4c54af; /* Farbe des Fortschrittsbalkens */
+  transition: width 0.3s ease-in-out;
+}
+
+
+
+
+
 /*Style Boardseite einzelne Tasks sobald man draufklickt und sich das overlay öffnet */
 .taskCategoryHTML {
   margin-bottom: 50px;
@@ -106,6 +126,7 @@ body {
   gap: 24px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   background-color: var(--white);
+  width: 300px;
 }
 
 

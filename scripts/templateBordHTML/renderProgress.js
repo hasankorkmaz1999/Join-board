@@ -38,9 +38,12 @@ function renderDivTodo(task, key) {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
 
+    let progress = calculateProgress(task.subtasks);
+
     let taskData = {
         taskTitle: task.task,
         taskDescription: task.description,
+        taskPriorityIcon: priorityIcon,
         taskPriority: task.priority,
         taskCategoryHTML: typHTML,
         dueDate: task.duedate
@@ -51,7 +54,11 @@ function renderDivTodo(task, key) {
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
-        <span>Hier muss der fortschritsbalken rein (muss via inline style css geamcht werdem)</span>
+
+        <span class="progress-bar-container">
+            <div class="progress-bar" style="width: ${progress}%;"></div>
+        </span>
+
         <div class="taskpriority">${priorityIcon} </div>
     </div>
     `;
@@ -67,10 +74,13 @@ function renderDivInprogress(task, key) {
     if (task.category === "User Story") {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
+    let progress = calculateProgress(task.subtasks);
+
 
     let taskData = {
         taskTitle: task.task,
         taskDescription: task.description,
+        taskPriorityIcon: priorityIcon,
         taskPriority: task.priority,
         taskCategoryHTML: typHTML,
         dueDate: task.duedate
@@ -82,7 +92,9 @@ function renderDivInprogress(task, key) {
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
-        <span>Hier muss der fortschritsbalken rein (muss via inline style css geamcht werdem)</span>
+        <span class="progress-bar-container">
+            <div class="progress-bar" style="width: ${progress}%;"></div>
+        </span>
         <div class="taskpriority">${priorityIcon}  </div>
     </div>
     `
@@ -103,6 +115,7 @@ function renderDivDone(task, key) {
     let taskData = {
         taskTitle: task.task,
         taskDescription: task.description,
+        taskPriorityIcon: priorityIcon,
         taskPriority: task.priority,
         taskCategoryHTML: typHTML,
         dueDate: task.duedate
@@ -131,9 +144,12 @@ function renderDivawaitingfeedback(task, key) {
         typHTML = `<span class="user-story-blue">${task.category}</span>`;
     }
 
+    let progress = calculateProgress(task.subtasks);
+
     let taskData = {
         taskTitle: task.task,
         taskDescription: task.description,
+        taskPriorityIcon: priorityIcon,
         taskPriority: task.priority,
         taskCategoryHTML: typHTML,
         dueDate: task.duedate
@@ -145,7 +161,9 @@ function renderDivawaitingfeedback(task, key) {
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
-        <span>Hier muss der fortschritsbalken rein (muss via inline style css geamcht werdem)</span>
+        <span class="progress-bar-container">
+            <div class="progress-bar" style="width: ${progress}%;"></div>
+        </span>
         <div class="taskpriority">${priorityIcon}  </div>
     </div>
     `
