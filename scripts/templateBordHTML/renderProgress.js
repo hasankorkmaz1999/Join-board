@@ -42,7 +42,8 @@ function renderDivTodo(task, key) {
         taskTitle: task.task,
         taskDescription: task.description,
         taskPriority: task.priority,
-        taskCategoryHTML: typHTML
+        taskCategoryHTML: typHTML,
+        dueDate: task.duedate
     };
 
     return /*html*/`
@@ -71,7 +72,8 @@ function renderDivInprogress(task, key) {
         taskTitle: task.task,
         taskDescription: task.description,
         taskPriority: task.priority,
-        taskCategoryHTML: typHTML
+        taskCategoryHTML: typHTML,
+        dueDate: task.duedate
     };
 
 
@@ -102,7 +104,8 @@ function renderDivDone(task, key) {
         taskTitle: task.task,
         taskDescription: task.description,
         taskPriority: task.priority,
-        taskCategoryHTML: typHTML
+        taskCategoryHTML: typHTML,
+        dueDate: task.duedate
     };
 
 
@@ -132,8 +135,10 @@ function renderDivawaitingfeedback(task, key) {
         taskTitle: task.task,
         taskDescription: task.description,
         taskPriority: task.priority,
-        taskCategoryHTML: typHTML
+        taskCategoryHTML: typHTML,
+        dueDate: task.duedate
     };
+    
 
     return /*html*/`
     <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)})' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
