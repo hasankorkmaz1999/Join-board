@@ -27,7 +27,7 @@ h1, h2, p {
 }
 
 /* Styles for the greeting message */
-#greeting-container {
+.greeting-container {
     display: flex;
     justify-content: center;
     margin: 20px;
@@ -37,7 +37,7 @@ h1, h2, p {
     /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
-#greeting-container .greeting {
+.greeting-container .greeting {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -58,6 +58,40 @@ h1, h2, p {
     gap: 5px;
 }
 
+.text-align-center {
+    text-align: center;
+}
+
+.d-flex {
+    display: flex;
+}
+
 .greeting-flex-area span {
     font-size: 47px;
+}
+
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.all-cards {
+    display: flex;
+    flex-direction: column;
+}
+
+.med-card {
+    border-radius: 30px;
+    padding: 38px, 19px, 38px, 19px;
+    gap: 18px;
+    box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.large-card {
+
+}
+
+.taskinboard {
+
 }
