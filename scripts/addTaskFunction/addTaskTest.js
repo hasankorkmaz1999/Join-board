@@ -111,7 +111,7 @@ async function addTask() {
 
         const task = sanitizedValues.taskTitle;
         const date = sanitizedValues.date;
-        const priority = document.getElementById("priority").value; // Priority bleibt unverändert
+        const priority = document.getElementById("priority").value;
         const category = sanitizedValues.category;
         const description = sanitizedValues.description;
         const subtasks = sanitizedValues.subtasks;

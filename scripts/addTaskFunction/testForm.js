@@ -1,12 +1,3 @@
-/* 
-id addTaskTitle
-id description
-id prioDate
-id category
-
-*/
-
-
 function validateAndSanitizeForm() {
     return new Promise((resolve, reject) => {
         const taskTitle = document.getElementById("addTaskTitle");
