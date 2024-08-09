@@ -126,10 +126,18 @@ function openSingleTaskOverlay(taskData) {
     let overlay = document.getElementById('overlayforsingletask');
     overlay.classList.remove('d-none');
     overlay.classList.add('slide-in-right');
+    
+    // Container für den dynamisch geladenen Inhalt
     let popupContent = document.getElementsByClassName('singletaskpopup')[0];
-    let htmlContent = addSingleTaskForm(taskData.taskTitle, taskData.taskDescription, taskData.taskPriority, taskData.taskCategoryHTML);
+
+    // Füge das Datum hinzu, wenn du die Funktion aufrufst
+    let htmlContent = addSingleTaskForm(taskData);
+
+    // Füge den HTML-Inhalt in das popupContent Div ein
     popupContent.innerHTML = htmlContent;
 }
+
+
 
 
 function closeSingleTaskOverlay() {
