@@ -119,12 +119,9 @@
     .sidebar {
         width: 95%;
     }
-    .sidebarlist a {
+    /* .sidebarlist a {
         padding: 0;
-    }
-    .join_logo {
-        margin: 40px;
-    }
+    } */
     .contact-email {
         font-size: 12px;
     }
