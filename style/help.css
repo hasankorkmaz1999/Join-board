@@ -40,6 +40,12 @@ h1, h2, p {
     cursor: pointer;
 }
 
+.contact-flex-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .joinLogo {
     display: none;
 }
@@ -58,6 +64,10 @@ a.help:hover {
     font-weight: bold;
 }
 
+.policies {
+    margin-bottom: 16px;
+}
+
 @media (max-width: 800px) {
     .header-left {
         display: none;
@@ -69,6 +79,9 @@ a.help:hover {
     .header-top {
         width: 100%;
         margin-left: 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
     h1 {
         font-size: 47px;
@@ -86,7 +99,7 @@ a.help:hover {
         line-height: 19.2px;
     }
     .subheader-contact,
-    .kanban, .user {
+    .kanban {
         display: none;
     }
     .joinLogo {
