@@ -6,7 +6,7 @@ function addSingleTaskForm(taskData) {
             <h2 class="taskTitleOverlay">${taskData.taskTitle}</h2>
             <p>${taskData.taskDescription}</p>
             <p class="">Due date: ${taskData.dueDate}</p>
-            <p class="">Priority: ${taskData.taskPriority}</p>
+            <p class="">Priority: ${taskData.taskPriority} ${taskData.taskPriorityIcon}</p>
             <p class="nurtest">Assigned To:</p>
             <p class="">Subtasks</p>
             <div class="editanddeletetask">

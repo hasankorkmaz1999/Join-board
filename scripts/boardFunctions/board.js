@@ -146,3 +146,10 @@ function closeSingleTaskOverlay() {
     let popupContent = document.getElementsByClassName('singletaskpopup')[0];
     popupContent.innerHTML = '';
 }
+
+function calculateProgress(subtasks) {
+    if (!subtasks || subtasks.length === 0) return 0;
+
+    const completedTasks = subtasks.filter(subtask => subtask.itsdone).length;
+    return (completedTasks / subtasks.length) * 100; // Prozentualer Fortschritt
+}
