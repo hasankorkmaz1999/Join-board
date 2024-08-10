@@ -28,6 +28,10 @@
     --white: #ffffff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--body-background-grey);
     font-family: 'Inter';
