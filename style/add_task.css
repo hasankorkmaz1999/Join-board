@@ -439,3 +439,27 @@ input.assignedCheckbox[type="checkbox"] {
 }
 /* End 
 ************************************************************************************/
+
+
+
+
+.initials-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.initial-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--some-color); /* Ersetze durch deine gewünschte Farbe */
+    color: white;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}

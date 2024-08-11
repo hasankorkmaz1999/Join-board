@@ -92,3 +92,42 @@ function showAssignedTo() {
 }
 
 
+// Initialen (Avatare unter assignedTo)
+function getInitials(name) {
+    return name.split(' ').map(word => word[0].toUpperCase()).join('');
+}
+
+function displayInitials() {
+    let initialsContainer = document.getElementById('selectedInitials');
+    initialsContainer.innerHTML = '';
+
+    let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+    assignedToCheckboxes.forEach(checkbox => {
+        let initials = getInitials(checkbox.value);
+        initialsContainer.innerHTML += `<span class="initial-circle">${initials}</span>`;
+    });
+}
+
+function addCheckboxEventListeners() {
+    let checkboxes = document.querySelectorAll('input[name="assignedto"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            displayInitials();
+        });
+    });
+}
+
+window.onload = async function() {
+    await init();
+    displayInitials();
+};
+
+async function getAssignedTo(data, content) {
+    let key = Object.keys(data);
+    for (let i = 0; i < key.length; i++) {
+        let assignedTo = data[key[i]];
+        content.innerHTML += renderContacts(assignedTo, key[i]);
+    }
+    addCheckboxEventListeners();
+}
+// End: Initialen

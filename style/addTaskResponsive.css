@@ -143,4 +143,7 @@
     #addTaskLeftForm, #addTaskRightForm {
         margin: 0;
     }
+    .addTaskFlexButtons .cancelbutton {
+        display: none;
+    }
 }
