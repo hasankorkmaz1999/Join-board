@@ -13,7 +13,6 @@ label, span.asterisk {
 }
 
 label {
-    height: 30px;
     display: block;
 }
 
@@ -125,7 +124,6 @@ span.addTaskerrorMessage {
     margin: 10px 0;
 }
 
-/* ich war hier, gruß Ty */
 form div {
     margin-bottom: 0px;
 }
@@ -305,59 +303,6 @@ option {
     fill: white; 
 }
 
-.menu-mobile {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    padding-top: 6px;
-}
-
-img.mobile-menu {
-    width: 24px;
-    height: 24px;
-    padding-bottom: 8px;
-}
-.mobile-menu-botton {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px 6px;
-    border-radius: 12px;
-}
-span.mobile {
-    font-family: 'Open Sans';
-    color: var(--links-grey);
-    font-size: 14px;
-    line-height: 16.8px;
-}
-.mobile-menu-botton:hover {
-    background-color: var(--deepest-grey);
-    color: var(--white) !important;
-}
-
-.footer-mobile {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background-color: var(--deep-grey);
-}
-
-.footer-link {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.footer-mobile {
-    display: none;
-}
-
 .flex-asterisk {
     display: flex;
     align-items: center;
@@ -367,8 +312,8 @@ span.mobile {
     flex-direction: column;
     max-height: 200px;
     overflow: auto;
-    border: 1px	solid #d1d1d1;
     border-radius: 10px;
+    background-color: var(--white);
 }
 
 .addTaskAssignedToButton {
@@ -406,40 +351,91 @@ input.assignedCheckbox[type="checkbox"] {
 
 .assignedto-item {
     position: relative;
-    padding-right: 40px; 
+    width: 99%;
+    border-radius: 10px;
+    overflow: hidden; 
+    box-sizing: border-box; 
+    padding: 26px 0;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    justify-content: space-between;
 }
 
-.assignedto-item:hover,
-.assignedto-item:active {
-    background-color: var(--deep-grey);
-    color: var(--white);
+.assignedto-item:hover {
+    background-color: var(--border-grey);
+    border-radius: 10px;
 }
 
 .assignedto-item label {
-    margin-left: 10px;
     display: inline-block;
     cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box; 
+    display: flex;
+    align-items: center;
+    padding: 26px;
 }
 
 .assignedto-item input[type="checkbox"] + label::before {
     content: '';
     position: absolute;
-    right: 10px; 
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
     background-image: url('./../IMGicons/check-unchecked.svg');
     background-size: cover;
+    border-radius: 50%;
+    box-sizing: border-box; 
 }
 
 .assignedto-item input[type="checkbox"]:checked + label::before {
-    background-image: url('./../IMGicons/check.svg');
+    background-image: url('./../IMGicons/check-checked.png');
+    border-radius: 50%;
+    box-sizing: border-box; 
 }
 
+.assignedto-item input[type="checkbox"]:focus + label::before {
+    outline: 2px solid #007BFF;
+    outline-offset: 2px;
+    border-radius: 50%;
+}
+
+.assignedto-item input[type="checkbox"]:active + label::before {
+    transform: translateY(-50%) scale(0.95);
+    background-image: url('./../IMGicons/check-checked.png');
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.assignedto-item input[type="checkbox"]:checked ~ label {
+    background-color: var(--deep-grey);
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.assignedto-item input[type="checkbox"]:checked {
+    background-color: var(--deep-grey);
+    color: white;
+    border-radius: 10px;
+}
+
+.assignedto-item input[type="checkbox"]:checked ~ label {
+    background-color: var(--deep-grey);
+    color: white;
+    padding: 26px;
+    display: flex;
+    align-items: center;
+}
+
+.assignedto-item:active {
+    background-color: var(--deep-grey);
+    color: white;
+    border-radius: 10px;
+    overflow: hidden; 
+}
 /* End 
 ************************************************************************************/
