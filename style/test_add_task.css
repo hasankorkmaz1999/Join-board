@@ -1,0 +1,135 @@
+/* CSS für Assigned to Drop-Down Menü */
+.assignedto-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.assignedto-item label {
+    margin-top: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.assignedto-item:hover {
+    background-color: lightgray;
+}
+
+.assignedCheckbox {
+    /* accent-color: #4CAF50; */
+    appearance: none; /* Entfernt den Standardstil */
+    width: 16px;
+    height: 16px;
+
+    border-radius: 4px;
+    border: 2px solid #777777; /* Standardrahmenfarbe */
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* Stil für eine ausgewählte Checkbox */
+.assignedCheckbox.checked {
+    border-color: white; /* Weißer Rahmen */
+    background-color: #2A3647; /* Gleiche Hintergrundfarbe wie das ausgewählte Element */
+}
+
+/* .assignedCheckbox:checked + label {
+    background-color: black;
+    color: white;
+} */
+
+/* Häkchen-Stil */
+.assignedCheckbox.checked::after {
+    content: "✓"; /* Pseudoelement-Stil */
+    font-size: 22px;
+    color: white; /* Weißes Häkchen */
+    display: block;
+    text-align: center;
+    line-height: 14px;
+}
+
+.assignedto-item input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/* input[id^="-"].assignedCheckbox,
+input.assignedCheckbox[type="checkbox"] {
+    display: none !important;
+} */
+
+/* .assignedto-item label {
+    display: inline-block !important;
+    position: relative !important;
+    padding-right: 30px !important;
+    cursor: pointer !important;
+} */
+
+/* .assignedto-item label::after {
+    content: '' !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid #000 !important;
+    background-color: #fff !important;
+} */
+
+/* input.assignedCheckbox[type="checkbox"]:checked + label::after {
+    content: '✔' !important;
+    font-size: 16px !important;
+    color: #000 !important;
+    text-align: center !important;
+    line-height: 20px !important;
+} */
+
+
+/* 
+.subtask-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+
+.subtask-title {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.subtask-input {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    appearance: none;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="none" stroke="black" stroke-width="1.5" d="M1 3.5l4 4 4-4"/></svg>') no-repeat right 20px center;
+    padding-right: 30px; 
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-grey);
+    border-radius: 10px;
+    background-color: var(--white);
+    padding: 10px 30px 10px 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    font-family: 'Inter';
+}
+
+.subtask-input input {
+    flex: 1;
+    margin-right: 5px;
+}
+
+.subtask-input button {
+    cursor: pointer;
+} */
