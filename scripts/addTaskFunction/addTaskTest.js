@@ -7,6 +7,12 @@ function init() {
     renderData(assignedtoAPI);
 }
 
+function reloadPage() {
+    setTimeout(() => {
+        location.reload();
+    }, 3600);
+}
+
 async function renderData(URL) {
     try {
         let data = await loadData(URL);
@@ -106,20 +112,23 @@ function renderContacts(assignedTo, key) {
 
 async function addTask() {
     try {
-        // Warten auf die Validierung und bereinigte Werte erhalten
         const sanitizedValues = await validateAndSanitizeForm();
-
         const task = sanitizedValues.taskTitle;
         const date = sanitizedValues.date;
         const priority = document.getElementById("priority").value;
         const category = sanitizedValues.category;
         const description = sanitizedValues.description;
-        const subtasks = sanitizedValues.subtasks;
 
         let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
         let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 
-        // Erstellen des Datenobjekts für die Aufgabe
+        // Sammeln der Subtasks aus der Liste
+        const subtaskElements = document.querySelectorAll("#subtaskList li");
+        const subtasks = Array.from(subtaskElements).map(item => ({
+            itsdone: false,
+            title: item.textContent
+        }));
+
         let data = {
             task: task,
             date: date,
@@ -127,12 +136,11 @@ async function addTask() {
             category: category,
             assignedto: assignedTo.map(name => ({ name })),
             description: description,
-            subtasks: [{ itsdone: false, title: subtasks }],
+            subtasks: subtasks,
             progress: "todo",
             duedate: date,
         };
 
-        // Senden der Daten an die API
         let response = await fetch(addAPI + ".json", {
             method: "POST",
             headers: {
@@ -143,12 +151,36 @@ async function addTask() {
 
         await response.json();
         console.log("Task successfully added:", data);
-        alert("Neue Aufgabe erfolgreich erstellt!");
+        reloadPage();
+        toastMessage("New task added successfully!");
 
     } catch (error) {
         console.error("Fehler bei der Validierung oder beim Hinzufügen der Aufgabe:", error);
+        toastMessage("Error adding task. Please try again.");
     }
+
 }
+
+document.getElementById("subtasks").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        const subtaskInput = event.target;
+        const subtaskTitle = subtaskInput.value.trim();
+        
+        if (subtaskTitle) {
+            addSubtaskToList(subtaskTitle);
+            subtaskInput.value = '';
+        }
+    }
+});
+
+function addSubtaskToList(title) {
+    const subtaskList = document.getElementById("subtaskList");
+    const listItem = document.createElement("li");
+    listItem.textContent = title;
+    subtaskList.appendChild(listItem);
+}
+
 
 
 function showAssignedTo() {
