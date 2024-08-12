@@ -47,20 +47,37 @@ body {
 
 
 /*Style Boardseite Progressbar  */
+.Progress {
+  display: flex;
+  align-items: center;
+}
+
+
 .progress-bar-container {
   background-color: #e0e0e0;
   border-radius: 5px;
   overflow: hidden;
   height: 10px;
   margin: 10px 0;
+  width: 60%;
+  margin-right: 10px;
+  
 }
 
 .progress-bar {
   height: 100%;
-  background-color: #4c54af; /* Farbe des Fortschrittsbalkens */
+  background-color: #3D84FF; /* Farbe des Fortschrittsbalkens */
   transition: width 0.3s ease-in-out;
+  
 }
 
+.subtask-progress {
+  
+}
+
+.subtasks-container {
+  flex-grow: 1;
+}
 
 
 
@@ -89,12 +106,12 @@ body {
   margin-top: 10px;
   padding: 30px;
   width: 450px;
-  height: 860px;
+  height: 780px;
   
 }
 
 .Subtasks {
-  margin-bottom: 150px;
+  margin-bottom: 20px;
 }
 
 .taskTitleOverlay {
@@ -102,29 +119,48 @@ body {
   font-size: 70px;
 }
 
-.nurtest {
-  margin-bottom: 100px;
+.AssignedTitle {
+  margin-bottom: 10px;
+}
+
+.assignedtoItem {
+  margin: 10px;
 }
 
 .editanddeletetask {
-  
   display: flex;
-  
   justify-content: flex-end;
   align-items: flex-end;
   
 }
 
 .editbuttontask {
+  display: flex;
+  justify-content: space-between;
   background-image: url(../IMGicons/edit.svg);
+  background-repeat: no-repeat;
+  background-position: left 1px center; /* Verschiebt das Bild nach links um 5px */
   cursor: pointer;
   margin-left: 30px;
+  width: 44px;
+  height: 24px;
+  padding-left: 30px; /* Erhöht das padding-left, um Platz für das Bild und den Abstand zu schaffen */
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--deep-grey);
 }
 
 .deletebuttontask {
   background-image: url(../IMGicons/delete.svg);
   cursor: pointer;
- 
+  background-repeat: no-repeat;
+  width: 44px;
+  height: 24px;
+  padding-left: 24px;
+  margin-right: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--deep-grey);
   
 }
 
@@ -134,18 +170,6 @@ body {
 
 .editbuttontask:hover {
   filter: brightness(0) saturate(100%) invert(38%) sepia(85%) saturate(509%) hue-rotate(174deg) brightness(95%) contrast(92%);
-}
-
-.editbuttontask, .deletebuttontask {
- 
-  background-repeat: no-repeat;
-  width: 24px;
-  height: 24px;
-  padding-left: 24px;
-  margin-right: 32px;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--deep-grey);
 }
 
 
