@@ -1,11 +1,16 @@
 let taskAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
 
-window.onload = init();
+// window.onload = init();
 
-function init() {
+// function init() {
+//     renderData(taskAPI);
+//     displayGreeting();
+// }
+
+window.onload = function() {
     renderData(taskAPI);
     displayGreeting();
-}
+};
 
 async function renderData(URL) {
     let data = await loadData(URL);
@@ -78,6 +83,7 @@ function showData(data) {
     document.getElementById('numberTaskInProgress').innerHTML = data.numberInProgress;
     document.getElementById('numberTaskAwaitFeedback').innerHTML = data.numberAwaitingFeedback;
 }
+
 /* id 
 loadData
 numberDone

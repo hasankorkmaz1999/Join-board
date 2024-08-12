@@ -49,58 +49,42 @@
         <section class="content-container">
 
             <div class="all-cards">
-                <div class="d-flex text-align-center">
-                    <!-- Dummy conent -->
-                    <div class="med-card" id="todoCounter">
-                        <img src="./IMGicons/Pencil.svg" alt="Pencil">
-                        <div>
-                            <h2>To-do</h2>
-                            <p id="numberTodo">Loading...</p>
-                        </div>
-                        <!-- Todo -->
-                    </div>
-                    <div class="med-card" id="todoCounter">
-                        <img src="./IMGicons/done.svg" alt="done">
-                            <div>
-                                <h2>Done</h2>
-                                <p id="numberDone">Loading...</p>
-                            </div>
-                        <!-- done -->
-                    </div>
+                <div class="summary-box" id="todoCounter" onclick="window.location.href='board.html'">
+                    <img src="./IMGicons/Pencil.svg" alt="Pencil">
+                    <h2>To-do</h2>
+                    <p id="numberTodo">1</p>
                 </div>
-                <div class="large-card" id="upcommingDeadline text-align-center">
+                <div class="summary-box" id="doneCounter" onclick="window.location.href='board.html'">
+                    <img src="./IMGicons/done.svg" alt="done">
+                    <h2>Done</h2>
+                    <p id="numberDone">1</p>
+                </div>
+                <div class="summary-box" id="upcomingCounter" onclick="window.location.href='board.html'">
                     <img src="./IMGicons/high.svg" alt="high">
-                    <div>
-                        <h2>Upcoming Deadlines</h2>
-                        <p id="numberUpcomming">Loading...</p>
-                        <p id="dateUpcomming">Loading... <br> upcomming Deadline</p>
-                    </div>
-                    <!-- Upcomming -->
+                    <h2>Upcoming Deadline</h2>
+                    <p id="numberUpcomming">1</p>
+                    <p id="dateUpcomming">October 16, 2022</p>
                 </div>
-                <div class="d-flex text-align-center">
-                    <div id="taskinboard" class="small-card">
-                        <h2 id="numberTaskInBoard">Loading...</h2>
-                        <span>Tasks in <br> Board</span>
-                        <!-- Task in board -->
-                    </div>
-                    <div id="taskInProgress" class="small-card">
-                        <h2 id="numberTaskInProgress">Loading...</h2>
-                        <span>Task in <br> Progress</span>
-                        <!-- task in Progress -->
-                    </div>
-                    <div id="taskAwaitFeedback" class="small-card">
-                        <h2 id="numberTaskAwaitFeedback">Loading...</h2>
-                        <span>Awaiting<br>Feedback</span>
-                        <!-- Awaiting Feedback -->
-                    </div>
+                <div class="summary-box" id="taskInBoard" onclick="window.location.href='board.html'">
+                    <h2>Tasks in Board</h2>
+                    <p id="numberTaskInBoard">5</p>
+                </div>
+                <div class="summary-box" id="taskInProgress" onclick="window.location.href='board.html'">
+                    <h2>Tasks In Progress</h2>
+                    <p id="numberTaskInProgress">2</p>
+                </div>
+                <div class="summary-box" id="taskAwaitFeedback" onclick="window.location.href='board.html'">
+                    <h2>Awaiting Feedback</h2>
+                    <p id="numberTaskAwaitFeedback">2</p>
                 </div>
             </div>
+            
 
             <div id="greeting-container" class="greeting-container greeting">
                 <div class="greeting">
                     <div class="greeting-flex-area">
                         <span id="greeting-text">Good morning,</span>
-                        <h1>Sofia Müller</h1>
+                        <h1>TALAHON</h1>
                     </div>
                 </div>
             </div>

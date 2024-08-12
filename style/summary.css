@@ -4,7 +4,6 @@
     margin-right: 120px;
     padding: 20px;
     background-color: var(--body-background-grey);
-    /* min-height: 100vh; */
     height: 85vh;
 }
 
@@ -34,17 +33,13 @@ h1, h2, p {
     padding: 40px;
     background-color: var(--light-grey);
     border-radius: 8px;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
-.greeting-container .greeting {
+.greeting-flex-area {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 40px;
-    background-color: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
 }
 
 .greeting h1 {
@@ -52,10 +47,9 @@ h1, h2, p {
     font-size: 64px;
 }
 
-#greeting-container .greeting-flex-area {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+#greeting-text {
+    font-size: 47px;
+    color: var(--deep-grey);
 }
 
 .text-align-center {
@@ -66,32 +60,92 @@ h1, h2, p {
     display: flex;
 }
 
-.greeting-flex-area span {
-    font-size: 47px;
-}
-
 .content-container {
-    display: flex;
+    /* display: flex; */
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
+/* Neue allgemeine Styles für die Summary-Boxen */
 .all-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Grundlegendes Design für die Boxen */
+.summary-box {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #F7F8FC;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+    color: #2A3647;
 }
 
-.med-card {
-    border-radius: 30px;
-    padding: 38px, 19px, 38px, 19px;
-    gap: 18px;
-    box-shadow: rgba(0, 0, 0, 0.1);
+.summary-box:hover {
+    background-color: #2A3647;
+    color: white;
+    transform: translateY(-5px);
 }
 
-.large-card {
-
+.summary-box:hover h2,
+.summary-box:hover p {
+    color: white;
 }
 
-.taskinboard {
+.summary-box img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    fill: #2A3647;
+    transition: fill 0.3s ease;
+}
 
+.summary-box:hover img {
+    fill: white;
+}
+
+/* Box spezifische Styles */
+#todoCounter {
+    background-color: #D9E3F2;
+}
+
+#doneCounter {
+    background-color: #C8F7C5;
+}
+
+#upcomingCounter {
+    background-color: #FBDAD2;
+}
+
+#taskInBoard {
+    background-color: #E4E6EB;
+}
+
+#taskInProgress {
+    background-color: #E0ECF8;
+}
+
+#taskAwaitFeedback {
+    background-color: #FCE8D5;
+}
+
+/* Box Hover-Effekte */
+#todoCounter:hover,
+#doneCounter:hover,
+#upcomingCounter:hover,
+#taskInBoard:hover,
+#taskInProgress:hover,
+#taskAwaitFeedback:hover {
+    background-color: #2A3647;
+    color: white;
 }
