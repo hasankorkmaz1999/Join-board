@@ -131,8 +131,8 @@ function renderDivawaitingfeedback(task, key) {
 function toggleSubtaskStatus(taskKey, subtaskIndex, isChecked) {
   
 
-    // Lade die aktuellen Daten, z.B. von einer globalen Variable, die alle Aufgaben enthält.
-    let task = tasks[taskKey];  // Angenommen, tasks ist ein globales Objekt, das alle Aufgaben enthält
+   
+    let task = tasks[taskKey];  
 
     // Aktualisiere den Subtask-Status
     task.subtasks[subtaskIndex].itsdone = isChecked;
@@ -154,15 +154,15 @@ function calculateProgress(subtasks) {
     if (!subtasks || subtasks.length === 0) return 0;
 
     const completedTasks = subtasks.filter(subtask => subtask.itsdone).length;
-    return (completedTasks / subtasks.length) * 100; // Prozentualer Fortschritt
+    return (completedTasks / subtasks.length) * 100; 
 }
 
 
 
 function updateTaskOnServer(taskKey, updatedTask) {
-    // Hier kannst du die Aufgabe an den Server senden, um die Änderungen zu speichern.
+  
     fetch(`https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes/${taskKey}.json`, {
-        method: "PATCH",  // PATCH verwendet, um nur spezifische Felder zu aktualisieren
+        method: "PATCH", 
         headers: {
             "Content-Type": "application/json"
         },
