@@ -131,6 +131,7 @@
                     <div class="addTaskSubtasks">
                         <label for="subtasks">Subtasks</label>
                         <input type="text" id="subtasks" name="subtasks" placeholder="Enter subtasks">
+                        <ul id="subtaskList"></ul>
                     </div>
                 </form>
             </div>
@@ -179,7 +180,9 @@
     </div>
 
     <div id="overlayAddTask" class="overlay d-none"></div>
-
+    <div id="toast-div" class="d-none">
+        <div class="toast-text" id="toast-text"></div>
+    </div>
     <script src="./scripts/addTaskFunction/addTaskTest.js"></script>
     <!-- <script src="./scripts/addTaskFunction/addTask.js"></script> -->
     <script src="./scripts/checkValue.js"></script>

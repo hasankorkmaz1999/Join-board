@@ -29,6 +29,19 @@ span.asterisk {
     display: none;
 }
 
+#subtaskList img{
+    cursor: pointer;
+}
+
+.edit-input {
+    border: 1px solid var(--border-grey) !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    font-family: 'Inter' !important;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    width: 100% !important;
+}
 .addTasktitle input,
 textarea#description {
     border-radius: 10px;

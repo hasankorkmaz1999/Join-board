@@ -28,17 +28,47 @@ const svgIcons = {
 
 
 
-function renderDivTodo(task, key) {
+function renderTaskCard(task, key, categoryClass, svgIcons) {
     let priorityIcon = svgIcons[task.priority.toLowerCase()] || '';
-    let typHTML = '';
-
-    if (task.category === "Technical Task") {
-        typHTML = `<span class="technical-green">${task.category}</span>`;
-    } else if (task.category === "User Story") {
-        typHTML = `<span class="user-story-blue">${task.category}</span>`;
-    }
+    let typHTML = `<span class="${categoryClass}">${task.category}</span>`;
 
     let progress = calculateProgress(task.subtasks);
+
+    // Berechne die Anzahl der erledigten und gesamten Subtasks
+    let completedSubtasks = 0;
+    let totalSubtasks = task.subtasks ? task.subtasks.length : 0;
+
+    if (task.subtasks && task.subtasks.length > 0) {
+        for (let i = 0; i < task.subtasks.length; i++) {
+            if (task.subtasks[i].itsdone) {
+                completedSubtasks++;
+            }
+        }
+    }
+
+    // Render Subtasks
+    let subtasksHTML = '';
+    if (task.subtasks && task.subtasks.length > 0) {
+        for (let i = 0; i < task.subtasks.length; i++) {
+            let subtask = task.subtasks[i];
+            subtasksHTML += `<div class="subtask-item">
+                <input type="checkbox" ${subtask.itsdone ? 'checked' : ''} disabled>
+                <span>${subtask.title}</span>
+            </div>`;
+        }
+    }
+
+    // Render Assigned To
+    let assignedToHTML = '';
+    if (task.assignedto && task.assignedto.length > 0) {
+        for (let j = 0; j < task.assignedto.length; j++) {
+            let assignedTo = task.assignedto[j];
+            assignedToHTML += `
+            <div class="assignedtoItem">  
+                <span>${assignedTo.name}</span>
+            </div>`;
+        }
+    }
 
     let taskData = {
         taskTitle: task.task,
@@ -46,7 +76,9 @@ function renderDivTodo(task, key) {
         taskPriorityIcon: priorityIcon,
         taskPriority: task.priority,
         taskCategoryHTML: typHTML,
-        dueDate: task.duedate
+        dueDate: task.duedate,
+        subtasksHTML: subtasksHTML,
+        assignedToHTML: assignedToHTML
     };
 
     return /*html*/`
@@ -55,116 +87,37 @@ function renderDivTodo(task, key) {
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
 
+        <div class="Progress">
         <span class="progress-bar-container">
-            <div class="progress-bar" style="width: ${progress}%;"></div>
+            <div class="progress-bar" style="width: ${progress}%;"> </div>
         </span>
 
-        <div class="taskpriority">${priorityIcon} </div>
+        <span class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
+
+        </div>
+
+        <div class="taskpriority">${priorityIcon}</div>
     </div>
     `;
 }
 
 
-
-function renderDivInprogress(task, key) {
-    let priorityIcon = svgIcons[task.priority.toLowerCase()] || '';
-    if (task.category === "Technical Task") {
-        typHTML = `<span class="technical-green">${task.category}</span>`;
-    }
-    if (task.category === "User Story") {
-        typHTML = `<span class="user-story-blue">${task.category}</span>`;
-    }
-    let progress = calculateProgress(task.subtasks);
-
-
-    let taskData = {
-        taskTitle: task.task,
-        taskDescription: task.description,
-        taskPriorityIcon: priorityIcon,
-        taskPriority: task.priority,
-        taskCategoryHTML: typHTML,
-        dueDate: task.duedate
-    };
-
-
-    return /*html*/`
-    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
-        ${typHTML}
-        <div class="task-title">${task.task}</div>
-        <div class="task-description">${task.description}</div>
-        <span class="progress-bar-container">
-            <div class="progress-bar" style="width: ${progress}%;"></div>
-        </span>
-        <div class="taskpriority">${priorityIcon}  </div>
-    </div>
-    `
+function renderDivTodo(task, key) {
+    let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
+    return renderTaskCard(task, key, categoryClass, svgIcons);
 }
 
-
-
+function renderDivInprogress(task, key) {
+    let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
+    return renderTaskCard(task, key, categoryClass, svgIcons);
+}
 
 function renderDivDone(task, key) {
-    let priorityIcon = svgIcons[task.priority.toLowerCase()] || '';
-    if (task.category === "Technical Task") {
-        typHTML = `<span class="technical-green">${task.category}</span>`;
-    }
-    if (task.category === "User Story") {
-        typHTML = `<span class="user-story-blue">${task.category}</span>`;
-    }
-
-    let taskData = {
-        taskTitle: task.task,
-        taskDescription: task.description,
-        taskPriorityIcon: priorityIcon,
-        taskPriority: task.priority,
-        taskCategoryHTML: typHTML,
-        dueDate: task.duedate
-    };
-
-
-
-
-    return /*html*/`
-    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
-        ${typHTML}
-        <div class="task-title">${task.task}</div>
-        <div class="task-description">${task.description}</div>
-        <span>Hier muss der fortschritsbalken rein (muss via inline style css geamcht werdem)</span>
-        <div class="taskpriority">${priorityIcon}  </div>
-    </div>
-    `
+    let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
+    return renderTaskCard(task, key, categoryClass, svgIcons);
 }
 
 function renderDivawaitingfeedback(task, key) {
-    let priorityIcon = svgIcons[task.priority.toLowerCase()] || '';
-    if (task.category === "Technical Task") {
-        typHTML = `<span class="technical-green">${task.category}</span>`;
-    }
-    if (task.category === "User Story") {
-        typHTML = `<span class="user-story-blue">${task.category}</span>`;
-    }
-
-    let progress = calculateProgress(task.subtasks);
-
-    let taskData = {
-        taskTitle: task.task,
-        taskDescription: task.description,
-        taskPriorityIcon: priorityIcon,
-        taskPriority: task.priority,
-        taskCategoryHTML: typHTML,
-        dueDate: task.duedate
-    };
-    
-
-    return /*html*/`
-    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
-        ${typHTML}
-        <div class="task-title">${task.task}</div>
-        <div class="task-description">${task.description}</div>
-        <span class="progress-bar-container">
-            <div class="progress-bar" style="width: ${progress}%;"></div>
-        </span>
-        <div class="taskpriority">${priorityIcon}  </div>
-    </div>
-    `
+    let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
+    return renderTaskCard(task, key, categoryClass, svgIcons);
 }
