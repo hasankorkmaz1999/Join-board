@@ -177,7 +177,34 @@ document.getElementById("subtasks").addEventListener("keypress", function(event)
 function addSubtaskToList(title) {
     const subtaskList = document.getElementById("subtaskList");
     const listItem = document.createElement("li");
-    listItem.textContent = title;
+    listItem.innerHTML =  /*html*/`
+        <span class="subtask-title">${title}</span>
+        <input type="text" class="edit-input" value="${title}" style="display:none;">
+        <img src="../../IMGicons/edit.svg" alt="edit" class="edit-btn">
+        <img src="../../IMGicons/delete.svg" alt="delete" class="delete-btn">
+    `
+
+    // Event Listener für den Edit Button
+    listItem.querySelector(".edit-btn").addEventListener("click", function() {
+        const titleSpan = listItem.querySelector(".subtask-title");
+        const editInput = listItem.querySelector(".edit-input");
+        if (editInput.style.display === "none") {
+            editInput.style.display = "inline-block";
+            titleSpan.style.display = "none";
+            this.textContent = "Save";
+        } else {
+            titleSpan.textContent = editInput.value;
+            editInput.style.display = "none";
+            titleSpan.style.display = "inline-block";
+            this.textContent = "Edit";
+        }
+    });
+
+    // Event Listener für den Delete Button
+    listItem.querySelector(".delete-btn").addEventListener("click", function() {
+        subtaskList.removeChild(listItem);
+    });
+
     subtaskList.appendChild(listItem);
 }
 
