@@ -543,7 +543,7 @@ h1, h2, p {
 /*Style für die To do In Progress etc. Sektion */
 
 .boardsections {
-  /* margin-top: 80px; */
+  max-width: 1440px;
   margin-left: 260px; 
   margin-right: 20px;
   background-color: var(--body-background-grey);
