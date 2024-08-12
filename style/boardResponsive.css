@@ -1,3 +1,107 @@
-@media (max-width: 1140px) {
 
-}    
+#addTaskMobile {
+    display: none;
+}
+
+#addTaskMobile {
+    width: 40px;
+    height: 40px;
+
+}
+.flexhelper {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+@media (max-width: 1230px) {
+    .main-content {
+        flex-wrap: wrap;
+        margin-left: 260px;
+    }
+}
+
+@media (max-width: 830px) {
+    #addTaskMobile {
+        display: block;
+    }
+    #addTaskDesktop {
+        display: none;
+    }
+    .main-content {
+        margin-right: 60px;
+    }
+}  
+
+@media (max-width: 650px) {
+    .header-left {
+        display: none;
+    }
+    .header-top {
+        width: 100%;
+    }
+    .header-top,
+    .boardsections,
+    .main-content {
+        margin-left: 0;
+    }
+    .footer-mobile {
+        display: block !important;
+    }
+    .main-content {
+        margin-right: 0;
+    }
+
+}  
+
+@media (max-width: 550px) {
+    .subheader-contact{
+        display: none; 
+    }
+    .inputfieldfindtask {
+        width: 250px;
+    }
+    .addTaskForm {
+        display: flex;
+    }
+    h1 {
+        margin-left: 0;
+    }
+
+    .boardsections {
+        width: 200px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 120px;
+    }
+    .boardsection {
+        width: 100%;
+        margin-left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 12px;
+    }
+    .progress-window {
+        width: 280px;
+    }
+    #awaitingfeedback,
+    #inprogress,
+    #todo {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .task-cards.no-copy {
+        width: 200px;
+    }
+    .progress-window {
+        margin: 10px;
+    }
+}
+
+

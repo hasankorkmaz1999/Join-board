@@ -43,17 +43,18 @@
     <header w3-include-html="./html/header.html"></header>
 
     <section class="main-content">
-        <div>
+        <div class="flexhelper">
             <h1>Board</h1>
+            <button id="addTaskMobile" onclick="openAddTaskOverlay()" class="addtaskbutton"><img src="./IMGicons/boardicons/add.svg" alt="Icon"></button>
         </div>
-        <div>
+        <div class="addTaskForm">
             <form class="searchform" onsubmit="return false;">
               <div class="search-container">
                 <input class="inputfieldfindtask" type="text" name="task" placeholder="Find Task">
                 <div class="divider"></div>
                 <div class="background-image" onclick="findTask()"></div>
               </div>
-              <button onclick="openAddTaskOverlay()" class="addtaskbutton">Add task <img src="./IMGicons/boardicons/add.svg" alt=""></button>
+              <button id="addTaskDesktop" onclick="openAddTaskOverlay()" class="addtaskbutton">Add task <img src="./IMGicons/boardicons/add.svg" alt="Icon"></button>
             </form>
           </div>
     </section>

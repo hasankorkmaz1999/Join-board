@@ -32,6 +32,15 @@
 
 body {
  background-color: var(--body-background); 
+ width: calc( 1440 - 332px);
+}
+
+.main-content {
+  max-width: 1208px;
+}
+
+.progress-window {
+  width: 222px;
 }
 
 .no-copy {
@@ -163,7 +172,7 @@ body {
   gap: 24px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   background-color: var(--white);
-  width: 300px;
+  width: 252px;
 }
 
 
@@ -506,9 +515,9 @@ h1, h2, p {
 /*Style für die To do In Progress etc. Sektion */
 
 .boardsections {
-  margin-top: 80px;
+  /* margin-top: 80px; */
   margin-left: 260px; 
-  margin-right: 120px;
+  margin-right: 20px;
   background-color: var(--body-background-grey);
   display: flex;
   justify-content: space-between;
@@ -516,14 +525,12 @@ h1, h2, p {
 }
 
 .boardsection {
-  width: 280px;
+  width: 252px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
-  margin-left: 30px;
-  
-  
+  margin-left: 10px;
 }
 
 .boardsection img {
