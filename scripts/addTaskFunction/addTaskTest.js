@@ -179,7 +179,7 @@ function addSubtaskToList(title) {
     const listItem = document.createElement("li");
     listItem.innerHTML =  /*html*/`
         <span class="subtask-title">${title}</span>
-        <input type="text" class="edit-input" value="${title}" style="display:none;">
+        <input type="text" class="edit-input" value="${title}" style="display:none;"></input>
         <img src="../../IMGicons/edit.svg" alt="edit" class="edit-btn">
         <img src="../../IMGicons/delete.svg" alt="delete" class="delete-btn">
     `
