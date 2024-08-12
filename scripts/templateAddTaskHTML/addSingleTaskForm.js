@@ -29,4 +29,6 @@ function addSingleTaskForm(taskData, key) {
             </div>
         </div>
     `;
+
+
 }

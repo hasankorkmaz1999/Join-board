@@ -46,17 +46,23 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
         }
     }
 
-    // Render Subtasks
-    let subtasksHTML = '';
-    if (task.subtasks && task.subtasks.length > 0) {
-        for (let i = 0; i < task.subtasks.length; i++) {
-            let subtask = task.subtasks[i];
-            subtasksHTML += `<div class="subtask-item">
-                <input type="checkbox" ${subtask.itsdone ? 'checked' : ''} disabled>
-                <span>${subtask.title}</span>
-            </div>`;
-        }
+   // Render Subtasks
+let subtasksHTML = '';
+if (task.subtasks && task.subtasks.length > 0) {
+    for (let i = 0; i < task.subtasks.length; i++) {
+        let subtask = task.subtasks[i];
+        subtasksHTML += `
+           <div class="subtask-item">
+        <input type="checkbox" id="subtask-checkbox-${key}-${i}" ${subtask.itsdone ? 'checked' : ''}
+        onclick="toggleSubtaskStatus(&#39;${key}&#39;, ${i}, this.checked)">
+        <span>${subtask.title}</span>
+    </div>
+    `;
     }
+}
+
+
+
 
     // Render Assigned To
     let assignedToHTML = '';
@@ -89,10 +95,10 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
 
         <div class="Progress">
         <span class="progress-bar-container">
-            <div class="progress-bar" style="width: ${progress}%;"> </div>
+            <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"> </div>
         </span>
 
-        <span class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
+        <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
 
         </div>
 
@@ -100,7 +106,6 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
     </div>
     `;
 }
-
 
 function renderDivTodo(task, key) {
     let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
@@ -120,4 +125,57 @@ function renderDivDone(task, key) {
 function renderDivawaitingfeedback(task, key) {
     let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
     return renderTaskCard(task, key, categoryClass, svgIcons);
+}
+
+
+function toggleSubtaskStatus(taskKey, subtaskIndex, isChecked) {
+  
+
+    // Lade die aktuellen Daten, z.B. von einer globalen Variable, die alle Aufgaben enthält.
+    let task = tasks[taskKey];  // Angenommen, tasks ist ein globales Objekt, das alle Aufgaben enthält
+
+    // Aktualisiere den Subtask-Status
+    task.subtasks[subtaskIndex].itsdone = isChecked;
+
+    // Aktualisiere die Progress-Bar
+    let progress = calculateProgress(task.subtasks);
+    document.getElementById(`progress-bar-${taskKey}`).style.width = `${progress}%`;
+
+    // Aktualisiere die Subtask-Anzeige
+    let completedSubtasks = task.subtasks.filter(subtask => subtask.itsdone).length;
+    document.getElementById(`subtask-progress-${taskKey}`).innerText = `${completedSubtasks}/${task.subtasks.length} Subtasks`;
+
+    // Optionale API-Aktualisierung
+    updateTaskOnServer(taskKey, task);
+}
+
+
+function calculateProgress(subtasks) {
+    if (!subtasks || subtasks.length === 0) return 0;
+
+    const completedTasks = subtasks.filter(subtask => subtask.itsdone).length;
+    return (completedTasks / subtasks.length) * 100; // Prozentualer Fortschritt
+}
+
+
+
+function updateTaskOnServer(taskKey, updatedTask) {
+    // Hier kannst du die Aufgabe an den Server senden, um die Änderungen zu speichern.
+    fetch(`https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes/${taskKey}.json`, {
+        method: "PATCH",  // PATCH verwendet, um nur spezifische Felder zu aktualisieren
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedTask)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+   
+    .catch(error => {
+        console.error("Error updating task on server:", error);
+    });
 }
