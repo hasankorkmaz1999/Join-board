@@ -74,6 +74,18 @@ if (task.subtasks && task.subtasks.length > 0) {
                 <span>${assignedTo.name}</span>
             </div>`;
         }
+    };
+
+
+    let progressHTML = '';
+    if (completedSubtasks > 0) {
+        progressHTML = `
+        <div class="Progress">
+            <span class="progress-bar-container" >
+                <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"> </div>
+            </span>
+            <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
+        </div>`;
     }
 
     let taskData = {
@@ -92,20 +104,15 @@ if (task.subtasks && task.subtasks.length > 0) {
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
-
-        <div class="Progress">
-        <span class="progress-bar-container">
-            <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"> </div>
-        </span>
-
-        <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
-
-        </div>
-
+        ${progressHTML}
         <div class="taskpriority">${priorityIcon}</div>
     </div>
     `;
 }
+
+
+
+
 
 function renderDivTodo(task, key) {
     let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
@@ -128,26 +135,37 @@ function renderDivawaitingfeedback(task, key) {
 }
 
 
+
+
+
+
+
 function toggleSubtaskStatus(taskKey, subtaskIndex, isChecked) {
-  
+    let task = tasks[taskKey];
 
    
-    let task = tasks[taskKey];  
-
-    // Aktualisiere den Subtask-Status
     task.subtasks[subtaskIndex].itsdone = isChecked;
 
-    // Aktualisiere die Progress-Bar
+    
     let progress = calculateProgress(task.subtasks);
-    document.getElementById(`progress-bar-${taskKey}`).style.width = `${progress}%`;
+    
+   
+    let progressBar = document.getElementById(`progress-bar-${taskKey}`);
+    if (progressBar) {
+        progressBar.style.width = `${progress}%`;
+    } else if (progress > 0) {
+        
+    }
 
-    // Aktualisiere die Subtask-Anzeige
-    let completedSubtasks = task.subtasks.filter(subtask => subtask.itsdone).length;
-    document.getElementById(`subtask-progress-${taskKey}`).innerText = `${completedSubtasks}/${task.subtasks.length} Subtasks`;
-
-    // Optionale API-Aktualisierung
-    updateTaskOnServer(taskKey, task);
+    
+    let subtaskProgress = document.getElementById(`subtask-progress-${taskKey}`);
+    if (subtaskProgress) {
+        let completedSubtasks = task.subtasks.filter(subtask => subtask.itsdone).length;
+        subtaskProgress.innerText = `${completedSubtasks}/${task.subtasks.length} Subtasks`;
+    }
+  updateTaskOnServer(taskKey, task);
 }
+
 
 
 function calculateProgress(subtasks) {

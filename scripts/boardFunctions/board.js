@@ -138,18 +138,12 @@ function openSingleTaskOverlay(taskData, key) {
 
 
 
-
-
 function closeSingleTaskOverlay() {
     let overlay = document.getElementById('overlayforsingletask');
     overlay.classList.add('d-none');
     let popupContent = document.getElementsByClassName('singletaskpopup')[0];
     popupContent.innerHTML = '';
 }
-
-
-
-
 
 
 
