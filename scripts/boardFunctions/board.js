@@ -5,6 +5,8 @@ let cureentDraggedElement;
 
 window.onload = init;
 
+let tasks = {}; 
+
 function init() {
     renderData(taskAPI);
 }
@@ -33,6 +35,7 @@ function disableSpinner() {
 }
 
 function renderTaskData(data) {
+    tasks = data;
     let keys = Object.keys(data);
     for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
@@ -135,20 +138,11 @@ function openSingleTaskOverlay(taskData, key) {
 
 
 
-
-
 function closeSingleTaskOverlay() {
     let overlay = document.getElementById('overlayforsingletask');
     overlay.classList.add('d-none');
     let popupContent = document.getElementsByClassName('singletaskpopup')[0];
     popupContent.innerHTML = '';
-}
-
-function calculateProgress(subtasks) {
-    if (!subtasks || subtasks.length === 0) return 0;
-
-    const completedTasks = subtasks.filter(subtask => subtask.itsdone).length;
-    return (completedTasks / subtasks.length) * 100; // Prozentualer Fortschritt
 }
 
 

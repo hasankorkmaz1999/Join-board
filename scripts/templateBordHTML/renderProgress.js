@@ -46,17 +46,23 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
         }
     }
 
-    // Render Subtasks
-    let subtasksHTML = '';
-    if (task.subtasks && task.subtasks.length > 0) {
-        for (let i = 0; i < task.subtasks.length; i++) {
-            let subtask = task.subtasks[i];
-            subtasksHTML += `<div class="subtask-item">
-                <input type="checkbox" ${subtask.itsdone ? 'checked' : ''} disabled>
-                <span>${subtask.title}</span>
-            </div>`;
-        }
+   // Render Subtasks
+let subtasksHTML = '';
+if (task.subtasks && task.subtasks.length > 0) {
+    for (let i = 0; i < task.subtasks.length; i++) {
+        let subtask = task.subtasks[i];
+        subtasksHTML += `
+           <div class="subtask-item">
+        <input type="checkbox" id="subtask-checkbox-${key}-${i}" ${subtask.itsdone ? 'checked' : ''}
+        onclick="toggleSubtaskStatus(&#39;${key}&#39;, ${i}, this.checked)">
+        <span>${subtask.title}</span>
+    </div>
+    `;
     }
+}
+
+
+
 
     // Render Assigned To
     let assignedToHTML = '';
@@ -68,6 +74,18 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
                 <span>${assignedTo.name}</span>
             </div>`;
         }
+    };
+
+
+    let progressHTML = '';
+    if (completedSubtasks > 0) {
+        progressHTML = `
+        <div class="Progress">
+            <span class="progress-bar-container" >
+                <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"> </div>
+            </span>
+            <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
+        </div>`;
     }
 
     let taskData = {
@@ -86,20 +104,14 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
-
-        <div class="Progress">
-        <span class="progress-bar-container">
-            <div class="progress-bar" style="width: ${progress}%;"> </div>
-        </span>
-
-        <span class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
-
-        </div>
-
+        ${progressHTML}
         <div class="taskpriority">${priorityIcon}</div>
     </div>
     `;
 }
+
+
+
 
 
 function renderDivTodo(task, key) {
@@ -120,4 +132,68 @@ function renderDivDone(task, key) {
 function renderDivawaitingfeedback(task, key) {
     let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
     return renderTaskCard(task, key, categoryClass, svgIcons);
+}
+
+
+
+
+
+
+
+function toggleSubtaskStatus(taskKey, subtaskIndex, isChecked) {
+    let task = tasks[taskKey];
+
+   
+    task.subtasks[subtaskIndex].itsdone = isChecked;
+
+    
+    let progress = calculateProgress(task.subtasks);
+    
+   
+    let progressBar = document.getElementById(`progress-bar-${taskKey}`);
+    if (progressBar) {
+        progressBar.style.width = `${progress}%`;
+    } else if (progress > 0) {
+        
+    }
+
+    
+    let subtaskProgress = document.getElementById(`subtask-progress-${taskKey}`);
+    if (subtaskProgress) {
+        let completedSubtasks = task.subtasks.filter(subtask => subtask.itsdone).length;
+        subtaskProgress.innerText = `${completedSubtasks}/${task.subtasks.length} Subtasks`;
+    }
+  updateTaskOnServer(taskKey, task);
+}
+
+
+
+function calculateProgress(subtasks) {
+    if (!subtasks || subtasks.length === 0) return 0;
+
+    const completedTasks = subtasks.filter(subtask => subtask.itsdone).length;
+    return (completedTasks / subtasks.length) * 100; 
+}
+
+
+
+function updateTaskOnServer(taskKey, updatedTask) {
+  
+    fetch(`https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes/${taskKey}.json`, {
+        method: "PATCH", 
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedTask)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+   
+    .catch(error => {
+        console.error("Error updating task on server:", error);
+    });
 }

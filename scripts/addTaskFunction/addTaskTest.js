@@ -99,7 +99,7 @@ function getAssignedTo(data, content) {
 function renderContacts(assignedTo, key) {
     let initials = assignedTo.name.split(' ').map(name => name[0]).join('');
     return /*html*/`
-        <div class="assignedto-item" style="display: flex; align-items: center; margin-right: 4px; padding-right: 10px; cursor: pointer;">
+        <div class="assignedto-item" style="display: flex; align-items: center; margin-right: 4px; padding-right: 10px; padding: 25px 8px 25px 8px; margin-top: 2px; cursor: pointer;">
             <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; margin-left: 8px; background-color: #29ABE2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
                 ${initials}
             </div>
