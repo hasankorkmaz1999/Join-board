@@ -53,7 +53,7 @@ if (task.subtasks && task.subtasks.length > 0) {
         let subtask = task.subtasks[i];
         subtasksHTML += `
            <div class="subtask-item">
-        <input type="checkbox" id="subtask-checkbox-${key}-${i}" ${subtask.itsdone ? 'checked' : ''}
+        <input class="styled-checkbox" type="checkbox" id="subtask-checkbox-${key}-${i}" ${subtask.itsdone ? 'checked' : ''}
         onclick="toggleSubtaskStatus(&#39;${key}&#39;, ${i}, this.checked)">
         <span>${subtask.title}</span>
     </div>
