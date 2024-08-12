@@ -68,6 +68,30 @@ h1 {
     cursor: grab;
 }
 
+/*Style für das Editieren der task  */
+.edit-task-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding: 30px;
+  width: 470px;
+  height: 800px;
+}
+
+.editTaskTitle {
+  color: var(--deep-grey);
+  font-family: 'Inter';
+  font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+   
+}
+
+.edittasktitleinput {
+  
+}
+
+
 
 /*Style Boardseite Progressbar  */
 .Progress {
@@ -150,7 +174,7 @@ h1 {
   vertical-align: middle;
 }
 
-/* Stil für das Häkchen, wenn die Checkbox aktiviert ist */
+
 .styled-checkbox:checked + span::before {
   content: '✔';
   display: inline-block;
@@ -166,7 +190,7 @@ h1 {
   font-weight: bold;
 }
 
-/* Optional: Hover-Effekt für die Checkbox */
+
 .styled-checkbox + span:hover::before {
   background-color: #f0f0f0;
 }
@@ -197,7 +221,8 @@ h1 {
 }
 
 .taskTitleOverlay {
-  margin-top: 0px;
+  margin-top: 10px;
+ margin-bottom: 10px;
   font-size: 70px;
 }
 
@@ -611,11 +636,8 @@ h1, h2, p {
 /*Style für die To do In Progress etc. Sektion */
 
 .boardsections {
-<<<<<<< HEAD
   max-width: 1440px;
-=======
  
->>>>>>> 06a3ff70055583d8f0fb6e9f39e7ea9308b97a3e
   margin-left: 260px; 
   margin-right: 20px;
   background-color: var(--body-background-grey);
