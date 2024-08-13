@@ -76,6 +76,7 @@
                         </div>
                     </div>
                 </form>
+                <div id="selectedInitials" class="initials-container"></div>
             </div>
 
             <div class="vertical-line"></div>
@@ -168,15 +169,16 @@
         <div class="toast-text" id="toast-text"></div>
     </div>
 
-    <script src="./scripts/addTaskFunction/addTaskTest.js"></script>
-    <!-- <script src="./scripts/addTaskFunction/addTask.js"></script> -->
+    <!-- <script src="./scripts/addTaskFunction/addTaskTest.js"></script> -->
+    
     <script src="./scripts/checkValue.js"></script>
     <script src="./scripts/toastMsg.js"></script>
     <script src="./scripts/reloadPage.js"></script>
     <script src="./scripts/templateContactHTML/editContactForm.js"></script>
     <script src="./scripts/templateContactHTML/renderBigView.js"></script>
     <script src="./scripts/loadData.js"></script>
-    <script src="./scripts/addTaskFunction/testForm.js"></script>
+    <!-- <script src="./scripts/addTaskFunction/testForm.js"></script> -->
+    <script src="./scripts/addTaskFunction/addTask.js"></script>
 
     <script>
         includeHTML();
@@ -199,14 +201,14 @@
         }
     </script>
 
-    <!-- <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
     let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
     let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
     console.log(assignedto);
     });
 
-    </script> -->
+    </script>
 
 </body>
 </html>
