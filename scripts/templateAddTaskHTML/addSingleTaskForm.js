@@ -94,10 +94,9 @@ function editTask(key) {
 
 
 
-            <div class="edit-form-buttons">
-                <button onclick='saveTaskEdits("${key}")'>Save</button>
-                <button onclick='cancelTaskEdits("${key}")'>Cancel</button>
-            </div>
+             <button onclick='saveTaskEdits("${key}")'  class="OKbutton"> Ok <img src="./IMGicons/contacticons/check.png" alt=""></button>   
+
+            
         </div>
     `;
 
