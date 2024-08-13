@@ -68,7 +68,7 @@
                         <textarea id="description" name="description" placeholder="Enter a description" ></textarea>
                     </div>
     
-                    <div class="addTaskAssignedTo">
+                    <div id="addTaskAssignedTo" class="addTaskAssignedTo">
                         <label for="assignedto">Assigned to</label>
                             <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./IMGicons/arrow_drop_down.svg" alt="arrow_drop_down"></button>
                         <div id="assignedto" class="assignedto-checkboxes d-non">
@@ -168,8 +168,8 @@
     <div id="toast-div" class="d-none">
         <div class="toast-text" id="toast-text"></div>
     </div>
-    
-    <script src="./scripts/addTaskFunction/addTaskTest.js"></script>
+
+    <!-- <script src="./scripts/addTaskFunction/addTaskTest.js"></script> -->
     
     <script src="./scripts/checkValue.js"></script>
     <script src="./scripts/toastMsg.js"></script>
@@ -178,7 +178,7 @@
     <script src="./scripts/templateContactHTML/renderBigView.js"></script>
     <script src="./scripts/loadData.js"></script>
     <script src="./scripts/addTaskFunction/testForm.js"></script>
-<!--     <script src="./scripts/addTaskFunction/addTask.js"></script> -->
+    <script src="./scripts/addTaskFunction/addTaskTest.js"></script>
 
     <script>
         includeHTML();
@@ -203,12 +203,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
-    let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
-    console.log(assignedto);
-    });
-
+        let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+        let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
+        console.log(assignedto);
+        });
     </script>
+
 
 </body>
 </html>

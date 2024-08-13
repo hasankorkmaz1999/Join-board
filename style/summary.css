@@ -141,12 +141,6 @@ h1, h2, p {
     gap: 20px;
 }
 
-#taskInBoard img,
-#taskInProgress img,
-#taskAwaitFeedback img {
-    filter: invert(0); /* Icon bleibt dunkel */
-}
-
 #upcomingCounter {
     background-color: #fff;
     flex: 1;
