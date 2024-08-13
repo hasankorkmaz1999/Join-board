@@ -1,4 +1,5 @@
-let taskAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
+const taskAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
+const NameOfAdmin = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/profile";
 
 // window.onload = init();
 
@@ -9,8 +10,14 @@ let taskAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.
 
 window.onload = function() {
     renderData(taskAPI);
+    loadNameOfAdmin(NameOfAdmin);
     displayGreeting();
 };
+
+async function loadNameOfAdmin(URL) {
+    let data = await loadData(URL);
+    document.getElementById('NameOfAdmin').innerHTML = data.name;
+}
 
 async function renderData(URL) {
     let data = await loadData(URL);
