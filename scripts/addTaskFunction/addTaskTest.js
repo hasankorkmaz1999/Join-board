@@ -95,12 +95,43 @@ function getAssignedTo(data, content) {
     }
 }
 
+/* !!!!Hier werden die farbe generiert!!!! */
+
+function getAvatarColor(id) {
+    if (!avatarColorsMap[id]) {
+        avatarColorsMap[id] = avatarColors();
+    }
+    return avatarColorsMap[id];
+}
+
+
+const avatarColorsMap = {};
+
+
+function avatarColors() {
+    const colors = [
+        '#FF7A00', '#FF5EB3', '#6E52FF', '#00BEE8', '#C3FF2B', '#FF4646'
+    ];
+    let colorIndex = (lastColorIndex + 1) % colors.length;
+    lastColorIndex = colorIndex;
+    return colors[colorIndex];
+}
+    let lastColorIndex = -1;
+
+/* !!!!Farbe generator ende!!!! */
+
+function getInitials(name) {
+    let initials = name.split(' ').map(word => word.charAt(0)).join('');
+    return initials.toUpperCase();
+}
+
 // Render Contacts so optimiert, dass man die initialien einsehen kann bei Assigned to
 function renderContacts(assignedTo, key) {
     let initials = assignedTo.name.split(' ').map(name => name[0]).join('');
+    const color = getAvatarColor(key);
     return /*html*/`
         <div class="assignedto-item" style="display: flex; align-items: center; margin-right: 4px; padding-right: 10px; padding: 25px 8px 25px 8px; margin-top: 2px; cursor: pointer;">
-            <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; margin-left: 8px; background-color: #29ABE2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+            <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; margin-left: 8px; background-color: ${color}; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
                 ${initials}
             </div>
             <!-- <label for="${key}" style="flex: 1; cursor: pointer;">${assignedTo.name}</label> -->
