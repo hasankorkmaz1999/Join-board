@@ -143,13 +143,10 @@ function renderDivawaitingfeedback(task, key) {
 function toggleSubtaskStatus(taskKey, subtaskIndex, isChecked) {
     let task = tasks[taskKey];
 
-   
     task.subtasks[subtaskIndex].itsdone = isChecked;
 
-    
     let progress = calculateProgress(task.subtasks);
     
-   
     let progressBar = document.getElementById(`progress-bar-${taskKey}`);
     if (progressBar) {
         progressBar.style.width = `${progress}%`;
@@ -157,7 +154,6 @@ function toggleSubtaskStatus(taskKey, subtaskIndex, isChecked) {
         
     }
 
-    
     let subtaskProgress = document.getElementById(`subtask-progress-${taskKey}`);
     if (subtaskProgress) {
         let completedSubtasks = task.subtasks.filter(subtask => subtask.itsdone).length;
