@@ -395,6 +395,9 @@ input.assignedCheckbox[type="checkbox"] {
     padding: 26px;
 }
 
+
+
+
 .assignedto-item input[type="checkbox"] + label::before {
     content: '';
     position: absolute;
@@ -416,7 +419,6 @@ input.assignedCheckbox[type="checkbox"] {
 }
 
 .assignedto-item input[type="checkbox"]:focus + label::before {
-    outline: 2px solid #007BFF;
     outline-offset: 2px;
     border-radius: 50%;
 }
@@ -449,16 +451,56 @@ input.assignedCheckbox[type="checkbox"] {
     align-items: center;
 }
 
+
 .assignedto-item:active {
     background-color: var(--deep-grey);
     color: white;
     border-radius: 10px;
     overflow: hidden; 
 }
+
+.assignedto-item:active .avatar {
+    background-color: var(--deep-grey);
+}
+
+
+.assignedto-item:active {
+    background-color: var(--deep-grey);
+}
+
+
+.assignedto-item .avatar:hover {
+    background-color: var(--deep-grey);
+}
+
+
+.nocheindiv:active {
+    background-color: var(--deep-grey);
+}
+
+input[type="checkbox"]:checked ~ .nocheindiv label{
+    background-color: black;
+}
+
+
 /* End 
 ************************************************************************************/
 
-
+.initials-container span,
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    padding: 4px;
+    box-shadow: 0 0 5px var(--white);
+    cursor: pointer;
+}
 
 
 .initials-container {
@@ -474,10 +516,10 @@ input.assignedCheckbox[type="checkbox"] {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background-color: var(--some-color); /* Ersetze durch deine gewünschte Farbe */
+    background-color: var(--some-color);
     color: white;
     border-radius: 50%;
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
-}
+} 
