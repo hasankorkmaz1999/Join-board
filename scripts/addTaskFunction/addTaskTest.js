@@ -119,7 +119,7 @@ function renderContacts(assignedTo, key) {
     const color = getAvatarColor(key);
     return /*html*/`
         <div class="assignedto-item">
-            <div class="avatar" style="background-color: ${color};">
+            <div id="avatar" class="avatar" style="background-color: ${color};">
                 ${initials}
             </div>
             <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}">
@@ -228,19 +228,39 @@ function addSubtaskToList(title) {
 }
 
 
-
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
     let arrowrInButton = document.getElementById('AssignedToButton');
+    let assignedToItems = document.querySelectorAll('.assignedto-item');
+
     if (assignedto.classList.contains('d-flex')) {
         assignedto.classList.remove('d-flex');
         assignedto.classList.add('d-non');
         arrowrInButton.classList.add('down');
         arrowrInButton.classList.remove('up');
+        
+        assignedToItems.forEach(item => {
+            item.classList.remove('active');
+        });
     } else {
         assignedto.classList.remove('d-non');
         assignedto.classList.add('d-flex');
         arrowrInButton.classList.add('up');
         arrowrInButton.classList.remove('down');
+        
+        assignedToItems.forEach(item => {
+            item.addEventListener('click', function() {
+
+                assignedToItems.forEach(innerItem => {
+                    innerItem.classList.remove('active');
+                });
+                
+                this.classList.add('active');
+            });
+        });
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    showAssignedTo();
+});
