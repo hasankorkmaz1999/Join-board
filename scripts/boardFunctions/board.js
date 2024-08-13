@@ -226,14 +226,12 @@ function findTask() {
         }
     }
 
-    // Wenn keine Aufgaben gefunden wurden, zeige einen Hinweis an
     if (!tasksFound) {
         document.getElementById('inprogress').innerHTML = '<div class="no-tasksfound-banner">Keine Ergebnisse gefunden</div>';
     }
 
-    // Zeige alle Tasks, wenn das Suchfeld leer ist
     if (searchInput === '') {
-        renderData(taskAPI); // Ruft die Funktion zum Rendern aller Tasks auf
+        renderData(taskAPI); 
     }
 }
 
