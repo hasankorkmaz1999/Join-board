@@ -80,6 +80,18 @@
     .addTaskContainer {
         margin-bottom: 70px;
     }
+    .footer-mobile {
+        display: block !important;
+    }
+    .joinLogo {
+        display: block;
+        width: 39px;
+        height: 39px;
+        position: absolute;
+        top: 16px;
+        z-index: 20;
+        left: 16px;
+    }
 }    
 
 @media (max-width: 576px) {
@@ -127,7 +139,7 @@
         flex-direction: row;
     }
     p.create-mobile {
-        font-size: 12px;
+        font-size: 16px;
     }
     .createbutton {
         width: 130px;

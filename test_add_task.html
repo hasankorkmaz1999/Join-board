@@ -26,6 +26,17 @@
     <link rel="stylesheet" href="style/test_add_task.css">
 
     <script src="scripts/w3include.js"></script>
+
+    <style>
+        #nav-add-task {
+            background-image: url('./../IMGicons/headericons/iconAddTaskActive.svg');
+            background-color: #091931;
+            background-repeat: no-repeat;
+        }
+        a.active_addtask {
+            color: var(--white);
+        }
+    </style>
 </head>
 <body onload="includeHTML()">
     <div w3-include-html="html/header.html"></div>
@@ -150,39 +161,13 @@
         </div>
     </div>
 
-    <div class="footer-mobile ">
-        <div class="menu-mobile">
-            <div class="mobile-menu-botton">
-                <a href="../summary.html" class="footer-link">
-                    <img class="mobile-menu" src="./IMGicons/mobile_summary.svg" alt="Icon Summary">
-                    <span class="mobile">Summary</span>
-                </a>
-            </div>
-            <div class="mobile-menu-botton">
-                <a href="../board.html" class="footer-link">
-                    <img class="mobile-menu" src="./IMGicons/mobile_board.svg" alt="Icon Board">
-                    <span class="mobile">Board</span>
-                </a>
-            </div>
-            <div class="mobile-menu-botton">
-                <a href="../add_task.html" class="footer-link">
-                    <img class="mobile-menu" src="./IMGicons/mobile_add_task.svg" alt="Icon Add Tasks">
-                    <span class="mobile">Add Tasks</span>
-                </a>
-            </div>
-            <div class="mobile-menu-botton">
-                <a href="../contacts.html" class="footer-link">
-                    <img class="mobile-menu" src="./IMGicons/mobile_contacts.svg" alt="Icon Contacts">
-                    <span class="mobile">Contacts</span>
-                </a>
-            </div>
-        </div>
-    </div>
+    <div w3-include-html="html/menu-mobile.html"></div>
 
     <div id="overlayAddTask" class="overlay d-none"></div>
     <div id="toast-div" class="d-none">
         <div class="toast-text" id="toast-text"></div>
     </div>
+
     <script src="./scripts/addTaskFunction/addTaskTest.js"></script>
     <!-- <script src="./scripts/addTaskFunction/addTask.js"></script> -->
     <script src="./scripts/checkValue.js"></script>

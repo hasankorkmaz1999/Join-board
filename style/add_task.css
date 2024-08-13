@@ -26,6 +26,7 @@ span.asterisk {
     margin-top: 80px;;
 }
 
+.joinLogo,
 .d-none {
     display: none;
 }
@@ -261,6 +262,9 @@ option {
     position: relative;
     padding-right: 30px;
     width: 100%;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .addTaskDateInner input[type="date"]::-webkit-calendar-picker-indicator {
