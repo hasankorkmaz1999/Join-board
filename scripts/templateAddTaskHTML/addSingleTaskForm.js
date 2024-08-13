@@ -10,9 +10,22 @@ function addSingleTaskForm(taskData, key) {
             <p class="">Priority: <span class="taskPriority"> ${taskData.taskPriority} ${taskData.taskPriorityIcon} </span></p>
             <p class="AssignedTitle">Assigned To:</p>
 
+
+
             <div class="assignedTo-container">
-                ${taskData.assignedToHTML} ${taskData.assignedToFullNameHTML}
+
+                <div class="avatarsinbig">
+                ${taskData.assignedToHTML}
+                </div>
+
+                <div class="fullname">
+                ${taskData.assignedToFullNameHTML}
+                </div>
+
+
             </div>
+
+
 
 
             <p class="Subtasks">Subtasks</p>
@@ -94,7 +107,27 @@ function editTask(key) {
 
 
 
+ <div class="addTaskAssignedTo">
+                        <label for="assignedto">Assigned to</label>
+                            <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./IMGicons/arrow_drop_down.svg" alt="arrow_drop_down"></button>
+                        <div id="assignedto" class="assignedto-checkboxes d-non">
+                            <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
+                        </div>
+                    </div>
+
+
+
+            <div class="addTaskSubtasksEdit">
+                        <label for="subtasks">Subtasks</label>
+                        <input type="text" id="subtasks" name="subtasks" placeholder="Enter subtasks">
+                        <ul id="subtaskList"></ul>
+                    </div>
+
+
+              <div class="Okbuttonposition">
              <button onclick='saveTaskEdits("${key}")'  class="OKbutton"> Ok <img src="./IMGicons/contacticons/check.png" alt=""></button>   
+              </div>
+
 
             
         </div>

@@ -520,6 +520,6 @@ input[type="checkbox"]:checked ~ .nocheindiv label{
     color: white;
     border-radius: 50%;
     font-size: 16px;
-    font-weight: bold;
+  
     text-transform: uppercase;
 } 
