@@ -14,14 +14,14 @@
 }
 
 .assignedto-item:hover {
-    background-color: lightgray;
+    /* background-color: lightgray; */
 }
 
 .assignedCheckbox {
     /* accent-color: #4CAF50; */
-    appearance: none; /* Entfernt den Standardstil */
-    width: 16px;
-    height: 16px;
+    /* appearance: none; */
+    /* width: 16px; */
+    /* height: 16px; */
 
     border-radius: 4px;
     border: 2px solid #777777; /* Standardrahmenfarbe */
@@ -41,19 +41,22 @@
 } */
 
 /* Häkchen-Stil */
-.assignedCheckbox.checked::after {
-    content: "✓"; /* Pseudoelement-Stil */
-    font-size: 22px;
-    color: white; /* Weißes Häkchen */
-    display: block;
-    text-align: center;
-    line-height: 14px;
-}
+/* .assignedCheckbox.checked::after { */
+    /* content: "✓"; */
+    /* font-size: 22px; */
+    /* color: white; */
+    /* display: block; */
+    /* text-align: center; */
+    /* line-height: 14px; */
+/* } */
 
-.assignedto-item input[type="checkbox"] {
+/* .assignedto-item input[type="checkbox"] {
     margin-right: 8px;
     cursor: pointer;
-}
+} */
+
+
+
 
 /* input[id^="-"].assignedCheckbox,
 input.assignedCheckbox[type="checkbox"] {

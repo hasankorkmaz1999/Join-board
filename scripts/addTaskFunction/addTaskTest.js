@@ -39,62 +39,6 @@ async function loadData(URL) {
     }
 }
 
-// function getAssignedTo(data, content) {
-//     let keys = Object.keys(data);
-//     console.log(keys);
-//     for (let i = 0; i < keys.length; i++) {
-//         let assignedTo = data[keys[i]];
-//         content.innerHTML += renderContacts(assignedTo, keys[i]);
-//     }
-
-//     // Event-Listener nach dem Rendern der Kontakte hinzufügen
-//     let checkboxes = document.querySelectorAll('.assignedCheckbox');
-//     checkboxes.forEach(checkbox => {
-//         checkbox.addEventListener('change', function () {
-//             let parent = this.parentElement;
-//             if (this.checked) {
-//                 parent.style.backgroundColor = 'black';
-//                 parent.style.color = 'white';
-//             } else {
-//                 parent.style.backgroundColor = '';
-//                 parent.style.color = '';
-//             }
-//         });
-//     });
-// }
-
-function getAssignedTo(data, content) {
-    let keys = Object.keys(data);
-    console.log(keys);
-    for (let i = 0; i < keys.length; i++) {
-        let assignedTo = data[keys[i]];
-        content.innerHTML += renderContacts(assignedTo, keys[i]);
-    }
-    
-    // Event-Listener nach dem Rendern der Kontakte hinzufügen
-    let items = document.getElementsByClassName('assignedto-item');
-    for (let i = 0; i < items.length; i++) {
-        items[i].addEventListener('click', function (e) {
-            // Verhindern, dass das Klicken auf das Element die Checkbox toggelt
-            if (e.target.tagName !== 'INPUT') {
-                let checkbox = this.getElementsByTagName('input')[0];
-                checkbox.checked = !checkbox.checked;
-            }
-            
-            let checkbox = this.getElementsByTagName('input')[0];
-            if (checkbox.checked) {
-                this.style.backgroundColor = '#2A3647'; // Verwendung des spezifischen Hex-Farbcodes
-                this.style.color = 'white';
-                checkbox.classList.add('checked');
-            } else {
-                this.style.backgroundColor = '';
-                this.style.color = '';
-                checkbox.classList.remove('checked');
-            }
-        });
-    }
-}
-
 /* !!!!Hier werden die farbe generiert!!!! */
 
 function getAvatarColor(id) {
@@ -120,26 +64,70 @@ function avatarColors() {
 
 /* !!!!Farbe generator ende!!!! */
 
+// Initialen (Avatare unter assignedTo)
 function getInitials(name) {
-    let initials = name.split(' ').map(word => word.charAt(0)).join('');
-    return initials.toUpperCase();
+    return name.split(' ').map(word => word[0].toUpperCase()).join('');
 }
+
+function displayInitials(divID) {
+
+    let color = getAvatarColor(divID);
+    let initialsContainer = document.getElementById('selectedInitials');
+    initialsContainer.innerHTML = '';
+
+    let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+    assignedToCheckboxes.forEach(checkbox => {
+        let initials = getInitials(checkbox.value);
+        initialsContainer.innerHTML += `
+        <span style="${divID}" class="initial-circle">${initials}</span>
+        `;
+    });
+}
+
+function addCheckboxEventListeners() {
+    let checkboxes = document.querySelectorAll('input[name="assignedto"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const parentDiv = event.target.closest('.assignedto-item');
+            const divID = parentDiv.firstElementChild.attributes[1].nodeValue;
+            displayInitials(divID);
+        });
+    });
+}
+
+/* firstElementChild.attributes[1].nodeValue */
+
+window.onload = async function() {
+    await init();
+    displayInitials();
+};
+
+async function getAssignedTo(data, content) {
+    let key = Object.keys(data);
+    for (let i = 0; i < key.length; i++) {
+        let assignedTo = data[key[i]];
+        content.innerHTML += renderContacts(assignedTo, key[i]);
+    }
+    addCheckboxEventListeners();
+}
+// End: Initialen
+
 
 // Render Contacts so optimiert, dass man die initialien einsehen kann bei Assigned to
 function renderContacts(assignedTo, key) {
     let initials = assignedTo.name.split(' ').map(name => name[0]).join('');
     const color = getAvatarColor(key);
     return /*html*/`
-        <div class="assignedto-item" style="display: flex; align-items: center; margin-right: 4px; padding-right: 10px; padding: 25px 8px 25px 8px; margin-top: 2px; cursor: pointer;">
-            <div class="avatar" style="width: 40px; height: 40px; margin-bottom: 0px; margin-left: 8px; background-color: ${color}; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+        <div class="assignedto-item">
+            <div class="avatar" style="background-color: ${color};">
                 ${initials}
             </div>
-            <!-- <label for="${key}" style="flex: 1; cursor: pointer;">${assignedTo.name}</label> -->
-            <div style="flex: 1; margin-left: 4px; cursor: pointer;">${assignedTo.name}</div>
-            <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}" style="cursor: pointer;">
+            <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}">
+            <label for="${key}">${assignedTo.name}</label>
         </div>
     `;
 }
+
 
 async function addTask() {
     try {
