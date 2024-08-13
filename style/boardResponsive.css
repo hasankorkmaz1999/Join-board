@@ -52,6 +52,10 @@
     }
     .main-content {
         margin-right: 0;
+        margin-top: 0;
+    }
+    .inputfieldfindtask {
+        width: 100%;
     }
 
 }  
@@ -71,36 +75,52 @@
     }
 
     .boardsections {
-        width: 200px;
-        margin-left: 0;
-        margin-right: 0;
+        
+        margin: 0 auto;
         margin-bottom: 120px;
     }
     .boardsection {
-        width: 100%;
+        width: 252px;
         margin-left: 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 12px;
     }
-    .progress-window {
-        width: 280px;
+    .joinLogo {
+        display: block;
+        width: 39px;
+        height: 39px;
+        position: absolute;
+        top: 16px;
+        z-index: 20;
+        left: 16px;
     }
     #awaitingfeedback,
     #inprogress,
-    #todo {
+    #todo,
+    #done {
         width: 300px;
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        margin: 0 auto;
     }
     .task-cards.no-copy {
-        width: 200px;
+        width: 252px;
     }
-    .progress-window {
-        margin: 10px;
+    .main-content {
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 41px;
+    }
+    .flexhelper {
+        display: flex;
+        margin: 0;
+        align-items: center;
+        justify-content: space-between;
+        width: 252px;
     }
 }
 
