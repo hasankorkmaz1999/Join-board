@@ -463,7 +463,6 @@ input.assignedCheckbox[type="checkbox"] {
     background-color: var(--deep-grey);
 }
 
-
 .assignedto-item:active {
     background-color: var(--deep-grey);
 }
@@ -477,8 +476,10 @@ input.assignedCheckbox[type="checkbox"] {
     background-color: var(--deep-grey) !important;
 }
 
-
-
+.assignedto-item:active .avatar {
+    background-color: var(--deep-grey);
+    z-index: 1;
+}
 
 /* End 
 ************************************************************************************/

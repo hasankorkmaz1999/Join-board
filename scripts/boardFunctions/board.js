@@ -188,3 +188,52 @@ async function deleteTask(taskKey) {
     }
 }
 
+
+// Funktion zum Suchen von Tasks
+
+
+function findTask() {
+    let searchInput = document.querySelector('.inputfieldfindtask').value.toLowerCase();
+    document.getElementById('todo').innerHTML = '';
+    document.getElementById('inprogress').innerHTML = '';
+    document.getElementById('done').innerHTML = '';
+    document.getElementById('awaitingfeedback').innerHTML = '';
+
+    let keys = Object.keys(tasks);
+    let tasksFound = false; 
+    for (let i = 0; i < keys.length; i++) {
+        let key = keys[i];
+        let task = tasks[key];
+        let taskTitle = task.task.toLowerCase(); 
+        let taskDescription = task.description.toLowerCase(); 
+
+        
+        if (taskTitle.includes(searchInput) || taskDescription.includes(searchInput)) {
+            tasksFound = true;
+            let progress = task.progress;
+            if (progress === "todo") {
+                document.getElementById('todo').innerHTML += renderDivTodo(task, key);
+            }
+            if (progress === "inProgress") {
+                document.getElementById('inprogress').innerHTML += renderDivInprogress(task, key);
+            }
+            if (progress === "done") {
+                document.getElementById('done').innerHTML += renderDivDone(task, key);
+            }
+            if (progress === "AwaitingFeedback") {
+                document.getElementById('awaitingfeedback').innerHTML += renderDivawaitingfeedback(task, key);
+            }
+        }
+    }
+
+    // Wenn keine Aufgaben gefunden wurden, zeige einen Hinweis an
+    if (!tasksFound) {
+        document.getElementById('inprogress').innerHTML = '<div class="no-tasksfound-banner">Keine Ergebnisse gefunden</div>';
+    }
+
+    // Zeige alle Tasks, wenn das Suchfeld leer ist
+    if (searchInput === '') {
+        renderData(taskAPI); // Ruft die Funktion zum Rendern aller Tasks auf
+    }
+}
+
