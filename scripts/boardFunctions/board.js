@@ -37,16 +37,27 @@ function disableSpinner() {
 function renderTaskData(data) {
     tasks = data;
     let keys = Object.keys(data);
+    let todoDIV = document.getElementById('todo');
+    let inprogressDIV = document.getElementById('inprogress');
+    let doneDIV = document.getElementById('done');
+    let awaitingfeedbackDIV = document.getElementById('awaitingfeedback');
+
+    // Setze die innerHTML für jede Kategorie zurück
+    todoDIV.innerHTML = '';
+    inprogressDIV.innerHTML = '';
+    doneDIV.innerHTML = '';
+    awaitingfeedbackDIV.innerHTML = '';
+
+    let todoTasksCount = 0; // Zähler für die "To Do"-Tasks
+
     for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
         let task = data[key];
         let progress = task.progress;
-        let todoDIV = document.getElementById('todo');
-        let inprogressDIV = document.getElementById('inprogress');
-        let doneDIV = document.getElementById('done');
-        let awaitingfeedbackDIV = document.getElementById('awaitingfeedback');
+
         if (progress === "todo") {
             todoDIV.innerHTML += renderDivTodo(task, key);
+            todoTasksCount++; // Zähle die "To Do"-Tasks
         }
         if (progress === "inProgress") {
             inprogressDIV.innerHTML += renderDivInprogress(task, key);
@@ -58,8 +69,15 @@ function renderTaskData(data) {
             awaitingfeedbackDIV.innerHTML += renderDivawaitingfeedback(task, key);
         }
     }
+
+    // Wenn keine "To Do"-Tasks vorhanden sind, zeige den Banner an
+    if (todoTasksCount === 0) {
+        todoDIV.innerHTML = '<div class="no-tasks-banner">No tasks To do</div>';
+    }
+
     disableSpinner();
 }
+
 
 function startDragging(id) {
     cureentDraggedElement = id;
