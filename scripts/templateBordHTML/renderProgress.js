@@ -26,6 +26,32 @@ const svgIcons = {
     `
 };
 
+function getAvatarColor(id) {
+    if (!avatarColorsMap[id]) {
+        avatarColorsMap[id] = avatarColors();
+    }
+    return avatarColorsMap[id];
+}
+
+
+const avatarColorsMap = {};
+
+function getInitials(name) {
+    return name.split(' ').map(word => word[0].toUpperCase()).join('');
+}
+
+function avatarColors() {
+    const colors = [
+        '#FF7A00', '#FF5EB3', '#6E52FF', '#00BEE8', '#C3FF2B', '#FF4646'
+    ];
+    let colorIndex = (lastColorIndex + 1) % colors.length;
+    lastColorIndex = colorIndex;
+    return colors[colorIndex];
+}
+    let lastColorIndex = -1;
+
+
+
 
 
 function renderTaskCard(task, key, categoryClass, svgIcons) {
@@ -62,17 +88,18 @@ if (task.subtasks && task.subtasks.length > 0) {
 }
 
 
-
-
     // Render Assigned To
     let assignedToHTML = '';
     if (task.assignedto && task.assignedto.length > 0) {
         for (let j = 0; j < task.assignedto.length; j++) {
             let assignedTo = task.assignedto[j];
+            let initials = getInitials(assignedTo.name);
+            let avatarColor = getAvatarColor(assignedTo.name);
+    
             assignedToHTML += `
-            <div class="assignedtoItem">  
-                <span>${assignedTo.name}</span>
-            </div>`;
+                <div class="assignedtoItem" style="background-color: ${avatarColor}; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
+                    <span>${initials}</span>
+                </div>`;
         }
     };
 
@@ -106,6 +133,10 @@ if (task.subtasks && task.subtasks.length > 0) {
         <div class="task-description">${task.description}</div>
         ${progressHTML}
         <div class="taskpriority">${priorityIcon}</div>
+        <div>
+        ${assignedToHTML}
+        </div>
+        <!-- Kontakte  -->
     </div>
     `;
 }
