@@ -11,7 +11,7 @@ function addSingleTaskForm(taskData, key) {
             <p class="AssignedTitle">Assigned To:</p>
 
             <div class="assignedTo-container">
-                ${taskData.assignedToHTML} 
+                ${taskData.assignedToHTML} ${taskData.assignedToFullNameHTML}
             </div>
 
 

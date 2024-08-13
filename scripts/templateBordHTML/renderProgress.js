@@ -115,6 +115,15 @@ if (task.subtasks && task.subtasks.length > 0) {
         </div>`;
     }
 
+    // Render Assigned To Full Name
+    let assignedToFullNameHTML = '';
+    if (task.assignedto && task.assignedto.length > 0) {
+        for (let j = 0; j < task.assignedto.length; j++) {
+            let assignedTo = task.assignedto[j];
+            assignedToFullNameHTML += `<span>${assignedTo.name}</span>`;
+        }
+    }
+
     let taskData = {
         taskTitle: task.task,
         taskDescription: task.description,
@@ -123,7 +132,8 @@ if (task.subtasks && task.subtasks.length > 0) {
         taskCategoryHTML: typHTML,
         dueDate: task.duedate,
         subtasksHTML: subtasksHTML,
-        assignedToHTML: assignedToHTML
+        assignedToHTML: assignedToHTML,
+        assignedToFullNameHTML: assignedToFullNameHTML
     };
 
     return /*html*/`
