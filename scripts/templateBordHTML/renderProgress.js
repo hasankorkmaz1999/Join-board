@@ -149,7 +149,6 @@ if (task.assignedto && task.assignedto.length > 0) {
         assignedToFullNameHTML: assignedToFullNameHTML
     };
 
-    console.log("Sinnloser JSON", taskData);
     
 
     return /*html*/`
