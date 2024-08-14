@@ -51,7 +51,6 @@ function closeSingleContact() {
     contactContainer.classList.add('slide-out-right');
     contactContainer.classList.add('contact-container');
     setTimeout(() => {
-        contactContainer.classList.add('d-non');
         contactContainer.classList.remove('slide-in-right');
         contactContainer.classList.remove('contact-container');
         contactContainer.classList.remove('slide-out-right');
