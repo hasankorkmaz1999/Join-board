@@ -228,6 +228,32 @@ function addSubtaskToList(title) {
 }
 
 
+
+/* Auswahlbutton in addTask: Low, Medium, Urgent
+*******************************************************/
+function setActive(button, priority) {
+
+let buttons = document.querySelectorAll('.addTaskPrioButton');
+buttons.forEach(btn => {
+    btn.classList.remove('active-urgent', 'active-medium', 'active-low');
+});
+
+button.classList.add(`active-${priority}`);
+
+let priorityInput = document.getElementById('priority');
+priorityInput.value = priority;
+}
+
+
+/* Wofür ist das? In die Konsole loggt das Ding nix.
+******************************************************
+document.addEventListener('DOMContentLoaded', function() {
+let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
+console.log(assignedto);
+});
+*/
+
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
     let arrowrInButton = document.getElementById('AssignedToButton');
@@ -239,6 +265,7 @@ function showAssignedTo() {
         arrowrInButton.classList.add('down');
         arrowrInButton.classList.remove('up');
         
+        // Entferne die .active Klasse von allen .assignedto-item Elementen
         assignedToItems.forEach(item => {
             item.classList.remove('active');
         });
@@ -248,19 +275,17 @@ function showAssignedTo() {
         arrowrInButton.classList.add('up');
         arrowrInButton.classList.remove('down');
         
+        // Füge einen Event-Listener für Klicks auf jedes .assignedto-item Element hinzu
         assignedToItems.forEach(item => {
             item.addEventListener('click', function() {
-
+                // Entferne die .active Klasse von allen .assignedto-item Elementen
                 assignedToItems.forEach(innerItem => {
                     innerItem.classList.remove('active');
                 });
                 
+                // Füge die .active Klasse nur dem angeklickten Element hinzu
                 this.classList.add('active');
             });
         });
     }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    showAssignedTo();
-});

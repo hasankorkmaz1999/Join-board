@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="style/headerstyle.css">
     <link rel="stylesheet" href="style/add_task.css">
     <link rel="stylesheet" href="style/addTaskResponsive.css">
-    <!-- <link rel="stylesheet" href="style/test_add_task.css"> -->
 
     <script src="scripts/w3include.js"></script>
 
@@ -39,9 +38,8 @@
     </style>
 </head>
 <body onload="includeHTML()">
+    <div class="joinLogo"><img class="joinLogo" src="IMGicons/join-logo.svg" alt="Join Logo"></div>
     <div w3-include-html="html/header.html"></div>
-
-
     
     <div id="addTaskContainer" class="addTaskContainer">
         <div class="addTaskFlexHeader">
@@ -71,9 +69,7 @@
                     <div id="addTaskAssignedTo" class="addTaskAssignedTo">
                         <label for="assignedto">Assigned to</label>
                             <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./IMGicons/arrow_drop_down.svg" alt="arrow_drop_down"></button>
-                        <div id="assignedto" class="assignedto-checkboxes d-non">
-                            <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
-                        </div>
+                        <div id="assignedto" class="assignedto-checkboxes d-non"></div>
                     </div>
                 </form>
                 <div id="selectedInitials" class="initials-container"></div>
@@ -94,7 +90,6 @@
                         <span id="duedateError" class="d-non">Please enter a date</span>
                     </div>
                     
-    
                     <div class="addTaskPriority">
                         <label for="category">Prio</label>
                         <div class="prioFlex">
@@ -168,8 +163,6 @@
     <div id="toast-div" class="d-none">
         <div class="toast-text" id="toast-text"></div>
     </div>
-
-    <!-- <script src="./scripts/addTaskFunction/addTaskTest.js"></script> -->
     
     <script src="./scripts/checkValue.js"></script>
     <script src="./scripts/toastMsg.js"></script>
@@ -183,32 +176,6 @@
     <script>
         includeHTML();
     </script>
-
-    <script>
-        /* Auswahlbutton in addTask: Low, Medium, Urgent
-        *******************************************************/
-        function setActive(button, priority) {
-
-        let buttons = document.querySelectorAll('.addTaskPrioButton');
-        buttons.forEach(btn => {
-            btn.classList.remove('active-urgent', 'active-medium', 'active-low');
-        });
-
-        button.classList.add(`active-${priority}`);
-
-        let priorityInput = document.getElementById('priority');
-        priorityInput.value = priority;
-        }
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
-        let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
-        console.log(assignedto);
-        });
-    </script>
-
 
 </body>
 </html>
