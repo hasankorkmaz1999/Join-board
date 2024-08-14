@@ -55,9 +55,6 @@
     #awaitingfeedback, #inprogress, #todo, #done {
         display: flex;
     }
-    .boardsections {
-        margin-left: 0;
-    }
     .task-cards {
         margin: 10px;
         margin-bottom: 20px;
