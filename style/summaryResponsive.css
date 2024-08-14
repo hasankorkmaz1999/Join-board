@@ -1,0 +1,10 @@
+@media (max-width: 400px) {
+    .footer-mobile {
+        display: block !important;
+    }
+    .header-left {
+        display: none;
+    }
+
+}
+
