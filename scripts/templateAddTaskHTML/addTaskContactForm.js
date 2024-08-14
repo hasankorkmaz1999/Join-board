@@ -39,11 +39,6 @@ function addTaskForm() {
         }
     </style>
 </head>
-<body onload="includeHTML()">
-    <div w3-include-html="html/header.html"></div>
-
-
-    
     <div id="addTaskContainer" class="addTaskContainer" onclick="doNotClose(event)">
         <div class="addTaskFlexHeader">
             <h1 class="addTaskH1">Add Task Beta</h1>
@@ -169,23 +164,5 @@ function addTaskForm() {
     <div id="toast-div" class="d-none">
         <div class="toast-text" id="toast-text"></div>
     </div>
-
-    <!-- <script src="./scripts/addTaskFunction/addTaskTest.js"></script> -->
-    
-    <script src="./scripts/checkValue.js"></script>
-    <script src="./scripts/toastMsg.js"></script>
-    <script src="./scripts/reloadPage.js"></script>
-    <script src="./scripts/templateContactHTML/editContactForm.js"></script>
-    <script src="./scripts/templateContactHTML/renderBigView.js"></script>
-    <script src="./scripts/loadData.js"></script>
-    <script src="./scripts/addTaskFunction/testForm.js"></script>
-    <script src="./scripts/addTaskFunction/addTaskTest.js"></script>
-
-    <script>
-        includeHTML();
-    </script>
-
-
-</body>
-</html>`
+    `
 }
