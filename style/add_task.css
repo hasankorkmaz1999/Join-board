@@ -417,6 +417,12 @@ input.assignedCheckbox[type="checkbox"] {
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    display: flex;
+    /* padding: 10px; */
+    /* background-color: #f7f7f7; */
+    transition: background-color 0.3s ease, color 0.3s ease; /* hab ne elegante transition reingehauen */
+
 }
 
 .assignedto-item:hover {
@@ -615,20 +621,23 @@ input.assignedCheckbox[type="checkbox"] {
 
 .initials-container span,
 .avatar {
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     margin-left: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 0px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding: 4px;
     box-shadow: 0 0 5px var(--white);
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
+    color: white;
+    border: 2px solid #fffefe;
 }
 
 
