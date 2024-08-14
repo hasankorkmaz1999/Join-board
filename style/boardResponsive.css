@@ -21,6 +21,12 @@
         flex-wrap: wrap;
         margin-left: 260px;
     }
+    .searchform {
+        justify-content: space-between;
+    }
+    .addTaskForm {
+        width: 100%;
+    }
 }
 
 @media (max-width: 830px) {
@@ -30,9 +36,7 @@
     #addTaskDesktop {
         display: none;
     }
-    .main-content {
-        margin-right: 60px;
-    }
+
 }  
 
 @media (max-width: 650px) {

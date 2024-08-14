@@ -32,7 +32,8 @@
 
 body {
  background-color: var(--body-background); 
- width: calc( 1440 - 1440px);
+ max-width: 1440px;
+ /* width: calc( 1440 - 1440px); ??? */
 }
 
 .main-content {
@@ -806,7 +807,6 @@ h1, h2, p {
 .boardsections {
   max-width: 1440px;
   margin-left: 260px; 
-  margin-right: 20px;
   background-color: var(--body-background-grey);
   display: flex;
   justify-content: space-around;
