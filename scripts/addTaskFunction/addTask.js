@@ -139,13 +139,13 @@ function renderContacts(assignedTo, key) {
     let initials = assignedTo.name.split(' ').map(name => name[0]).join('');
     const color = getAvatarColor(key);
     return /*html*/`
-        <div class="assignedto-item">
+        <label for="${key}" class="assignedto-item">
             <div id="avatar" class="avatar" style="background-color: ${color};">
                 ${initials}
             </div>
+            <span>${assignedTo.name}</span>
             <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}">
-            <label for="${key}">${assignedTo.name}</label>
-        </div>
+        </label>
     `;
 }
 
@@ -282,7 +282,7 @@ console.log(assignedto);
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
     let arrowrInButton = document.getElementById('AssignedToButton');
-    let assignedToItems = document.querySelectorAll('.assignedto-item');
+    // let assignedToItems = document.querySelectorAll('.assignedto-item'); ich habs ausgeblendet, Gruß Tay!*
 
     if (assignedto.classList.contains('d-flex')) {
         assignedto.classList.remove('d-flex');
@@ -290,10 +290,10 @@ function showAssignedTo() {
         arrowrInButton.classList.add('down');
         arrowrInButton.classList.remove('up');
         
-        // Entferne die .active Klasse von allen .assignedto-item Elementen
-        assignedToItems.forEach(item => {
-            item.classList.remove('active');
-        });
+        // Entferne die .active Klasse von allen .assignedto-item Elementen / Ich war hier. Gruß Tay! :-)
+        // assignedToItems.forEach(item => {
+        //     item.classList.remove('active');
+        // });
     } else {
         assignedto.classList.remove('d-non');
         assignedto.classList.add('d-flex');
@@ -313,4 +313,20 @@ function showAssignedTo() {
             });
         });
     }
+}
+
+function addCheckboxEventListeners() {
+    let checkboxes = document.querySelectorAll('input[name="assignedto"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function(event) {
+            const parentLabel = event.target.closest('.assignedto-item');
+            if (this.checked) {
+                parentLabel.style.backgroundColor = '#2A3647';
+                parentLabel.style.color = 'white';
+            } else {
+                parentLabel.style.backgroundColor = '';
+                parentLabel.style.color = '';
+            }
+        });
+    });
 }
