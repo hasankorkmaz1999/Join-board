@@ -15,7 +15,7 @@ function addSingleTaskForm(taskData, key) {
             <div class="assignedTo-container">
 
                 <div class="avatarsinbig">
-                ${taskData.assignedToHTML}
+                ${taskData.assignedToFullHTML}
                 </div>
 
                 <div class="fullname">

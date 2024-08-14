@@ -88,7 +88,22 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
            `;
        }
    }
-   
+
+   // Render Im Overlay
+   let assignedToFullHTML = '';
+if (task.assignedto && task.assignedto.length > 0) {
+    for (let j = 0; j < task.assignedto.length; j++) {
+        let assignedTo = task.assignedto[j];
+        let initials = getInitials(assignedTo.name);
+        let avatarColor = getAvatarColor(assignedTo.name);
+
+        assignedToFullHTML += `
+            <div class="assignedtoItem" style="background-color: ${avatarColor}; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
+                <span class="assignedtoavatar">${initials}</span>
+            </div>`;
+    }
+}
+
 
 
     // Render Assigned To
@@ -115,6 +130,7 @@ if (task.assignedto && task.assignedto.length > 0) {
             </div>`;
     }
 }
+
 
 
     let progressHTML = '';
@@ -146,7 +162,8 @@ if (task.assignedto && task.assignedto.length > 0) {
         dueDate: task.duedate,
         subtasksHTML: subtasksHTML,
         assignedToHTML: assignedToHTML,
-        assignedToFullNameHTML: assignedToFullNameHTML
+        assignedToFullNameHTML: assignedToFullNameHTML,
+        assignedToFullHTML: assignedToFullHTML
     };
 
     
