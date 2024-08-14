@@ -110,29 +110,20 @@ function updateData(URL, id, data) {
 
 // Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
 function openAddTaskOverlay() {
-    // Zeige das Overlay an
     let overlay = document.getElementById('overlayforaddtask');
     overlay.classList.remove('d-none');
     overlay.classList.add('slide-in-right');
-    // Container für den dynamisch geladenen Inhalt
-    let popupContent = document.getElementsByClassName('addtaskpopup')[0];
-
-    // Rufe die addTaskForm Funktion auf, um den HTML-Inhalt zu erhalten
-    let htmlContent = addTaskForm();
-
-    // Füge den HTML-Inhalt in das popupContent Div ein
-    popupContent.innerHTML = htmlContent;
 }
 
 // Funktion zum Schließen des Overlays
 function closeAddTaskOverlay() {
     let overlay = document.getElementById('overlayforaddtask');
-    overlay.classList.remove('slide-out-right');
+    overlay.classList.add('slide-out-right');
+    setTimeout(() => {
         overlay.classList.add('d-none');
         overlay.classList.remove('slide-in-right');
         overlay.classList.remove('slide-out-right');
-    let popupContent = document.getElementsByClassName('addtaskpopup')[0];
-    popupContent.innerHTML = '';
+    }, 500);
     
 }
 
