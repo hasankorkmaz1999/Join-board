@@ -149,6 +149,9 @@ if (task.assignedto && task.assignedto.length > 0) {
         assignedToFullNameHTML: assignedToFullNameHTML
     };
 
+    console.log("Sinnloser JSON", taskData);
+    
+
     return /*html*/`
     <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
