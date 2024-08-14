@@ -51,13 +51,12 @@
     </style>
 </head>
 <body onload="includeHTML()">
+    <div class="joinLogo"><img class="joinLogo" src="IMGicons/join-logo.svg" alt="Join Logo"></div>
     <div w3-include-html="html/header.html"></div>
 
-
-    
     <div id="addTaskContainer" class="addTaskContainer">
         <div class="addTaskFlexHeader">
-            <h1 class="addTaskH1">Add Task Beta</h1>
+            <h1 class="addTaskH1">Add Task</h1>
         </div>
 
         <div class="addTaskFlexContainer">
@@ -84,7 +83,7 @@
                         <label for="assignedto">Assigned to</label>
                             <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./IMGicons/arrow_drop_down.svg" alt="arrow_drop_down"></button>
                         <div id="assignedto" class="assignedto-checkboxes d-non">
-                            <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
+                            
                         </div>
                     </div>
                 </form>

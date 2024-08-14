@@ -63,7 +63,7 @@ h1, h2, p {
 
 .content-container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
     width: 100%;
@@ -175,3 +175,46 @@ h1, h2, p {
     background-color: #2A3647;
     color: white;
 }
+
+
+
+
+
+
+
+/* Bitte nichts nach den Media Queries einfügen!
+***********************************************************************/
+
+@media (max-width: 1280px) {
+    .content-container {
+        flex-wrap: wrap;
+    }
+}    
+
+@media (max-width: 1180px) {
+    h1 {
+        font-size: 47px;
+    }
+    .contact-flex-header span {
+        font-size: 20px;
+    }
+} 
+
+@media (max-width: 850px) {
+    .header-left {
+        display: none;
+    }
+    .header-top,
+    .main-content {
+        margin-left: 0;
+    }
+    .header-top {
+        width: 100%;
+    }
+}
+
+@media (max-width: 510px) {
+    .subheader-contact {
+        display: none;
+    }
+} 
