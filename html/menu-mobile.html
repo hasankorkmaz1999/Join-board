@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
 <style>
 :root {
@@ -56,6 +50,8 @@ img.mobile-menu {
     cursor: pointer;
     padding: 10px 6px;
     border-radius: 12px;
+    width: 80px;
+    height: 50px;
 }
 span.mobile {
     font-family: 'Open Sans';
@@ -84,50 +80,89 @@ span.mobile:hover {
 }
 
 .footer-link {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-decoration: none;
+    position: fixed;
+    bottom: 15px;
 }
 
 .footer-mobile {
     display: none;
 }
-  
+
+.mobile-summary {
+    background-image: url(./../IMGicons/mobile_summary.svg);
+    background-repeat: no-repeat;
+    background-position: center 6px;
+    color: var(--white);
+}
+.mobile-summary:hover {
+    background-image: url(./../IMGicons/mobile_summary_active.svg);
+    background-repeat: no-repeat;
+    background-position: center 6px;
+}
+
+.mobile-board {
+    background-image: url(./../IMGicons/mobile_board.svg);
+    background-repeat: no-repeat;
+    background-position: center 6px;
+}
+.mobile-board:hover {
+    background-image: url(./../IMGicons/mobile_board_active.svg);
+    background-repeat: no-repeat;
+    background-position: center 6px;
+}
+
+.mobile-addTask {
+    background-image: url(./../IMGicons/mobile_add_task.svg);
+    background-repeat: no-repeat;
+    background-position: center 6px;
+}
+.mobile-addTask:hover {
+    background-image: url(./../IMGicons/mobile_addTask_active.svg);
+    background-repeat: no-repeat;
+    background-position: center 6px;
+}
+
+.mobile-contacts {
+    background-image: url(./../IMGicons/mobile_contacts.svg);
+    background-repeat: no-repeat;
+    background-position: center 6px;
+}
+.mobile-contacts:hover {
+    background-image: url(./../IMGicons/mobile_contact_active.svg);
+    background-repeat: no-repeat;
+    background-position: center 6px;
+}
+.mobile-contacts:active {
+    background-image: url(./../IMGicons/mobile_contact_active.svg);
+    background-repeat: no-repeat;
+    background-position: center 6px;
+}
 
 </style>
 
-</head>
-<body>
 
 <div class="footer-mobile">
     <div class="menu-mobile">
-        <div class="mobile-menu-botton">
+        <div class="mobile-menu-botton mobile-summary">
             <a href="../summary.html" class="footer-link">
-                <img class="mobile-menu" src="./../IMGicons/mobile_summary.svg" alt="Icon Summary">
                 <span class="mobile">Summary</span>
             </a>
         </div>
-        <div class="mobile-menu-botton">
+        <div class="mobile-menu-botton mobile-board">
             <a href="../board.html" class="footer-link">
-                <img class="mobile-menu" src="./../IMGicons/mobile_board.svg" alt="Icon Board">
                 <span class="mobile">Board</span>
             </a>
         </div>
-        <div class="mobile-menu-botton">
+        <div class="mobile-menu-botton mobile-addTask">
             <a href="../add_task.html" class="footer-link">
-                <img class="mobile-menu" src="./../IMGicons/mobile_add_task.svg" alt="Icon Add Tasks">
                 <span class="mobile">Add Tasks</span>
             </a>
         </div>
-        <div class="mobile-menu-botton">
+        <div class="mobile-menu-botton mobile-contacts">
             <a href="../contacts.html" class="footer-link">
-                <img class="mobile-menu" src="./../IMGicons/mobile_contacts.svg" alt="Icon Contacts">
                 <span class="mobile">Contacts</span>
             </a>
         </div>
     </div>
 </div>
 
-</body>
-</html>

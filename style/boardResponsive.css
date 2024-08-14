@@ -13,7 +13,7 @@
     margin: 0;
     align-items: center;
     justify-content: space-between;
-    max-width: 100%;
+    width: 100%;
 }
 
 @media (max-width: 1230px) {
@@ -55,6 +55,9 @@
         margin-top: 0;
     }
     .inputfieldfindtask {
+        width: 100%;
+    }
+    .addTaskForm {
         width: 100%;
     }
 
@@ -99,11 +102,9 @@
     #inprogress,
     #todo,
     #done {
-        width: 300px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 0 auto;
     }
     .task-cards.no-copy {
         width: 252px;

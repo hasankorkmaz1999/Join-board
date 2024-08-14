@@ -175,7 +175,7 @@
         margin-top: 80px;
     }
     .footer-mobile {
-        display: flex;
+        display: flex !important;
         align-items: center;
         position: fixed;
         bottom: 0;

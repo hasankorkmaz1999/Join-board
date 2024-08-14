@@ -44,7 +44,7 @@ body {
   flex-direction: column;
   align-items: center;
   height: 100%; /* Höhe entsprechend des übergeordneten Elements */
-  flex-grow: 1
+  flex-grow: 1;
 }
 
 .joinLogo {
@@ -402,8 +402,8 @@ h1 {
   border-radius: 24px;
   margin: 10px 0;
   cursor: pointer;
-  width: 270px;
-  gap: 20px;
+  width: 252px;
+  gap: 24px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   background-color: var(--white);
   
@@ -811,7 +811,7 @@ h1, h2, p {
 }
 
 .boardsection {
-  width: 222px;
+  width: 232px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
