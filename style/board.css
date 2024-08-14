@@ -45,7 +45,6 @@ body {
   align-items: center;
   height: 100%; /* Höhe entsprechend des übergeordneten Elements */
   flex-grow: 1;
-  width: 252px;
 }
 
 .joinLogo {
