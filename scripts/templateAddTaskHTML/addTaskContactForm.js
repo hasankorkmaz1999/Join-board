@@ -44,7 +44,7 @@ function addTaskForm() {
 
 
     
-    <div id="addTaskContainer" class="addTaskContainer">
+    <div id="addTaskContainer" class="addTaskContainer" onclick="doNotClose(event)">
         <div class="addTaskFlexHeader">
             <h1 class="addTaskH1">Add Task Beta</h1>
         </div>
