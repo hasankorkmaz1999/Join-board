@@ -36,6 +36,33 @@
     #addTaskDesktop {
         display: none;
     }
+    .boardsections {
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+    }
+    .progress-window {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        flex-grow: 1;
+        gap: 16px;
+        width: 252px;
+        flex-wrap: nowrap;
+    }
+    #awaitingfeedback, #inprogress, #todo, #done {
+        width: 252px;
+        display: flex;
+    }
+    .boardsections {
+        margin-left: 0;
+    }
+    .task-cards {
+        margin: 10px;
+        width: 240px !important;
+    }
 
 }  
 
@@ -70,7 +97,7 @@
     .addTaskForm {
         width: 100%;
     }
-    .joinLogo {
+        .joinLogo {
         display: block;
         width: 39px;
         height: 39px;
