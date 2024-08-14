@@ -254,7 +254,7 @@ function addSubtaskToList(title) {
 
 
 
-/* Auswahlbutton in addTask: Low, Medium, Urgent
+/* Auswahlbutton in addTask: Low, Medium, Urgent test
 *******************************************************/
 function setActive(button, priority) {
 
