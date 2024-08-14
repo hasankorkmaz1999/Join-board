@@ -93,18 +93,28 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
 
     // Render Assigned To
     let assignedToHTML = '';
-    if (task.assignedto && task.assignedto.length > 0) {
-        for (let j = 0; j < task.assignedto.length; j++) {
-            let assignedTo = task.assignedto[j];
-            let initials = getInitials(assignedTo.name);
-            let avatarColor = getAvatarColor(assignedTo.name);
-    
-            assignedToHTML += `
-                <div class="assignedtoItem" style="background-color: ${avatarColor}; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
-                    <span  class="assignedtoavatar">${initials}</span>
-                </div>`;
-        }
-    };
+if (task.assignedto && task.assignedto.length > 0) {
+    let maxNamesToShow = 3;
+    let remainingNames = task.assignedto.length - maxNamesToShow;
+
+    for (let j = 0; j < task.assignedto.length && j < maxNamesToShow; j++) {
+        let assignedTo = task.assignedto[j];
+        let initials = getInitials(assignedTo.name);
+        let avatarColor = getAvatarColor(assignedTo.name);
+
+        assignedToHTML += `
+            <div class="assignedtoItem" style="background-color: ${avatarColor}; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
+                <span class="assignedtoavatar">${initials}</span>
+            </div>`;
+    }
+
+    if (remainingNames > 0) {
+        assignedToHTML += `
+            <div class="assignedtoItem" style="background-color: #ccc; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
+                <span class="assignedtoavatar">+${remainingNames}</span>
+            </div>`;
+    }
+}
 
 
     let progressHTML = '';
