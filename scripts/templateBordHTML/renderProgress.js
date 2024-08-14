@@ -98,7 +98,7 @@ if (task.subtasks && task.subtasks.length > 0) {
     
             assignedToHTML += `
                 <div class="assignedtoItem" style="background-color: ${avatarColor}; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
-                    <span>${initials}</span>
+                    <span  class="assignedtoavatar">${initials}</span>
                 </div>`;
         }
     };
@@ -120,7 +120,7 @@ if (task.subtasks && task.subtasks.length > 0) {
     if (task.assignedto && task.assignedto.length > 0) {
         for (let j = 0; j < task.assignedto.length; j++) {
             let assignedTo = task.assignedto[j];
-            assignedToFullNameHTML += `<span>${assignedTo.name}</span>`;
+            assignedToFullNameHTML += `<span class="fullnames">${assignedTo.name}</span>`;
         }
     }
 
@@ -142,11 +142,12 @@ if (task.subtasks && task.subtasks.length > 0) {
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
         ${progressHTML}
-        <div class="taskpriority">${priorityIcon}</div>
-        <div>
-        ${assignedToHTML}
+
+        <div class="taskpriority">
+        <div class="assignedToHTML"> ${assignedToHTML} </div>
+         ${priorityIcon}
         </div>
-        <!-- Kontakte  -->
+
     </div>
     `;
 }
