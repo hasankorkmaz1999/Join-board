@@ -169,7 +169,7 @@ if (task.assignedto && task.assignedto.length > 0) {
     
 
     return /*html*/`
-    <div onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
+    <div id="task-card" onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
         <div class="task-description">${task.description}</div>
