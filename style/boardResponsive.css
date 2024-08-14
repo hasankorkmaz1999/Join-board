@@ -76,7 +76,7 @@
     }
 }    
 
-@media (max-width: 650px) {
+@media (max-width: 850px) {
     .header-left {
         display: none;
     }
