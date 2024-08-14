@@ -39,6 +39,12 @@
 
 }  
 
+@media (max-width: 740px) {
+    .subheader-contact {
+        display: none;
+    }
+}    
+
 @media (max-width: 650px) {
     .header-left {
         display: none;
@@ -64,6 +70,15 @@
     .addTaskForm {
         width: 100%;
     }
+    .joinLogo {
+        display: block;
+        width: 39px;
+        height: 39px;
+        position: absolute;
+        top: 16px;
+        z-index: 20;
+        left: 16px;
+    }
 
 }  
 
@@ -76,11 +91,11 @@
     }
     .addTaskForm {
         display: flex;
+        justify-content: center;
     }
     h1 {
         margin-left: 0;
     }
-
     .boardsections {
         
         margin: 0 auto;
@@ -93,15 +108,7 @@
         justify-content: space-between;
         align-items: center;
     }
-    .joinLogo {
-        display: block;
-        width: 39px;
-        height: 39px;
-        position: absolute;
-        top: 16px;
-        z-index: 20;
-        left: 16px;
-    }
+
     #awaitingfeedback,
     #inprogress,
     #todo,
@@ -114,8 +121,9 @@
         width: 252px;
     }
     .main-content {
-        margin: 0 auto;
         padding: 20px;
+        display: flex;
+        justify-content: center;
     }
     h1 {
         font-size: 41px;
