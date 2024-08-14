@@ -73,19 +73,22 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
     }
 
    // Render Subtasks
-let subtasksHTML = '';
-if (task.subtasks && task.subtasks.length > 0) {
-    for (let i = 0; i < task.subtasks.length; i++) {
-        let subtask = task.subtasks[i];
-        subtasksHTML += `
-           <div class="subtask-item">
-        <input class="styled-checkbox" type="checkbox" id="subtask-checkbox-${key}-${i}" ${subtask.itsdone ? 'checked' : ''}
-        onclick="toggleSubtaskStatus(&#39;${key}&#39;, ${i}, this.checked)">
-        <span>${subtask.title}</span>
-    </div>
-    `;
-    }
-}
+   let subtasksHTML = '';
+   if (task.subtasks && task.subtasks.length > 0) {
+       for (let i = 0; i < task.subtasks.length; i++) {
+           let subtask = task.subtasks[i];
+           subtasksHTML += `
+              <div class="subtask-item">
+                  <label>
+                      <input class="styled-checkbox" type="checkbox" id="subtask-checkbox-${key}-${i}" ${subtask.itsdone ? 'checked' : ''}
+                      onclick="toggleSubtaskStatus(&#39;${key}&#39;, ${i}, this.checked)">
+                      <span>${subtask.title}</span>
+                  </label>
+              </div>
+           `;
+       }
+   }
+   
 
 
     // Render Assigned To
