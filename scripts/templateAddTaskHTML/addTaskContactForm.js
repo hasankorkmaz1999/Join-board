@@ -1,9 +1,52 @@
 function addTaskForm() {
     return  /*html*/`
-      <div id="addTaskContainer" class="addTaskContainerOverlay"  onclick="doNotClose(event)">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join - Add Task</title>
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="fonts/figtree/styles.css">
+    <link rel="stylesheet" href="fonts/inter/styles.css">
+    <link rel="stylesheet" href="fonts/open-sans/styles.css">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+
+    <!-- styles-->
+    <link rel="stylesheet" href="style/global.css">
+    <link rel="stylesheet" href="style/headerstyle.css">
+    <link rel="stylesheet" href="style/add_task.css">
+    <link rel="stylesheet" href="style/addTaskResponsive.css">
+    <!-- <link rel="stylesheet" href="style/test_add_task.css"> -->
+
+    <script src="scripts/w3include.js"></script>
+
+    <style>
+        #nav-add-task {
+            background-image: url('./../IMGicons/headericons/iconAddTaskActive.svg');
+            background-color: #091931;
+            background-repeat: no-repeat;
+        }
+        a.active_addtask {
+            color: var(--white);
+        }
+    </style>
+</head>
+<body onload="includeHTML()">
+    <div w3-include-html="html/header.html"></div>
+
+
+    
+    <div id="addTaskContainer" class="addTaskContainer" onclick="doNotClose(event)">
         <div class="addTaskFlexHeader">
-            <h1 class="addTaskH1">Add Task</h1>
-            <img onclick="closeAddTaskOverlay()" class="closeXaddtask" src="./IMGicons/close.svg" alt="Icon Close">
+            <h1 class="addTaskH1">Add Task Beta</h1>
         </div>
 
         <div class="addTaskFlexContainer">
@@ -18,22 +61,23 @@ function addTaskForm() {
                         <div class="inputAddTaskTitle">
                             <input type="text" id="addTaskTitle" name="addTaskTitle addTaskInput" placeholder="Enter a title" required>
                         </div>    
-                        <span id="" class="addTaskerrorMessage"></span>
+                        <span id="taskTitleError" class="d-non">Please enter a title.</span>
                     </div>
     
                     <div class="addTaskDescription">
                         <label for="description">Description</label>
-                        <textarea class="textareaO" id="description" name="description" placeholder="Enter a description" ></textarea>
+                        <textarea id="description" name="description" placeholder="Enter a description" ></textarea>
                     </div>
     
-                    <div class="addTaskAssignedTo">
+                    <div id="addTaskAssignedTo" class="addTaskAssignedTo">
                         <label for="assignedto">Assigned to</label>
-                            <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./IMGicons/arrow_drop_down.svg" alt="arrow_drop_down"" alt="arrow_drop_down"></button>
+                            <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./IMGicons/arrow_drop_down.svg" alt="arrow_drop_down"></button>
                         <div id="assignedto" class="assignedto-checkboxes d-non">
                             <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
                         </div>
                     </div>
                 </form>
+                <div id="selectedInitials" class="initials-container"></div>
             </div>
 
             <div class="vertical-line"></div>
@@ -46,9 +90,9 @@ function addTaskForm() {
                             <span class="asterisk">*</span>
                         </div>    
                         <div class="addTaskDateInner">
-                            <input class="prioDate" type="date" id="prioDate" name="prioDate" pattern="\d{2}-\d{2}-\d{4}">
+                            <input type="date" id="prioDate" name="prioDate" pattern="\d{2}-\d{2}-\d{4}">
                         </div>    
-                        <span id="" class="addTaskerrorMessage"></span>
+                        <span id="duedateError" class="d-non">Please enter a date</span>
                     </div>
                     
     
@@ -69,7 +113,7 @@ function addTaskForm() {
                                         </defs>
                                     </svg>
                                 </button>
-                                <button type="button" onclick="setActive(this, 'medium')" class="addTaskPrioButton prio-medium">Medium
+                                <button type="button" onclick="setActive(this, 'medium')" class="addTaskPrioButton prio-medium active-medium">Medium <!-- Ja der button muss Aktiv sein ;) -->
                                     <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M19.1526 7.72528H1.34443C1.05378 7.72528 0.775033 7.60898 0.569514 7.40197C0.363995 7.19495 0.248535 6.91419 0.248535 6.62143C0.248535 6.32867 0.363995 6.0479 0.569514 5.84089C0.775033 5.63388 1.05378 5.51758 1.34443 5.51758H19.1526C19.4433 5.51758 19.722 5.63388 19.9276 5.84089C20.1331 6.0479 20.2485 6.32867 20.2485 6.62143C20.2485 6.91419 20.1331 7.19495 19.9276 7.40197C19.722 7.60898 19.4433 7.72528 19.1526 7.72528Z" fill="#FFA800"/>
                                         <path d="M19.1526 2.48211H1.34443C1.05378 2.48211 0.775033 2.36581 0.569514 2.1588C0.363995 1.95179 0.248535 1.67102 0.248535 1.37826C0.248535 1.0855 0.363995 0.804736 0.569514 0.597724C0.775033 0.390712 1.05378 0.274414 1.34443 0.274414L19.1526 0.274414C19.4433 0.274414 19.722 0.390712 19.9276 0.597724C20.1331 0.804736 20.2485 1.0855 20.2485 1.37826C20.2485 1.67102 20.1331 1.95179 19.9276 2.1588C19.722 2.36581 19.4433 2.48211 19.1526 2.48211Z" fill="#FFA800"/>
@@ -89,16 +133,18 @@ function addTaskForm() {
     
                     <div class="addTaskCategory">
                         <label for="category">Category<span class="asterisk">*</span></label>
-                        <select class="selectcategory" id="category" name="category">
+                        <select id="category" name="category">
                             <option value="null">Select task Category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
                         </select>
+                        <span id="addTaskCategoryError" class="d-non">Please enter a category</span>
                     </div>
     
                     <div class="addTaskSubtasks">
                         <label for="subtasks">Subtasks</label>
-                        <input class="subtasksinput" type="text" id="subtasks" name="subtasks" placeholder="Enter subtasks">
+                        <input type="text" id="subtasks" name="subtasks" placeholder="Enter subtasks">
+                        <ul id="subtaskList"></ul>
                     </div>
                 </form>
             </div>
@@ -115,5 +161,31 @@ function addTaskForm() {
             </form>
             </div>
         </div>
-    </div>`
+    </div>
+
+    <div w3-include-html="html/menu-mobile.html"></div>
+
+    <div id="overlayAddTask" class="overlay d-none"></div>
+    <div id="toast-div" class="d-none">
+        <div class="toast-text" id="toast-text"></div>
+    </div>
+
+    <!-- <script src="./scripts/addTaskFunction/addTaskTest.js"></script> -->
+    
+    <script src="./scripts/checkValue.js"></script>
+    <script src="./scripts/toastMsg.js"></script>
+    <script src="./scripts/reloadPage.js"></script>
+    <script src="./scripts/templateContactHTML/editContactForm.js"></script>
+    <script src="./scripts/templateContactHTML/renderBigView.js"></script>
+    <script src="./scripts/loadData.js"></script>
+    <script src="./scripts/addTaskFunction/testForm.js"></script>
+    <script src="./scripts/addTaskFunction/addTaskTest.js"></script>
+
+    <script>
+        includeHTML();
+    </script>
+
+
+</body>
+</html>`
 }

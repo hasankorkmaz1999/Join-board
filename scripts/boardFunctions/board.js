@@ -103,7 +103,9 @@ function updateData(URL, id, data) {
         body: JSON.stringify(data)
     })
     toastMessage("Task moved successfully!");
-    init();
+    setTimeout(() => {
+        init();
+    }, 500);
 }
 
 // Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
