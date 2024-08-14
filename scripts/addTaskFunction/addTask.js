@@ -218,10 +218,14 @@ function addSubtaskToList(title) {
     const subtaskList = document.getElementById("subtaskList");
     const listItem = document.createElement("li");
     listItem.innerHTML =  /*html*/`
+    <div class="subtaskcontainer">
         <span class="subtask-title">${title}</span>
         <input type="text" class="edit-input" value="${title}" style="display:none;"></input>
+        <div class="editanddeletebuttonsub">
         <img src="../../IMGicons/edit.svg" alt="edit" class="edit-btn">
         <img src="../../IMGicons/delete.svg" alt="delete" class="delete-btn">
+        </div>
+    </div>   
     `
 
     // Event Listener für den Edit Button
@@ -266,14 +270,14 @@ priorityInput.value = priority;
 }
 
 
-/* Wofür ist das? In die Konsole loggt das Ding nix.
-******************************************************
+
+
 document.addEventListener('DOMContentLoaded', function() {
 let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
 let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 console.log(assignedto);
 });
-*/
+
 
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
