@@ -31,13 +31,53 @@ span.asterisk {
     display: none;
 }
 
+.editanddeletebuttonsub {
+display: flex;
+justify-content: flex-end;
+}
+
 #subtaskList img{
     cursor: pointer;
 }
 
+
+
+.subtaskcontainer:hover  {
+    background-color: rgba(172, 172, 172, 0.2);
+   
+}
+
+
+
+.subtaskcontainer {
+    padding: 5px;
+   border-radius: 10px;
+   height: 30px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+  
+  
+}
+
+.subtaskcontainer.editing:hover {
+    background-color: initial; /* Setzt den Hover-Effekt zurück */
+    cursor: default; /* Zeigt den normalen Cursor an */
+}
+
+.edit-btn {
+    margin-right: 10px;
+}
+
+.delete-btn{
+margin-right: 10px;
+}
+
+
+
 .edit-input {
     border: 1px solid var(--border-grey) !important;
-    border-radius: 10px !important;
+    background-color: white !important;
     padding: 10px !important;
     font-family: 'Inter' !important;
     font-weight: 400 !important;
