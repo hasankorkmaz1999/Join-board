@@ -55,7 +55,11 @@ function avatarColors() {
 
 
 function renderTaskCard(task, key, categoryClass, svgIcons) {
-    let priorityIcon = svgIcons[task.priority.toLowerCase()] || '';
+    let priorityIcon = '';
+    if (task.priority) {
+        priorityIcon = svgIcons[task.priority.toLowerCase()] || '';
+    }
+    
     let typHTML = `<span class="${categoryClass}">${task.category}</span>`;
 
     let progress = calculateProgress(task.subtasks);

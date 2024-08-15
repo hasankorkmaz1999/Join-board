@@ -220,7 +220,7 @@ function findTask() {
     }
 
     if (!tasksFound) {
-        document.getElementById('inprogress').innerHTML = '<div class="no-tasksfound-banner">Keine Ergebnisse gefunden</div>';
+        document.getElementById('inprogress').innerHTML = '<div class="no-tasksfound-banner">No tasks found</div>';
     }
 
     if (searchInput === '') {
