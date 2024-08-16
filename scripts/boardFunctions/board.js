@@ -133,6 +133,7 @@ function openAddTaskOverlay(progress) {
         let popupContent = document.getElementById('addtaskpopup');
         popupContent.innerHTML = ''; // Leere den bisherigen Inhalt
         popupContent.appendChild(iframe);
+        document.body.style.overflow = 'hidden';
 }
 
 // Funktion zum Schließen des Overlays
@@ -144,6 +145,7 @@ function closeAddTaskOverlay() {
         overlay.classList.add('d-none');
         overlay.classList.remove('slide-in-right');
         overlay.classList.remove('slide-out-right');
+        document.body.style.overflow = 'auto';
     }, 500);
     
 }
@@ -166,6 +168,7 @@ function openSingleTaskOverlay(taskData, key) {
     
     let htmlContent = addSingleTaskForm(taskData, key);
     popupContent.innerHTML = htmlContent;
+    document.body.style.overflow = 'hidden';
 }
 
 
@@ -179,6 +182,7 @@ function closeSingleTaskOverlay() {
         overlay.classList.remove('slide-in-right');
         let popupContent = document.getElementsByClassName('singletaskpopup')[0];
         popupContent.innerHTML = '';
+        document.body.style.overflow = 'auto';
     }, 500);
 }
 
