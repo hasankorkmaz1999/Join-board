@@ -138,6 +138,7 @@ function openAddTaskOverlay(progress) {
 // Funktion zum Schließen des Overlays
 function closeAddTaskOverlay() {
     let overlay = document.getElementById('overlayforaddtask');
+    overlay.classList.remove('slide-in-right');
     overlay.classList.add('slide-out-right');
     setTimeout(() => {
         overlay.classList.add('d-none');
