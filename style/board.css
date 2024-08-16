@@ -317,7 +317,31 @@ h1 {
   margin: 10px 0;
   width: 55%;
   margin-right: 10px;
+  position: relative;
+  display: inline-block;
   
+}
+
+.progress-bar-container .progress-bar::after {
+  content: attr(data-tooltip);
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position the tooltip above the progress bar */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.progress-bar-container .progress-bar:hover::after {
+  visibility: visible;
+  opacity: 1;
 }
 
 .progress-bar {
@@ -338,12 +362,7 @@ h1 {
   flex-grow: 1;
 }
 
-
-
-
-/*Style Boardseite einzelne Tasks sobald man draufklickt und sich das overlay öffnet */
 .taskCategoryHTML {
-  margin-bottom: 50px;
   font-size: 24px;
   
 }
@@ -355,12 +374,11 @@ h1 {
   padding-left: 5px;
   display: flex;
   align-items: center;
- 
+
 }
 
 .subtask-item:hover {
   background-color: rgba(150, 148, 148, 0.2);
-  
 }
 
 .styled-checkbox {
@@ -384,7 +402,6 @@ h1 {
   vertical-align: middle;
 }
 
-
 .styled-checkbox:checked + span::before {
   content: '✔';
   display: inline-block;
@@ -400,7 +417,6 @@ h1 {
   font-weight: bold;
 }
 
-
 .styled-checkbox + span:hover::before {
   background-color: #f0f0f0;
 }
@@ -413,17 +429,6 @@ h1 {
 .taskPriority {
   margin-left: 20px;
   color: #000000;
-  
-}
-
-.single-task-content {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  padding: 30px;
-  width: 450px;
-  height: 780px;
-  overflow-y: scroll;
 }
 
 .Subtasks {
@@ -433,7 +438,7 @@ h1 {
 .taskTitleOverlay {
   margin-top: 10px;
  margin-bottom: 10px;
-  font-size: 70px;
+  font-size: 32px;
 }
 
 .AssignedTitle {
@@ -448,7 +453,7 @@ h1 {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  
+  margin: 50px 0;
 }
 
 .editbuttontask {
@@ -456,14 +461,13 @@ h1 {
   justify-content: space-between;
   background-image: url(../IMGicons/edit.svg);
   background-repeat: no-repeat;
-  background-position: left 1px center; /* Verschiebt das Bild nach links um 5px */
+  background-position: left 1px center; 
   cursor: pointer;
-  margin-left: 30px;
   width: 44px;
   height: 24px;
-  padding-left: 30px; /* Erhöht das padding-left, um Platz für das Bild und den Abstand zu schaffen */
+  padding-left: 30px; 
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--deep-grey);
 }
 
@@ -476,8 +480,10 @@ h1 {
   padding-left: 24px;
   margin-right: 12px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--deep-grey);
+  border-right: 1px solid grey;
+  padding-right: 20px;
   
 }
 
@@ -1005,10 +1011,8 @@ iframe {
 }
 
 .singletaskpopup {
-
   background-color: white;
-  width: 525px;
-  height: 870px;
+  height: 90vH;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -1019,6 +1023,65 @@ iframe {
   align-items: flex-start;
  
   overflow-y: scroll;
+  overflow: hidden; 
 }
 
 
+.tooltip {
+  display:inline-block;
+  position:relative;
+  border-bottom:1px dotted #666;
+  text-align:left;
+}
+
+.tooltip .top {
+  min-width:200px; 
+  top:-20px;
+  left:50%;
+  transform:translate(-50%, -100%);
+  padding:10px 20px;
+  color:#444444;
+  background-color:#EEEEEE;
+  font-weight:normal;
+  font-size:13px;
+  border-radius:8px;
+  position:absolute;
+  z-index:99999999;
+  box-sizing:border-box;
+  box-shadow:0 1px 8px rgba(0,0,0,0.5);
+  visibility:hidden; opacity:0; transition:opacity 0.8s;
+}
+
+.tooltip:hover .top {
+  visibility:visible; opacity:1;
+}
+
+.tooltip .top i {
+  position:absolute;
+  top:100%;
+  left:50%;
+  margin-left:-12px;
+  width:24px;
+  height:12px;
+  overflow:hidden;
+}
+
+.tooltip .top i::after {
+  content:'';
+  position:absolute;
+  width:12px;
+  height:12px;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(45deg);
+  background-color:#EEEEEE;
+  box-shadow:0 1px 8px rgba(0,0,0,0.5);
+}
+.single-task-content {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 290px;
+  height: 725px;
+  border-radius: 24px;
+  overflow-y: scroll;
+}
