@@ -1,3 +1,6 @@
+///////////////////////////////////////////////////////
+//      DO NOT ADD THIS SCRIPT TO ADDTASK.HTML!     //
+/////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', function() {
     let params = getQueryParams();
     if (params.progress !== null) {  // Überprüfen, ob der Parameter existiert
