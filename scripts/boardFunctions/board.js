@@ -108,11 +108,38 @@ function updateData(URL, id, data) {
     }, 100);
 }
 
+function closeOverlay() {
+    let overlay = document.getElementById('overlayforaddtask');
+    
+    // Entferne den Inhalt des Overlays, einschließlich des iframes
+    let popupContent = document.querySelector('.addtaskpopup');
+    popupContent.innerHTML = '';
+
+    overlay.classList.add('slide-out-right');
+    setTimeout(() => {
+        overlay.classList.add('d-none');
+        overlay.classList.remove('slide-in-right');
+        overlay.classList.remove('slide-out-right');
+    }, 500);
+}
+
 // Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
 function openAddTaskOverlay() {
     let overlay = document.getElementById('overlayforaddtask');
     overlay.classList.remove('d-none');
     overlay.classList.add('slide-in-right');
+
+    // Erstelle ein iframe-Element
+    let iframe = document.createElement('iframe');
+    iframe.src = 'add_task_board.html'; // Setze die Quelle auf deine HTML-Seite
+    iframe.style.width = '100%'; // Setze die Breite des iframes
+    iframe.style.height = '100%'; // Setze die Höhe des iframes
+    iframe.style.border = 'none'; // Entferne den Rahmen
+
+    // Füge das iframe dem Overlay hinzu
+    let popupContent = document.querySelector('.addtaskpopup');
+    popupContent.innerHTML = ''; // Leere den bisherigen Inhalt
+    popupContent.appendChild(iframe);
 }
 
 // Funktion zum Schließen des Overlays
