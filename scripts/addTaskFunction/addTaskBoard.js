@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Überprüfen, ob die Seite in einem iFrame geladen wird
     if (window.self === window.top) {
         // Die Seite wird nicht in einem iFrame geladen
-        document.body.innerHTML = '<h1>Die Seite kann leider nicht so geöffnet werden</h1>';
+        document.body.innerHTML = '<h1>Unfortunately the page cannot be opened like this</h1>';
         
         // Weiterleitung nach 5 Sekunden
         setTimeout(function() {
@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     handleProgress3();
                     break;
                 default:
-                    error('Ungültiger Parameter. Bitte einen Wert zwischen 0 und 3 verwenden.');
+                    error('Invalid parameter. Please use a value between 0 and 3.');
             }
         } else {
-            alert('Kein Parameter angegeben.');
+            alert('No parameter specified.');
         }
     }
 });
@@ -137,7 +137,7 @@ async function addTaskAwaitFeedback() {
                 assignedto: assignedTo.map(name => ({ name })),
                 description: description,
                 subtasks: subtasks,
-                progress: "todo",
+                progress: "AwaitingFeedback",
                 duedate: date,
             };
     
