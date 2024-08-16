@@ -416,11 +416,39 @@ h1 {
   justify-content: space-between;
   border-radius: 24px;
   margin: 10px 0;
-  cursor: pointer;
+  cursor: grab;
   gap: 24px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   background-color: var(--white);
   width: 240px;
+}
+
+.task-card:active {
+  cursor: grabbing;
+  background-color: red;
+  -webkit-animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes rotate-90-cw {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+}
+@keyframes rotate-90-cw {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
 }
 
 #task-card {
