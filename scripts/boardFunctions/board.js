@@ -110,9 +110,7 @@ function updateData(URL, id, data) {
 
 function closeOverlay() {
     let overlay = document.getElementById('overlayforaddtask');
-    
-    // Entferne den Inhalt des Overlays, einschließlich des iframes
-    let popupContent = document.querySelector('.addtaskpopup');
+    let popupContent = document.getElementById('addtaskpopup');
     popupContent.innerHTML = '';
 
     overlay.classList.add('slide-out-right');
@@ -124,22 +122,28 @@ function closeOverlay() {
 }
 
 // Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
-function openAddTaskOverlay() {
-    let overlay = document.getElementById('overlayforaddtask');
-    overlay.classList.remove('d-none');
-    overlay.classList.add('slide-in-right');
+function openAddTaskOverlay(progress) {
+    if (progress === 0) {
+        let overlay = document.getElementById('overlayforaddtask');
+        overlay.classList.remove('d-none');
+        overlay.classList.add('slide-in-right');
+        let iframe = document.createElement('iframe');
+        iframe.src = 'add_task_board.html';
+    
+        let popupContent = document.getElementById('addtaskpopup');
+        popupContent.innerHTML = ''; // Leere den bisherigen Inhalt
+        popupContent.appendChild(iframe);   
+    }
+    if (progress === 1) {
+        alert("This feature is not available yet!");
+    }
+    if (progress === 2) {
+        alert("This feature is not available yet!");
+    }
 
-    // Erstelle ein iframe-Element
-    let iframe = document.createElement('iframe');
-    iframe.src = 'add_task_board.html'; // Setze die Quelle auf deine HTML-Seite
-    iframe.style.width = '100%'; // Setze die Breite des iframes
-    iframe.style.height = '100%'; // Setze die Höhe des iframes
-    iframe.style.border = 'none'; // Entferne den Rahmen
-
-    // Füge das iframe dem Overlay hinzu
-    let popupContent = document.querySelector('.addtaskpopup');
-    popupContent.innerHTML = ''; // Leere den bisherigen Inhalt
-    popupContent.appendChild(iframe);
+    if (progress === 3) {
+        alert("This feature is not available yet!");
+    }
 }
 
 // Funktion zum Schließen des Overlays
