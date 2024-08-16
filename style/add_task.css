@@ -392,6 +392,10 @@ svg {
     transform: rotate(0deg);
 }
 
+#clearbutton {
+    width: unset;
+}
+
 
 /* Checkbox - Finger weg!
 ************************************************************************************/
@@ -602,8 +606,6 @@ svg {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    /* background-color: rgb(42, 54, 71); */
-    color: white;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
