@@ -311,23 +311,6 @@ function addSubtaskToList(title) {
     subtaskList.appendChild(listItem);
 }
 
-
-
-/* Auswahlbutton in addTask: Low, Medium, Urgent test
-*******************************************************/
-function setActive(button, priority) {
-
-let buttons = document.querySelectorAll('.addTaskPrioButton');
-buttons.forEach(btn => {
-    btn.classList.remove('active-urgent', 'active-medium', 'active-low');
-});
-
-button.classList.add(`active-${priority}`);
-
-let priorityInput = document.getElementById('priority');
-priorityInput.value = priority;
-}
-
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
     let arrowrInButton = document.getElementById('AssignedToButton');
