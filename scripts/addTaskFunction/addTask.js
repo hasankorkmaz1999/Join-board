@@ -9,8 +9,7 @@ function init() {
 /*     displayInitials(); */
 }
 
-  /* Auswahlbutton in addTask: Low, Medium, Urgent
-        *******************************************************/
+  /* Auswahlbutton in addTask: Low, Medium, Urgent */
   function setActive(button, priority) {
 
     let buttons = document.querySelectorAll('.addTaskPrioButton');
@@ -24,11 +23,37 @@ function init() {
     priorityInput.value = priority;
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
-        let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
-        console.log(assignedto);
-        });
+// Ich habe es vorher mit einer Bibliothek versucht namens Flatpickr. Es hat leider nicht funktioniert. 
+// Flatpickr-Initialisierung wurde entfernt und stattdessen native Date-Picker-Validierung hinzugefügt.
+document.addEventListener('DOMContentLoaded', function() {
+    // Bereits vorhandener Code zur Verarbeitung der zugewiesenen Personen das doppelt vergeben war (siehe Zeile 49)
+    let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+    let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
+    console.log(assignedto);
+});
+
+function validateDate(dateStr) {
+    let errorSpan = document.getElementById('duedateError');
+    let selectedDate = new Date(dateStr);
+    let today = new Date();
+    today.setHours(0, 0, 0, 0); // Setzt die Zeit auf 00:00, um nur das Datum zu vergleichen
+
+    if (selectedDate < today) {
+        errorSpan.textContent = "Bitte wählen Sie ein gültiges Datum.";
+        errorSpan.style.color = '#FF7A00'; // Setzt die Farbe des Textes auf orange
+        errorSpan.classList.remove('d-non');
+        throw new Error("Das ausgewählte Datum liegt in der Vergangenheit.");
+    } else {
+        errorSpan.classList.add('d-non');
+        return true;
+    }
+}
+
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+    //     let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
+    //     console.log(assignedto);
+    //     });
 
 function reloadPage() {
     setTimeout(() => {
@@ -158,7 +183,7 @@ async function getAssignedTo(data, content) {
         content.innerHTML += renderContacts(assignedTo, key[i]);
     }
     addCheckboxEventListeners();
-    addCheckboxEventListenersForStyling()
+    // addCheckboxEventListenersForStyling()
 }
 // End: Initialen
 
@@ -184,6 +209,11 @@ async function addTask() {
         const sanitizedValues = await validateAndSanitizeForm();
         const task = sanitizedValues.taskTitle;
         const date = sanitizedValues.date;
+
+        // Validierung des Datums
+
+        validateDate(date);
+
         const priority = document.getElementById("priority").value;
         const category = sanitizedValues.category;
         const description = sanitizedValues.description;
