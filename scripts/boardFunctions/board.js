@@ -265,5 +265,3 @@ function findTask() {
         renderData(taskAPI); 
     }
 }
-
-
