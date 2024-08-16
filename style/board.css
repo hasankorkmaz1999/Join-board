@@ -921,3 +921,17 @@ iframe {
   border-radius: 24px;
   overflow-y: scroll;
 }
+
+
+.column {
+  width: 100px;
+  height: 200px;
+  border: 1px solid grey;
+
+  background-color: white;
+  transition: background-color 0.3s;
+}
+
+.column.highlight {
+  background-color: yellow;
+}
