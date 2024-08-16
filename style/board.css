@@ -511,9 +511,8 @@ h1 {
   width: 240px;
 }
 
-.task-card:active {
-  cursor: grabbing;
-  background-color: red;
+.task-cards:active {
+  cursor: grabbing !important;
   -webkit-animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
@@ -524,8 +523,8 @@ h1 {
             transform: rotate(0);
   }
   100% {
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
   }
 }
 @keyframes rotate-90-cw {
@@ -534,8 +533,8 @@ h1 {
             transform: rotate(0);
   }
   100% {
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
   }
 }
 
