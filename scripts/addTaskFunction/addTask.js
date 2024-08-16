@@ -5,6 +5,8 @@ window.onload = init;
 
 function init() {
     renderData(assignedtoAPI);
+    addCheckboxEventListeners();
+/*     displayInitials(); */
 }
 
   /* Auswahlbutton in addTask: Low, Medium, Urgent
@@ -100,7 +102,7 @@ function displayInitials(divID) {
     assignedToCheckboxes.forEach(checkbox => {
         let initials = getInitials(checkbox.value);
         initialsContainer.innerHTML += `
-        <span style="${divID}" class="initial-circle">${initials}</span>
+        <span style="background-color: ${color}" class="initial-circle">${initials}</span>
         `;
     });
 }
@@ -148,13 +150,6 @@ function addCheckboxEventListeners() {
         });
     });
 }
-
-
-window.onload = async function() {
-    await init();
-    addCheckboxEventListeners();
-    displayInitials();
-};
 
 async function getAssignedTo(data, content) {
     let key = Object.keys(data);
