@@ -114,10 +114,9 @@ h1 {
   margin-top: 50px;
  margin-top: 50px;
   padding: 30px;
-  width: 470px;
+  width: 440px;
   height: 800px;
-  height: 700px;
-  overflow-y: scroll;
+ 
 }
 
 .editTaskTitle {
@@ -210,6 +209,95 @@ h1 {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.addTaskSubtasksEdit {
+  margin-bottom: 20px;
+}
+
+.subtasklistedit {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+ 
+}
+
+.subtaskedit {
+  width: 438px;
+  padding-left: 10px;
+  margin-top: 10px;
+  
+  height: 30px;
+  border-radius: 10px;
+ 
+  line-height: 30px; /* Höhe gleich der Zeilenhöhe für vertikale Zentrierung */
+  list-style-position: inside; 
+}
+
+.subtaskedit:hover {
+  background-color: rgba(150, 148, 148, 0.2);
+ 
+}
+
+.subtask-input-container {
+  
+  display: flex;
+  align-items: center;
+}
+
+#subtasks {
+  flex-grow: 1;
+  padding: 5px;
+  padding-right: 30px; /* Platz für das Icon */
+  border-radius: 5px;
+}
+
+.icons-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: -65px; /* Verschiebt die Icons ins Eingabefeld */
+}
+
+.clear-subtask-icon {
+  cursor: pointer;
+  width: 25px;
+  height: 35px;
+}
+
+.add-subtask-icon {
+  margin-left: 5px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(0%) saturate(0%) hue-rotate(324deg) brightness(91%) contrast(86%);
+}
+
+.hidden {
+  display: none;
+}
+
+
+.inputsubtaskedit {
+  padding-right: 30px; 
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border-grey);
+  border-radius: 10px;
+  background-color: var(--white);
+  padding: 10px 30px 10px 10px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  font-family: 'Inter';
+  
+}
+
+.divideredit {
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
 
 
@@ -930,7 +1018,7 @@ iframe {
   justify-content: flex-start;
   align-items: flex-start;
  
-  overflow: hidden; 
+  overflow-y: scroll;
 }
 
 
