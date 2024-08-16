@@ -59,7 +59,7 @@
     <section class="main-content">
         <div class="flexhelper">
             <h1>Board</h1>
-            <button id="addTaskMobile" onclick="openAddTaskOverlay()" class="addtaskbutton"><img src="./IMGicons/boardicons/add.svg" alt="Icon"></button>
+            <button id="addTaskMobile" onclick="openAddTaskOverlay(0)" class="addtaskbutton"><img src="./IMGicons/boardicons/add.svg" alt="Icon"></button>
         </div>
         <div class="addTaskForm">
             <form class="searchform" onsubmit="return false;">
@@ -102,19 +102,19 @@
     </section>
 
     <section class="boardsections">
-        <div class="boardsection-mobile"><span class="boardsectiontext">To do</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
+        <div class="boardsection-mobile"><span class="boardsectiontext">To do</span><img onclick="openAddTaskOverlay(1)" src="IMGicons\boardicons\plus button.svg" alt=""></div>
         <div class="progress-window">
-            <div class="boardsection"><span class="boardsectiontext">To do</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
+            <div class="boardsection"><span class="boardsectiontext">To do</span><img onclick="openAddTaskOverlay(1)" src="IMGicons\boardicons\plus button.svg" alt=""></div>
             <div id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)"><!-- render todo --></div>
         </div>
-        <div class="boardsection-mobile"><span class="boardsectiontextdone">In progress</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
+        <div class="boardsection-mobile"><span class="boardsectiontextdone">In progress</span><img onclick="openAddTaskOverlay(2)" src="IMGicons\boardicons\plus button.svg" alt=""></div>
         <div class="progress-window">
-            <div class="boardsection"><span class="boardsectiontextdone">In progress</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
+            <div class="boardsection"><span class="boardsectiontextdone">In progress</span><img onclick="openAddTaskOverlay(2)" src="IMGicons\boardicons\plus button.svg" alt=""></div>
             <div id="inprogress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"><!-- render in progress --></div>
         </div>
-        <div class="boardsection-mobile"><span class="boardsectiontextdone">Await feedback</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
+        <div class="boardsection-mobile"><span class="boardsectiontextdone">Await feedback</span><img onclick="openAddTaskOverlay(3)" src="IMGicons\boardicons\plus button.svg" alt=""></div>
         <div class="progress-window">
-            <div class="boardsection"><span class="boardsectiontextdone">Await feedback</span><img onclick="openAddTaskOverlay()" src="IMGicons\boardicons\plus button.svg" alt=""></div>
+            <div class="boardsection"><span class="boardsectiontextdone">Await feedback</span><img onclick="openAddTaskOverlay(3)" src="IMGicons\boardicons\plus button.svg" alt=""></div>
             <div id="awaitingfeedback" ondrop="moveTo('AwaitingFeedback')" ondragover="allowDrop(event)"><!-- render Await feedback --></div>        
         </div>
         <div class="boardsection-mobile"><span class="boardsectiontextdone">Done</span></div>
