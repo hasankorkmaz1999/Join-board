@@ -110,9 +110,7 @@ function updateData(URL, id, data) {
 
 function closeOverlay() {
     let overlay = document.getElementById('overlayforaddtask');
-    
-    // Entferne den Inhalt des Overlays, einschließlich des iframes
-    let popupContent = document.querySelector('.addtaskpopup');
+    let popupContent = document.getElementById('addtaskpopup');
     popupContent.innerHTML = '';
 
     overlay.classList.add('slide-out-right');
@@ -137,7 +135,7 @@ function openAddTaskOverlay() {
     iframe.style.border = 'none'; // Entferne den Rahmen
 
     // Füge das iframe dem Overlay hinzu
-    let popupContent = document.querySelector('.addtaskpopup');
+    let popupContent = document.getElementById('addtaskpopup');
     popupContent.innerHTML = ''; // Leere den bisherigen Inhalt
     popupContent.appendChild(iframe);
 }
