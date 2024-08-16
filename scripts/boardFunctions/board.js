@@ -105,7 +105,7 @@ function updateData(URL, id, data) {
     toastMessage("Task moved successfully!");
     setTimeout(() => {
         init();
-    }, 500);
+    }, 100);
 }
 
 // Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
