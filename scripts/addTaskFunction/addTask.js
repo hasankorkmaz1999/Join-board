@@ -105,21 +105,59 @@ function displayInitials(divID) {
     });
 }
 
+
+function addCheckboxEventListenersForStyling() {
+    let checkboxes = document.querySelectorAll('input[name="assignedto"]');
+    if (checkboxes.length === 0) {
+        console.error('Keine Checkboxen mit name="assignedto" gefunden.');
+        return;
+    }
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function(event) {
+            const parentLabel = checkbox.closest('.assignedto-item');
+            if (!parentLabel) {
+                console.error('Kein Eltern-Element mit der Klasse "assignedto-item" gefunden.');
+                return;
+            }
+
+            console.log("Checkbox changed:", checkbox.checked); // Log the checkbox state
+            console.log("Parent label found:", parentLabel); // Log the parent label element
+
+            if (checkbox.checked) {
+                console.log("Applying checked styles");
+                parentLabel.style.backgroundColor = '#2A3647';
+                parentLabel.style.color = 'white';
+            } else {
+                console.log("Removing checked styles");
+                parentLabel.style.backgroundColor = '';
+                parentLabel.style.color = '';
+            }
+        });
+    });
+}
+
 function addCheckboxEventListeners() {
     let checkboxes = document.querySelectorAll('input[name="assignedto"]');
     checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            const parentDiv = event.target.closest('.assignedto-item');
-            const divID = parentDiv.firstElementChild.attributes[1].nodeValue;
+        checkbox.addEventListener('change', (event) => {
+            const parentDiv = checkbox.closest('.assignedto-item');
+            if (!parentDiv) {
+                console.error('Kein Eltern-Element mit der Klasse "assignedto-item" gefunden.');
+                return;
+            }
+
+            const divID = parentDiv.firstElementChild.id; 
             displayInitials(divID);
         });
     });
 }
 
-/* firstElementChild.attributes[1].nodeValue */
 
 window.onload = async function() {
     await init();
+    addCheckboxEventListeners();
+    addCheckboxEventListenersForStyling();
     displayInitials();
 };
 
@@ -282,7 +320,7 @@ console.log(assignedto);
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
     let arrowrInButton = document.getElementById('AssignedToButton');
-    // let assignedToItems = document.querySelectorAll('.assignedto-item'); ich habs ausgeblendet, Gruß Tay!*
+    let assignedToItems = document.querySelectorAll('.assignedto-item');
 
     if (assignedto.classList.contains('d-flex')) {
         assignedto.classList.remove('d-flex');
@@ -315,18 +353,3 @@ function showAssignedTo() {
     }
 }
 
-function addCheckboxEventListeners() {
-    let checkboxes = document.querySelectorAll('input[name="assignedto"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function(event) {
-            const parentLabel = event.target.closest('.assignedto-item');
-            if (this.checked) {
-                parentLabel.style.backgroundColor = '#2A3647';
-                parentLabel.style.color = 'white';
-            } else {
-                parentLabel.style.backgroundColor = '';
-                parentLabel.style.color = '';
-            }
-        });
-    });
-}

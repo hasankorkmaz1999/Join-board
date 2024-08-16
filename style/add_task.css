@@ -634,9 +634,9 @@ svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0px;
-    margin-left: 20px;
-    margin-right: 20px;
+    /* margin-bottom: 0px;
+    margin-left: 20px; */
+    /* margin-right: 20px; */
     padding: 4px;
     box-shadow: 0 0 5px var(--white);
     cursor: pointer;
