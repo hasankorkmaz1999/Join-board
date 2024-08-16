@@ -212,8 +212,15 @@ async function deleteTask(taskKey) {
 // Funktion zum Suchen von Tasks
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Event-Listener für Echtzeitsuche
+    document.querySelector('.inputfieldfindtask').addEventListener('input', findTask);
+});
+
 function findTask() {
     let searchInput = document.querySelector('.inputfieldfindtask').value.toLowerCase();
+    
+    // Leere die Spalten
     document.getElementById('todo').innerHTML = '';
     document.getElementById('inprogress').innerHTML = '';
     document.getElementById('done').innerHTML = '';
@@ -221,16 +228,19 @@ function findTask() {
 
     let keys = Object.keys(tasks);
     let tasksFound = false; 
+
     for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
         let task = tasks[key];
         let taskTitle = task.task.toLowerCase(); 
         let taskDescription = task.description.toLowerCase(); 
 
-        
+        // Überprüfe, ob der Titel oder die Beschreibung den Suchbegriff enthalten
         if (taskTitle.includes(searchInput) || taskDescription.includes(searchInput)) {
             tasksFound = true;
             let progress = task.progress;
+
+            // Render die passenden Aufgaben in der entsprechenden Spalte
             if (progress === "todo") {
                 document.getElementById('todo').innerHTML += renderDivTodo(task, key);
             }
@@ -246,12 +256,15 @@ function findTask() {
         }
     }
 
+    // Zeige eine Nachricht an, wenn keine Aufgaben gefunden wurden
     if (!tasksFound) {
         document.getElementById('inprogress').innerHTML = '<div class="no-tasksfound-banner">No tasks found</div>';
     }
 
+    // Wenn das Eingabefeld leer ist, lade die ursprünglichen Daten neu
     if (searchInput === '') {
         renderData(taskAPI); 
     }
 }
+
 
