@@ -29,7 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     handleProgress3();
                     break;
                 default:
-                    error('Invalid parameter. Please use a value between 0 and 3.');
+                    console.log("%cInvalid parameter. Please use a value between 0 and 3.", `
+                        background: #d23c22;
+                        padding: .5rem 1rem;
+                        color: #fff;
+                        font-weight: bold;
+                        text-align: center;
+                        border-radius: 4px;
+                       `);
             }
         } else {
             error('Parameter progress is missing.');
@@ -106,7 +113,14 @@ function addTaskBoard(progress) {
     if (progress === 3) {
         addTaskAwaitFeedback();
     } else {
-        alert('Ungültiger Parameter! Bitte einen Wert zwischen 0 und 3 verwenden.');
+        console.log("%cForm validation response error... More info under me ↓", `
+            background: #ff9966;
+            padding: .5rem 1rem;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+           `);
     }
 }
 

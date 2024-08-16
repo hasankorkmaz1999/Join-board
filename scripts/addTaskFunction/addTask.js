@@ -364,7 +364,14 @@ try {
         clearAddTaskForm();
     });
 } catch (error) {
-    console.log("Iframe was recognized therefore 'clearbutton' cannot be found.");
+    console.log("%cIframe detected therefore the function clearbutton is not possible", `
+        background: #99cc33;
+        padding: .5rem 1rem;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 4px;
+       `);
     
 }
 

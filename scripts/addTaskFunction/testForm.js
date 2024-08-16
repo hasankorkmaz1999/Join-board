@@ -55,3 +55,14 @@ function validateAndSanitizeForm() {
         resolve(sanitizedValues);
     });
 }
+
+/* 
+        console.log("%cForm validation response error... More info under me ↓", `
+            background: #ff9966;
+            padding: .5rem 1rem;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+           `);
+*/
