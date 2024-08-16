@@ -62,7 +62,7 @@
         <div class="addTaskFlexContainer">
             <div class="contentFlex">
             <div id="addTaskLeftForm" class="addTaskLeftForm">
-                <form method="post">
+                <form id="addTaskForm" method="post">
                     <div class="addTaskTitle">
                         <div class="flexhelper">
                             <label for="addTaskTitle">Title</label>
@@ -86,7 +86,7 @@
                         <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
                         </div>
                     </div>
-                </form>
+               
                 <div id="selectedInitials" class="initials-container"></div>
             </div>
 
@@ -109,7 +109,7 @@
                     <div class="addTaskPriority">
                         <label for="category">Prio</label>
                         <div class="prioFlex">
-                            <form id="taskForm">
+                            
                                 <button type="button" onclick="setActive(this, 'urgent')" class="addTaskPrioButton prio-urgent">Urgent
                                     <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_209288_4288)">
@@ -166,7 +166,7 @@
                 <span class="asterisk">*</span><p class="required">This field is required</p>
             </div>
             <div id="addTaskFlexButtons" class="addTaskFlexButtons">
-                <button type="button" onclick="closeOverlay()" class="cancelbutton">Cancel X</button>
+                <button id="clearbutton" type="button" class="cancelbutton">Clear X</button>
                 <button id="createbutton" type="button" onclick="addTask()" class="createbutton">
                     <p class="create-mobile">Create Task</p>
                     <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
@@ -181,8 +181,6 @@
     <div id="toast-div" class="d-none">
         <div class="toast-text" id="toast-text"></div>
     </div>
-
-    <!-- <script src="./scripts/addTaskFunction/addTaskTest.js"></script> -->
     
     <script src="./scripts/checkValue.js"></script>
     <script src="./scripts/toastMsg.js"></script>

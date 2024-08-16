@@ -109,7 +109,6 @@ function displayInitials(divID) {
 function addCheckboxEventListenersForStyling() {
     let checkboxes = document.querySelectorAll('input[name="assignedto"]');
     if (checkboxes.length === 0) {
-        console.error('Keine Checkboxen mit name="assignedto" gefunden.');
         return;
     }
 
@@ -120,9 +119,6 @@ function addCheckboxEventListenersForStyling() {
                 console.error('Kein Eltern-Element mit der Klasse "assignedto-item" gefunden.');
                 return;
             }
-
-            console.log("Checkbox changed:", checkbox.checked); // Log the checkbox state
-            console.log("Parent label found:", parentLabel); // Log the parent label element
 
             if (checkbox.checked) {
                 console.log("Applying checked styles");
@@ -157,7 +153,6 @@ function addCheckboxEventListeners() {
 window.onload = async function() {
     await init();
     addCheckboxEventListeners();
-    addCheckboxEventListenersForStyling();
     displayInitials();
 };
 
@@ -168,6 +163,7 @@ async function getAssignedTo(data, content) {
         content.innerHTML += renderContacts(assignedTo, key[i]);
     }
     addCheckboxEventListeners();
+    addCheckboxEventListenersForStyling()
 }
 // End: Initialen
 
@@ -353,3 +349,20 @@ function showAssignedTo() {
     }
 }
 
+
+// Funktion zum Zurücksetzen des Formulars
+document.addEventListener('DOMContentLoaded', function() { 
+    function clearAddTaskForm() {
+        let form = document.getElementById('addTaskForm');
+        if (form) {
+            form.reset(); 
+        } else {
+            console.error("Formular nicht gefunden!");
+        }
+    }
+
+    document.getElementById('clearbutton').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        clearAddTaskForm();
+    });
+});
