@@ -172,9 +172,14 @@ function openSingleTaskOverlay(taskData, key) {
 
 function closeSingleTaskOverlay() {
     let overlay = document.getElementById('overlayforsingletask');
-    overlay.classList.add('d-none');
-    let popupContent = document.getElementsByClassName('singletaskpopup')[0];
-    popupContent.innerHTML = '';
+    overlay.classList.remove('slide-in-right');
+    overlay.classList.add('slide-out-right');
+    setTimeout(() => {
+        overlay.classList.add('d-none');
+        overlay.classList.remove('slide-in-right');
+        let popupContent = document.getElementsByClassName('singletaskpopup')[0];
+        popupContent.innerHTML = '';
+    }, 500);
 }
 
 
