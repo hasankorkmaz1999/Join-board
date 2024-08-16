@@ -40,14 +40,10 @@ justify-content: flex-end;
     cursor: pointer;
 }
 
-
-
 .subtaskcontainer:hover  {
     background-color: rgba(172, 172, 172, 0.2);
    
 }
-
-
 
 .subtaskcontainer {
     padding: 5px;
@@ -56,8 +52,6 @@ justify-content: flex-end;
    display: flex;
    justify-content: space-between;
    align-items: center;
-  
-  
 }
 
 .subtaskcontainer.editing:hover {
@@ -72,8 +66,6 @@ justify-content: flex-end;
 .delete-btn{
 margin-right: 10px;
 }
-
-
 
 .edit-input {
     border: 1px solid var(--border-grey) !important;
@@ -343,9 +335,9 @@ option {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
   
-  svg {
+svg {
     margin-left: auto;
-  }
+}
 
 .addTaskPrioButton.active-urgent {background-color: #FF3D00; color: var(--white);}
 .addTaskPrioButton.active-medium {background-color: #FFA800; color: var(--white);}
@@ -439,9 +431,6 @@ option {
     padding: 26px;
 }
 
-
-
-
 .assignedto-item input[type="checkbox"] + label::before {
     content: '';
     position: absolute;
@@ -495,7 +484,6 @@ option {
     align-items: center;
 }
 
-
 .assignedto-item:active {
     background-color: var(--deep-grey);
     color: white;
@@ -511,7 +499,6 @@ option {
     background-color: var(--deep-grey);
 }
 
-
 .assignedto-item .avatar:hover {
     background-color: var(--deep-grey);
 }
@@ -524,8 +511,6 @@ option {
     background-color: var(--deep-grey);
     z-index: 1;
 }
-
-
 
 .assignedto-item:hover {
     background-color: var(--border-grey);
@@ -609,7 +594,6 @@ option {
     background-color: var(--border-grey);
 }
 
-
 .assignedto-item {
     position: relative;
     width: 100%; 
@@ -618,7 +602,7 @@ option {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    background-color: rgb(42, 54, 71);
+    /* background-color: rgb(42, 54, 71); */
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -637,8 +621,6 @@ option {
     margin-left: auto; 
     margin-right: 20px;
 }
-
-
 
 /* End 
 ************************************************************************************/
@@ -664,7 +646,6 @@ option {
     border: 2px solid #fffefe;
 }
 
-
 .initials-container {
     display: flex;
     flex-wrap: wrap;
@@ -682,6 +663,5 @@ option {
     color: white;
     border-radius: 50%;
     font-size: 16px;
-  
     text-transform: uppercase;
 } 
