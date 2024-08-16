@@ -358,9 +358,14 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Formular nicht gefunden!");
         }
     }
-
+try {
     document.getElementById('clearbutton').addEventListener('click', function(event) {
         event.preventDefault(); 
         clearAddTaskForm();
     });
+} catch (error) {
+    console.log("Iframe was recognized therefore 'clearbutton' cannot be found.");
+    
+}
+
 });
