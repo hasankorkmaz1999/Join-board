@@ -140,12 +140,13 @@ if (task.assignedto && task.assignedto.length > 0) {
     let progressHTML = '';
     if (completedSubtasks > 0) {
         progressHTML = `
-        <div class="Progress">
-            <span class="progress-bar-container" >
-                <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"> </div>
-            </span>
-            <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
-        </div>`;
+    <div class="Progress">
+        <span class="progress-bar-container">
+            <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"
+                data-tooltip="${completedSubtasks}/${totalSubtasks} Subtasks"></div>
+        </span>
+        <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
+    </div>`;
     }
 
     // Render Assigned To Full Name
