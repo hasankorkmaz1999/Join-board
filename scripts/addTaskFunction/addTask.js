@@ -306,12 +306,6 @@ priorityInput.value = priority;
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
-let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
-console.log(assignedto);
-});
-
 
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
