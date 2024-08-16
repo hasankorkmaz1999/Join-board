@@ -250,12 +250,7 @@ h1 {
   flex-grow: 1;
 }
 
-
-
-
-/*Style Boardseite einzelne Tasks sobald man draufklickt und sich das overlay öffnet */
 .taskCategoryHTML {
-  margin-bottom: 50px;
   font-size: 24px;
   
 }
@@ -267,12 +262,11 @@ h1 {
   padding-left: 5px;
   display: flex;
   align-items: center;
- 
+
 }
 
 .subtask-item:hover {
   background-color: rgba(150, 148, 148, 0.2);
-  
 }
 
 .styled-checkbox {
@@ -296,7 +290,6 @@ h1 {
   vertical-align: middle;
 }
 
-
 .styled-checkbox:checked + span::before {
   content: '✔';
   display: inline-block;
@@ -312,7 +305,6 @@ h1 {
   font-weight: bold;
 }
 
-
 .styled-checkbox + span:hover::before {
   background-color: #f0f0f0;
 }
@@ -325,17 +317,6 @@ h1 {
 .taskPriority {
   margin-left: 20px;
   color: #000000;
-  
-}
-
-.single-task-content {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  padding: 30px;
-  width: 450px;
-  height: 780px;
-  overflow-y: scroll;
 }
 
 .Subtasks {
@@ -345,7 +326,7 @@ h1 {
 .taskTitleOverlay {
   margin-top: 10px;
  margin-bottom: 10px;
-  font-size: 70px;
+  font-size: 32px;
 }
 
 .AssignedTitle {
@@ -360,7 +341,7 @@ h1 {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  
+  margin: 50px 0;
 }
 
 .editbuttontask {
@@ -368,14 +349,13 @@ h1 {
   justify-content: space-between;
   background-image: url(../IMGicons/edit.svg);
   background-repeat: no-repeat;
-  background-position: left 1px center; /* Verschiebt das Bild nach links um 5px */
+  background-position: left 1px center; 
   cursor: pointer;
-  margin-left: 30px;
   width: 44px;
   height: 24px;
-  padding-left: 30px; /* Erhöht das padding-left, um Platz für das Bild und den Abstand zu schaffen */
+  padding-left: 30px; 
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--deep-grey);
 }
 
@@ -388,8 +368,10 @@ h1 {
   padding-left: 24px;
   margin-right: 12px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--deep-grey);
+  border-right: 1px solid grey;
+  padding-right: 20px;
   
 }
 
@@ -917,10 +899,8 @@ iframe {
 }
 
 .singletaskpopup {
-
   background-color: white;
-  width: 525px;
-  height: 870px;
+  height: 90vH;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -929,8 +909,15 @@ iframe {
   display: flex; 
   justify-content: flex-start;
   align-items: flex-start;
- 
   overflow: hidden; 
 }
 
-
+.single-task-content {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 290px;
+  height: 725px;
+  border-radius: 24px;
+  overflow-y: scroll;
+}

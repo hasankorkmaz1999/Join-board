@@ -303,10 +303,6 @@ let priorityInput = document.getElementById('priority');
 priorityInput.value = priority;
 }
 
-
-
-
-
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
     let arrowrInButton = document.getElementById('AssignedToButton');
