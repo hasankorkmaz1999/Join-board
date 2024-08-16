@@ -108,11 +108,38 @@ function updateData(URL, id, data) {
     }, 100);
 }
 
+function closeOverlay() {
+    let overlay = document.getElementById('overlayforaddtask');
+    
+    // Entferne den Inhalt des Overlays, einschließlich des iframes
+    let popupContent = document.querySelector('.addtaskpopup');
+    popupContent.innerHTML = '';
+
+    overlay.classList.add('slide-out-right');
+    setTimeout(() => {
+        overlay.classList.add('d-none');
+        overlay.classList.remove('slide-in-right');
+        overlay.classList.remove('slide-out-right');
+    }, 500);
+}
+
 // Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
 function openAddTaskOverlay() {
     let overlay = document.getElementById('overlayforaddtask');
     overlay.classList.remove('d-none');
     overlay.classList.add('slide-in-right');
+
+    // Erstelle ein iframe-Element
+    let iframe = document.createElement('iframe');
+    iframe.src = 'add_task_board.html'; // Setze die Quelle auf deine HTML-Seite
+    iframe.style.width = '100%'; // Setze die Breite des iframes
+    iframe.style.height = '100%'; // Setze die Höhe des iframes
+    iframe.style.border = 'none'; // Entferne den Rahmen
+
+    // Füge das iframe dem Overlay hinzu
+    let popupContent = document.querySelector('.addtaskpopup');
+    popupContent.innerHTML = ''; // Leere den bisherigen Inhalt
+    popupContent.appendChild(iframe);
 }
 
 // Funktion zum Schließen des Overlays
@@ -185,8 +212,15 @@ async function deleteTask(taskKey) {
 // Funktion zum Suchen von Tasks
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Event-Listener für Echtzeitsuche
+    document.querySelector('.inputfieldfindtask').addEventListener('input', findTask);
+});
+
 function findTask() {
     let searchInput = document.querySelector('.inputfieldfindtask').value.toLowerCase();
+    
+    // Leere die Spalten
     document.getElementById('todo').innerHTML = '';
     document.getElementById('inprogress').innerHTML = '';
     document.getElementById('done').innerHTML = '';
@@ -194,16 +228,19 @@ function findTask() {
 
     let keys = Object.keys(tasks);
     let tasksFound = false; 
+
     for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
         let task = tasks[key];
         let taskTitle = task.task.toLowerCase(); 
         let taskDescription = task.description.toLowerCase(); 
 
-        
+        // Überprüfe, ob der Titel oder die Beschreibung den Suchbegriff enthalten
         if (taskTitle.includes(searchInput) || taskDescription.includes(searchInput)) {
             tasksFound = true;
             let progress = task.progress;
+
+            // Render die passenden Aufgaben in der entsprechenden Spalte
             if (progress === "todo") {
                 document.getElementById('todo').innerHTML += renderDivTodo(task, key);
             }
@@ -219,12 +256,15 @@ function findTask() {
         }
     }
 
+    // Zeige eine Nachricht an, wenn keine Aufgaben gefunden wurden
     if (!tasksFound) {
         document.getElementById('inprogress').innerHTML = '<div class="no-tasksfound-banner">No tasks found</div>';
     }
 
+    // Wenn das Eingabefeld leer ist, lade die ursprünglichen Daten neu
     if (searchInput === '') {
         renderData(taskAPI); 
     }
 }
+
 
