@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     error('Invalid parameter. Please use a value between 0 and 3.');
             }
         } else {
-            alert('No parameter specified.');
+            error('Parameter progress is missing.');
         }
     }
 });
@@ -153,6 +153,8 @@ async function addTaskAwaitFeedback() {
             console.log("Task successfully added:", data);
             reloadPage();
             toastMessage("New task added successfully!");
+            triggerInit();
+            triggerCloseAddTaskOverlay();
     
         } catch (error) {
             console.error("Fehler bei der Validierung oder beim Hinzufügen der Aufgabe:", error);
@@ -203,6 +205,8 @@ async function startAddTaskInProgress() {
         console.log("Task successfully added:", data);
         reloadPage();
         toastMessage("New task added successfully!");
+        triggerInit();
+        triggerCloseAddTaskOverlay();
 
     } catch (error) {
         console.error("Fehler bei der Validierung oder beim Hinzufügen der Aufgabe:", error);
@@ -253,9 +257,29 @@ async function startAddTask() {
         console.log("Task successfully added:", data);
         reloadPage();
         toastMessage("New task added successfully!");
+        triggerInit();
+        triggerCloseAddTaskOverlay();
 
     } catch (error) {
         console.error("Fehler bei der Validierung oder beim Hinzufügen der Aufgabe:", error);
         toastMessage("Error adding task. Please try again.");
+    }
+}
+
+function triggerInit() {
+    // Ruft die init-Funktion im übergeordneten Fenster auf
+    if (parent && parent.init) {
+        parent.init();
+    } else {
+        console.error('init function not found in parent window');
+    }
+}
+
+function triggerCloseAddTaskOverlay() {
+    // Ruft die closeAddTaskOverlay-Funktion im übergeordneten Fenster auf
+    if (parent && parent.closeAddTaskOverlay) {
+        parent.closeAddTaskOverlay();
+    } else {
+        console.error('closeAddTaskOverlay function not found in parent window');
     }
 }
