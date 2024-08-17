@@ -167,7 +167,7 @@
                 <span class="asterisk">*</span><p class="required">This field is required</p>
             </div>
             <div id="addTaskFlexButtons" class="addTaskFlexButtons">
-                <button id="clearbutton" type="button" class="cancelbutton">Clear X</button>
+                <button onclick="clearValue()" id="clearbutton" type="button" class="cancelbutton">Clear X</button>
                 <button id="createbutton" type="button" onclick="addTask()" class="createbutton">
                     <p class="create-mobile">Create Task</p>
                     <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
@@ -191,6 +191,7 @@
     <script src="./scripts/loadData.js"></script>
     <script src="./scripts/addTaskFunction/testForm.js"></script>
     <script src="./scripts/addTaskFunction/addTask.js"></script>
+    <script src="./scripts/forward.js"></script>
 
     <script>
         includeHTML();

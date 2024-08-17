@@ -250,7 +250,7 @@ async function addTask() {
 
         await response.json();
         console.log("Task successfully added:", data);
-        reloadPage();
+        forward("../board.html");
         toastMessage("New task added successfully!");
 
     } catch (error) {
@@ -376,3 +376,12 @@ try {
 }
 
 });
+
+
+function clearValue() {
+    document.getElementById('addTaskTitle').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('prioDate').value = '';
+    document.getElementById('category').selectedIndex = 0;
+    document.getElementById('subtaskList').innerHTML = ``;
+}
