@@ -271,5 +271,5 @@ function findTask() {
 }
 
 function openMobileMenu(key) {
-    
+    alert(key);
 }
