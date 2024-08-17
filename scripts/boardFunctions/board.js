@@ -269,3 +269,7 @@ function findTask() {
         renderData(taskAPI); 
     }
 }
+
+function openMobileMenu(key) {
+    
+}

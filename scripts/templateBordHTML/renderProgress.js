@@ -174,6 +174,14 @@ if (task.assignedto && task.assignedto.length > 0) {
     
 
     return /*html*/`
+    <img onclick="openMobileMenu("${key}")" class="responsive-dots" src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
+    <div class="miniMenu" id="${key}">
+        <span class="featTxt">Move to:</span>
+        <span>To-Do</span>
+        <span>In Progress</span>
+        <span>Await feedback</span>
+        <span>Done</span>
+    </div>
     <div id="task-card" onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>

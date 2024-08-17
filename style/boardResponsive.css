@@ -1,3 +1,21 @@
+.responsive-dots {
+    width: 20px;
+    height: 20px;
+    align-items: flex-end;
+    display: none;
+}
+
+.miniMenu {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: var(--deep-grey);
+    border-radius: 16px;
+    display: none;
+}
+.featTxt {
+    font-weight: bold;
+}
 
 #addTaskMobile {
     display: none;
@@ -35,6 +53,12 @@
 }
 
 @media (max-width: 830px) {
+    .responsive-dots {
+        display: flex;
+    }
+    .miniMenu {
+        display: block;
+    }
     #addTaskMobile {
         display: block;
     }
