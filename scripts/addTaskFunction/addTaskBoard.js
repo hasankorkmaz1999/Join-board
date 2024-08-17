@@ -6,6 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.self === window.top) {
         // Die Seite wird nicht in einem iFrame geladen
         document.body.innerHTML = '<h1>Unfortunately the page cannot be opened like this</h1>';
+        console.log("%cACCESS BLOCKED", `
+            background: #ff0f0f;
+            padding: .5rem 1rem;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+           `);
         
         // Weiterleitung nach 5 Sekunden
         setTimeout(function() {
