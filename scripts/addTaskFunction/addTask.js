@@ -254,7 +254,7 @@ async function addTask() {
         toastMessage("New task added successfully!");
 
     } catch (error) {
-        console.error("Fehler bei der Validierung oder beim Hinzufügen der Aufgabe:", error);
+        console.warn("Error during validation or when adding the task (Are all mandatory fields filled in?):", error);
         toastMessage("Error adding task. Please try again.");
     }
 
