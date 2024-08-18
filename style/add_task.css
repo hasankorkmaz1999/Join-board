@@ -430,13 +430,13 @@ svg {
     display: flex;
     align-items: center;
     position: relative;
-    padding-right: 30px; /* Platz für das benutzerdefinierte Kontrollkästchen */
+    padding-right: 30px; 
     cursor: pointer;
 }
 
 .assignedto-item span {
     flex-grow: 1;
-    margin-left: 10px; /* Abstand zum Avatar */
+    margin-left: 10px;
 }
 
 .assignedto-item .avatar {
@@ -446,7 +446,7 @@ svg {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: #fff; /* Textfarbe für Initialen */
+    color: #fff;
     font-weight: bold;
     text-align: center;
     font-size: 14px;
@@ -454,7 +454,7 @@ svg {
 
 .assignedto-item input[type="checkbox"] {
     position: absolute;
-    opacity: 0; /* Versteckt die Standard-Checkbox */
+    opacity: 0; 
     cursor: pointer;
 }
 
@@ -466,14 +466,14 @@ svg {
     width: 20px;
     height: 20px;
     background-image: url('./../IMGicons/check-unchecked.svg');
-    background-size: contain; /* Passt das Bild in die Größe des Containers */
+    background-size: contain; 
     background-repeat: no-repeat;
     box-sizing: border-box;
     padding-right: 32px;
 }
 
 .assignedto-item input[type="checkbox"]:checked + .checkbox-label {
-    background-image: url('./../IMGicons/check-checked.png'); /* Benutzerdefinierte Grafik */
+    background-image: url('./../IMGicons/check-checked.png'); 
 }
 
 /* End 
