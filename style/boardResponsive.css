@@ -13,6 +13,12 @@
     border-radius: 16px;
     display: none;
 }
+.miniMenu span {
+    cursor: pointer;
+}
+.miniMenu span:hover {
+    text-decoration: underline;
+}
 .featTxt {
     font-weight: bold;
 }
