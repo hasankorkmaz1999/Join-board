@@ -15,3 +15,6 @@ This project was developed in collaboration with:
 - [Marc Braun](https://github.com/Marc-Braun-72)
 - [Metafeller](https://github.com/Metafeller)
 - [Hasan Korkmaz](https://github.com/hasankorkmaz1999)
+
+
+> **🕙 release date:** Expected release date is 26.08.2024.
