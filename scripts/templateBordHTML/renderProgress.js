@@ -256,35 +256,6 @@ document.addEventListener('click', function(event) {
     }
 });
 
-/* Mini menu weitergabe (Noch nicht fertig) */
-async function pushInToDo(key) {
-    let task = tasks[key];
-    task.status = "todo";
-    updateTaskOnServer(key, task);
-    location.reload();
-}
-
-async function pushInProgress(key) {
-    let task = tasks[key];
-    task.status = "inProgress";
-    updateTaskOnServer(key, task);
-    location.reload();
-}
-
-async function pushInAwaitFeedback(key) {
-    let task = tasks[key];
-    task.status = "AwaitingFeedback";
-    updateTaskOnServer(key, task);
-    location.reload();
-}
-
-async function pushInDone(key) {
-    let task = tasks[key];
-    task.status = "done";
-    updateTaskOnServer(key, task);
-    location.reload();
-}
-
 /* Mini menu End */
 
 function renderDivTodo(task, key) {
