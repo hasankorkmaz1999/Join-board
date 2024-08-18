@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Bereits vorhandener Code zur Verarbeitung der zugewiesenen Personen das doppelt vergeben war (siehe Zeile 49)
     let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
     let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
-    console.log(assignedto);
 });
 
 function validateDate(dateStr) {
@@ -64,7 +63,6 @@ function reloadPage() {
 async function renderData(URL) {
     try {
         let data = await loadData(URL);
-        console.log(data);
         let content = document.getElementById('assignedto');
         if (data) {
             getAssignedTo(data, content);
@@ -277,7 +275,6 @@ async function addTask() {
         });
 
         await response.json();
-        console.log("Task successfully added:", data);
         forward("../board.html");
         toastMessage("New task added successfully!");
 
