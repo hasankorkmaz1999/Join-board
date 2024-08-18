@@ -177,10 +177,10 @@ if (task.assignedto && task.assignedto.length > 0) {
     <img onclick="openMobileMenu('${key}')" class="responsive-dots" src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
     <div class="miniMenu" id="${key}">
         <span class="featTxt">Move to:</span>
-        <span>To-Do</span>
-        <span>In Progress</span>
-        <span>Await feedback</span>
-        <span>Done</span>
+        <span class="mini-menu"><a href="#">To-Do</a></span>
+        <span class="mini-menu"><a href="#">In Progress</a></span>
+        <span class="mini-menu"><a href="#">Await feedback</a></span>
+        <span class="mini-menu"><a href="#">Done</a></span>
     </div>
     <div id="task-card" onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
@@ -196,6 +196,67 @@ if (task.assignedto && task.assignedto.length > 0) {
     </div>
     `;
 }
+
+
+/* Mini Menu
+***************************************************************** */
+function openMobileMenu(key) {
+    const menu = document.getElementById(key);
+
+    document.querySelectorAll('.miniMenu.show').forEach(openMenu => {
+        if (openMenu !== menu) {
+            openMenu.classList.remove('show');
+            setTimeout(() => {
+                openMenu.style.display = 'none';
+                openMenu.style.left = '';  
+            }, 300);
+        }
+    });
+
+    if (menu.classList.contains('show')) {
+        menu.classList.remove('show');
+        setTimeout(() => {
+            menu.style.display = 'none';
+            menu.style.left = ''; 
+        }, 300);
+    } else {
+        const imgElement = document.querySelector(`img[onclick="openMobileMenu('${key}')"]`);
+        const imgRect = imgElement.getBoundingClientRect();
+        const menuWidth = menu.offsetWidth;
+        const viewportWidth = window.innerWidth;
+
+        let menuLeft;
+
+        if (imgRect.right + menuWidth > viewportWidth) {
+            menuLeft = imgRect.left - menuWidth;
+        } else {
+            menuLeft = imgRect.right;
+        }
+
+        menu.style.top = `${imgRect.bottom + window.scrollY}px`;
+        menu.style.left = `${menuLeft}px`;
+        menu.style.display = 'flex';
+        setTimeout(() => {
+            menu.classList.add('show');
+        }, 100);
+    }
+}
+
+document.addEventListener('click', function(event) {
+    const targetElement = event.target;
+
+    if (!targetElement.classList.contains('responsive-dots') && !targetElement.closest('.miniMenu')) {
+        document.querySelectorAll('.miniMenu.show').forEach(menu => {
+            menu.classList.remove('show');
+            setTimeout(() => {
+                menu.style.display = 'none';
+                menu.style.left = ''; 
+            }, 300);
+        });
+    }
+});
+
+/* Mini menu End */
 
 
 
