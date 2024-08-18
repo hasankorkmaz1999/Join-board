@@ -148,11 +148,9 @@ function addCheckboxEventListenersForStyling() {
             }
 
             if (checkbox.checked) {
-                console.log("Applying checked styles");
                 parentLabel.style.backgroundColor = '#2A3647';
                 parentLabel.style.color = 'white';
             } else {
-                console.log("Removing checked styles");
                 parentLabel.style.backgroundColor = '';
                 parentLabel.style.color = '';
             }
@@ -183,7 +181,7 @@ async function getAssignedTo(data, content) {
         content.innerHTML += renderContacts(assignedTo, key[i]);
     }
     addCheckboxEventListeners();
-    // addCheckboxEventListenersForStyling()
+    addCheckboxEventListenersForStyling() // Needed, Finger weg!
 }
 // End: Initialen
 
