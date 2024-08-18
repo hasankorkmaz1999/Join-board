@@ -197,37 +197,5 @@
         includeHTML();
     </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    function updateAssignedToItems() {
-        const assignedToItems = document.querySelectorAll('.assignedto-item');
-
-        assignedToItems.forEach(item => {
-            const checkbox = item.querySelector('input[type="checkbox"]');
-            
-            // Synchronisiere die Checkbox mit dem benutzerdefinierten Kontrollkästchen
-            checkbox.addEventListener('change', () => {
-                if (checkbox.checked) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-
-            // Event-Listener für Klick auf das gesamte Element
-            item.addEventListener('click', (event) => {
-                if (event.target !== checkbox) {
-                    checkbox.checked = !checkbox.checked;
-                    checkbox.dispatchEvent(new Event('change')); // Manuelles Triggern des Change-Events
-                }
-            });
-        });
-    }
-
-    updateAssignedToItems();
-});
-
-
-</script>
 </body>
 </html>

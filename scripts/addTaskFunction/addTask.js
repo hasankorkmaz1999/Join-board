@@ -186,6 +186,35 @@ async function getAssignedTo(data, content) {
 // End: Initialen
 
 
+// Überwacht die Checkboxen und aktiviert die Custom boxen nach Klick
+document.addEventListener('DOMContentLoaded', () => {
+    function updateAssignedToItems() {
+        const assignedToItems = document.querySelectorAll('.assignedto-item');
+
+        assignedToItems.forEach(item => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            item.addEventListener('click', (event) => {
+                if (event.target !== checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    checkbox.dispatchEvent(new Event('change')); 
+                }
+            });
+        });
+    }
+
+    updateAssignedToItems();
+});
+
+
 // Render Contacts so optimiert, dass man die initialien einsehen kann bei Assigned to
 function renderContacts(assignedTo, key) {
     let initials = assignedTo.name.split(' ').map(name => name[0]).join('');
