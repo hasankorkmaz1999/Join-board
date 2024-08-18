@@ -197,6 +197,7 @@ function renderContacts(assignedTo, key) {
             </div>
             <span>${assignedTo.name}</span>
             <input type="checkbox" class="assignedCheckbox" id="${key}" name="assignedto" value="${assignedTo.name}">
+            <div class="checkbox-label"></div> <!-- Needed!!!! -->
         </label>
     `;
 }
