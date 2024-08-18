@@ -399,110 +399,6 @@ svg {
 
 /* Checkbox - Finger weg!
 ************************************************************************************/
-/* input.assignedCheckbox[type="checkbox"] {
-    display: none;
-}
-
-.assignedto-item {
-    position: relative;
-    width: 99%;
-    border-radius: 10px;
-    overflow: hidden; 
-    box-sizing: border-box; 
-    padding: 26px 0;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    transition: background-color 0.3s ease, color 0.3s ease; 
-
-} */
-
-.assignedto-item:hover {
-    background-color: var(--border-grey);
-    border-radius: 10px;
-}
-
-.assignedto-item label {
-    display: inline-block;
-    cursor: pointer;
-    padding: 10px;
-    width: 100%;
-    border-radius: 10px;
-    box-sizing: border-box; 
-    display: flex;
-    align-items: center;
-    padding: 26px;
-}
-
-.assignedto-item input[type="checkbox"] + label::before {
-    content: '';
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background-image: url('./../IMGicons/check-unchecked.svg');
-    background-size: cover;
-    border-radius: 50%;
-    box-sizing: border-box; 
-}
-
-.assignedto-item input[type="checkbox"]:checked + label::before {
-    background-image: url('./../IMGicons/check-checked.png');
-    border-radius: 50%;
-    box-sizing: border-box; 
-}
-
-.assignedto-item input[type="checkbox"]:focus + label::before {
-    outline-offset: 2px;
-    border-radius: 50%;
-}
-
-.assignedto-item input[type="checkbox"]:active + label::before {
-    transform: translateY(-50%) scale(0.95);
-    background-image: url('./../IMGicons/check-checked.png');
-    border-radius: 50%;
-    padding: 10px;
-}
-
-.assignedto-item input[type="checkbox"]:checked ~ label {
-    background-color: var(--deep-grey);
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-}
-
-.assignedto-item input[type="checkbox"]:checked {
-    background-color: var(--deep-grey);
-    color: white;
-    border-radius: 10px;
-}
-
-.assignedto-item input[type="checkbox"]:checked ~ label {
-    background-color: var(--deep-grey);
-    color: white;
-    padding: 26px;
-    display: flex;
-    align-items: center;
-}
-
-.assignedto-item:active {
-    background-color: var(--deep-grey);
-    color: white;
-    border-radius: 10px;
-    overflow: hidden; 
-}
-
-.assignedto-item:active .avatar {
-    background-color: var(--deep-grey);
-}
-
-.assignedto-item:active {
-    background-color: var(--deep-grey);
-}
-
 .assignedto-item .avatar:hover {
     background-color: var(--deep-grey);
 }
@@ -515,21 +411,6 @@ svg {
     background-color: var(--deep-grey);
     z-index: 1;
 }
-
-.assignedto-item:hover {
-    background-color: var(--border-grey);
-    border-radius: 10px;
-}
-
-.assignedto-item.active {
-    background-color: var(--deep-grey);
-    color: white;
-    border-radius: 10px;
-}
-
-/* input.assignedCheckbox[type="checkbox"] {
-    display: none;
-} */
 
 .assignedto-item {
     position: relative;
@@ -545,83 +426,54 @@ svg {
     transition: background-color 0.3s;
 }
 
-.assignedto-item:hover {
-    background-color: var(--border-grey);
-}
-
-.assignedto-item input[type="checkbox"]:checked ~ label {
-    background-color: var(--deep-grey);
-    color: white;
-    border-radius: 10px;
-    padding: 26px;
-    display: flex;
-    align-items: center;
-}
-
-.assignedto-item .avatar {
-    background-color: transparent; 
-    transition: background-color 0.3s;
-}
-
-.assignedto-item.active {
-    background-color: var(--deep-grey);
-    color: var(--white);
-}
-
-.assignedto-item.active .avatar {
-    background-color: var(--deep-grey);
-}
-
-.assignedto-item input[type="checkbox"]:checked ~ label {
-    background-color: var(--deep-grey);
-    transition: background-color 0.3s;
-    color: var(--white);
-}
-
-.assignedto-item input[type="checkbox"]:checked ~ .avatar {
-    background-color: var(--deep-grey);
-}
-
-.assignedto-item:active {
-    background-color: var(--deep-grey);
-}
-
-.assignedto-item:active .avatar {
-    background-color: var(--deep-grey);
-}
-
-.assignedto-item:hover {
-    background-color: var(--border-grey);
-}
-
-.assignedto-item:hover .avatar {
-    background-color: var(--border-grey);
-}
-
 .assignedto-item {
-    position: relative;
-    width: 100%; 
-    border-radius: 10px;
-    overflow: hidden;
-    box-sizing: border-box;
     display: flex;
     align-items: center;
+    position: relative;
+    padding-right: 30px; 
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.assignedto-item .avatar {
-    margin-right: 10px; 
-    border-radius: 50%;
 }
 
 .assignedto-item span {
-    flex-grow: 1; 
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.assignedto-item .avatar {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
 }
 
 .assignedto-item input[type="checkbox"] {
-    margin-left: auto; 
-    margin-right: 20px;
+    position: absolute;
+    opacity: 0; 
+    cursor: pointer;
+}
+
+.assignedto-item input[type="checkbox"] + .checkbox-label {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('./../IMGicons/check-unchecked.svg');
+    background-size: contain; 
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    padding-right: 32px;
+}
+
+.assignedto-item input[type="checkbox"]:checked + .checkbox-label {
+    background-image: url('./../IMGicons/check-checked.png'); 
 }
 
 /* End 

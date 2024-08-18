@@ -287,10 +287,6 @@ async function pushInDone(key) {
 
 /* Mini menu End */
 
-
-
-
-
 function renderDivTodo(task, key) {
     let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
     return renderTaskCard(task, key, categoryClass, svgIcons);
@@ -311,12 +307,6 @@ function renderDivawaitingfeedback(task, key) {
     return renderTaskCard(task, key, categoryClass, svgIcons);
 }
 
-
-
-
-
-
-
 function toggleSubtaskStatus(taskKey, subtaskIndex, isChecked) {
     let task = tasks[taskKey];
 
@@ -330,7 +320,6 @@ function toggleSubtaskStatus(taskKey, subtaskIndex, isChecked) {
     } else if (progress > 0) {
         
     }
-
     let subtaskProgress = document.getElementById(`subtask-progress-${taskKey}`);
     if (subtaskProgress) {
         let completedSubtasks = task.subtasks.filter(subtask => subtask.itsdone).length;
@@ -340,15 +329,12 @@ function toggleSubtaskStatus(taskKey, subtaskIndex, isChecked) {
 }
 
 
-
 function calculateProgress(subtasks) {
     if (!subtasks || subtasks.length === 0) return 0;
 
     const completedTasks = subtasks.filter(subtask => subtask.itsdone).length;
     return (completedTasks / subtasks.length) * 100; 
 }
-
-
 
 function updateTaskOnServer(taskKey, updatedTask) {
   
