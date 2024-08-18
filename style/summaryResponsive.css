@@ -5,6 +5,9 @@
     .header-left {
         display: none;
     }
+    h1, h2 {
+        width: min-content;
+    }
 
 }
 

@@ -123,17 +123,17 @@ function closeOverlay() {
 
 // Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
 function openAddTaskOverlay(progress) {
-        let overlay = document.getElementById('overlayforaddtask');
-        overlay.classList.remove('d-none');
-        overlay.classList.add('slide-in-right');
-    
-        let iframe = document.createElement('iframe');
-        iframe.src = `add_task_board.html?progress=${progress}`; // Übergibt den Fortschrittsparameter
+    let overlay = document.getElementById('overlayforaddtask');
+    overlay.classList.remove('d-none');
+    overlay.classList.add('slide-in-right');
 
-        let popupContent = document.getElementById('addtaskpopup');
-        popupContent.innerHTML = ''; // Leere den bisherigen Inhalt
-        popupContent.appendChild(iframe);
-        document.body.style.overflow = 'hidden';
+    let iframe = document.createElement('iframe');
+    iframe.src = `add_task_board.html?progress=${progress}`; // Übergibt den Fortschrittsparameter
+
+    let popupContent = document.getElementById('addtaskpopup');
+    popupContent.innerHTML = ''; // Leere den bisherigen Inhalt
+    popupContent.appendChild(iframe);
+    document.body.style.overflow = 'hidden';
 }
 
 // Funktion zum Schließen des Overlays
@@ -151,7 +151,6 @@ function closeAddTaskOverlay() {
 }
 
 // Funktion um auf das Overlay klicken zu können ohne das es sich schließt
-
 function doNotClose(event) {
     event.stopPropagation();
   }
