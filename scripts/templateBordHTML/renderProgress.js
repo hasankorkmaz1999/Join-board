@@ -174,7 +174,7 @@ if (task.assignedto && task.assignedto.length > 0) {
     
 
     return /*html*/`
-    <img onclick="openMobileMenu("${key}")" class="responsive-dots" src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
+    <img onclick="openMobileMenu('${key}')" class="responsive-dots" src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
     <div class="miniMenu" id="${key}">
         <span class="featTxt">Move to:</span>
         <span>To-Do</span>
