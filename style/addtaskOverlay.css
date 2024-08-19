@@ -4,21 +4,7 @@ h1 {
     
 }
 
-.closeXaddtask {
-    height: 32px;
-    width: 32px;
-    position: fixed;
-    top: 60px;
-    right: 40px;
 
-}
-
-
-.closeXaddtask:hover {
-    cursor: pointer;
-   background-color: #eae7e7;
-   border-radius: 20px;
-}
 
 .subtasksinput {
     border-radius: 10px;

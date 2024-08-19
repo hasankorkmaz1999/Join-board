@@ -94,34 +94,6 @@ function moveTo(category) {
     updateData(taskAPI, cureentDraggedElement, data);
 }
 
-async function pushInToDo(key) {
-    let data = {
-        progress: "todo"
-    }
-    updateData(taskAPI, key, data);
-}
-
-async function pushInProgress(key) {
-    let data = {
-        progress: "inProgress"
-    }
-    updateData(taskAPI, key, data);
-}
-
-async function pushInAwaitFeedback(key) {
-    let data = {
-        progress: "AwaitingFeedback"
-    }
-    updateData(taskAPI, key, data);
-}
-
-async function pushInDone(key) {
-    let data = {
-        progress: "done"
-    }
-    updateData(taskAPI, key, data);
-}
-
 function updateData(URL, id, data) {
     fetch(`${URL}/${id}.json`, {
         method: 'PATCH',
@@ -295,4 +267,8 @@ function findTask() {
     if (searchInput === '') {
         renderData(taskAPI); 
     }
+}
+
+function openMobileMenu(key) {
+    alert(key); // das geht jetzt
 }
