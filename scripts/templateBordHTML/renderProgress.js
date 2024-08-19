@@ -174,14 +174,6 @@ if (task.assignedto && task.assignedto.length > 0) {
     
 
     return /*html*/`
-    <img onclick="openMobileMenu('${key}')" class="responsive-dots" src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
-    <div class="miniMenu" id="${key}">
-        <span class="featTxt" style="text-decoration:none;cursor:unset;">Move to:</span>
-        <span class="mini-menu" onclick="pushInToDo('${key}')">To-Do</span>
-        <span class="mini-menu" onclick="pushInProgress('${key}')">In Progress</span>
-        <span class="mini-menu" onclick="pushInAwaitFeedback('${key}')">Await feedback</span>
-        <span class="mini-menu" onclick="pushInDone('${key}')">Done</span>
-    </div>
     <div id="task-card" onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
         ${typHTML}
         <div class="task-title">${task.task}</div>
@@ -189,10 +181,17 @@ if (task.assignedto && task.assignedto.length > 0) {
         ${progressHTML}
 
         <div class="taskpriority">
-        <div class="assignedToHTML"> ${assignedToHTML} </div>
-         ${priorityIcon}
+            <div class="assignedToHTML"> ${assignedToHTML} </div>
+            ${priorityIcon}
         </div>
-
+    </div>
+    <img onclick="openMobileMenu('${key}')" class="responsive-dots" src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
+    <div class="miniMenu" id="${key}">
+        <span class="featTxt" style="text-decoration:none;cursor:unset;">Move to:</span>
+        <span class="mini-menu" onclick="pushInToDo('${key}')">To-Do</span>
+        <span class="mini-menu" onclick="pushInProgress('${key}')">In Progress</span>
+        <span class="mini-menu" onclick="pushInAwaitFeedback('${key}')">Await feedback</span>
+        <span class="mini-menu" onclick="pushInDone('${key}')">Done</span>
     </div>
     `;
 }
