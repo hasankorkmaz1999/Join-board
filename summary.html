@@ -62,7 +62,7 @@
 
         <section class="content-container">
             <div class="metrics-container">
-                
+
                 <div class="metrics-row">
                     <div class="summary-box" id="todoCounter" onclick="window.location.href='board.html'">
                         <img src="./IMGicons/Pencil.svg" alt="Pencil" class="metric-icon">
@@ -85,6 +85,7 @@
                         <img src="./IMGicons/high.svg" alt="high" class="metric-icon">
                         <h2>Upcoming Deadline</h2>
                         <p id="numberUpcomming">Loading...</p>
+                        <div class="vertical-seperator2"></div>
                         <p id="dateUpcomming">Loading...</p>
                     </div>
                 </div>
@@ -102,17 +103,20 @@
                     </div>
                 </div>
                 <div class="metrics-row">
-                    <div class="summary-box" id="taskInBoard" onclick="window.location.href='board.html'">
-                        <h2>Tasks in Board</h2>
+                    <div class="summary-box task-box" id="taskInBoard" onclick="window.location.href='board.html'">
                         <p id="numberTaskInBoard">Loading...</p>
+                        <h2>Tasks in <br> Board</h2>
+                        
                     </div>
-                    <div class="summary-box" id="taskInProgress" onclick="window.location.href='board.html'">
-                        <h2>Task In Progress</h2>
+                    <div class="summary-box task-box" id="taskInProgress" onclick="window.location.href='board.html'">
                         <p id="numberTaskInProgress">Loading...</p>
+                        <h2>Task In <br> Progress</h2>
+                        
                     </div>
-                    <div class="summary-box" id="taskAwaitFeedback" onclick="window.location.href='board.html'">
-                        <h2>Awaiting Feedback</h2>
+                    <div class="summary-box task-box" id="taskAwaitFeedback" onclick="window.location.href='board.html'">
                         <p id="numberTaskAwaitFeedback">Loading...</p>
+                        <h2>Awaiting <br> Feedback</h2>
+                        
                     </div>
                 </div>
             </div>
