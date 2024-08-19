@@ -214,10 +214,12 @@ h1 {
 }
 
 .subtasklistedit {
+  border-radius: 5px;
+  margin-top: 10px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
  
 }
 
@@ -229,19 +231,33 @@ h1 {
   height: 30px;
   border-radius: 10px;
  
-  line-height: 30px; /* Höhe gleich der Zeilenhöhe für vertikale Zentrierung */
+  line-height: 20px; /* Höhe gleich der Zeilenhöhe für vertikale Zentrierung */
   list-style-position: inside; 
 }
 
-.subtaskedit:hover {
+.subtasklistedit:hover {
   background-color: rgba(150, 148, 148, 0.2);
  
+}
+
+.no-hover .subtasklistedit:hover {
+  background-color: transparent !important; 
+}
+
+.edit-subtask-input {
+  width: 350px;
+  height: 30px;
+  font-size: 20px;
 }
 
 .subtask-input-container {
   
   display: flex;
   align-items: center;
+}
+
+.editanddeletebuttonsub {
+  margin-top: 10px;
 }
 
 #subtasks {

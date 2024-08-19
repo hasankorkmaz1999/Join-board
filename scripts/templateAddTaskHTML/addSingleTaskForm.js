@@ -61,8 +61,8 @@ function editTask(key) {
             subtasksHTML += `<div class="subtasklistedit">
                         <li class="subtaskedit">${subtask.title}</li>
                           <div class="editanddeletebuttonsub">
-                        <img src="../../IMGicons/edit.svg" alt="edit" class="edit-btn">
-                        <img src="../../IMGicons/delete.svg" alt="delete" class="delete-btn">
+                        <img src="../../IMGicons/edit.svg" alt="edit" class="edit-btn"  onclick="editSubtask(this)">
+                        <img src="../../IMGicons/delete.svg" alt="delete" class="delete-btn"  onclick="deleteSubtask(this)">
                         </div>
                         </div>`;
         }
@@ -159,11 +159,76 @@ function addSubtaskToList(title) {
     const listItem = document.createElement("div");
 
     listItem.className = "subtasklistedit";
-    listItem.innerHTML = `<li class="subtaskedit">${title}</li>`;
+    listItem.innerHTML = `
+        <li class="subtaskedit">${title}</li>
+        <div class="editanddeletebuttonsub">
+            <img src="../../IMGicons/edit.svg" alt="edit" class="edit-btn" onclick="editSubtask(this)">
+            <img src="../../IMGicons/delete.svg" alt="delete" class="delete-btn" onclick="deleteSubtask(this)">
+        </div>
+    `;
     
-    listItem.addEventListener('click', function() {
-        this.classList.toggle('completed'); // Optional: Mark the subtask as completed on click
-    });
-
     subtaskList.appendChild(listItem);
 }
+
+
+function deleteSubtask(deleteBtn) {
+    const subtaskDiv = deleteBtn.closest('.subtasklistedit');
+    subtaskDiv.remove();
+}
+
+function editSubtask(editBtn) {
+    const subtaskDiv = editBtn.closest('.subtasklistedit');
+    const subtaskLi = subtaskDiv.querySelector('.subtaskedit');
+    
+    const currentTitle = subtaskLi.textContent.trim();
+    
+    const inputField = document.createElement('input');
+    inputField.type = 'text';
+    inputField.value = currentTitle;
+    inputField.className = 'edit-subtask-input';
+    
+    inputField.setSelectionRange(0, 0);
+
+    subtaskDiv.replaceChild(inputField, subtaskLi);
+
+    subtaskDiv.style.backgroundColor = 'transparent';
+    subtaskDiv.onmouseover = function() {
+        this.style.backgroundColor = 'transparent';
+    };
+    
+    editBtn.src = "../../IMGicons/contacticons/check.png";
+    editBtn.alt = "save";
+    editBtn.classList.add('add-subtask-icon');
+    
+    editBtn.onclick = function() {
+        saveSubtaskEdit(this, inputField);
+        subtaskDiv.style.backgroundColor = '';
+        subtaskDiv.onmouseover = null;
+    };
+}
+
+function saveSubtaskEdit(saveBtn, inputField) {
+    const subtaskDiv = saveBtn.closest('.subtasklistedit'); 
+    const newTitle = inputField.value.trim();
+    
+    if (newTitle) {
+       
+        const updatedSubtaskLi = document.createElement('li');
+        updatedSubtaskLi.className = 'subtaskedit';
+        updatedSubtaskLi.textContent = newTitle;
+
+        subtaskDiv.replaceChild(updatedSubtaskLi, inputField);
+        
+        saveBtn.src = "../../IMGicons/edit.svg";
+        saveBtn.alt = "edit";
+        saveBtn.classList.remove('add-subtask-icon');
+        
+        saveBtn.onclick = function() {
+            editSubtask(this);
+        };
+
+        subtaskDiv.style.backgroundColor = '';
+        subtaskDiv.onmouseover = null;
+    }
+}
+
