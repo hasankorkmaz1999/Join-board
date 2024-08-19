@@ -1187,7 +1187,7 @@ iframe {
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 1000;
+  z-index: 1;
 }
 
 /* Sichtbar und animiert */
@@ -1208,6 +1208,15 @@ a.responsive-dots {
 
 span.featTxt {
   padding-bottom: 6px;
+  text-decoration: none;
+}
+
+.featTxt {
+  text-decoration: none;
+}
+
+.featTxt:hover {
+  text-decoration: none;
 }
 
 span.mini-menu {
