@@ -76,6 +76,7 @@
         flex-wrap: nowrap;
         flex-direction: column;
         padding-left: 20px;
+        margin-bottom: 120px;
     }
     .progress-window {
         display: flex;
@@ -84,7 +85,7 @@
         height: 100%;
         flex-grow: 1;
         gap: 16px;
-        width: 252px;
+        /* width: 252px; */
         flex-wrap: nowrap;
     }
     #awaitingfeedback, #inprogress, #todo, #done {
@@ -164,7 +165,6 @@
     }
     .boardsections {
         margin-bottom: 120px;
-        overflow-x: hidden;
     }
     .main-content {
         padding: 20px;

@@ -51,7 +51,7 @@ body {
   height: 100%; /* Höhe entsprechend des übergeordneten Elements */
   flex-grow: 1;
   gap: 16px;
-  width: 252px;
+  /* width: 252px; */
 }
 
 .joinLogo {
@@ -1198,4 +1198,16 @@ span.mini-menu a {
 
 span.mini-menu a:hover {
   text-decoration: underline;
+}
+
+
+/* Versteckt die horizontale Scrollbar */
+.progress-window {
+  overflow-x: scroll; 
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+}
+
+.progress-window::-webkit-scrollbar {
+  display: none; 
 }
