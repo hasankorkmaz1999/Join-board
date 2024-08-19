@@ -244,8 +244,14 @@ h1, h2, p {
     .subheader-contact {
         display: none;
     }
-    .summary-box {
-        flex: 0 0 146px;
+    .summary-box-mobile {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        justify-content: unset;
+        padding: 0 !important;
+        margin: 0;
+        gap: 0;
     }
     .metrics-row {
         justify-content: unset;
