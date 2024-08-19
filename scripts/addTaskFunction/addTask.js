@@ -38,7 +38,7 @@ function validateDate(dateStr) {
     today.setHours(0, 0, 0, 0); // Setzt die Zeit auf 00:00, um nur das Datum zu vergleichen
 
     if (selectedDate < today) {
-        errorSpan.textContent = "Bitte wählen Sie ein gültiges Datum.";
+        errorSpan.textContent = "Please select a valid date in the present or future";
         errorSpan.style.color = '#FF7A00'; // Setzt die Farbe des Textes auf orange
         errorSpan.classList.remove('d-non');
         throw new Error("Das ausgewählte Datum liegt in der Vergangenheit.");

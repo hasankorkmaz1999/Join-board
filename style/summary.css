@@ -13,7 +13,10 @@
 }
 
 .main-content p {
-    margin-bottom: 32px;
+    /* margin-bottom: 0px; */
+    /* margin-bottom: 32px; */
+    font-size: 40px;
+    font-weight: 700;
 }
 
 h1, h2, p {
