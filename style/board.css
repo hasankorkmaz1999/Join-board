@@ -108,18 +108,38 @@ h1 {
 }
 
 /*Style für das Editieren der task  */
+.closeXaddtask {
+  position: fixed;
+  right: 30px;
+  top: 20px;
+  height: 32px;
+  width: 32px;
+}
+
+.closeXaddtask:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+
 .edit-task-form {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
- margin-top: 50px;
-  padding: 30px;
-  width: 440px;
-  height: 800px;
+  justify-content: center;
+  
+  width: 460px;
+  height: 770px;
+  border-radius: 24px;
+  padding: 20px;
+  overflow-y: auto;
+ 
  
 }
 
 .editTaskTitle {
+  
+  width: 450px;
   color: black;
   font-family: 'Inter';
   font-size: 20px;
@@ -143,6 +163,7 @@ h1 {
     margin-bottom: 20px;
     border: 2px solid rgba(117, 115, 115, 0.2);
     height: 120px;
+    width: 450px;
     padding-left: 10px;
     padding-top: 10px;
 }
@@ -153,6 +174,7 @@ h1 {
   font-size: 20px;
     font-weight: 400;
     line-height: 24px;
+    width: 450px;
     border-radius: 10px;
     margin-bottom: 20px;
     border: 2px solid rgba(117, 115, 115, 0.2);
@@ -216,6 +238,7 @@ h1 {
 .subtasklistedit {
   border-radius: 5px;
   margin-top: 10px;
+  width: 450px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -291,10 +314,14 @@ h1 {
   display: none;
 }
 
+.addTaskAssignedToButtonEdit {
+  width: 450px;
+}
+
 
 .inputsubtaskedit {
   padding-right: 30px; 
-  width: 100%;
+  width: 450px;
   box-sizing: border-box;
   border: 1px solid var(--border-grey);
   border-radius: 10px;
@@ -469,7 +496,7 @@ h1 {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  margin: 50px 0;
+
 }
 
 .editbuttontask {
@@ -577,6 +604,8 @@ align-items: center;
 margin-right: 20px;
 margin-bottom: 25px;
 }
+
+
 
 .technical-green {
  
@@ -1055,7 +1084,7 @@ iframe {
 
 .singletaskpopup {
   background-color: white;
-  height: 90vH;
+  height: 800px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -1064,9 +1093,21 @@ iframe {
   display: flex; 
   justify-content: flex-start;
   align-items: flex-start;
- 
-  overflow-y: scroll;
+  width: 500px;
+  
   overflow: hidden; 
+}
+
+
+
+.single-task-content {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 500px;
+  height: 740px;
+  border-radius: 24px;
+  overflow-y: auto;
 }
 
 
@@ -1119,15 +1160,7 @@ iframe {
   background-color:#EEEEEE;
   box-shadow:0 1px 8px rgba(0,0,0,0.5);
 }
-.single-task-content {
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-  width: 290px;
-  height: 725px;
-  border-radius: 24px;
-  overflow-y: scroll;
-}
+
 
 
 .column {

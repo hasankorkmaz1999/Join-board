@@ -70,6 +70,7 @@ function editTask(key) {
 
     // Generiere das HTML für das Edit-Formular
     const editFormHTML = `
+    <div class="sigletaskpopup">
         <div onclick="doNotClose(event)" class="edit-task-form">
             <img onclick="closeSingleTaskOverlay()" class="closeXaddtask" src="./IMGicons/close.svg" alt="Icon Close">
           
@@ -97,7 +98,7 @@ function editTask(key) {
 
             <div class="addTaskAssignedTo">
                 <label for="assignedto">Assigned to</label>
-                <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select</button>
+                <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButtonEdit down">Select</button>
                 <div id="assignedto" class="assignedto-checkboxes d-non"></div>
             </div>
 
@@ -119,6 +120,8 @@ function editTask(key) {
                 <button onclick='saveTaskEdits("${key}")' class="OKbutton">Ok</button>
             </div>
         </div>
+
+    </div>    
     `;
 
     // Ersetze den Inhalt des Overlays mit dem Edit-Formular
