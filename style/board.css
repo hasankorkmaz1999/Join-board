@@ -44,6 +44,11 @@ body {
   display: none;
 }
 
+.sectionstodrop {
+  background-color:var(--body-background); 
+  height: 100vh;
+}
+
 .progress-window {
   display: flex;
   flex-direction: column;
