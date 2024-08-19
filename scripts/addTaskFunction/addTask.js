@@ -336,6 +336,8 @@ function addSubtaskToList(title) {
     subtaskList.appendChild(listItem);
 }
 
+let isAssignedToListOpen = false;
+
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
     let arrowrInButton = document.getElementById('AssignedToButton');
@@ -346,29 +348,30 @@ function showAssignedTo() {
         assignedto.classList.add('d-non');
         arrowrInButton.classList.add('down');
         arrowrInButton.classList.remove('up');
-        
-        // Entferne die .active Klasse von allen .assignedto-item Elementen / Ich war hier. Gruß Tay! :-)
-        // assignedToItems.forEach(item => {
-        //     item.classList.remove('active');
-        // });
+        isAssignedToListOpen = false;
+        document.removeEventListener('click', closeAssignedToOnClickOutside);
     } else {
         assignedto.classList.remove('d-non');
         assignedto.classList.add('d-flex');
         arrowrInButton.classList.add('up');
         arrowrInButton.classList.remove('down');
-        
-        // Füge einen Event-Listener für Klicks auf jedes .assignedto-item Element hinzu
-        assignedToItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // Entferne die .active Klasse von allen .assignedto-item Elementen
-                assignedToItems.forEach(innerItem => {
-                    innerItem.classList.remove('active');
-                });
-                
-                // Füge die .active Klasse nur dem angeklickten Element hinzu
-                this.classList.add('active');
-            });
-        });
+        isAssignedToListOpen = true;
+        setTimeout(() => {
+            document.addEventListener('click', closeAssignedToOnClickOutside);
+        }, 0); // Timeout to ensure the click on the button doesn't immediately trigger the close
+    }
+}
+
+function closeAssignedToOnClickOutside(event) {
+    let assignedto = document.getElementById('assignedto');
+    let AssignedToButton = document.getElementById('AssignedToButton');
+    if (!assignedto.contains(event.target) && !AssignedToButton.contains(event.target)) {
+        assignedto.classList.remove('d-flex');
+        assignedto.classList.add('d-non');
+        AssignedToButton.classList.add('down');
+        AssignedToButton.classList.remove('up');
+        isAssignedToListOpen = false;
+        document.removeEventListener('click', closeAssignedToOnClickOutside);
     }
 }
 
