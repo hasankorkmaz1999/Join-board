@@ -635,8 +635,8 @@ svg {
     align-items: center;
     justify-content: center;
     margin-bottom: 0px;
-    margin-left: 20px;
-    margin-right: 20px;
+    /* margin-left: 20px;
+    margin-right: 20px; */
     padding: 4px;
     box-shadow: 0 0 5px var(--white);
     cursor: pointer;
@@ -665,3 +665,89 @@ svg {
     font-size: 16px;
     text-transform: uppercase;
 } 
+
+
+.assignedto-item .avatar:hover {
+    background-color: var(--deep-grey);
+}
+
+.assignedto-item:active > .avatar {
+    background-color: var(--deep-grey) !important;
+}
+
+.assignedto-item:active .avatar {
+    background-color: var(--deep-grey);
+    z-index: 1;
+}
+
+.assignedto-item {
+    position: relative;
+    width: 99%;
+    border-radius: 10px;
+    overflow: hidden; 
+    box-sizing: border-box; 
+    padding: 26px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+.assignedto-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-right: 30px; 
+    cursor: pointer;
+}
+
+.assignedto-item span {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.assignedto-item .avatar {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+}
+
+.assignedto-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0; 
+    cursor: pointer;
+}
+
+.assignedto-item input[type="checkbox"] + .checkbox-label {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('./../IMGicons/check-unchecked.svg');
+    background-size: contain; 
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    padding-right: 32px;
+}
+
+.assignedto-item input[type="checkbox"]:checked + .checkbox-label {
+    background-image: url('./../IMGicons/check-checked.png'); 
+}
+
+/* End 
+************************************************************************************/
+@media (min-width: 1040px) {
+    .joinLogo {
+        display: none;
+    }
+}
