@@ -986,7 +986,7 @@ h1, h2, p {
 .boardsections {
   max-width: 1440px;
   margin-left: 260px; 
-  background-color: var(--body-background-grey);
+  background-color: var(--body-background);
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
