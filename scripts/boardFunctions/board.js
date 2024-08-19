@@ -51,6 +51,7 @@ function renderTaskData(data) {
     let todoTasksCount = 0; // Zähler für die "To Do"-Tasks
     let inProgressTasksCount = 0; // Zähler für die "In Progress"-Tasks
     let awaitingFeedbackTasksCount = 0; // Zähler für die "Awaiting Feedback"-Tasks
+    let doneTasksCount = 0;
 
     for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
@@ -67,6 +68,7 @@ function renderTaskData(data) {
         }
         if (progress === "done") {
             doneDIV.innerHTML += renderDivDone(task, key);
+            doneTasksCount++;
         }
         if (progress === "AwaitingFeedback") {
             awaitingfeedbackDIV.innerHTML += renderDivawaitingfeedback(task, key);
@@ -87,6 +89,11 @@ function renderTaskData(data) {
     // Wenn keine "Awaiting Feedback"-Tasks vorhanden sind, zeige den Banner an
     if (awaitingFeedbackTasksCount === 0) {
         awaitingfeedbackDIV.innerHTML = '<div class="no-tasks-banner">No tasks awaiting Feedback</div>';
+    }
+
+
+    if (doneTasksCount === 0) {
+        doneDIV.innerHTML = '<div class="no-tasks-banner">No tasks done</div>';
     }
 
     disableSpinner();
