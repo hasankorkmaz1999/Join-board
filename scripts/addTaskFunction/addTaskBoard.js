@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
                        `);
             }
         } else {
-            error('Parameter progress is missing.');
+            console.warn('Parameter progress is missing. Init Edit Task...');
+            
         }
     }
 });
@@ -308,32 +309,107 @@ function triggerCloseAddTaskOverlay() {
 
 window.addEventListener('message', function(event) {
     const taskData = event.data.taskData;
+    let taskKey = event.data.taskKey;
     if (taskData) {
-        // Populate form fields with task data
+
         document.getElementById('addTaskTitle').value = taskData.task;
         document.getElementById('description').value = taskData.description;
         document.getElementById('prioDate').value = taskData.duedate;
         
-        // Set the priority buttons
         let priorityButton = document.querySelector(`.addTaskPrioButtonEdit.prio-${taskData.priority.toLowerCase()}`);
         if (priorityButton) {
-            priorityButton.click(); // Simulate a click to set the priority
+            priorityButton.click();
         }
 
-        // Populate assigned to checkboxes
+
         taskData.assignedto.forEach(person => {
             let checkbox = document.querySelector(`input[name="assignedto"][value="${person.name}"]`);
             if (checkbox) {
                 checkbox.checked = true;
-                checkbox.dispatchEvent(new Event('change')); // Trigger the event to show selected avatars
+                checkbox.dispatchEvent(new Event('change')); 
             }
         });
 
-        // Populate subtasks
+
         let subtaskList = document.getElementById('subtaskList');
-        subtaskList.innerHTML = ''; // Clear existing subtasks
+        subtaskList.innerHTML = ''; 
         taskData.subtasks.forEach(subtask => {
-            addSubtaskToList(subtask.title, subtask.itsdone); // Assume you have a function like this
+            addSubtaskToList(subtask.title, subtask.itsdone);
         });
+        document.getElementById('addTaskH1').innerHTML = 'Edit Task (Beta)';
+        document.getElementById('addTaskFlexButtons').innerHTML = generateEditButton(taskKey);
     }
 });
+
+function generateEditButton(taskKey) {
+    if (taskKey === null || taskKey === undefined) {
+        console.log("%cTask key is missing. Unable to generate edit button.", `
+            background: #ff9966;
+            padding: .5rem 1rem;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+           `);
+
+           toastMessage("Error editing task. Please try again.");
+    } else {
+        return `
+        <button id="createbutton" type="button" onclick="editTask('${taskKey}')" class="createbutton">
+            <p class="create-mobile">Edit Task</p>
+            <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
+    </form>
+`;   
+    }
+}
+
+async function editTask(taskKey) {
+    try {
+        const sanitizedValues = await validateAndSanitizeForm();
+        const task = sanitizedValues.taskTitle;
+        const date = sanitizedValues.date;
+        const priority = document.getElementById("priority").value;
+        const category = sanitizedValues.category;
+        const description = sanitizedValues.description;
+
+        let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+        let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
+
+        // Sammeln der Subtasks aus der Liste
+        const subtaskElements = document.querySelectorAll("#subtaskList li");
+        const subtasks = Array.from(subtaskElements).map(item => ({
+            itsdone: false,
+            title: item.textContent
+        }));
+
+        let data = {
+            task: task,
+            date: date,
+            priority: priority,
+            category: category,
+            assignedto: assignedTo.map(name => ({ name })),
+            description: description,
+            subtasks: subtasks,
+            duedate: date,
+        };
+
+        let response = await fetch(addAPI + `/${taskKey}.json`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        await response.json();
+        console.log("Task successfully edited:", data);
+        reloadPage();
+        toastMessage("Task edited successfully!");
+        triggerInit();
+        triggerCloseAddTaskOverlay();
+
+    } catch (error) {
+        console.error("Error validating or editing task:", error);
+        toastMessage("Error editing task. Please try again.");
+    }
+}

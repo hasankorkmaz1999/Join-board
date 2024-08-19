@@ -695,6 +695,7 @@ svg {
 }
 
 .assignedto-item {
+    color: black;
     display: flex;
     align-items: center;
     position: relative;

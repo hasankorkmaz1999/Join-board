@@ -55,10 +55,13 @@ function editTask(key) {
 
     // Open the iframe with the form
     openEditTaskIframe(task, key);
+    closeSingleTaskOverlay();
 }
 
 function openEditTaskIframe(task, key) {
     // Open the iframe
+    console.log(key);
+    
     let overlay = document.getElementById('overlayforaddtask');
     overlay.classList.remove('d-none');
     overlay.classList.add('slide-in-right');
@@ -73,7 +76,7 @@ function openEditTaskIframe(task, key) {
 
     // Send the task data to the iframe once it's loaded
     iframe.onload = function() {
-        iframe.contentWindow.postMessage({ taskData: task }, '*');
+        iframe.contentWindow.postMessage({ taskData: task, taskKey: key}, '*');
     };
 }
 
