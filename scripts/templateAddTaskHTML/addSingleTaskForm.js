@@ -50,79 +50,31 @@ function addSingleTaskForm(taskData, key) {
 
 
 function editTask(key) {
-    // Holen der Task-Daten, wenn nötig
+    // Get the task data by key
     const task = tasks[key];
 
-    // Generiere das HTML für die Subtasks
-    let subtasksHTML = '';
-    if (task.subtasks && task.subtasks.length > 0) {
-        for (let i = 0; i < task.subtasks.length; i++) {
-            let subtask = task.subtasks[i];
-            subtasksHTML += `<div class="subtasklistedit">
-                        <li class="subtaskedit">${subtask.title}</li>
-                          <div class="editanddeletebuttonsub">
-                        <img src="../../IMGicons/edit.svg" alt="edit" class="edit-btn"  onclick="editSubtask(this)">
-                        <img src="../../IMGicons/delete.svg" alt="delete" class="delete-btn"  onclick="deleteSubtask(this)">
-                        </div>
-                        </div>`;
-        }
-    }
+    // Open the iframe with the form
+    openEditTaskIframe(task, key);
+}
 
-    // Generiere das HTML für das Edit-Formular
-    const editFormHTML = `
-        <div onclick="doNotClose(event)" class="edit-task-form">
-            <img onclick="closeSingleTaskOverlay()" class="closeXaddtask" src="./IMGicons/close.svg" alt="Icon Close">
-          
-            <label for="editTaskTitle">Title</label>
-            <input class="editTaskTitle" type="text" id="editTaskTitle" value="${task.task}">
+function openEditTaskIframe(task, key) {
+    // Open the iframe
+    let overlay = document.getElementById('overlayforaddtask');
+    overlay.classList.remove('d-none');
+    overlay.classList.add('slide-in-right');
 
-            <label for="editTaskDescription">Description</label>
-            <textarea class="editTaskDescription" id="editTaskDescription">${task.description}</textarea>
+    let iframe = document.createElement('iframe');
+    iframe.src = `add_task_board.html?taskId=${key}`; // Pass the task ID to the iframe via query params
 
-            <label for="editDueDate">Due Date</label>
-            <input class="editDueDate" type="date" id="editDueDate" value="${task.duedate}">
+    let popupContent = document.getElementById('addtaskpopup');
+    popupContent.innerHTML = ''; // Clear previous content
+    popupContent.appendChild(iframe);
+    document.body.style.overflow = 'hidden';
 
-            <label for="editTaskPriority">Priority:</label>
-
-            <div class="addTaskPriorityEdit">
-                <div class="prioFlexEdit">
-                    <form class="taskFormEdit" id="taskFormEdit">
-                        <button type="button" onclick="setActive(this, 'urgent')" class="addTaskPrioButtonEdit prio-urgent">Urgent</button>
-                        <button type="button" onclick="setActive(this, 'medium')" class="addTaskPrioButtonEdit prio-medium">Medium</button>
-                        <button type="button" onclick="setActive(this, 'low')" class="addTaskPrioButtonEdit prio-low">Low</button>
-                        <input type="hidden" id="priority" name="priority">
-                    </form>
-                </div>
-            </div>
-
-            <div class="addTaskAssignedTo">
-                <label for="assignedto">Assigned to</label>
-                <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select</button>
-                <div id="assignedto" class="assignedto-checkboxes d-non"></div>
-            </div>
-
-          <div class="addTaskSubtasksEdit">
-    <label for="subtasks">Subtasks</label>
-    <div class="subtask-input-container">
-        <input class="inputsubtaskedit" type="text" id="subtaskedit" placeholder="Add new subtask" oninput="toggleIconVisibility()">
-        <div class="icons-wrapper hidden">
-            <img src="./IMGicons/close.svg" class="clear-subtask-icon" alt="X" onclick="clearSubtaskInput()">
-            <div class="divideredit"></div>
-            <img src="./IMGicons/contacticons/check.png" alt="Add Subtask" class="add-subtask-icon" onclick="addSubtaskFromInput()">
-        </div>
-    </div>
-    <div id="subtaskList">${subtasksHTML}</div>
-</div>
-
-
-            <div class="Okbuttonposition">
-                <button onclick='saveTaskEdits("${key}")' class="OKbutton">Ok</button>
-            </div>
-        </div>
-    `;
-
-    // Ersetze den Inhalt des Overlays mit dem Edit-Formular
-    document.querySelector('.single-task-content').outerHTML = editFormHTML;
+    // Send the task data to the iframe once it's loaded
+    iframe.onload = function() {
+        iframe.contentWindow.postMessage({ taskData: task }, '*');
+    };
 }
 
 function toggleIconVisibility() {

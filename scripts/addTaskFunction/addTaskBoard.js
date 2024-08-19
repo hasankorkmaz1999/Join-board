@@ -305,3 +305,35 @@ function triggerCloseAddTaskOverlay() {
         console.error('closeAddTaskOverlay function not found in parent window');
     }
 }
+
+window.addEventListener('message', function(event) {
+    const taskData = event.data.taskData;
+    if (taskData) {
+        // Populate form fields with task data
+        document.getElementById('addTaskTitle').value = taskData.task;
+        document.getElementById('description').value = taskData.description;
+        document.getElementById('prioDate').value = taskData.duedate;
+        
+        // Set the priority buttons
+        let priorityButton = document.querySelector(`.addTaskPrioButtonEdit.prio-${taskData.priority.toLowerCase()}`);
+        if (priorityButton) {
+            priorityButton.click(); // Simulate a click to set the priority
+        }
+
+        // Populate assigned to checkboxes
+        taskData.assignedto.forEach(person => {
+            let checkbox = document.querySelector(`input[name="assignedto"][value="${person.name}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+                checkbox.dispatchEvent(new Event('change')); // Trigger the event to show selected avatars
+            }
+        });
+
+        // Populate subtasks
+        let subtaskList = document.getElementById('subtaskList');
+        subtaskList.innerHTML = ''; // Clear existing subtasks
+        taskData.subtasks.forEach(subtask => {
+            addSubtaskToList(subtask.title, subtask.itsdone); // Assume you have a function like this
+        });
+    }
+});
