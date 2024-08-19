@@ -6,6 +6,13 @@ h1, h2, p, p.create-mobile {
     color: var(--deep-grey);
 }
 
+ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: auto;
+    max-height: 150px;
+}
+
 label, span.asterisk {
     font-size: 18px;
     font-weight: 400;
