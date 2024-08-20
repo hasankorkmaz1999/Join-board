@@ -1,30 +1,36 @@
 const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users';
 
 async function initHeader() {
-    try {
-        const userID1 = sessionStorage.getItem('userId');
-        const userId = localStorage.getItem('userId');
-        const guestToken = sessionStorage.getItem('guestToken');
-
-        let user = null;
-
-        if (userID1) {
-            user = await loadData(`${PB_API}/${userID1}`);
-        } else if (userId) {
-            user = await loadData(`${PB_API}/${userId}`);
-        } else if (guestToken) {
-            user = await loadData(`${PB_API}/${guestToken}`);
+    let check = document.getElementById('PB');
+    if (check) {
+        try {
+            const userID1 = sessionStorage.getItem('userId');
+            const userId = localStorage.getItem('userId');
+            const guestToken = sessionStorage.getItem('guestToken');
+    
+            let user = null;
+    
+            if (userID1) {
+                user = await loadData(`${PB_API}/${userID1}`);
+            } else if (userId) {
+                user = await loadData(`${PB_API}/${userId}`);
+            } else if (guestToken) {
+                user = await loadData(`${PB_API}/${guestToken}`);
+            }
+    
+            if (!user || !user.name) {
+                throw new Error("User or user name could not be loaded");
+            }
+    
+            const initials = getInitials(user.name);
+            document.getElementById('PB').innerHTML = initials;
+    
+        } catch (error) {
+            console.warn("Error initializing the header (Demo Login):", error);
         }
 
-        if (!user || !user.name) {
-            throw new Error("User or user name could not be loaded");
-        }
-
-        const initials = getInitials(user.name);
-        document.getElementById('PB').innerHTML = initials;
-
-    } catch (error) {
-        console.warn("Error initializing the header (Demo Login):", error);
+    } else {
+        console.warn("No header element found");
     }
 }
 
