@@ -1,6 +1,6 @@
 const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users';
 
-window.onload = initHeader;
+/* window.onload = initHeader;
 
 async function initHeader() {
     try {
@@ -55,7 +55,7 @@ function infoTap() {
         infoDIV.classList.add('dropdown-content');
         infoDIV.classList.remove('d-none');
     }
-}
+} */
 
 function logout() {
     try {
