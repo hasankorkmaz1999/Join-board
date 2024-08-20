@@ -9,6 +9,7 @@
     <link src="../fonts/figtree/styles.css">
     <link src="../style/headerstyle.css">
     <link src="../style/privacyPolicy.css">
+    <script src="./scripts/hader.js"></script>
 </head>
 <body>
     <header>
@@ -16,8 +17,13 @@
             <div class="kanban"><p class="subheader-contact">Kanban Project Management Tool</p></div>
             <div class="user">
                 <a href="../help.html"><img class="help-icon-header" src="IMGicons/help.svg" alt="Help icon"></a>
-                <a href="../summary.html"><img class="user-image-header" src="IMGicons/userprofile.svg" alt="Profile icon"></a>
-            </div> 
+                <div style="cursor: pointer;" onclick="infoTap()" href="../summary.html"><img class="user-image-header" src="IMGicons/userprofile.svg" alt="Profile icon"></div>
+            </div>
+                <div class="d-none" id="dropdown-content">
+                    <div><a class="hoverEffect" href="../legalNotice.html">Legal Notice</a></div>
+                    <div><a class="hoverEffect href="../privacyPolicy.html">Privacy Policy</a></div>
+                    <div class="hoverEffect" >Logout</div>
+                </div>
         </div>
     
         <div class="header-left">
@@ -40,6 +46,5 @@
         </div>
     
     </header>
-    
 </body>
 </html>

@@ -16,6 +16,16 @@ window.onload = function() {
     forbiddenCourse();
 };
 
+/* function infoTap() {
+    let infoDIV = document.getElementById('dropdown-content');
+    let checkClass = infoDIV.classList.contains('show');
+    if (checkClass) {
+        infoDIV.classList.remove('d-none');
+    } else {
+        infoDIV.classList.add('dropdown-content');
+    }
+} */
+
 function forbiddenCourse() {
     try {
         let userID = localStorage.getItem('userId') || sessionStorage.getItem('userId');
