@@ -2,19 +2,21 @@ const taskAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabas
 const NameOfAdmin = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/profile";
 const user_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users";
 
-// window.onload = init();
+window.onload = init();
 
-// function init() {
-//     renderData(taskAPI);
-//     displayGreeting();
-// }
+function init() {
+    renderData(taskAPI);
+    displayGreeting();
+    loadNameOfAdmin();
+    forbiddenCourse();
+}
 
-window.onload = function() {
+/* window.onload = function() {
     renderData(taskAPI);
     loadNameOfAdmin();
     displayGreeting();
     forbiddenCourse();
-};
+}; */
 
 /* function infoTap() {
     let infoDIV = document.getElementById('dropdown-content');

@@ -281,3 +281,27 @@ a.active_contacts {padding-left: 90px;}
     cursor: pointer;
     text-decoration: underline;
 }
+
+.user-select-none {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Standard */
+}
+
+.PB {
+    display: flex;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border: 4px solid rgba(42, 54, 71, 1);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--babyblue);
+}
+
+.PB:hover {
+    background-color: rgba(12, 46, 98, 0.12);
+}
