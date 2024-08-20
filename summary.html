@@ -68,23 +68,28 @@
                         <img src="./IMGicons/Pencil.svg" alt="Pencil" class="metric-icon">
                         <div class="metric-content">
                             <p id="numberTodo">3</p>
-                            <h2>To-do</h2>
+                            <h2 class="summary-mobile">To-do</h2>
                         </div>
                     </div>
                     <div class="summary-box" id="doneCounter" onclick="window.location.href='board.html'">
                         <img src="./IMGicons/done.svg" alt="done" class="metric-icon">
                         <div class="metric-content">
                             <p id="numberDone">4</p>
-                            <h2>Done</h2>
+                            <h2 class="summary-mobile">Done</h2>
                         </div>
                     </div>
                 </div>
 
                 <div class="metrics-row metrics-row-desktop">
                     <div class="summary-box" id="upcomingCounter" onclick="window.location.href='board.html'">
-                        <img src="./IMGicons/high.svg" alt="high" class="metric-icon">
-                        <p class="upcoming-desktop">Upcoming Deadline</p>
-                        <p id="numberUpcomming">Loading...</p>
+                        <div class="mobile-flex">
+                            <img src="./IMGicons/high.svg" alt="high" class="metric-icon">
+                            <p class="upcoming-desktop">Upcoming Deadline</p>
+                            <div class="flexhelper-urgent">
+                                <p id="numberUpcomming">Loading...</p>
+                                <p class="urgent-text">Urgent</p>
+                            </div>
+                        </div>
                         <div class="flexhelper-mobile">
                             <p id="dateUpcomming">Loading...</p>
                             <p class="upcoming-mobile">Upcoming Deadline</p>
@@ -94,17 +99,17 @@
                 <div class="metrics-row">
                     <div class="summary-box task-box" id="taskInBoard" onclick="window.location.href='board.html'">
                         <p id="numberTaskInBoard">Loading...</p>
-                        <h2>Tasks in <br> Board</h2>
+                        <h2 class="summary-mobile">Tasks in <br> Board</h2>
                         
                     </div>
                     <div class="summary-box task-box" id="taskInProgress" onclick="window.location.href='board.html'">
                         <p id="numberTaskInProgress">Loading...</p>
-                        <h2>Task In <br> Progress</h2>
+                        <h2 class="summary-mobile">Task In <br> Progress</h2>
                         
                     </div>
                     <div class="summary-box task-box" id="taskAwaitFeedback" onclick="window.location.href='board.html'">
                         <p id="numberTaskAwaitFeedback">Loading...</p>
-                        <h2>Awaiting <br> Feedback</h2>
+                        <h2 class="summary-mobile">Awaiting <br> Feedback</h2>
                         
                     </div>
                 </div>
