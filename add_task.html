@@ -146,14 +146,22 @@
                         </select>
                         <span id="addTaskCategoryError" class="d-non">Please enter a category</span>
                     </div>
+                    
     
                     <div class="addTaskSubtasks">
                         <label for="subtasks">Subtasks</label>
-                        <input type="text" id="subtasks" name="subtasks" placeholder="Enter subtasks">
-                     
-                        <ul  id="subtaskList"></ul>
-                        
+                        <div class="subtask-input-wrapper">
+                            <input type="text" id="subtasks" name="subtasks" placeholder="Enter subtasks" oninput="toggleCheckmark(this)">
+                            <div class="icons-wrapper" id="iconsWrapper">
+                                <img src="./IMGicons/contacticons/Close.png" alt="close" id="closeIcon" class="iconX">
+                                <div class="linedivider" id="lineDivider"></div>
+                                <img src="./IMGicons/contacticons/check.png" alt="check" id="checkIcon" class="icon">
+                            </div>
+                        </div>
+                        <ul id="subtaskList"></ul>
                     </div>
+                    
+                    
                 </form>
             </div>
         </div>

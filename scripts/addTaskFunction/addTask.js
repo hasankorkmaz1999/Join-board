@@ -301,6 +301,57 @@ async function addTask() {
 
 }
 
+
+// Funktion für anzeigen im Subtask Input
+function toggleCheckmark(inputElement) {
+    const checkIcon = document.getElementById('checkIcon');
+    const closeIcon = document.getElementById('closeIcon');
+    const lineDivider = document.getElementById('lineDivider');
+    
+    if (inputElement.value.trim() !== "") {
+        checkIcon.style.display = 'inline'; 
+        closeIcon.style.display = 'inline'; 
+        lineDivider.style.display = 'inline'; 
+    } else {
+        checkIcon.style.display = 'none';
+        closeIcon.style.display = 'none'; 
+        lineDivider.style.display = 'none'; 
+    }
+}
+
+document.getElementById('subtasks').addEventListener('input', function() {
+    const inputField = this;
+
+    if (inputField.value.trim() !== "") {
+        inputField.classList.add('no-plus'); // Plus-Symbol ausblenden
+    } else {
+        inputField.classList.remove('no-plus'); // Plus-Symbol wieder anzeigen
+    }
+});
+
+
+// Event Listener für das Klicken auf das Häkchen
+document.getElementById('checkIcon').addEventListener('click', function() {
+    const subtaskInput = document.getElementById('subtasks');
+    const subtaskTitle = subtaskInput.value.trim();
+
+    if (subtaskTitle) {
+        addSubtaskToList(subtaskTitle); 
+        subtaskInput.value = ''; 
+        toggleCheckmark(subtaskInput); 
+        subtaskInput.classList.remove('no-plus');
+    }
+});
+
+// Event Listener für das Klicken auf das Close-Icon
+document.getElementById('closeIcon').addEventListener('click', function() {
+    const subtaskInput = document.getElementById('subtasks');
+    subtaskInput.value = ''; 
+    toggleCheckmark(subtaskInput); 
+    subtaskInput.classList.add('no-plus');
+});
+
+// Funktion, die bei Drücken der Enter-Taste ausgeführt wird 
 document.getElementById("subtasks").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
@@ -310,9 +361,11 @@ document.getElementById("subtasks").addEventListener("keypress", function(event)
         if (subtaskTitle) {
             addSubtaskToList(subtaskTitle);
             subtaskInput.value = '';
+            toggleCheckmark(subtaskInput); 
         }
     }
 });
+
 
 function addSubtaskToList(title) {
     const subtaskList = document.getElementById("subtaskList");
@@ -322,26 +375,37 @@ function addSubtaskToList(title) {
         <span class="subtask-title">${title}</span>
         <input type="text" class="edit-input" value="${title}" style="display:none;"></input>
         <div class="editanddeletebuttonsub">
-        <img src="../../IMGicons/edit.svg" alt="edit" class="edit-btn">
-        <img src="../../IMGicons/delete.svg" alt="delete" class="delete-btn">
+            <img src="../../IMGicons/edit.svg" alt="edit" class="edit-btn">
+            <img src="../../IMGicons/delete.svg" alt="delete" class="delete-btn">
+            <img src="../../IMGicons/contacticons/check.png" alt="save" class="save-btn" style="display:none;">
+
         </div>
     </div>   
-    `
+    `;
 
     // Event Listener für den Edit Button
-    listItem.querySelector(".edit-btn").addEventListener("click", function() {
-        const titleSpan = listItem.querySelector(".subtask-title");
-        const editInput = listItem.querySelector(".edit-input");
-        if (editInput.style.display === "none") {
-            editInput.style.display = "inline-block";
-            titleSpan.style.display = "none";
-            this.textContent = "Save";
-        } else {
-            titleSpan.textContent = editInput.value;
-            editInput.style.display = "none";
-            titleSpan.style.display = "inline-block";
-            this.textContent = "Edit";
-        }
+    const subtaskContainer = listItem.querySelector('.subtaskcontainer');
+    const editButton = listItem.querySelector(".edit-btn");
+    const saveButton = listItem.querySelector(".save-btn");
+    const titleSpan = listItem.querySelector(".subtask-title");
+    const editInput = listItem.querySelector(".edit-input");
+
+    editButton.addEventListener("click", function() {
+        editInput.style.display = "inline-block";
+        titleSpan.style.display = "none";
+        editButton.style.display = "none"; 
+        saveButton.style.display = "inline-block"; 
+        subtaskContainer.classList.add('editing');
+    });
+
+    // Event Listener für den Save Button
+    saveButton.addEventListener("click", function() {
+        titleSpan.textContent = editInput.value;
+        editInput.style.display = "none";
+        titleSpan.style.display = "inline-block";
+        saveButton.style.display = "none"; 
+        editButton.style.display = "inline-block";
+        subtaskContainer.classList.remove('editing'); 
     });
 
     // Event Listener für den Delete Button
@@ -351,6 +415,7 @@ function addSubtaskToList(title) {
 
     subtaskList.appendChild(listItem);
 }
+
 
 let isAssignedToListOpen = false;
 
