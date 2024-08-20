@@ -101,6 +101,7 @@ numberTaskInProgress
 numberTaskAwaitFeedback
 */
 
+<<<<<<< HEAD
 function displayGreeting() {
     let greetingText = document.getElementById('greeting-text');
     let currentHour = new Date().getHours();
@@ -119,3 +120,48 @@ function displayGreeting() {
     }
     greetingText.innerText = greeting;
 }
+=======
+// function displayGreeting() {
+//     let greetingText = document.getElementById('greeting-text');
+//     let currentHour = new Date().getHours();
+//     let greeting;
+//     try {
+//         if (currentHour < 12) {
+//             greeting = "Good morning,";
+//         } else if (currentHour < 18) {
+//             greeting = "Good afternoon,";
+//         } else {
+//             greeting = "Good evening,";
+//         }
+//     } catch (error) {
+//         greeting = "Hello,";
+//         console.error("Error while getting the current hour: " + error);
+        
+//     }
+
+//     greetingText.innerText = greeting;
+// }
+
+
+// JS-Function für Login und Signup Greeting Area für echten User mit ID
+function displayGreeting() {
+    let greetingContainer = document.getElementById('greeting-text');
+    let nameContainer = document.getElementById('userGreeting');  // Aktualisieren; um die richtige ID zu verwenden!
+
+    let currentHour = new Date().getHours();
+    let greetingText;
+
+    if (currentHour < 12) {
+        greetingText = 'Good morning,';
+    } else if (currentHour < 18) {
+        greetingText = 'Good afternoon,';
+    } else {
+        greetingText = 'Good evening,';
+    }
+
+    greetingContainer.textContent = greetingText;
+
+    // // Platzhalter für den Benutzernamen; "Sofia Müller" ersetzen wir später durch dynamischen Inhalt...
+    nameContainer.textContent = "EchterUserID";
+}
+>>>>>>> f8c86de162483bfef256fb56557b5e937dc52d51

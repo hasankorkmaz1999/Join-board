@@ -62,18 +62,24 @@
 
         <section class="content-container">
             <div class="metrics-container">
+
                 <div class="metrics-row">
                     <div class="summary-box" id="todoCounter" onclick="window.location.href='board.html'">
                         <img src="./IMGicons/Pencil.svg" alt="Pencil" class="metric-icon">
-                        <h2>To-do</h2>
-                        <p id="numberTodo">Loading...</p>
+                        <div class="metric-content">
+                            <p id="numberTodo">3</p>
+                            <h2>To-do</h2>
+                        </div>
                     </div>
                     <div class="summary-box" id="doneCounter" onclick="window.location.href='board.html'">
                         <img src="./IMGicons/done.svg" alt="done" class="metric-icon">
-                        <h2>Done</h2>
-                        <p id="numberDone">Loading...</p>
+                        <div class="metric-content">
+                            <p id="numberDone">4</p>
+                            <h2>Done</h2>
+                        </div>
                     </div>
                 </div>
+
                 <div class="metrics-row metrics-row-desktop">
                     <div class="summary-box" id="upcomingCounter" onclick="window.location.href='board.html'">
                         <img src="./IMGicons/high.svg" alt="high" class="metric-icon">
@@ -86,17 +92,20 @@
                     </div>
                 </div>
                 <div class="metrics-row">
-                    <div class="summary-box" id="taskInBoard" onclick="window.location.href='board.html'">
-                        <h2>Tasks in Board</h2>
+                    <div class="summary-box task-box" id="taskInBoard" onclick="window.location.href='board.html'">
                         <p id="numberTaskInBoard">Loading...</p>
+                        <h2>Tasks in <br> Board</h2>
+                        
                     </div>
-                    <div class="summary-box" id="taskInProgress" onclick="window.location.href='board.html'">
-                        <h2>Task In Progress</h2>
+                    <div class="summary-box task-box" id="taskInProgress" onclick="window.location.href='board.html'">
                         <p id="numberTaskInProgress">Loading...</p>
+                        <h2>Task In <br> Progress</h2>
+                        
                     </div>
-                    <div class="summary-box" id="taskAwaitFeedback" onclick="window.location.href='board.html'">
-                        <h2>Awaiting Feedback</h2>
+                    <div class="summary-box task-box" id="taskAwaitFeedback" onclick="window.location.href='board.html'">
                         <p id="numberTaskAwaitFeedback">Loading...</p>
+                        <h2>Awaiting <br> Feedback</h2>
+                        
                     </div>
                 </div>
             </div>
@@ -104,7 +113,10 @@
             <div id="greeting-container" class="greeting-container greeting">
                 <div class="greeting-flex-area">
                     <span id="greeting-text">Good morning,</span>
-                    <h1 id="NameOfAdmin">Loading...</h1>
+                    <!-- NameOfAdmin wird ersetzt durch userGreeting -->
+                    <h1 id="NameOfAdmin">Loading...</h1> 
+                    <!-- Hier ist der Platzhalter für den echten User mit der ID = "userGreeting" -->
+                    <h1 id="userGreeting">Loading...</h1> 
                 </div>
             </div>
         </section>

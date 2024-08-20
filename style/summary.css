@@ -21,6 +21,12 @@
 
 h1, h2, p {
     color: var(--deep-grey);
+    margin-top: 2px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 18px;
 }
 
 .contact-flex-header {
@@ -37,12 +43,14 @@ h1, h2, p {
 .greeting-container {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     margin: 20px;
     padding: 40px;
     background-color: var(--light-grey);
     border-radius: 8px;
-    display: none;
+    /* display: none; */
+    align-items: center;
+    justify-content: space-between;
 }
 
 .greeting-flex-area {
@@ -59,6 +67,7 @@ h1, h2, p {
 
 #greeting-text {
     font-size: 47px;
+    font-weight: 600;
     color: var(--deep-grey);
 }
 
@@ -99,11 +108,12 @@ h1, h2, p {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: #F7F8FC;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    /* transition: transform 0.3s, box-shadow 0.3s; */
     text-align: center;
     color: #2A3647;
     flex: 1;
@@ -118,6 +128,7 @@ h1, h2, p {
     background-color: #2A3647;
     color: white;
     transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .summary-box:hover h2,
@@ -126,15 +137,43 @@ h1, h2, p {
 }
 
 .summary-box img {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
+    width: 72px;
+    height: 80px;
+    /* margin-bottom: 10px; */
     filter: invert(0); /* Icon bleibt dunkel */
     transition: filter 0.3s ease;
 }
 
 .summary-box:hover img {
     filter: invert(1); /* Icon wird weiß */
+}
+
+/* Summary-Box spezifische Styles */
+.metric-icon {
+    margin-right: 16px; /* Abstand zwischen dem Icon und dem Text */
+}
+
+.task-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-box p {
+    font-size: 61px;
+}
+
+.metric-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#numberTodo, #numberDone {
+    font-size: 61px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    margin-top: 8px;
 }
 
 /* Box spezifische Styles */
@@ -160,6 +199,12 @@ h1, h2, p {
 
 #upcomingCounter img {
     filter: none; /* Icon bleibt in seiner Originalfarbe (Rot) */
+}
+
+.vertical-seperator2 {
+    border-left: 2px solid var(--deep-grey);
+    height: 59px;
+    margin: 0 20px;
 }
 
 #taskInBoard {

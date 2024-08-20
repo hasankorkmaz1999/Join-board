@@ -64,7 +64,6 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
 
     let progress = calculateProgress(task.subtasks);
 
-    // Berechne die Anzahl der erledigten und gesamten Subtasks
     let completedSubtasks = 0;
     let totalSubtasks = task.subtasks ? task.subtasks.length : 0;
 
@@ -76,7 +75,6 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
         }
     }
 
-   // Render Subtasks
    let subtasksHTML = '';
    if (task.subtasks && task.subtasks.length > 0) {
        for (let i = 0; i < task.subtasks.length; i++) {
@@ -93,7 +91,6 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
        }
    }
 
-   // Render Im Overlay
    let assignedToFullHTML = '';
 if (task.assignedto && task.assignedto.length > 0) {
     for (let j = 0; j < task.assignedto.length; j++) {
@@ -110,7 +107,6 @@ if (task.assignedto && task.assignedto.length > 0) {
 
 
 
-    // Render Assigned To
     let assignedToHTML = '';
 if (task.assignedto && task.assignedto.length > 0) {
     let maxNamesToShow = 3;
@@ -197,8 +193,6 @@ if (task.assignedto && task.assignedto.length > 0) {
 }
 
 
-/* Mini Menu
-***************************************************************** */
 function openMobileMenu(key) {
     const menu = document.getElementById(key);
 
@@ -255,7 +249,6 @@ document.addEventListener('click', function(event) {
     }
 });
 
-/* Mini menu End */
 
 function renderDivTodo(task, key) {
     let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
