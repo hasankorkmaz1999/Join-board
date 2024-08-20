@@ -421,6 +421,7 @@ h1 {
 
 .taskCategoryHTML {
   font-size: 24px;
+  margin-left: -15px;
   
 }
 
@@ -494,8 +495,9 @@ h1 {
 
 .taskTitleOverlay {
   margin-top: 10px;
- margin-bottom: 10px;
+  margin-bottom: 10px;
   font-size: 32px;
+ 
 }
 
 .AssignedTitle {
