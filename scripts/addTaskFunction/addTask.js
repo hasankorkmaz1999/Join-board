@@ -7,6 +7,7 @@ function init() {
     renderData(assignedtoAPI);
     addCheckboxEventListeners();
     forbiddenCourse();
+    initHeader();
 }
 
 function forbiddenCourse() {
