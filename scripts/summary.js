@@ -116,9 +116,6 @@ function displayGreeting() {
     } catch (error) {
         greeting = "Hello,";
         console.error("Error while getting the current hour: " + error);
-        
     }
-    
-
     greetingText.innerText = greeting;
 }
