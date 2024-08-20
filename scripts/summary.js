@@ -12,7 +12,20 @@ window.onload = function() {
     renderData(taskAPI);
     loadNameOfAdmin(NameOfAdmin);
     displayGreeting();
+    forbiddenCourse();
 };
+
+function forbiddenCourse() {
+    try {
+        let userID = localStorage.getItem('userId');
+        if (userID === null || userID === undefined) {
+            window.location.href = './login.html?msg=login_required';
+        }
+    } catch (error) {
+        console.error("Kein Zugriff auf localStorage möglich: ", error);
+        window.location.href = './login.html?msg=error_localStorage';
+    }
+}
 
 async function loadNameOfAdmin(URL) {
     let data = await loadData(URL);

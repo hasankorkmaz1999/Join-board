@@ -1,5 +1,7 @@
 window.onload = init;
 
+let register_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
+
 function init() {
     disableButtonLogin();
     showLogin('loginWindow');
@@ -46,11 +48,11 @@ function showFooterLogin(elementId) {
     }, 1000);
 }
 
-// Login Form Validation (echte E-Mail Adresse und Passwort mit mindestens 6 Zeichen)
 document.getElementById('loginButton').addEventListener('click', function(event) {
     event.preventDefault();
 
     let email = document.getElementById('signup-email').value;
+    let name = document.getElementById('signup-name').value;
     let password = document.getElementById('signup-password').value;
     let errorMessage = document.getElementById('error-message');
     errorMessage.style.display = 'none';
@@ -68,6 +70,57 @@ document.getElementById('loginButton').addEventListener('click', function(event)
         return;
     }
 
-    // form.submit(); // bei Bedarf ....
+    // Prepare data to be sent to the API
+    let userData = {
+        "email": email,
+        "name": name,
+        "password": password
+    };
+
+    // Make the API call to register the user
+    fetch(register_API + '/users.json', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Redirect to login.html with a success message
+            window.location.href = 'login.html?msg=signup_success';
+        } else {
+            return response.json().then(data => {
+                throw new Error(data.error || 'Registration failed');
+            });
+        }
+    })
+    .catch(error => {
+        errorMessage.innerText = 'Fehler bei der Registrierung: ' + error.message;
+        errorMessage.style.display = 'block';
+    });
 });
 
+function showPassword() {
+    let image = document.getElementById('signup-password-Image');
+    let passwordInput = document.getElementById('signup-password');
+    if (passwordInput.type === 'password') {
+        image.src = './IMGicons/visibility.svg';
+        passwordInput.type = 'text';
+    } else {
+        image.src = './IMGicons/visibility_off.svg';
+        passwordInput.type = 'password';
+    }
+}
+
+function showConfirmPassword() {
+    let image = document.getElementById('confirm-signup-password-Image');
+    let confirmPasswordInput = document.getElementById('confirm-signup-password');
+    if (confirmPasswordInput.type === 'password') {
+        image.src = './IMGicons/visibility.svg';
+        confirmPasswordInput.type = 'text';
+    } else {
+        image.src = './IMGicons/visibility_off.svg';
+        confirmPasswordInput.type = 'password';
+    }
+}

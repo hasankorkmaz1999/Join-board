@@ -9,6 +9,19 @@ let tasks = {};
 
 function init() {
     renderData(taskAPI);
+    forbiddenCourse();
+}
+
+function forbiddenCourse() {
+    try {
+        let userID = localStorage.getItem('userId');
+        if (userID === null || userID === undefined) {
+            window.location.href = './login.html?msg=login_required';
+        }
+    } catch (error) {
+        console.error("Kein Zugriff auf localStorage möglich: ", error);
+        window.location.href = './login.html?msg=error_localStorage';
+    }
 }
 
 async function renderData(URL) {
@@ -109,10 +122,27 @@ function allowDrop(event) {
     event.preventDefault();
 }
 
+function showDropIndicator(event) {
+    let target = event.currentTarget;
+    if (!target.querySelector('.drop-indicator')) {
+        let dropIndicator = document.createElement('div');
+        dropIndicator.classList.add('drop-indicator');
+        target.appendChild(dropIndicator);
+    }
+}
+
+function hideDropIndicator(event) {
+    let target = event.currentTarget;
+    let dropIndicator = target.querySelector('.drop-indicator');
+    if (dropIndicator) {
+        dropIndicator.remove();
+    }
+}
+
 function moveTo(category) {
     let data = {
         progress: category
-    }
+    };
     updateData(taskAPI, cureentDraggedElement, data);
 }
 
@@ -124,11 +154,15 @@ function updateData(URL, id, data) {
         },
         body: JSON.stringify(data)
     })
-    toastMessage("Task moved successfully!");
-    setTimeout(() => {
-        init();
-    }, 100);
+    .then(() => {
+        toastMessage("Task moved successfully!");
+        setTimeout(() => {
+            init();
+        }, 100);
+    });
 }
+
+
 
 function closeOverlay() {
     let overlay = document.getElementById('overlayforaddtask');
