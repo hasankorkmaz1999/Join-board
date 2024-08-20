@@ -41,6 +41,7 @@ span.asterisk {
 .editanddeletebuttonsub {
 display: flex;
 justify-content: flex-end;
+margin-left: -80px;
 }
 
 #subtaskList img{
@@ -59,11 +60,24 @@ justify-content: flex-end;
    display: flex;
    justify-content: space-between;
    align-items: center;
+   width: 550px
+  
+}
+
+.subtaskcontainer.editing {
+    background-color: initial; /* Setzt den Hintergrund zurück */
+    margin-bottom: 15px;
 }
 
 .subtaskcontainer.editing:hover {
     background-color: initial; /* Setzt den Hover-Effekt zurück */
     cursor: default; /* Zeigt den normalen Cursor an */
+}
+
+.save-btn {
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+    margin-right: 10px;
+    margin-left: 5px;
 }
 
 .edit-btn {
@@ -75,13 +89,16 @@ margin-right: 10px;
 }
 
 .edit-input {
+   
+    border-bottom: 2px solid blue !important;
     border: 1px solid var(--border-grey) !important;
     background-color: white !important;
     padding: 10px !important;
     font-family: 'Inter' !important;
     font-weight: 400 !important;
     font-size: 20px !important;
-    width: 100% !important;
+    width: 530px !important;
+   
 }
 .addTasktitle input,
 textarea#description {
@@ -263,7 +280,73 @@ p.create-mobile {
     align-items: flex-start;
 }
 
-input#subtasks,
+.linedivider {
+    width: 1px;
+    height: 20px;
+    background-color: #ccc;
+    display: none; 
+    margin-right: 5px;
+  }
+
+.subtask-input-wrapper {
+    display: flex;
+    align-items: center;
+    
+}
+
+.icons-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    margin-left: -85px;
+}
+
+.icon {
+    width: 15px;
+    height: 15px;
+    margin-bottom: 2px;
+    display: none; 
+    cursor: pointer;
+}
+
+
+
+.iconX {
+    height: 30px;
+    display: none; 
+    cursor: pointer;
+}
+
+#checkIcon {
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+   
+}
+
+
+input#subtasks {
+    padding-right: 30px; 
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-grey);
+    border-radius: 10px;
+    background-color: var(--white);
+    padding: 10px 30px 10px 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    font-family: 'Inter';
+    background-image: url('./..//IMGicons/plus.png'); 
+    background-repeat: no-repeat;
+    background-position: right 15px center; 
+    background-size: 20px;  
+}
+
+input#subtasks.no-plus {
+    background-image: none; /* Entfernt das Plus-Symbol */
+}
+
+
 select#category,
 .addTaskAssignedTo select {
     appearance: none; 
