@@ -76,6 +76,9 @@ function checkRegister() {
     if (msg === 'error_localStorage') {
         toastMessage("There was a problem with auttherification.");
     };
+    if (msg === 'logout') {
+        toastMessage("You have been successfully logged out.");
+    };
 };
 
 document.getElementById('loginButton').addEventListener('click', function(event) {
