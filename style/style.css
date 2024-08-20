@@ -31,7 +31,6 @@ html {
 body {
     font-family: 'Inter';
     background-color: var(--body-background);
-    max-width: 1920px;
     margin: 0 auto;
 }
 

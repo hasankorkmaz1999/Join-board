@@ -1,13 +1,13 @@
 .main-content {
     margin-top: 80px;
-    margin-left: 332px; /* Anpassung an die Breite der Seitenleiste */
+    margin-left: 332px;
     margin-right: 120px;
     padding: 20px;
     background-color: var(--body-background-grey);
     height: 85vh;
 }
 
-.metrics-row-mobile,
+.upcoming-mobile,
 .joinLogo {
     display: none;
 }
@@ -288,7 +288,7 @@ h2 {
 } 
 
 @media (max-width: 510px) {
-    .metrics-row-desktop,
+    p.upcoming-desktop,
     .subheader-contact {
         display: none;
     }
@@ -313,8 +313,20 @@ h2 {
         z-index: 20;
         left: 16px;
     }
-    .metrics-row-mobile {
+    p.upcoming-mobile {
         display: block;
+        font-size: 16px;
+        line-height: 19.2px;
+        font-weight: 400;
+    }
+    p#dateUpcomming {
+        font-size: 21px;
+        line-height: 25.2px;
+        font-weight: 700;
+    }
+    .flexhelper-mobile {
+        border-left: 2px solid var(--border-grey);
+
     }
 
 } 

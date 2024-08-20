@@ -35,7 +35,6 @@ html {
 body {
     background-color: var(--body-background-grey);
     font-family: 'Inter';
-    max-width: 1920px;
     margin: 0 auto;
 }
 
