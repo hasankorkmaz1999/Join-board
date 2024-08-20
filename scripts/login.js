@@ -94,6 +94,8 @@ document.getElementById('loginButton').addEventListener('click', function(event)
                 if (users[userId].email === email && users[userId].password === password) {
                     if (rememberMe) {
                         localStorage.setItem('userId', userId);
+                    } else {
+                        sessionStorage.setItem('userId', userId); // Speichern der ID in der Session
                     }
                     window.location.href = './summary.html'; // Redirect to the summary or dashboard page
                     return;
@@ -106,4 +108,14 @@ document.getElementById('loginButton').addEventListener('click', function(event)
             errorMessage.innerText = 'An error occurred during login: ' + error.message;
             errorMessage.style.display = 'block';
         });
+});
+
+document.getElementById('guestLoginButton').addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    // Speichere einen Guest Token im localStorage
+    sessionStorage.setItem('guestToken', 'true');
+    
+    // Leite den Gast auf die geschützte Seite weiter
+    window.location.href = './summary.html'; // Oder die Seite, auf die Gäste Zugriff haben sollen
 });
