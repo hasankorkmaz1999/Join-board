@@ -10,6 +10,7 @@ function init() {
     loadNameOfAdmin();
     forbiddenCourse();
     initHeader();
+    loadDeadline();
 }
 
 /* window.onload = function() {
@@ -209,7 +210,7 @@ function findNextDeadline(tasks) {
     }
 }
 
-async function init() {
+async function loadDeadline() {
     let tasks = await loadData(taskAPI);  // Ladet alle Tasks...
     countUrgentTasks(tasks);  // Aktualisiert; Urgent-Zähler
     findNextDeadline(tasks);  // Findet die nächste Deadline
