@@ -23,8 +23,21 @@ window.onload = init;
  */
 function init() {
     renderData(API);
+    forbiddenCourse();
 }
 let activeContactId = null; // to track the currently active contact
+
+function forbiddenCourse() {
+    try {
+        let userID = localStorage.getItem('userId');
+        if (userID === null || userID === undefined) {
+            window.location.href = './login.html?msg=login_required';
+        }
+    } catch (error) {
+        console.error("Kein Zugriff auf localStorage möglich: ", error);
+        window.location.href = './login.html?msg=error_localStorage';
+    }
+}
 /**
  * Renders the contact data on the page.
  * @param {string} URL - The URL from which to load the data.

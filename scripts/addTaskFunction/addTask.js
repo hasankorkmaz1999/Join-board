@@ -6,7 +6,19 @@ window.onload = init;
 function init() {
     renderData(assignedtoAPI);
     addCheckboxEventListeners();
-/*     displayInitials(); */
+    forbiddenCourse();
+}
+
+function forbiddenCourse() {
+    try {
+        let userID = localStorage.getItem('userId');
+        if (userID === null || userID === undefined) {
+            window.location.href = './login.html?msg=login_required';
+        }
+    } catch (error) {
+        console.error("Kein Zugriff auf localStorage möglich: ", error);
+        window.location.href = './login.html?msg=error_localStorage';
+    }
 }
 
   /* Auswahlbutton in addTask: Low, Medium, Urgent */
