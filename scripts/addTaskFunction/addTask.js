@@ -12,8 +12,13 @@ function init() {
 function forbiddenCourse() {
     try {
         let userID = localStorage.getItem('userId');
-        if (userID === null || userID === undefined) {
+        let guestToken = localStorage.getItem('guestToken');
+        if (userID === null && guestToken === null) {
+            // Falls weder userID noch guestToken vorhanden ist, umleiten
             window.location.href = './login.html?msg=login_required';
+        } else if (guestToken !== null) {
+            // Hier könntest du z.B. Einschränkungen für Gäste definieren
+            console.log("Gastzugriff gewährt");
         }
     } catch (error) {
         console.error("Kein Zugriff auf localStorage möglich: ", error);
