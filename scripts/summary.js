@@ -9,6 +9,7 @@ function init() {
     displayGreeting();
     loadNameOfAdmin();
     forbiddenCourse();
+    initHeader();
 }
 
 /* window.onload = function() {

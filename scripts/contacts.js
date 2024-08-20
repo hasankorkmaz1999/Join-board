@@ -24,6 +24,7 @@ window.onload = init;
 function init() {
     renderData(API);
     forbiddenCourse();
+    initHeader();
 }
 let activeContactId = null; // to track the currently active contact
 

@@ -1,7 +1,5 @@
 const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users';
 
-/* window.onload = initHeader;
-
 async function initHeader() {
     try {
         const userID1 = sessionStorage.getItem('userId');
@@ -43,7 +41,7 @@ function getInitials(fullName) {
     }
 
     return initials.substring(0, 2); // Stellt sicher, dass nur maximal 2 Buchstaben zurückgegeben werden
-} */
+}
 
 function infoTap() {
     let infoDIV = document.getElementById('dropdown-content');
