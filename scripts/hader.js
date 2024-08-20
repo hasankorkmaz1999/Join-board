@@ -26,7 +26,7 @@ async function initHeader() {
         document.getElementById('PB').innerHTML = initials;
 
     } catch (error) {
-        console.error("Error initializing the header:", error);
+        console.warn("Error initializing the header (Demo Login):", error);
     }
 }
 
