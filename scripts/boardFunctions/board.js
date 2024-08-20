@@ -10,6 +10,7 @@ let tasks = {};
 function init() {
     renderData(taskAPI);
     forbiddenCourse();
+    initHeader();
 }
 
 function forbiddenCourse() {
