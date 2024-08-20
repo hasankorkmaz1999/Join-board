@@ -333,6 +333,7 @@ document.getElementById('subtasks').addEventListener('input', function() {
 
 // Event Listener für das Klicken auf das Häkchen
 document.getElementById('checkIcon').addEventListener('click', function() {
+    
     const subtaskInput = document.getElementById('subtasks');
     const subtaskTitle = subtaskInput.value.trim();
 
