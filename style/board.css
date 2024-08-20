@@ -49,6 +49,14 @@ body {
   height: 100vh;
 }
 
+.drop-indicator {
+  border: 2px dashed rgba(0, 0, 0, 0.1);
+  height: 150px;
+  margin-bottom: 10px;
+  width: 230px;
+  border-radius: 10px;
+}
+
 .progress-window {
   display: flex;
   flex-direction: column;
@@ -362,9 +370,9 @@ h1 {
   border-radius: 5px;
   overflow: hidden;
   height: 10px;
-  margin: 10px 0;
+ 
   width: 55%;
-  margin-right: 10px;
+  margin-right: 5px;
   position: relative;
   display: inline-block;
   
@@ -402,7 +410,7 @@ h1 {
 .subtask-progress {
   width: 100px;
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 14px;
   margin-right: 5px;
 }
 

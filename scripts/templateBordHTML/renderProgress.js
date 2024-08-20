@@ -54,143 +54,138 @@ function avatarColors() {
 
 
 
-function renderTaskCard(task, key, categoryClass, svgIcons) {
-    let priorityIcon = '';
-    if (task.priority) {
-        priorityIcon = svgIcons[task.priority.toLowerCase()] || '';
-    }
+    function renderTaskCard(task, key, categoryClass, svgIcons) {
+        let priorityIcon = '';
+        if (task.priority) {
+            priorityIcon = svgIcons[task.priority.toLowerCase()] || '';
+        }
+        
+        let typHTML = `<span class="${categoryClass}">${task.category}</span>`;
     
-    let typHTML = `<span class="${categoryClass}">${task.category}</span>`;
-
-    let progress = calculateProgress(task.subtasks);
-
-    let completedSubtasks = 0;
-    let totalSubtasks = task.subtasks ? task.subtasks.length : 0;
-
-    if (task.subtasks && task.subtasks.length > 0) {
-        for (let i = 0; i < task.subtasks.length; i++) {
-            if (task.subtasks[i].itsdone) {
-                completedSubtasks++;
+        let progress = calculateProgress(task.subtasks);
+    
+        let completedSubtasks = 0;
+        let totalSubtasks = task.subtasks ? task.subtasks.length : 0;
+    
+        if (task.subtasks && task.subtasks.length > 0) {
+            for (let i = 0; i < task.subtasks.length; i++) {
+                if (task.subtasks[i].itsdone) {
+                    completedSubtasks++;
+                }
             }
         }
-    }
-
-   let subtasksHTML = '';
-   if (task.subtasks && task.subtasks.length > 0) {
-       for (let i = 0; i < task.subtasks.length; i++) {
-           let subtask = task.subtasks[i];
-           subtasksHTML += `
-              <div class="subtask-item">
-                  <label>
-                      <input class="styled-checkbox" type="checkbox" id="subtask-checkbox-${key}-${i}" ${subtask.itsdone ? 'checked' : ''}
-                      onclick="toggleSubtaskStatus(&#39;${key}&#39;, ${i}, this.checked)">
-                      <span>${subtask.title}</span>
-                  </label>
-              </div>
-           `;
-       }
-   }
-
-   let assignedToFullHTML = '';
-if (task.assignedto && task.assignedto.length > 0) {
-    for (let j = 0; j < task.assignedto.length; j++) {
-        let assignedTo = task.assignedto[j];
-        let initials = getInitials(assignedTo.name);
-        let avatarColor = getAvatarColor(assignedTo.name);
-
-        assignedToFullHTML += `
-            <div class="assignedtoItem" style="background-color: ${avatarColor}; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
-                <span class="assignedtoavatar">${initials}</span>
-            </div>`;
-    }
-}
-
-
-
-    let assignedToHTML = '';
-if (task.assignedto && task.assignedto.length > 0) {
-    let maxNamesToShow = 3;
-    let remainingNames = task.assignedto.length - maxNamesToShow;
-
-    for (let j = 0; j < task.assignedto.length && j < maxNamesToShow; j++) {
-        let assignedTo = task.assignedto[j];
-        let initials = getInitials(assignedTo.name);
-        let avatarColor = getAvatarColor(assignedTo.name);
-
-        assignedToHTML += `
-            <div class="assignedtoItem" style="background-color: ${avatarColor}; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
-                <span class="assignedtoavatar">${initials}</span>
-            </div>`;
-    }
-
-    if (remainingNames > 0) {
-        assignedToHTML += `
-            <div class="assignedtoItem" style="background-color: #ccc; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
-                <span class="assignedtoavatar">+${remainingNames}</span>
-            </div>`;
-    }
-}
-
-
-
-    let progressHTML = '';
-    if (completedSubtasks > 0) {
-        progressHTML = `
-    <div class="Progress">
-        <span class="progress-bar-container">
-            <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"
-                data-tooltip="${completedSubtasks}/${totalSubtasks} Subtasks"></div>
-        </span>
-        <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
-    </div>`;
-    }
-
-    // Render Assigned To Full Name
-    let assignedToFullNameHTML = '';
-    if (task.assignedto && task.assignedto.length > 0) {
-        for (let j = 0; j < task.assignedto.length; j++) {
-            let assignedTo = task.assignedto[j];
-            assignedToFullNameHTML += `<span class="fullnames">${assignedTo.name}</span>`;
-        }
-    }
-
-    let taskData = {
-        taskTitle: task.task,
-        taskDescription: task.description,
-        taskPriorityIcon: priorityIcon,
-        taskPriority: task.priority,
-        taskCategoryHTML: typHTML,
-        dueDate: task.duedate,
-        subtasksHTML: subtasksHTML,
-        assignedToHTML: assignedToHTML,
-        assignedToFullNameHTML: assignedToFullNameHTML,
-        assignedToFullHTML: assignedToFullHTML
-    };
-
     
-
-    return /*html*/`
-    <div id="task-card" onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
-        ${typHTML}
-        <div class="task-title">${task.task}</div>
-        <div class="task-description">${task.description}</div>
-        ${progressHTML}
-
-        <div class="taskpriority">
-            <div class="assignedToHTML"> ${assignedToHTML} </div>
-            ${priorityIcon}
+        let subtasksHTML = '';
+        if (task.subtasks && task.subtasks.length > 0) {
+            for (let i = 0; i < task.subtasks.length; i++) {
+                let subtask = task.subtasks[i];
+                subtasksHTML += `
+                    <div class="subtask-item">
+                        <label>
+                            <input class="styled-checkbox" type="checkbox" id="subtask-checkbox-${key}-${i}" ${subtask.itsdone ? 'checked' : ''}
+                            onclick="toggleSubtaskStatus(&#39;${key}&#39;, ${i}, this.checked)">
+                            <span>${subtask.title}</span>
+                        </label>
+                    </div>
+                `;
+            }
+        }
+        
+    
+        let assignedToFullHTML = '';
+        if (task.assignedto && task.assignedto.length > 0) {
+            for (let j = 0; j < task.assignedto.length; j++) {
+                let assignedTo = task.assignedto[j];
+                let initials = getInitials(assignedTo.name);
+                let avatarColor = getAvatarColor(assignedTo.name);
+    
+                assignedToFullHTML += `
+                    <div class="assignedtoItem" style="background-color: ${avatarColor}; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
+                        <span class="assignedtoavatar">${initials}</span>
+                    </div>`;
+            }
+        }
+    
+        let assignedToHTML = '';
+        if (task.assignedto && task.assignedto.length > 0) {
+            let maxNamesToShow = 3;
+            let remainingNames = task.assignedto.length - maxNamesToShow;
+    
+            for (let j = 0; j < task.assignedto.length && j < maxNamesToShow; j++) {
+                let assignedTo = task.assignedto[j];
+                let initials = getInitials(assignedTo.name);
+                let avatarColor = getAvatarColor(assignedTo.name);
+    
+                assignedToHTML += `
+                    <div class="assignedtoItem" style="background-color: ${avatarColor}; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
+                        <span class="assignedtoavatar">${initials}</span>
+                    </div>`;
+            }
+    
+            if (remainingNames > 0) {
+                assignedToHTML += `
+                    <div class="assignedtoItem" style="background-color: #ccc; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">  
+                        <span class="assignedtoavatar">+${remainingNames}</span>
+                    </div>`;
+            }
+        }
+    
+        let progressHTML = '';
+        if (totalSubtasks > 0) { 
+            progressHTML = `
+            <div class="Progress">
+                <span class="progress-bar-container">
+                    <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"
+                        data-tooltip="${completedSubtasks}/${totalSubtasks} Subtasks"></div>
+                </span>
+                <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
+            </div>`;
+        }
+    
+        // Render Assigned To Full Name
+        let assignedToFullNameHTML = '';
+        if (task.assignedto && task.assignedto.length > 0) {
+            for (let j = 0; j < task.assignedto.length; j++) {
+                let assignedTo = task.assignedto[j];
+                assignedToFullNameHTML += `<span class="fullnames">${assignedTo.name}</span>`;
+            }
+        }
+    
+        let taskData = {
+            taskTitle: task.task,
+            taskDescription: task.description,
+            taskPriorityIcon: priorityIcon,
+            taskPriority: task.priority,
+            taskCategoryHTML: typHTML,
+            dueDate: task.duedate,
+            subtasksHTML: subtasksHTML,
+            assignedToHTML: assignedToHTML,
+            assignedToFullNameHTML: assignedToFullNameHTML,
+            assignedToFullHTML: assignedToFullHTML
+        };
+    
+        return /*html*/`
+        <div id="task-card" onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
+            ${typHTML}
+            <div class="task-title">${task.task}</div>
+            <div class="task-description">${task.description}</div>
+            ${progressHTML} <!-- Progress-Bar HTML hier eingefügt -->
+            <div class="taskpriority">
+                <div class="assignedToHTML">${assignedToHTML}</div>
+                ${priorityIcon}
+            </div>
         </div>
-    </div>
-    <img onclick="openMobileMenu('${key}')" class="responsive-dots" src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
-    <div class="miniMenu" id="${key}">
-        <span class="featTxt" style="text-decoration:none;cursor:unset;">Move to:</span>
-        <span class="mini-menu" onclick="pushInToDo('${key}')">To-Do</span>
-        <span class="mini-menu" onclick="pushInProgress('${key}')">In Progress</span>
-        <span class="mini-menu" onclick="pushInAwaitFeedback('${key}')">Await feedback</span>
-        <span class="mini-menu" onclick="pushInDone('${key}')">Done</span>
-    </div>
-    `;
-}
+        <img onclick="openMobileMenu('${key}')" class="responsive-dots" src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
+        <div class="miniMenu" id="${key}">
+            <span class="featTxt" style="text-decoration:none;cursor:unset;">Move to:</span>
+            <span class="mini-menu" onclick="pushInToDo('${key}')">To-Do</span>
+            <span class="mini-menu" onclick="pushInProgress('${key}')">In Progress</span>
+            <span class="mini-menu" onclick="pushInAwaitFeedback('${key}')">Await feedback</span>
+            <span class="mini-menu" onclick="pushInDone('${key}')">Done</span>
+        </div>
+        `;
+    }
+    
 
 
 function openMobileMenu(key) {
@@ -276,20 +271,23 @@ function toggleSubtaskStatus(taskKey, subtaskIndex, isChecked) {
     task.subtasks[subtaskIndex].itsdone = isChecked;
 
     let progress = calculateProgress(task.subtasks);
-    
+
     let progressBar = document.getElementById(`progress-bar-${taskKey}`);
     if (progressBar) {
         progressBar.style.width = `${progress}%`;
-    } else if (progress > 0) {
-        
     }
+
     let subtaskProgress = document.getElementById(`subtask-progress-${taskKey}`);
     if (subtaskProgress) {
         let completedSubtasks = task.subtasks.filter(subtask => subtask.itsdone).length;
         subtaskProgress.innerText = `${completedSubtasks}/${task.subtasks.length} Subtasks`;
     }
-  updateTaskOnServer(taskKey, task);
+
+    // Aktualisiere den Zustand im Backend oder speichere den aktuellen Zustand im tasks-Objekt
+    updateTaskOnServer(taskKey, task);
 }
+
+
 
 
 function calculateProgress(subtasks) {
