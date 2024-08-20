@@ -43,7 +43,7 @@ function getInitials(fullName) {
     }
 
     return initials.substring(0, 2); // Stellt sicher, dass nur maximal 2 Buchstaben zurückgegeben werden
-}
+} */
 
 function infoTap() {
     let infoDIV = document.getElementById('dropdown-content');
@@ -55,7 +55,7 @@ function infoTap() {
         infoDIV.classList.add('dropdown-content');
         infoDIV.classList.remove('d-none');
     }
-} */
+}
 
 function logout() {
     try {
