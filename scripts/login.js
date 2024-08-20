@@ -114,7 +114,7 @@ document.getElementById('guestLoginButton').addEventListener('click', function(e
     event.preventDefault();
     
     // Speichere einen Guest Token im localStorage
-    localStorage.setItem('guestToken', 'true');
+    sessionStorage.setItem('guestToken', 'true');
     
     // Leite den Gast auf die geschützte Seite weiter
     window.location.href = './summary.html'; // Oder die Seite, auf die Gäste Zugriff haben sollen

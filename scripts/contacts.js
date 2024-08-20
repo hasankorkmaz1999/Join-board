@@ -30,7 +30,7 @@ let activeContactId = null; // to track the currently active contact
 function forbiddenCourse() {
     try {
         let userID = localStorage.getItem('userId');
-        let guestToken = localStorage.getItem('guestToken');
+        let guestToken = sessionStorage.getItem('guestToken');
         if (userID === null && guestToken === null) {
             // Falls weder userID noch guestToken vorhanden ist, umleiten
             window.location.href = './login.html?msg=login_required';
@@ -42,7 +42,7 @@ function forbiddenCourse() {
         console.error("Kein Zugriff auf localStorage möglich: ", error);
         window.location.href = './login.html?msg=error_localStorage';
     }
-}
+};
 /**
  * Renders the contact data on the page.
  * @param {string} URL - The URL from which to load the data.
@@ -57,7 +57,7 @@ async function renderData(URL) {
     disableSpinner();
     let addButton = document.getElementById('add-contact-btn');
     addButton.disabled = false;
-}
+};
 /**
  * Renders the contact data.
  * @param {Object} data - The contact data.
@@ -87,7 +87,7 @@ function renderContactsByLetter(contactKeys, contacts, content, currentLetter) {
         }
         content.innerHTML += renderContact(element, contactKeys[i]);
     }
-}
+};
 /**
  * Disables the loading spinner.
  */
