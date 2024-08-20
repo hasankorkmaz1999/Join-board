@@ -46,6 +46,12 @@ margin-left: -80px;
 
 #subtaskList img{
     cursor: pointer;
+   
+}
+
+#subtaskList {
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .subtaskcontainer:hover  {
@@ -60,7 +66,7 @@ margin-left: -80px;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   width: 550px
+   width: 100%;
   
 }
 
@@ -97,7 +103,7 @@ margin-right: 10px;
     font-family: 'Inter' !important;
     font-weight: 400 !important;
     font-size: 20px !important;
-    width: 530px !important;
+    width: 100% !important;
    
 }
 .addTasktitle input,
