@@ -151,6 +151,7 @@ numberTaskInProgress
 numberTaskAwaitFeedback
 */
 
+
 function displayGreeting() {
     let greetingText = document.getElementById('greeting-text');
     let currentHour = new Date().getHours();
@@ -168,4 +169,47 @@ function displayGreeting() {
         console.error("Error while getting the current hour: " + error);
     }
     greetingText.innerText = greeting;
+}
+
+
+async function countUrgentTasks(tasks) {
+    let urgentCount = 0;
+
+    for (let key in tasks) {
+        let task = tasks[key];
+        if (task.priority === "urgent" && task.progress !== "done") {
+            urgentCount++;
+        }
+    }
+
+    document.getElementById("numberUpcomming").textContent = urgentCount;
+}
+
+function findNextDeadline(tasks) {
+    let today = new Date();
+    let upcomingDeadline = null;
+
+    for (let key in tasks) {
+        let task = tasks[key];
+        let taskDate = new Date(task.date);
+
+        if (taskDate >= today && task.progress !== "done") {
+            if (!upcomingDeadline || taskDate < upcomingDeadline) {
+                upcomingDeadline = taskDate;
+            }
+        }
+    }
+
+    if (upcomingDeadline) {
+        let options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById("dateUpcomming").textContent = upcomingDeadline.toLocaleDateString('en-US', options);
+    } else {
+        document.getElementById("dateUpcomming").textContent = "No upcoming deadlines";
+    }
+}
+
+async function init() {
+    let tasks = await loadData(taskAPI);  // Ladet alle Tasks...
+    countUrgentTasks(tasks);  // Aktualisiert; Urgent-Zähler
+    findNextDeadline(tasks);  // Findet die nächste Deadline
 }
