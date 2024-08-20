@@ -101,26 +101,25 @@ numberTaskInProgress
 numberTaskAwaitFeedback
 */
 
-<<<<<<< HEAD
-function displayGreeting() {
-    let greetingText = document.getElementById('greeting-text');
-    let currentHour = new Date().getHours();
-    let greeting;
-    try {
-        if (currentHour < 12) {
-            greeting = "Good morning,";
-        } else if (currentHour < 18) {
-            greeting = "Good afternoon,";
-        } else {
-            greeting = "Good evening,";
-        }
-    } catch (error) {
-        greeting = "Hello,";
-        console.error("Error while getting the current hour: " + error);
-    }
-    greetingText.innerText = greeting;
-}
-=======
+// function displayGreeting() {
+//     let greetingText = document.getElementById('greeting-text');
+//     let currentHour = new Date().getHours();
+//     let greeting;
+//     try {
+//         if (currentHour < 12) {
+//             greeting = "Good morning,";
+//         } else if (currentHour < 18) {
+//             greeting = "Good afternoon,";
+//         } else {
+//             greeting = "Good evening,";
+//         }
+//     } catch (error) {
+//         greeting = "Hello,";
+//         console.error("Error while getting the current hour: " + error);
+//     }
+//     greetingText.innerText = greeting;
+// }
+
 // function displayGreeting() {
 //     let greetingText = document.getElementById('greeting-text');
 //     let currentHour = new Date().getHours();
@@ -164,4 +163,3 @@ function displayGreeting() {
     // // Platzhalter für den Benutzernamen; "Sofia Müller" ersetzen wir später durch dynamischen Inhalt...
     nameContainer.textContent = "EchterUserID";
 }
->>>>>>> f8c86de162483bfef256fb56557b5e937dc52d51
