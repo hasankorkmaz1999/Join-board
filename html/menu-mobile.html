@@ -31,10 +31,10 @@
 }
 
 
-.footer-mobile,
+/* .footer-mobile,
 .menu-mobile {
     font-family: 'Open Sans';
-}
+} */
 
 .menu-mobile {
     display: flex;
@@ -62,7 +62,7 @@ img.mobile-menu {
 span.mobile {
     font-family: 'Open Sans';
     color: var(--links-grey);
-    font-size: 14px;
+    font-size: 14px !important;
     line-height: 16.8px;
 }
 span.mobile:hover {
@@ -88,18 +88,22 @@ span.mobile:hover {
 .footer-link {
     position: fixed;
     bottom: 15px;
+    font-size: 14px !important;
 }
 
 a.footer-link {
     text-decoration: none;
+    font-size: 14px !important;
 }
 
 .footer-link a {
     text-decoration: none;
+    font-size: 14px !important;
 }
 
 span.mobile a {
     text-decoration: none;
+    font-size: 14px !important;
 }
 
 .footer-mobile {
@@ -163,22 +167,22 @@ span.mobile a {
     <div class="menu-mobile">
         <div class="mobile-menu-botton mobile-summary">
             <a href="../summary.html" class="footer-link">
-                <span class="mobile">Summary</span>
+                <span class="mobile footer-link-summary">Summary</span>
             </a>
         </div>
         <div class="mobile-menu-botton mobile-board">
             <a href="../board.html" class="footer-link">
-                <span class="mobile">Board</span>
+                <span class="mobile footer-link-board">Board</span>
             </a>
         </div>
         <div class="mobile-menu-botton mobile-addTask">
             <a href="../add_task.html" class="footer-link">
-                <span class="mobile">Add Tasks</span>
+                <span class="mobile footer-link-addTask">Add Tasks</span>
             </a>
         </div>
         <div class="mobile-menu-botton mobile-contacts">
             <a href="../contacts.html" class="footer-link">
-                <span class="mobile">Contacts</span>
+                <span class="mobile footer-link-contacts">Contacts</span>
             </a>
         </div>
     </div>

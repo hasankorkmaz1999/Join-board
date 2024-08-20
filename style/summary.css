@@ -7,7 +7,6 @@
     height: 85vh;
 }
 
-.upcoming-mobile,
 .joinLogo {
     display: none;
 }
@@ -228,5 +227,43 @@ h2 {
 #taskAwaitFeedback:hover {
     background-color: #2A3647;
     color: white;
+}
+
+p.upcoming-desktop {
+    display: none;
+}
+
+.mobile-flex {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-line {
+    width: 2px;
+    height: 90%;
+    border-left: 2px solid var(--border-grey);
+}
+
+#upcomingCounter {
+    display: flex;
+    justify-content: space-around;
+}
+
+p.urgent-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+}
+
+#dateUpcomming {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 25.2px;
+}
+
+p.upcoming-mobile {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25.2px;
 }
 

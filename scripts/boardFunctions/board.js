@@ -15,7 +15,7 @@ function init() {
 function forbiddenCourse() {
     try {
         let userID = localStorage.getItem('userId') || sessionStorage.getItem('userId');
-        let guestToken = localStorage.getItem('guestToken');
+        let guestToken = sessionStorage.getItem('guestToken');
         if (userID === null && guestToken === null) {
             // Falls weder userID noch guestToken vorhanden ist, umleiten
             window.location.href = './login.html?msg=login_required';

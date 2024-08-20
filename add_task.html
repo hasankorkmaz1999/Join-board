@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="style/headerstyle.css">
     <link rel="stylesheet" href="style/add_task.css">
     <link rel="stylesheet" href="style/addTaskResponsive.css">
-    <!-- <link rel="stylesheet" href="style/test_add_task.css"> -->
 
     <script src="scripts/w3include.js"></script>
 
@@ -37,17 +36,13 @@
         }
         .mobile-addTask {
             background-image: url(./../IMGicons/mobile_addTask_active.svg) !important;
+            background-color: var(--deepest-grey);
             background-repeat: no-repeat;
             background-position: center 6px;
         }
-        .mobile-addTask {
-            background-color: var(--deepest-grey);
-            
+        span.mobile.footer-link-addTask {
+            color: var(--white);
         }
-        span.mobile {
-            color: var(--white) !important;
-        }
-
     </style>
 </head>
 <body onload="includeHTML()">
@@ -192,6 +187,7 @@
     <script src="./scripts/addTaskFunction/testForm.js"></script>
     <script src="./scripts/addTaskFunction/addTask.js"></script>
     <script src="./scripts/forward.js"></script>
+    <script src="./scripts/hader.js"></script>
 
     <script>
         includeHTML();

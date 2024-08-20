@@ -1,24 +1,37 @@
 const taskAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
 const NameOfAdmin = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/profile";
+const user_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users";
 
-// window.onload = init();
+window.onload = init();
 
-// function init() {
-//     renderData(taskAPI);
-//     displayGreeting();
-// }
-
-window.onload = function() {
+function init() {
     renderData(taskAPI);
-    loadNameOfAdmin(NameOfAdmin);
+    displayGreeting();
+    loadNameOfAdmin();
+    forbiddenCourse();
+}
+
+/* window.onload = function() {
+    renderData(taskAPI);
+    loadNameOfAdmin();
     displayGreeting();
     forbiddenCourse();
-};
+}; */
+
+/* function infoTap() {
+    let infoDIV = document.getElementById('dropdown-content');
+    let checkClass = infoDIV.classList.contains('show');
+    if (checkClass) {
+        infoDIV.classList.remove('d-none');
+    } else {
+        infoDIV.classList.add('dropdown-content');
+    }
+} */
 
 function forbiddenCourse() {
     try {
         let userID = localStorage.getItem('userId') || sessionStorage.getItem('userId');
-        let guestToken = localStorage.getItem('guestToken');
+        let guestToken = sessionStorage.getItem('guestToken');
         if (userID === null && guestToken === null) {
             // Falls weder userID noch guestToken vorhanden ist, umleiten
             window.location.href = './login.html?msg=login_required';
@@ -32,10 +45,29 @@ function forbiddenCourse() {
     }
 }
 
-async function loadNameOfAdmin(URL) {
-    let data = await loadData(URL);
-    document.getElementById('NameOfAdmin').innerHTML = data.name;
-}
+    async function loadNameOfAdmin() {
+        let tempUserID = sessionStorage.getItem('userId'); 
+        let saveUserID = localStorage.getItem('userId'); 
+        let guestToken = sessionStorage.getItem('guestToken');
+        
+        if (tempUserID) {
+            let data = await loadData(`${user_API}/${tempUserID}`);
+            document.getElementById('NameOfAdmin').innerHTML = data.name;
+            return;
+        } 
+        
+        if (saveUserID) {
+            let data = await loadData(`${user_API}/${saveUserID}`);
+            document.getElementById('NameOfAdmin').innerHTML = data.name;
+            return;
+        } 
+        
+        if (guestToken === "true") {
+            let data = await loadData(NameOfAdmin);
+            document.getElementById('NameOfAdmin').innerHTML = data.name;
+        }
+    }
+    
 
 async function renderData(URL) {
     let data = await loadData(URL);

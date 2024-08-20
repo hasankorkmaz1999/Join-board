@@ -30,7 +30,6 @@
     .contact-flex-header {
         gap: 0;
         display: flex;
-        justify-content: center;
     }
 }
 
@@ -86,12 +85,11 @@
         font-weight: 700;
     }
     .flexhelper-mobile {
-        border-left: 2px solid var(--border-grey);
         width: 90px;
         padding-left: 10px;
     }
     .metrics-row-desktop {
-        width: 300px;
+        min-width: 300px;
     }
     .flexhelper-urgent {
         display: flex;
@@ -135,7 +133,6 @@
     #doneCounter {
         width: 120px;
         padding: 10px;
-        margin-right: 5px;
         gap: 0;
     }
     .main-content {
@@ -154,19 +151,23 @@
     #taskInBoard,
     #taskInProgress,
     #taskAwaitFeedback {
-        max-width: 90px;
+        min-width: 90px;
         margin: 0 4px;
     }
-} 
-
-
-@media (max-width: 400px) {
+    .mobile-line {
+        width: 2px;
+        height: 90%;
+        border-left: 2px solid var(--border-grey);
+    }
     .footer-mobile {
         display: block !important;
     }
     .header-left {
         display: none;
     }
-
+    #todoCounter {
+        margin-right: 10px;
+    }
 }
+
 
