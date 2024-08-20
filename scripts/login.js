@@ -94,6 +94,8 @@ document.getElementById('loginButton').addEventListener('click', function(event)
                 if (users[userId].email === email && users[userId].password === password) {
                     if (rememberMe) {
                         localStorage.setItem('userId', userId);
+                    } else {
+                        sessionStorage.setItem('userId', userId); // Speichern der ID in der Session
                     }
                     window.location.href = './summary.html'; // Redirect to the summary or dashboard page
                     return;
