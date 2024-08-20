@@ -41,13 +41,13 @@ function forbiddenCourse() {
         if (tempUserID) {
             let data = await loadData(`${user_API}/${tempUserID}`);
             document.getElementById('NameOfAdmin').innerHTML = data.name;
-            return; // Funktion beenden, da tempUserID gefunden wurde
+            return;
         } 
         
         if (saveUserID) {
             let data = await loadData(`${user_API}/${saveUserID}`);
             document.getElementById('NameOfAdmin').innerHTML = data.name;
-            return; // Funktion beenden, da saveUserID gefunden wurde
+            return;
         } 
         
         if (guestToken === "true") {
