@@ -1,5 +1,6 @@
 const taskAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
 const NameOfAdmin = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/profile";
+const user_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users";
 
 // window.onload = init();
 
@@ -10,7 +11,7 @@ const NameOfAdmin = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedat
 
 window.onload = function() {
     renderData(taskAPI);
-    loadNameOfAdmin(NameOfAdmin);
+    loadNameOfAdmin();
     displayGreeting();
     forbiddenCourse();
 };
@@ -32,10 +33,29 @@ function forbiddenCourse() {
     }
 }
 
-async function loadNameOfAdmin(URL) {
-    let data = await loadData(URL);
-    document.getElementById('NameOfAdmin').innerHTML = data.name;
-}
+    async function loadNameOfAdmin() {
+        let tempUserID = sessionStorage.getItem('userId'); 
+        let saveUserID = localStorage.getItem('userId'); 
+        let guestToken = sessionStorage.getItem('guestToken');
+        
+        if (tempUserID) {
+            let data = await loadData(`${user_API}/${tempUserID}`);
+            document.getElementById('NameOfAdmin').innerHTML = data.name;
+            return;
+        } 
+        
+        if (saveUserID) {
+            let data = await loadData(`${user_API}/${saveUserID}`);
+            document.getElementById('NameOfAdmin').innerHTML = data.name;
+            return;
+        } 
+        
+        if (guestToken === "true") {
+            let data = await loadData(NameOfAdmin);
+            document.getElementById('NameOfAdmin').innerHTML = data.name;
+        }
+    }
+    
 
 async function renderData(URL) {
     let data = await loadData(URL);
