@@ -91,7 +91,7 @@
         padding-left: 10px;
     }
     .metrics-row-desktop {
-        width: 300px;
+        min-width: 300px;
     }
     .flexhelper-urgent {
         display: flex;
@@ -135,7 +135,6 @@
     #doneCounter {
         width: 120px;
         padding: 10px;
-        margin-right: 5px;
         gap: 0;
     }
     .main-content {
@@ -154,7 +153,7 @@
     #taskInBoard,
     #taskInProgress,
     #taskAwaitFeedback {
-        max-width: 90px;
+        min-width: 90px;
         margin: 0 4px;
     }
 } 
