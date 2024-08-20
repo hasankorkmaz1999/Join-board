@@ -230,3 +230,22 @@ h2 {
     color: white;
 }
 
+p.upcoming-desktop {
+    display: none;
+}
+
+.mobile-flex {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-line {
+    width: 2px;
+    height: 90%;
+    border-left: 2px solid var(--border-grey);
+}
+
+#upcomingCounter {
+    display: flex;
+    justify-content: space-around;
+}
