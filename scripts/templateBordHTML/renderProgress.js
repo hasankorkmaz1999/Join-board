@@ -50,7 +50,8 @@ function avatarColors() {
 }
     let lastColorIndex = -1;
 
-
+   
+    
 
 
 
@@ -84,7 +85,7 @@ function avatarColors() {
                         <label>
                             <input class="styled-checkbox" type="checkbox" id="subtask-checkbox-${key}-${i}" ${subtask.itsdone ? 'checked' : ''}
                             onclick="toggleSubtaskStatus(&#39;${key}&#39;, ${i}, this.checked)">
-                            <span>${subtask.title}</span>
+                            <span class="subtasktitles" >${subtask.title}</span>
                         </label>
                     </div>
                 `;
@@ -185,7 +186,8 @@ function avatarColors() {
         </div>
         `;
     }
-    
+
+   
 
 
 function openMobileMenu(key) {

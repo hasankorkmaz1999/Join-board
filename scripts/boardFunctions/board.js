@@ -230,6 +230,8 @@ function openSingleTaskOverlay(taskData, key) {
     let htmlContent = addSingleTaskForm(taskData, key);
     popupContent.innerHTML = htmlContent;
     document.body.style.overflow = 'hidden';
+
+    
 }
 
 
