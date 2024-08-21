@@ -253,8 +253,7 @@ async function addTask() {
         const task = sanitizedValues.taskTitle;
         const date = sanitizedValues.date;
 
-        // Validierung des Datums
-
+        // Validate date
         validateDate(date);
 
         const priority = document.getElementById("priority").value;
@@ -264,11 +263,11 @@ async function addTask() {
         let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
         let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 
-        // Sammeln der Subtasks aus der Liste
+        // Gathering subtasks
         const subtaskElements = document.querySelectorAll("#subtaskList li");
         const subtasks = Array.from(subtaskElements).map(item => ({
             itsdone: false,
-            title: item.textContent
+            title: item.textContent.trim() // Ensure trimming of spaces
         }));
 
         let data = {
@@ -276,9 +275,9 @@ async function addTask() {
             date: date,
             priority: priority,
             category: category,
-            assignedto: assignedTo.map(name => ({ name })),
+            assignedto: assignedTo.map(name => ({ name })), // ensure correct mapping
             description: description,
-            subtasks: subtasks,
+            subtasks: subtasks, // include subtasks here
             progress: "todo",
             duedate: date,
         };
@@ -299,7 +298,6 @@ async function addTask() {
         console.warn("Error during validation or when adding the task (Are all mandatory fields filled in?):", error);
         toastMessage("Error adding task. Please try again.");
     }
-
 }
 
 

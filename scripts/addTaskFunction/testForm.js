@@ -7,7 +7,7 @@ function validateAndSanitizeForm() {
         const description = document.getElementById("description");
         const date = document.getElementById("prioDate");
         const category = document.getElementById("category");
-        const subtasks = document.getElementById("subtasks");
+        const subtasks = document.getElementById("subtaskList");
 
         let isValid = true;
 
@@ -50,7 +50,7 @@ function validateAndSanitizeForm() {
             description: sanitizeInput(description.value),
             date: date.value,
             category: category.value,
-            subtasks: sanitizeInput(subtasks.value)
+            subtasks: Array.from(document.querySelectorAll("#subtaskList li")).map(item => sanitizeInput(item.textContent.trim()))
         };
         resolve(sanitizedValues);
     });

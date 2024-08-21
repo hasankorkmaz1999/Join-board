@@ -1259,7 +1259,7 @@ span.mini-menu a:hover {
 
 /* Versteckt die horizontale Scrollbar */
 .progress-window {
-  overflow-x: scroll; 
+  /* overflow-x: scroll; */ 
   -ms-overflow-style: none;
   scrollbar-width: none; 
 }

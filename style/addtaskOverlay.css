@@ -186,6 +186,8 @@ p.create-mobile {
     margin-right: 20px;
     color: var(--black);
     transition: border-color 0.3s ease, color 0.3s ease;
+    /* Testzwecke */
+    margin-bottom: 80px;
 }
 
 .cancelbutton:hover {
