@@ -32,7 +32,7 @@ function addSingleTaskForm(taskData, key) {
 
 
             <div class="subtasks-container">
-                ${taskData.subtasksHTML} 
+               <p class="subtaskhtml" >${taskData.subtasksHTML} </p> 
             </div>
 
 
@@ -45,8 +45,8 @@ function addSingleTaskForm(taskData, key) {
         </div>
     `;
 
-
 }
+
 
 
 function editTask(key) {

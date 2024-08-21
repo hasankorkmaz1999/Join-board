@@ -22,7 +22,7 @@ function forbiddenCourse() {
             window.location.href = './login.html?msg=login_required';
         } else if (guestToken !== null) {
             // Hier könntest du z.B. Einschränkungen für Gäste definieren
-            console.log("Gastzugriff gewährt");
+            console.log("Guest access granted");
         }
     } catch (error) {
         console.error("Kein Zugriff auf localStorage oder sessionStorage möglich: ", error);
@@ -230,6 +230,8 @@ function openSingleTaskOverlay(taskData, key) {
     let htmlContent = addSingleTaskForm(taskData, key);
     popupContent.innerHTML = htmlContent;
     document.body.style.overflow = 'hidden';
+
+    
 }
 
 
