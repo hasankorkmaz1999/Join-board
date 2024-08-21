@@ -50,7 +50,7 @@ function validateAndSanitizeForm() {
             description: sanitizeInput(description.value),
             date: date.value,
             category: category.value,
-            subtasks: sanitizeInput(subtasks.value)
+            subtasks: Array.from(document.querySelectorAll("#subtaskList li")).map(item => sanitizeInput(item.textContent.trim()))
         };
         resolve(sanitizedValues);
     });
