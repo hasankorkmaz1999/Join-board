@@ -636,33 +636,4 @@ svg {
     border: 1px solid var(--border-grey);
     box-sizing: border-box; 
 }
-
-/* Fix gegen verschieben des Inhalts bei den subtasks*/
-.addTaskSubtasks {
-    position: relative;
-    margin-bottom: 50px; 
-}
-
-.subtask-input-wrapper {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-#subtaskList {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    display: none;
-}
-
-#subtaskList.show {
-    display: block;
-}
 /* End: Fix gegen verschieben des Inhalts */
