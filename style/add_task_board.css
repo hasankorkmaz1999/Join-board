@@ -615,6 +615,11 @@ svg {
     text-transform: uppercase;
 } 
 
+.cancel-container {
+    display: flex;
+    align-items: center;
+}
+
 /* End 
 ************************************************************************************/
 
@@ -622,4 +627,31 @@ svg {
     .joinLogo {
         display: none;
     }
+}
+
+@media (max-width: 400px) {
+    .cancelbutton {
+        margin: 0 !important;
+        cursor: pointer;
+        font-size: 20px;
+        width: 180px;
+        height: 52px;
+        background-color: var(--white);
+        border: 1px solid var(--deep-grey);
+        border-radius: 10px;
+        margin-right: 20px;
+        color: var(--black);
+        transition: border-color 0.3s ease, color 0.3s ease;
+        gap: 20px;
+    }
+
+    .cancel-container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .addTaskFlexButtons button, .addTaskPriority button {
+        margin-bottom: 20px;
+    }
+
 }
