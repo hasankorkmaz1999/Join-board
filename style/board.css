@@ -45,7 +45,7 @@ body {
 
 .sectionstodrop {
   background-color:var(--body-background); 
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .drop-indicator {
@@ -609,7 +609,16 @@ h1 {
 }
 
 .task-description {
+  color: rgba(0, 0, 0, 0.3);
   margin-left: 15px;
+  margin-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; 
 }
 
 .taskpriority {
@@ -994,7 +1003,6 @@ h1, h2, p {
 
 /*Style für die To do In Progress etc. Sektion */
 .boardsections {
-  max-width: 1440px;
   margin-left: 260px; 
   background-color: var(--body-background);
   display: flex;
@@ -1250,7 +1258,7 @@ span.mini-menu a:hover {
 
 /* Versteckt die horizontale Scrollbar */
 .progress-window {
-  /* overflow-x: scroll; */ 
+  overflow-x: scroll; /*Needed*/
   -ms-overflow-style: none;
   scrollbar-width: none; 
 }

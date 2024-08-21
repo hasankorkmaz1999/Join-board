@@ -171,6 +171,7 @@ a.active_footer {
 .user {
     display: flex;
     align-items: center;
+    margin-right: 40px;
 }
 
 .user img {
@@ -195,6 +196,7 @@ a.abc {
     background-repeat: no-repeat;
     background-position: 50px center; 
     background-size: 30px 30px; 
+    margin-top: 16px;
 }
 #nav-summary:hover {
     background-image: url('./../IMGicons/headericons/iconSummaryActive.svg');
@@ -210,6 +212,7 @@ a.active_summary {padding-left: 90px;}
     background-repeat: no-repeat;
     background-position: 50px center; 
     background-size: 30px 30px; 
+    margin-top: 16px;
 }
 #nav-add-task:hover {
     background-image: url('./../IMGicons/headericons/iconAddTaskActive.svg');
@@ -225,6 +228,7 @@ a.active_addtask  {padding-left: 90px;}
     background-repeat: no-repeat;
     background-position: 50px center; 
     background-size: 30px 30px; 
+    margin-top: 16px;
 }
 #nav-board:hover {
     background-image: url('./../IMGicons/headericons/iconBoardActive.svg');
@@ -240,6 +244,7 @@ a.active_board {padding-left: 90px;}
     background-repeat: no-repeat;
     background-position: 50px center; 
     background-size: 30px 30px; 
+    margin-top: 16px;
 }
 #nav-contacts:hover {
     background-image: url('./../IMGicons/headericons/iconContactsActive.svg');

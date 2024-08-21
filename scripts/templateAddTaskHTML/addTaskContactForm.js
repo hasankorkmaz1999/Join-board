@@ -10,7 +10,6 @@ function addTaskForm() {
     <!-- fonts -->
     <link rel="stylesheet" href="fonts/figtree/styles.css">
     <link rel="stylesheet" href="fonts/inter/styles.css">
-    <link rel="stylesheet" href="fonts/open-sans/styles.css">
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">

@@ -253,7 +253,6 @@
         border-radius: 12px;
     }
     span.mobile {
-        font-family: 'Open Sans';
         color: var(--links-grey);
         font-size: 14px;
         line-height: 16.8px;
