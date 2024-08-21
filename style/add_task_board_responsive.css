@@ -1,0 +1,158 @@
+@media (max-width: 1140px) {
+    .addTaskH1 { 
+        margin-left: 32px;
+    }
+}    
+
+@media (max-width: 1040px) {
+    .contentFlex {
+        display: flex;
+        width: 100%;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    #addTaskLeftForm, 
+    #addTaskRightForm {
+        width: 100%;
+        padding: 0;
+    }
+
+}
+
+@media (max-width: 810px) { 
+
+    #addTaskLeftForm, #addTaskRightForm {
+        padding-left: 0;
+    }
+    .addTaskRightButtons {
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .addTaskLeftForm, .addTaskRightForm {
+        flex: 1 1 100%; 
+        border-right: none;
+        padding-left: 0;
+    }
+    .addTaskLeftForm {
+        width: 80%; 
+    }
+
+    .addTaskLeftForm {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .addTaskRightForm {
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 680px) {
+    .header-left {
+        display: none;
+    }
+    .addTaskContainer,
+    .addTaskH1,
+    .header-top {
+        margin-left: 0;
+    }
+    .header-top {
+        width: 100%;
+    }
+    .addTaskH1 { 
+        margin-left: 32px;
+    }
+
+    .subheader-contact {
+        display: none;
+    }
+    .footer-mobile {
+        display: block;
+    }
+    .addTaskContainer {
+        margin-bottom: 70px;
+    }
+    .footer-mobile {
+        display: block !important;
+    }
+    .joinLogo {
+        display: block;
+        width: 39px;
+        height: 39px;
+        position: absolute;
+        top: 16px;
+        z-index: 20;
+        left: 16px;
+    }
+}    
+
+@media (max-width: 576px) {
+
+    .createbutton {
+        width: 183px;
+    }
+    .addTaskRightButtons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 46px;
+        width: 100%;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+    .addTaskH1 {
+        font-size: 41px;
+    }
+
+    input#addTaskTitle,
+    .addTasktitle input, textarea#description,
+    input#subtasks, select#category, .addTaskAssignedTo select {
+        font-size: 16px;
+    }
+    .addTaskPrioButton {
+        width: 120px;
+        font-size: 14px;
+        margin: 0;
+        gap: 0;
+    }
+    svg {
+        width: 16px;
+    }
+
+
+}    
+
+@media (max-width: 360px) {
+    .addTaskRightButtons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 46px;
+        width: 100%;
+        align-items: center;
+        flex-direction: row;
+    }
+    p.create-mobile {
+        font-size: 16px;
+    }
+    .createbutton {
+        width: 130px;
+    }
+    p.required {
+        font-size: 12px;
+    }
+    #createbutton {
+        margin: 0;
+        padding: 0;
+        gap: 0;
+    }
+    #addTaskLeftForm, #addTaskRightForm {
+        margin: 0;
+    }
+    .addTaskFlexButtons .cancelbutton {
+        display: none;
+    }
+}
