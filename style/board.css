@@ -609,7 +609,16 @@ h1 {
 }
 
 .task-description {
+  color: rgba(0, 0, 0, 0.3);
   margin-left: 15px;
+  margin-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; 
 }
 
 .taskpriority {
@@ -1250,7 +1259,7 @@ span.mini-menu a:hover {
 
 /* Versteckt die horizontale Scrollbar */
 .progress-window {
-  overflow-x: scroll; 
+  /* overflow-x: scroll; */ 
   -ms-overflow-style: none;
   scrollbar-width: none; 
 }
