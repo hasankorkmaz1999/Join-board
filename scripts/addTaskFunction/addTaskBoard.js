@@ -287,7 +287,7 @@ async function startAddTask() {
         triggerCloseAddTaskOverlay();
 
     } catch (error) {
-        console.error("Fehler bei der Validierung oder beim Hinzufügen der Aufgabe:", error);
+        console.error("Error during validation or when adding the task:", error);
         toastMessage("Error adding task. Please try again.");
     }
 }
