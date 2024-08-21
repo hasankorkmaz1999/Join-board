@@ -142,6 +142,10 @@ h2 {
     display: flex;
 }
 
+#loginWindow {
+    margin: -30px 12px 0 12px;
+}
+
 .align-items-center {
     align-items: center;
 }
@@ -341,8 +345,13 @@ input:-internal-autofill-selected {
 }
 
 .error-message {
-    font-size: 12px;
+    font-size: 14px;
     font-family: 'Inter';
+    font-weight: 700;
+    text-align: center;
+    border: 1px solid var(--light-red);
+    padding: 16px;
+    border-radius: 12px;
 }
 
 footer {

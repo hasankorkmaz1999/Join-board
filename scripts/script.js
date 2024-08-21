@@ -59,13 +59,13 @@ document.getElementById('loginButton').addEventListener('click', function(event)
 
     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-        errorMessage.innerText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+        errorMessage.innerText = 'Please enter a valid e-mail address.';
         errorMessage.style.display = 'block';
         return;
     }
 
     if (password.length < 6) {
-        errorMessage.innerText = 'Passwort muss mindestens 6 Zeichen lang sein.';
+        errorMessage.innerText = 'The password must be at least 6 characters long.';
         errorMessage.style.display = 'block';
         return;
     }
