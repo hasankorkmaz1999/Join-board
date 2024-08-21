@@ -325,13 +325,17 @@ window.addEventListener('message', function(event) {
         }
 
 
-        taskData.assignedto.forEach(person => {
-            let checkbox = document.querySelector(`input[name="assignedto"][value="${person.name}"]`);
-            if (checkbox) {
-                checkbox.checked = true;
-                checkbox.dispatchEvent(new Event('change')); 
-            }
-        });
+        if (taskData.assignedto && taskData.assignedto.length > 0) {
+            taskData.assignedto.forEach(person => {
+                let checkbox = document.querySelector(`input[name="assignedto"][value="${person.name}"]`);
+                if (checkbox) {
+                    checkbox.checked = true;
+                    checkbox.dispatchEvent(new Event('change')); 
+                }
+            });
+        } else {
+            console.log("No persons assigned to this task.");
+        }
 
 
         let subtaskList = document.getElementById('subtaskList');
