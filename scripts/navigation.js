@@ -1,6 +1,7 @@
 // JS-Datei für die Back-Arrow Feature
 function backArrowCockpit() {
-    window.location.href = 'contacts.html'; // später werden die Pfeile zurück zur Nav und Cockpit gesetzt
+    window.location.href = 'login.html'; 
+    // später werden die Pfeile zurück zur Nav und Cockpit gesetzt
 }
 
 // normalerweise geht man doch dann auf die vorige Seite, egal welche das war?
