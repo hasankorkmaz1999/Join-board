@@ -43,6 +43,10 @@ body {
     justify-content: space-between;
 }
 
+.legal-menu {
+    display: none;
+  }
+
 .join_logo {
     height: 121px;
     width: 100px;
@@ -173,6 +177,11 @@ a.active_footer {
     align-items: center;
     margin-right: 40px;
 }
+@media (max-width: 500px) {
+    .user {
+        margin-right: 20px;
+    }
+}    
 
 .user img {
     margin-right: 20px;
@@ -310,3 +319,7 @@ a.active_contacts {padding-left: 90px;}
 .PB:hover {
     background-color: rgba(12, 46, 98, 0.12);
 }
+
+.legal-menu {
+    display: none;
+  }
