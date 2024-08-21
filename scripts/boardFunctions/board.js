@@ -22,7 +22,7 @@ function forbiddenCourse() {
             window.location.href = './login.html?msg=login_required';
         } else if (guestToken !== null) {
             // Hier könntest du z.B. Einschränkungen für Gäste definieren
-            console.log("Gastzugriff gewährt");
+            console.log("Guest access granted");
         }
     } catch (error) {
         console.error("Kein Zugriff auf localStorage oder sessionStorage möglich: ", error);

@@ -1,6 +1,6 @@
 const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users';
 
-async function initHeader() {
+async function initHeader(attempt = 1) {
     let check = document.getElementById('PB');
     if (check) {
         try {
@@ -26,11 +26,24 @@ async function initHeader() {
             document.getElementById('PB').innerHTML = initials;
     
         } catch (error) {
-            console.warn("Error initializing the header (Demo Login):", error);
+            console.warn(`Error initializing the header (Demo Login):`, error);
+            
+            if (attempt < 2) {
+                console.warn("Fail: Initiation of profile picture in 2 seconds...");
+                setTimeout(() => initHeader(attempt + 1), 2000);
+            } else {
+                console.warn("2nd attempt failed. Abort.");
+            }
         }
-
     } else {
-        console.warn("No header element found");
+        console.warn(`No header element found, try ${attempt} of 2`);
+        
+        if (attempt < 2) {
+            console.warn("Another attempt to find the header in 2 seconds...");
+            setTimeout(() => initHeader(attempt + 1), 2000);
+        } else {
+            console.warn("2nd attempt failed. Abort.");
+        }
     }
 }
 
