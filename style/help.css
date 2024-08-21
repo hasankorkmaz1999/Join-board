@@ -151,7 +151,6 @@ a.help:hover {
         padding-bottom: 8px;
     }
     span.mobile {
-        font-family: 'Open Sans';
         color: var(--links-grey);
         font-size: 14px;
         line-height: 16.8px;
