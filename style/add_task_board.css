@@ -238,7 +238,7 @@ p.create-mobile {
     margin: 0 !important;
     cursor: pointer;
     font-size: 20px;
-    width: 120px;
+    width: 160px;
     height: 52px;
     background-color: var(--white);
     border: 1px solid var(--deep-grey);
@@ -246,6 +246,9 @@ p.create-mobile {
     margin-right: 20px;
     color: var(--black);
     transition: border-color 0.3s ease, color 0.3s ease;
+    word-spacing: 0.4em;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .cancelbutton:hover {
@@ -633,7 +636,7 @@ svg {
     .cancelbutton {
         margin: 0 !important;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 16px;
         width: 180px;
         height: 52px;
         background-color: var(--white);
