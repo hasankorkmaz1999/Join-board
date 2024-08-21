@@ -2,9 +2,9 @@
 //      DO NOT ADD THIS SCRIPT TO ADDTASK.HTML!     //
 /////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', function() {
-    // Überprüfen, ob die Seite in einem iFrame geladen wird
-    if (window.self === window.top) {
-        // Die Seite wird nicht in einem iFrame geladen
+    // Überprüfen, ob die Seite in einem iFrame geladen wird oder der Session Storage 'JoinDev' auf true gesetzt ist
+    if (window.self === window.top && sessionStorage.getItem('JoinDev') !== 'true') {
+        // Die Seite wird nicht in einem iFrame geladen und 'JoinDev' ist nicht true
         document.body.innerHTML = '<h1>Unfortunately the page cannot be opened like this</h1>';
         console.log("%cACCESS BLOCKED", `
             background: #ff0f0f;
@@ -15,12 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
             border-radius: 4px;
            `);
         
-        // Weiterleitung nach 5 Sekunden
+        
         setTimeout(function() {
-            window.location.href = 'index.html';  // Passe dies an den richtigen Pfad deiner Index-Seite an
+            window.location.href = './index.html';
         }, 5000);
     } else {
-        // Der normale Ablauf, wenn die Seite in einem iFrame geladen wird
         let params = getQueryParams();
         if (params.progress !== null) {
             switch (params.progress) {
@@ -48,10 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } else {
             console.warn('Parameter progress is missing. Init Edit Task...');
-            
         }
     }
 });
+
+function devon() {
+    sessionStorage.setItem('JoinDev', 'true');
+    console.log("JoinDev has been set to true in sessionStorage.");
+}
 
 /* Hier checken wir den Parameter */
 
