@@ -42,6 +42,7 @@
         span.mobile.footer-link-addTask {
             color: var(--white);
         }
+
     </style>
 </head>
 <body onload="includeHTML()">
@@ -199,6 +200,19 @@
     <script>
         includeHTML();
     </script>
+
+    <script>
+        function toggleSubtaskList() {
+            var subtaskList = document.getElementById("subtaskList");
+            subtaskList.classList.toggle("show");
+        }
+        document.getElementById("subtasks").addEventListener("focus", toggleSubtaskList);
+        document.getElementById("subtasks").addEventListener("blur", function() {
+
+            setTimeout(toggleSubtaskList, 200);
+        });
+    </script>
+    
 
 </body>
 </html>
