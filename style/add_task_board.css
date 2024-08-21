@@ -6,13 +6,6 @@ h1, h2, p, p.create-mobile {
     color: var(--deep-grey);
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    overflow: auto;
-    max-height: 150px;
-}
-
 label, span.asterisk {
     font-size: 18px;
     font-weight: 400;
@@ -29,8 +22,8 @@ span.asterisk {
 }
 
 .addTaskContainer {
-    margin-left: 332px;
-    margin-top: 80px;;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
 }
 
 .joinLogo,
@@ -41,17 +34,10 @@ span.asterisk {
 .editanddeletebuttonsub {
 display: flex;
 justify-content: flex-end;
-margin-left: -80px;
 }
 
 #subtaskList img{
     cursor: pointer;
-   
-}
-
-#subtaskList {
-    overflow: hidden;
-    overflow-y: scroll;
 }
 
 .subtaskcontainer:hover  {
@@ -66,24 +52,11 @@ margin-left: -80px;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   width: 100%;
-  
-}
-
-.subtaskcontainer.editing {
-    background-color: initial; /* Setzt den Hintergrund zurück */
-    margin-bottom: 15px;
 }
 
 .subtaskcontainer.editing:hover {
     background-color: initial; /* Setzt den Hover-Effekt zurück */
     cursor: default; /* Zeigt den normalen Cursor an */
-}
-
-.save-btn {
-    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
-    margin-right: 10px;
-    margin-left: 5px;
 }
 
 .edit-btn {
@@ -95,8 +68,6 @@ margin-right: 10px;
 }
 
 .edit-input {
-   
-    border-bottom: 2px solid blue !important;
     border: 1px solid var(--border-grey) !important;
     background-color: white !important;
     padding: 10px !important;
@@ -104,7 +75,6 @@ margin-right: 10px;
     font-weight: 400 !important;
     font-size: 20px !important;
     width: 100% !important;
-   
 }
 .addTasktitle input,
 textarea#description {
@@ -286,73 +256,7 @@ p.create-mobile {
     align-items: flex-start;
 }
 
-.linedivider {
-    width: 1px;
-    height: 20px;
-    background-color: #ccc;
-    display: none; 
-    margin-right: 5px;
-  }
-
-.subtask-input-wrapper {
-    display: flex;
-    align-items: center;
-    
-}
-
-.icons-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; 
-    margin-left: -85px;
-}
-
-.icon {
-    width: 15px;
-    height: 15px;
-    margin-bottom: 2px;
-    display: none; 
-    cursor: pointer;
-}
-
-
-
-.iconX {
-    height: 30px;
-    display: none; 
-    cursor: pointer;
-}
-
-#checkIcon {
-    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
-   
-}
-
-
-input#subtasks {
-    padding-right: 30px; 
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid var(--border-grey);
-    border-radius: 10px;
-    background-color: var(--white);
-    padding: 10px 30px 10px 10px;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 24px;
-    font-family: 'Inter';
-    background-image: url('./..//IMGicons/plus.png'); 
-    background-repeat: no-repeat;
-    background-position: right 15px center; 
-    background-size: 20px;  
-}
-
-input#subtasks.no-plus {
-    background-image: none; /* Entfernt das Plus-Symbol */
-}
-
-
+input#subtasks,
 select#category,
 .addTaskAssignedTo select {
     appearance: none; 
@@ -488,13 +392,281 @@ svg {
     transform: rotate(0deg);
 }
 
-#clearbutton {
-    width: unset;
-}
-
 
 /* Checkbox - Finger weg!
 ************************************************************************************/
+/* input.assignedCheckbox[type="checkbox"] {
+    display: none;
+}
+
+.assignedto-item {
+    position: relative;
+    width: 99%;
+    border-radius: 10px;
+    overflow: hidden; 
+    box-sizing: border-box; 
+    padding: 26px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+
+} */
+
+.assignedto-item:hover {
+    background-color: var(--border-grey);
+    border-radius: 10px;
+}
+
+.assignedto-item label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box; 
+    display: flex;
+    align-items: center;
+    padding: 26px;
+}
+
+.assignedto-item input[type="checkbox"] + label::before {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('./../IMGicons/check-unchecked.svg');
+    background-size: cover;
+    border-radius: 50%;
+    box-sizing: border-box; 
+}
+
+.assignedto-item input[type="checkbox"]:checked + label::before {
+    background-image: url('./../IMGicons/check-checked.png');
+    border-radius: 50%;
+    box-sizing: border-box; 
+}
+
+.assignedto-item input[type="checkbox"]:focus + label::before {
+    outline-offset: 2px;
+    border-radius: 50%;
+}
+
+.assignedto-item input[type="checkbox"]:active + label::before {
+    transform: translateY(-50%) scale(0.95);
+    background-image: url('./../IMGicons/check-checked.png');
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.assignedto-item input[type="checkbox"]:checked ~ label {
+    background-color: var(--deep-grey);
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.assignedto-item input[type="checkbox"]:checked {
+    background-color: var(--deep-grey);
+    color: white;
+    border-radius: 10px;
+}
+
+.assignedto-item input[type="checkbox"]:checked ~ label {
+    background-color: var(--deep-grey);
+    color: white;
+    padding: 26px;
+    display: flex;
+    align-items: center;
+}
+
+.assignedto-item:active {
+    background-color: var(--deep-grey);
+    color: white;
+    border-radius: 10px;
+    overflow: hidden; 
+}
+
+.assignedto-item:active .avatar {
+    background-color: var(--deep-grey);
+}
+
+.assignedto-item:active {
+    background-color: var(--deep-grey);
+}
+
+.assignedto-item .avatar:hover {
+    background-color: var(--deep-grey);
+}
+
+.assignedto-item:active > .avatar {
+    background-color: var(--deep-grey) !important;
+}
+
+.assignedto-item:active .avatar {
+    background-color: var(--deep-grey);
+    z-index: 1;
+}
+
+.assignedto-item:hover {
+    background-color: var(--border-grey);
+    border-radius: 10px;
+}
+
+.assignedto-item.active {
+    background-color: var(--deep-grey);
+    color: white;
+    border-radius: 10px;
+}
+
+/* input.assignedCheckbox[type="checkbox"] {
+    display: none;
+} */
+
+.assignedto-item {
+    position: relative;
+    width: 99%;
+    border-radius: 10px;
+    overflow: hidden; 
+    box-sizing: border-box; 
+    padding: 26px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+.assignedto-item:hover {
+    background-color: var(--border-grey);
+}
+
+.assignedto-item input[type="checkbox"]:checked ~ label {
+    background-color: var(--deep-grey);
+    color: white;
+    border-radius: 10px;
+    padding: 26px;
+    display: flex;
+    align-items: center;
+}
+
+.assignedto-item .avatar {
+    background-color: transparent; 
+    transition: background-color 0.3s;
+}
+
+.assignedto-item.active {
+    background-color: var(--deep-grey);
+    color: var(--white);
+}
+
+.assignedto-item.active .avatar {
+    background-color: var(--deep-grey);
+}
+
+.assignedto-item input[type="checkbox"]:checked ~ label {
+    background-color: var(--deep-grey);
+    transition: background-color 0.3s;
+    color: var(--white);
+}
+
+.assignedto-item input[type="checkbox"]:checked ~ .avatar {
+    background-color: var(--deep-grey);
+}
+
+.assignedto-item:active {
+    background-color: var(--deep-grey);
+}
+
+.assignedto-item:active .avatar {
+    background-color: var(--deep-grey);
+}
+
+.assignedto-item:hover {
+    background-color: var(--border-grey);
+}
+
+.assignedto-item:hover .avatar {
+    background-color: var(--border-grey);
+}
+
+.assignedto-item {
+    position: relative;
+    width: 100%; 
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    /* background-color: rgb(42, 54, 71); */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.assignedto-item .avatar {
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+
+.assignedto-item span {
+    flex-grow: 1; 
+}
+
+.assignedto-item input[type="checkbox"] {
+    margin-left: auto; 
+    margin-right: 20px;
+}
+
+/* End 
+************************************************************************************/
+
+.initials-container span,
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+    padding: 4px;
+    box-shadow: 0 0 5px var(--white);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    border: 2px solid #fffefe;
+}
+
+.initials-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.initial-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--some-color);
+    color: white;
+    border-radius: 50%;
+    font-size: 16px;
+    text-transform: uppercase;
+} 
+
+
 .assignedto-item .avatar:hover {
     background-color: var(--deep-grey);
 }
@@ -523,6 +695,7 @@ svg {
 }
 
 .assignedto-item {
+    color: black;
     display: flex;
     align-items: center;
     position: relative;
@@ -575,44 +748,8 @@ svg {
 /* End 
 ************************************************************************************/
 
-.initials-container span,
-.avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    margin-left: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* margin-bottom: 0px;
-    margin-left: 20px; */
-    /* margin-right: 20px; */
-    padding: 4px;
-    box-shadow: 0 0 5px var(--white);
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    color: white;
-    border: 2px solid #fffefe;
+@media (min-width: 1040px) {
+    .joinLogo {
+        display: none;
+    }
 }
-
-.initials-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-    overflow-x: auto;
-}
-
-.initial-circle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: var(--some-color);
-    color: white;
-    border-radius: 50%;
-    font-size: 16px;
-    text-transform: uppercase;
-} 

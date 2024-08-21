@@ -49,7 +49,8 @@
 </head>
 
 <body onload="includeHTML(); displayGreeting();">
-    
+
+    <div class="joinLogo"><img class="joinLogo" src="IMGicons/join-logo.svg" alt="Join Logo"></div>
     <header w3-include-html="./html/header.html"></header>
 
     <div id="main-content" class="main-content">
@@ -61,38 +62,56 @@
 
         <section class="content-container">
             <div class="metrics-container">
+
                 <div class="metrics-row">
                     <div class="summary-box" id="todoCounter" onclick="window.location.href='board.html'">
                         <img src="./IMGicons/Pencil.svg" alt="Pencil" class="metric-icon">
-                        <h2>To-do</h2>
-                        <p id="numberTodo">Loading...</p>
+                        <div class="metric-content">
+                            <p id="numberTodo">Loading...</p>
+                            <h2 class="summary-mobile">To-do</h2>
+                        </div>
                     </div>
                     <div class="summary-box" id="doneCounter" onclick="window.location.href='board.html'">
                         <img src="./IMGicons/done.svg" alt="done" class="metric-icon">
-                        <h2>Done</h2>
-                        <p id="numberDone">Loading...</p>
+                        <div class="metric-content">
+                            <p id="numberDone">Loading...</p>
+                            <h2 class="summary-mobile">Done</h2>
+                        </div>
                     </div>
                 </div>
-                <div class="metrics-row">
+
+                <div class="metrics-row metrics-row-desktop">
                     <div class="summary-box" id="upcomingCounter" onclick="window.location.href='board.html'">
-                        <img src="./IMGicons/high.svg" alt="high" class="metric-icon">
-                        <h2>Upcoming Deadline</h2>
-                        <p id="numberUpcomming">Loading...</p>
-                        <p id="dateUpcomming">Loading...</p>
+                        <div class="mobile-flex">
+                            <img src="./IMGicons/high.svg" alt="high" class="metric-icon">
+                            <p class="upcoming-desktop">Upcoming Deadline</p>
+                            <div class="flexhelper-urgent">
+                                <p id="numberUpcomming">Loading...</p>
+                                <p class="urgent-text">Urgent</p>
+                            </div>
+                        </div>
+                        <div class="mobile-line"></div>
+                        <div class="flexhelper-mobile">
+                            <p id="dateUpcomming">Loading...</p>
+                            <p class="upcoming-mobile">Upcoming Deadline</p>
+                        </div>    
                     </div>
                 </div>
                 <div class="metrics-row">
-                    <div class="summary-box" id="taskInBoard" onclick="window.location.href='board.html'">
-                        <h2>Tasks in Board</h2>
+                    <div class="summary-box task-box" id="taskInBoard" onclick="window.location.href='board.html'">
                         <p id="numberTaskInBoard">Loading...</p>
+                        <h2 class="summary-mobile">Tasks in <br> Board</h2>
+                        
                     </div>
-                    <div class="summary-box" id="taskInProgress" onclick="window.location.href='board.html'">
-                        <h2>Task In Progress</h2>
+                    <div class="summary-box task-box" id="taskInProgress" onclick="window.location.href='board.html'">
                         <p id="numberTaskInProgress">Loading...</p>
+                        <h2 class="summary-mobile">Tasks In <br> Progress</h2>
+                        
                     </div>
-                    <div class="summary-box" id="taskAwaitFeedback" onclick="window.location.href='board.html'">
-                        <h2>Awaiting Feedback</h2>
+                    <div class="summary-box task-box" id="taskAwaitFeedback" onclick="window.location.href='board.html'">
                         <p id="numberTaskAwaitFeedback">Loading...</p>
+                        <h2 class="summary-mobile">Awaiting <br> Feedback</h2>
+                        
                     </div>
                 </div>
             </div>
@@ -100,18 +119,22 @@
             <div id="greeting-container" class="greeting-container greeting">
                 <div class="greeting-flex-area">
                     <span id="greeting-text">Good morning,</span>
-                    <h1 id="NameOfAdmin">Loading...</h1>
+                    <!-- NameOfAdmin wird ersetzt durch userGreeting -->
+                    <h1 id="NameOfAdmin">Loading...</h1> 
                 </div>
             </div>
         </section>
     </div>
 
     <div w3-include-html="html/menu-mobile.html"></div>
-    
+
+    <script src="./scripts/hader.js"></script>
     <script src="./scripts/toastMsg.js"></script>
     <script src="./scripts/reloadPage.js"></script>
     <script src="./scripts/loadData.js"></script>
     <script src="./scripts/summary.js"></script>
+
+    
     
     <script>
         includeHTML();

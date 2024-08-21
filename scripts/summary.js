@@ -1,23 +1,75 @@
 const taskAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
 const NameOfAdmin = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/profile";
+const user_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users";
 
-// window.onload = init();
+window.onload = init();
 
-// function init() {
-//     renderData(taskAPI);
-//     displayGreeting();
-// }
-
-window.onload = function() {
+function init() {
     renderData(taskAPI);
-    loadNameOfAdmin(NameOfAdmin);
     displayGreeting();
-};
-
-async function loadNameOfAdmin(URL) {
-    let data = await loadData(URL);
-    document.getElementById('NameOfAdmin').innerHTML = data.name;
+    loadNameOfAdmin();
+    forbiddenCourse();
+    initHeader();
+    loadDeadline();
 }
+
+/* window.onload = function() {
+    renderData(taskAPI);
+    loadNameOfAdmin();
+    displayGreeting();
+    forbiddenCourse();
+}; */
+
+/* function infoTap() {
+    let infoDIV = document.getElementById('dropdown-content');
+    let checkClass = infoDIV.classList.contains('show');
+    if (checkClass) {
+        infoDIV.classList.remove('d-none');
+    } else {
+        infoDIV.classList.add('dropdown-content');
+    }
+} */
+
+function forbiddenCourse() {
+    try {
+        let userID = localStorage.getItem('userId') || sessionStorage.getItem('userId');
+        let guestToken = sessionStorage.getItem('guestToken');
+        if (userID === null && guestToken === null) {
+            // Falls weder userID noch guestToken vorhanden ist, umleiten
+            window.location.href = './login.html?msg=login_required';
+        } else if (guestToken !== null) {
+            // Hier könntest du z.B. Einschränkungen für Gäste definieren
+            console.log("Gastzugriff gewährt");
+        }
+    } catch (error) {
+        console.error("Kein Zugriff auf localStorage oder sessionStorage möglich: ", error);
+        window.location.href = './login.html?msg=error_localStorage';
+    }
+}
+
+    async function loadNameOfAdmin() {
+        let tempUserID = sessionStorage.getItem('userId'); 
+        let saveUserID = localStorage.getItem('userId'); 
+        let guestToken = sessionStorage.getItem('guestToken');
+        
+        if (tempUserID) {
+            let data = await loadData(`${user_API}/${tempUserID}`);
+            document.getElementById('NameOfAdmin').innerHTML = data.name;
+            return;
+        } 
+        
+        if (saveUserID) {
+            let data = await loadData(`${user_API}/${saveUserID}`);
+            document.getElementById('NameOfAdmin').innerHTML = data.name;
+            return;
+        } 
+        
+        if (guestToken === "true") {
+            let data = await loadData(NameOfAdmin);
+            document.getElementById('NameOfAdmin').innerHTML = data.name;
+        }
+    }
+    
 
 async function renderData(URL) {
     let data = await loadData(URL);
@@ -101,6 +153,7 @@ numberTaskInProgress
 numberTaskAwaitFeedback
 */
 
+
 function displayGreeting() {
     let greetingText = document.getElementById('greeting-text');
     let currentHour = new Date().getHours();
@@ -116,9 +169,49 @@ function displayGreeting() {
     } catch (error) {
         greeting = "Hello,";
         console.error("Error while getting the current hour: " + error);
-        
     }
-    
-
     greetingText.innerText = greeting;
+}
+
+
+async function countUrgentTasks(tasks) {
+    let urgentCount = 0;
+
+    for (let key in tasks) {
+        let task = tasks[key];
+        if (task.priority === "urgent" && task.progress !== "done") {
+            urgentCount++;
+        }
+    }
+
+    document.getElementById("numberUpcomming").textContent = urgentCount;
+}
+
+function findNextDeadline(tasks) {
+    let today = new Date();
+    let upcomingDeadline = null;
+
+    for (let key in tasks) {
+        let task = tasks[key];
+        let taskDate = new Date(task.date);
+
+        if (taskDate >= today && task.progress !== "done") {
+            if (!upcomingDeadline || taskDate < upcomingDeadline) {
+                upcomingDeadline = taskDate;
+            }
+        }
+    }
+
+    if (upcomingDeadline) {
+        let options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById("dateUpcomming").textContent = upcomingDeadline.toLocaleDateString('en-US', options);
+    } else {
+        document.getElementById("dateUpcomming").textContent = "No upcoming deadlines";
+    }
+}
+
+async function loadDeadline() {
+    let tasks = await loadData(taskAPI);  // Ladet alle Tasks...
+    countUrgentTasks(tasks);  // Aktualisiert; Urgent-Zähler
+    findNextDeadline(tasks);  // Findet die nächste Deadline
 }

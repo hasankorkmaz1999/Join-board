@@ -9,6 +9,25 @@ let tasks = {};
 
 function init() {
     renderData(taskAPI);
+    forbiddenCourse();
+    initHeader();
+}
+
+function forbiddenCourse() {
+    try {
+        let userID = localStorage.getItem('userId') || sessionStorage.getItem('userId');
+        let guestToken = sessionStorage.getItem('guestToken');
+        if (userID === null && guestToken === null) {
+            // Falls weder userID noch guestToken vorhanden ist, umleiten
+            window.location.href = './login.html?msg=login_required';
+        } else if (guestToken !== null) {
+            // Hier könntest du z.B. Einschränkungen für Gäste definieren
+            console.log("Gastzugriff gewährt");
+        }
+    } catch (error) {
+        console.error("Kein Zugriff auf localStorage oder sessionStorage möglich: ", error);
+        window.location.href = './login.html?msg=error_localStorage';
+    }
 }
 
 async function renderData(URL) {
@@ -49,6 +68,9 @@ function renderTaskData(data) {
     awaitingfeedbackDIV.innerHTML = '';
 
     let todoTasksCount = 0; // Zähler für die "To Do"-Tasks
+    let inProgressTasksCount = 0; // Zähler für die "In Progress"-Tasks
+    let awaitingFeedbackTasksCount = 0; // Zähler für die "Awaiting Feedback"-Tasks
+    let doneTasksCount = 0;
 
     for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
@@ -61,22 +83,41 @@ function renderTaskData(data) {
         }
         if (progress === "inProgress") {
             inprogressDIV.innerHTML += renderDivInprogress(task, key);
+            inProgressTasksCount++; // Zähle die "In Progress"-Tasks
         }
         if (progress === "done") {
             doneDIV.innerHTML += renderDivDone(task, key);
+            doneTasksCount++;
         }
         if (progress === "AwaitingFeedback") {
             awaitingfeedbackDIV.innerHTML += renderDivawaitingfeedback(task, key);
+            awaitingFeedbackTasksCount++; // Zähle die "Awaiting Feedback"-Tasks
         }
     }
 
     // Wenn keine "To Do"-Tasks vorhanden sind, zeige den Banner an
     if (todoTasksCount === 0) {
-        todoDIV.innerHTML = '<div class="no-tasks-banner">No tasks To do</div>';
+        todoDIV.innerHTML = '<div class="no-tasks-banner">No tasks To Do</div>';
+    }
+
+    // Wenn keine "In Progress"-Tasks vorhanden sind, zeige den Banner an
+    if (inProgressTasksCount === 0) {
+        inprogressDIV.innerHTML = '<div class="no-tasks-banner">No tasks in Progress</div>';
+    }
+
+    // Wenn keine "Awaiting Feedback"-Tasks vorhanden sind, zeige den Banner an
+    if (awaitingFeedbackTasksCount === 0) {
+        awaitingfeedbackDIV.innerHTML = '<div class="no-tasks-banner">No tasks awaiting Feedback</div>';
+    }
+
+
+    if (doneTasksCount === 0) {
+        doneDIV.innerHTML = '<div class="no-tasks-banner">No tasks done</div>';
     }
 
     disableSpinner();
 }
+
 
 
 function startDragging(id) {
@@ -87,10 +128,27 @@ function allowDrop(event) {
     event.preventDefault();
 }
 
+function showDropIndicator(event) {
+    let target = event.currentTarget;
+    if (!target.querySelector('.drop-indicator')) {
+        let dropIndicator = document.createElement('div');
+        dropIndicator.classList.add('drop-indicator');
+        target.appendChild(dropIndicator);
+    }
+}
+
+function hideDropIndicator(event) {
+    let target = event.currentTarget;
+    let dropIndicator = target.querySelector('.drop-indicator');
+    if (dropIndicator) {
+        dropIndicator.remove();
+    }
+}
+
 function moveTo(category) {
     let data = {
         progress: category
-    }
+    };
     updateData(taskAPI, cureentDraggedElement, data);
 }
 
@@ -102,33 +160,59 @@ function updateData(URL, id, data) {
         },
         body: JSON.stringify(data)
     })
-    toastMessage("Task moved successfully!");
-    setTimeout(() => {
-        init();
-    }, 500);
+    .then(() => {
+        toastMessage("Task moved successfully!");
+        setTimeout(() => {
+            init();
+        }, 100);
+    });
 }
 
-// Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
-function openAddTaskOverlay() {
-    let overlay = document.getElementById('overlayforaddtask');
-    overlay.classList.remove('d-none');
-    overlay.classList.add('slide-in-right');
-}
 
-// Funktion zum Schließen des Overlays
-function closeAddTaskOverlay() {
+
+function closeOverlay() {
     let overlay = document.getElementById('overlayforaddtask');
+    let popupContent = document.getElementById('addtaskpopup');
+    popupContent.innerHTML = '';
+
     overlay.classList.add('slide-out-right');
     setTimeout(() => {
         overlay.classList.add('d-none');
         overlay.classList.remove('slide-in-right');
         overlay.classList.remove('slide-out-right');
     }, 500);
+}
+
+// Funktion zum Öffnen des Add Task Overlays und Laden des HTML-Inhalts
+function openAddTaskOverlay(progress) {
+    let overlay = document.getElementById('overlayforaddtask');
+    overlay.classList.remove('d-none');
+    overlay.classList.add('slide-in-right');
+
+    let iframe = document.createElement('iframe');
+    iframe.src = `add_task_board.html?progress=${progress}`; // Übergibt den Fortschrittsparameter
+
+    let popupContent = document.getElementById('addtaskpopup');
+    popupContent.innerHTML = ''; // Leere den bisherigen Inhalt
+    popupContent.appendChild(iframe);
+    document.body.style.overflow = 'hidden';
+}
+
+// Funktion zum Schließen des Overlays
+function closeAddTaskOverlay() {
+    let overlay = document.getElementById('overlayforaddtask');
+    overlay.classList.remove('slide-in-right');
+    overlay.classList.add('slide-out-right');
+    setTimeout(() => {
+        overlay.classList.add('d-none');
+        overlay.classList.remove('slide-in-right');
+        overlay.classList.remove('slide-out-right');
+        document.body.style.overflow = 'auto';
+    }, 500);
     
 }
 
 // Funktion um auf das Overlay klicken zu können ohne das es sich schließt
-
 function doNotClose(event) {
     event.stopPropagation();
   }
@@ -145,15 +229,22 @@ function openSingleTaskOverlay(taskData, key) {
     
     let htmlContent = addSingleTaskForm(taskData, key);
     popupContent.innerHTML = htmlContent;
+    document.body.style.overflow = 'hidden';
 }
 
 
 
 function closeSingleTaskOverlay() {
     let overlay = document.getElementById('overlayforsingletask');
-    overlay.classList.add('d-none');
-    let popupContent = document.getElementsByClassName('singletaskpopup')[0];
-    popupContent.innerHTML = '';
+    overlay.classList.remove('slide-in-right');
+    overlay.classList.add('slide-out-right');
+    setTimeout(() => {
+        overlay.classList.add('d-none');
+        overlay.classList.remove('slide-in-right');
+        let popupContent = document.getElementsByClassName('singletaskpopup')[0];
+        popupContent.innerHTML = '';
+        document.body.style.overflow = 'auto';
+    }, 500);
 }
 
 
@@ -185,8 +276,15 @@ async function deleteTask(taskKey) {
 // Funktion zum Suchen von Tasks
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Event-Listener für Echtzeitsuche
+    document.querySelector('.inputfieldfindtask').addEventListener('input', findTask);
+});
+
 function findTask() {
     let searchInput = document.querySelector('.inputfieldfindtask').value.toLowerCase();
+    
+    // Leere die Spalten
     document.getElementById('todo').innerHTML = '';
     document.getElementById('inprogress').innerHTML = '';
     document.getElementById('done').innerHTML = '';
@@ -194,16 +292,19 @@ function findTask() {
 
     let keys = Object.keys(tasks);
     let tasksFound = false; 
+
     for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
         let task = tasks[key];
         let taskTitle = task.task.toLowerCase(); 
         let taskDescription = task.description.toLowerCase(); 
 
-        
+        // Überprüfe, ob der Titel oder die Beschreibung den Suchbegriff enthalten
         if (taskTitle.includes(searchInput) || taskDescription.includes(searchInput)) {
             tasksFound = true;
             let progress = task.progress;
+
+            // Render die passenden Aufgaben in der entsprechenden Spalte
             if (progress === "todo") {
                 document.getElementById('todo').innerHTML += renderDivTodo(task, key);
             }
@@ -219,12 +320,41 @@ function findTask() {
         }
     }
 
+    // Zeige eine Nachricht an, wenn keine Aufgaben gefunden wurden
     if (!tasksFound) {
-        document.getElementById('inprogress').innerHTML = '<div class="no-tasksfound-banner">Keine Ergebnisse gefunden</div>';
+        document.getElementById('inprogress').innerHTML = '<div class="no-tasksfound-banner">No tasks found</div>';
     }
 
+    // Wenn das Eingabefeld leer ist, lade die ursprünglichen Daten neu
     if (searchInput === '') {
         renderData(taskAPI); 
     }
 }
 
+async function pushInToDo(key) {
+    let data = {
+        progress: "todo"
+    }
+    updateData(taskAPI, key, data);
+}
+
+async function pushInProgress(key) {
+    let data = {
+        progress: "inProgress"
+    }
+    updateData(taskAPI, key, data);
+}
+
+async function pushInAwaitFeedback(key) {
+    let data = {
+        progress: "AwaitingFeedback"
+    }
+    updateData(taskAPI, key, data);
+}
+
+async function pushInDone(key) {
+    let data = {
+        progress: "done"
+    }
+    updateData(taskAPI, key, data);
+}

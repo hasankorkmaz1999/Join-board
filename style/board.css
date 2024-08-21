@@ -43,6 +43,20 @@ body {
   display: none;
 }
 
+.sectionstodrop {
+  background-color:var(--body-background); 
+  height: 100vh;
+}
+
+.drop-indicator {
+  border: 2px dashed rgba(0, 0, 0, 0.1);
+  height: 150px;
+  margin-bottom: 10px;
+  width: 230px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
 .progress-window {
   display: flex;
   flex-direction: column;
@@ -50,7 +64,7 @@ body {
   height: 100%; /* Höhe entsprechend des übergeordneten Elements */
   flex-grow: 1;
   gap: 16px;
-  width: 252px;
+  /* width: 252px; */
 }
 
 .joinLogo {
@@ -81,7 +95,7 @@ h1 {
 
 
 .no-tasks-banner {
- 
+  width: 190px;
   text-align: center;
   padding: 20px;
   background-color: #f0f0f0;
@@ -107,19 +121,38 @@ h1 {
 }
 
 /*Style für das Editieren der task  */
+.closeXaddtask {
+  position: fixed;
+  right: 30px;
+  top: 20px;
+  height: 32px;
+  width: 32px;
+}
+
+.closeXaddtask:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+
 .edit-task-form {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
- margin-top: 50px;
-  padding: 30px;
-  width: 470px;
-  height: 800px;
-  height: 700px;
-  overflow-y: scroll;
+  justify-content: center;
+  
+  width: 460px;
+  height: 770px;
+  border-radius: 24px;
+  padding: 20px;
+  overflow-y: auto;
+ 
+ 
 }
 
 .editTaskTitle {
+  
+  width: 450px;
   color: black;
   font-family: 'Inter';
   font-size: 20px;
@@ -143,6 +176,7 @@ h1 {
     margin-bottom: 20px;
     border: 2px solid rgba(117, 115, 115, 0.2);
     height: 120px;
+    width: 450px;
     padding-left: 10px;
     padding-top: 10px;
 }
@@ -153,6 +187,7 @@ h1 {
   font-size: 20px;
     font-weight: 400;
     line-height: 24px;
+    width: 450px;
     border-radius: 10px;
     margin-bottom: 20px;
     border: 2px solid rgba(117, 115, 115, 0.2);
@@ -209,6 +244,116 @@ h1 {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.addTaskSubtasksEdit {
+  margin-bottom: 20px;
+}
+
+.subtasklistedit {
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 450px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+ 
+}
+
+.subtaskedit {
+  width: 438px;
+  padding-left: 10px;
+  margin-top: 10px;
+  
+  height: 30px;
+  border-radius: 10px;
+ 
+  line-height: 20px; /* Höhe gleich der Zeilenhöhe für vertikale Zentrierung */
+  list-style-position: inside; 
+}
+
+.subtasklistedit:hover {
+  background-color: rgba(150, 148, 148, 0.2);
+ 
+}
+
+.no-hover .subtasklistedit:hover {
+  background-color: transparent !important; 
+}
+
+.edit-subtask-input {
+  width: 350px;
+  height: 30px;
+  font-size: 20px;
+}
+
+.subtask-input-container {
+  
+  display: flex;
+  align-items: center;
+}
+
+.editanddeletebuttonsub {
+  margin-top: 10px;
+}
+
+#subtasks {
+  flex-grow: 1;
+  padding: 5px;
+  padding-right: 30px; /* Platz für das Icon */
+  border-radius: 5px;
+}
+
+.icons-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: -65px; /* Verschiebt die Icons ins Eingabefeld */
+}
+
+.clear-subtask-icon {
+  cursor: pointer;
+  width: 25px;
+  height: 35px;
+}
+
+.add-subtask-icon {
+  margin-left: 5px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(0%) saturate(0%) hue-rotate(324deg) brightness(91%) contrast(86%);
+}
+
+.hidden {
+  display: none;
+}
+
+.addTaskAssignedToButtonEdit {
+  width: 450px;
+}
+
+
+.inputsubtaskedit {
+  padding-right: 30px; 
+  width: 450px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-grey);
+  border-radius: 10px;
+  background-color: var(--white);
+  padding: 10px 30px 10px 10px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  font-family: 'Inter';
+  
+}
+
+.divideredit {
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
 
 
@@ -225,10 +370,34 @@ h1 {
   border-radius: 5px;
   overflow: hidden;
   height: 10px;
-  margin: 10px 0;
+ 
   width: 55%;
-  margin-right: 10px;
+  margin-right: 5px;
+  position: relative;
+  display: inline-block;
   
+}
+
+.progress-bar-container .progress-bar::after {
+  content: attr(data-tooltip);
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position the tooltip above the progress bar */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.progress-bar-container .progress-bar:hover::after {
+  visibility: visible;
+  opacity: 1;
 }
 
 .progress-bar {
@@ -241,7 +410,7 @@ h1 {
 .subtask-progress {
   width: 100px;
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 14px;
   margin-right: 5px;
 }
 
@@ -249,13 +418,9 @@ h1 {
   flex-grow: 1;
 }
 
-
-
-
-/*Style Boardseite einzelne Tasks sobald man draufklickt und sich das overlay öffnet */
 .taskCategoryHTML {
-  margin-bottom: 50px;
   font-size: 24px;
+  margin-left: -15px;
   
 }
 
@@ -266,12 +431,11 @@ h1 {
   padding-left: 5px;
   display: flex;
   align-items: center;
- 
+
 }
 
 .subtask-item:hover {
   background-color: rgba(150, 148, 148, 0.2);
-  
 }
 
 .styled-checkbox {
@@ -295,7 +459,6 @@ h1 {
   vertical-align: middle;
 }
 
-
 .styled-checkbox:checked + span::before {
   content: '✔';
   display: inline-block;
@@ -311,7 +474,6 @@ h1 {
   font-weight: bold;
 }
 
-
 .styled-checkbox + span:hover::before {
   background-color: #f0f0f0;
 }
@@ -324,17 +486,6 @@ h1 {
 .taskPriority {
   margin-left: 20px;
   color: #000000;
-  
-}
-
-.single-task-content {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  padding: 30px;
-  width: 450px;
-  height: 780px;
-  overflow-y: scroll;
 }
 
 .Subtasks {
@@ -343,8 +494,9 @@ h1 {
 
 .taskTitleOverlay {
   margin-top: 10px;
- margin-bottom: 10px;
-  font-size: 70px;
+  margin-bottom: 10px;
+  font-size: 32px;
+ 
 }
 
 .AssignedTitle {
@@ -359,7 +511,7 @@ h1 {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  
+
 }
 
 .editbuttontask {
@@ -367,14 +519,13 @@ h1 {
   justify-content: space-between;
   background-image: url(../IMGicons/edit.svg);
   background-repeat: no-repeat;
-  background-position: left 1px center; /* Verschiebt das Bild nach links um 5px */
+  background-position: left 1px center; 
   cursor: pointer;
-  margin-left: 30px;
   width: 44px;
   height: 24px;
-  padding-left: 30px; /* Erhöht das padding-left, um Platz für das Bild und den Abstand zu schaffen */
+  padding-left: 30px; 
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--deep-grey);
 }
 
@@ -387,8 +538,10 @@ h1 {
   padding-left: 24px;
   margin-right: 12px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--deep-grey);
+  border-right: 1px solid grey;
+  padding-right: 20px;
   
 }
 
@@ -409,11 +562,38 @@ h1 {
   justify-content: space-between;
   border-radius: 24px;
   margin: 10px 0;
-  cursor: pointer;
+  cursor: grab;
   gap: 24px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   background-color: var(--white);
   width: 240px;
+}
+
+.task-cards:active {
+  cursor: grabbing !important;
+  -webkit-animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes rotate-90-cw {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+}
+@keyframes rotate-90-cw {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
 }
 
 #task-card {
@@ -439,6 +619,8 @@ align-items: center;
 margin-right: 20px;
 margin-bottom: 25px;
 }
+
+
 
 .technical-green {
  
@@ -811,11 +993,10 @@ h1, h2, p {
 }
 
 /*Style für die To do In Progress etc. Sektion */
-
 .boardsections {
   max-width: 1440px;
   margin-left: 260px; 
-  background-color: var(--body-background-grey);
+  background-color: var(--body-background);
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -870,8 +1051,19 @@ h1, h2, p {
   align-items: center;
 }
 
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#addtaskpopup {
+  width: 100%;
+  height: 100%;
+}
+
 .addtaskpopup {
-  background-color: white;
+  background-color: var(--body-background-grey);
   width: 1116px;
   height: 870px;
   position: fixed;
@@ -881,8 +1073,8 @@ h1, h2, p {
   border-radius: 20px;
   display: flex; 
   justify-content: flex-start;
-  align-items: flex-start;
-
+  align-items: flex-end;
+  flex-direction: column;
   overflow: hidden; 
 }
 
@@ -905,10 +1097,8 @@ h1, h2, p {
 }
 
 .singletaskpopup {
-
   background-color: white;
-  width: 525px;
-  height: 870px;
+  height: 800px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -917,8 +1107,154 @@ h1, h2, p {
   display: flex; 
   justify-content: flex-start;
   align-items: flex-start;
- 
+  width: 500px;
+  
   overflow: hidden; 
 }
 
 
+
+.single-task-content {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 500px;
+  height: 740px;
+  border-radius: 24px;
+  overflow-y: auto;
+}
+
+
+.tooltip {
+  display:inline-block;
+  position:relative;
+  border-bottom:1px dotted #666;
+  text-align:left;
+}
+
+.tooltip .top {
+  min-width:200px; 
+  top:-20px;
+  left:50%;
+  transform:translate(-50%, -100%);
+  padding:10px 20px;
+  color:#444444;
+  background-color:#EEEEEE;
+  font-weight:normal;
+  font-size:13px;
+  border-radius:8px;
+  position:absolute;
+  z-index:99999999;
+  box-sizing:border-box;
+  box-shadow:0 1px 8px rgba(0,0,0,0.5);
+  visibility:hidden; opacity:0; transition:opacity 0.8s;
+}
+
+.tooltip:hover .top {
+  visibility:visible; opacity:1;
+}
+
+.tooltip .top i {
+  position:absolute;
+  top:100%;
+  left:50%;
+  margin-left:-12px;
+  width:24px;
+  height:12px;
+  overflow:hidden;
+}
+
+.tooltip .top i::after {
+  content:'';
+  position:absolute;
+  width:12px;
+  height:12px;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(45deg);
+  background-color:#EEEEEE;
+  box-shadow:0 1px 8px rgba(0,0,0,0.5);
+}
+
+
+
+.column {
+  width: 100px;
+  height: 200px;
+  border: 1px solid grey;
+
+  background-color: white;
+  transition: background-color 0.3s;
+}
+
+.column.highlight {
+  background-color: yellow;
+}
+
+/* Menüstandard-Einstellungen */
+.miniMenu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1;
+}
+
+/* Sichtbar und animiert */
+.miniMenu.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.responsive-dots {
+  cursor: pointer;
+}
+
+a.responsive-dots {
+  cursor: pointer;
+}
+
+span.featTxt {
+  padding-bottom: 6px;
+  text-decoration: none;
+}
+
+.featTxt {
+  text-decoration: none;
+}
+
+.featTxt:hover {
+  text-decoration: none;
+}
+
+span.mini-menu {
+  padding-bottom: 6px;
+}
+
+span.mini-menu a {
+  color: var(--white);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+span.mini-menu a:hover {
+  text-decoration: underline;
+}
+
+
+/* Versteckt die horizontale Scrollbar */
+.progress-window {
+  overflow-x: scroll; 
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+}
+
+.progress-window::-webkit-scrollbar {
+  display: none; 
+}

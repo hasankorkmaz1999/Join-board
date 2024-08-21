@@ -1,10 +1,173 @@
-@media (max-width: 400px) {
+
+
+@media (max-width: 1280px) {
+    .content-container {
+        flex-wrap: wrap;
+    }
+}    
+
+@media (max-width: 1180px) {
+    h1 {
+        font-size: 47px;
+    }
+    .contact-flex-header span {
+        font-size: 20px;
+    }
+} 
+
+@media (max-width: 850px) {
+    .header-left {
+        display: none;
+    }
+    .header-top,
+    .main-content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .header-top {
+        width: 100%;
+    }
+    .contact-flex-header {
+        gap: 0;
+        display: flex;
+    }
+}
+
+@media (max-width: 738px) {
+
+}
+
+@media (max-width: 590px) {
+    .vertical-seperator {
+        display: none;
+    }
+    .contact-flex-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+} 
+
+@media (max-width: 510px) {
+    p.upcoming-desktop,
+    .subheader-contact {
+        display: none;
+    }
+    .summary-box-mobile {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        justify-content: unset;
+        padding: 0 !important;
+        margin: 0;
+        gap: 0;
+    }
+    .metrics-row {
+        justify-content: unset;
+    }
+    .joinLogo {
+        display: block;
+        width: 39px;
+        height: 39px;
+        position: absolute;
+        top: 16px;
+        z-index: 20;
+        left: 16px;
+    }
+    p.upcoming-mobile {
+        display: block;
+        font-size: 16px;
+        line-height: 19.2px;
+        font-weight: 400;
+    }
+    p#dateUpcomming {
+        font-size: 21px;
+        line-height: 25.2px;
+        font-weight: 700;
+    }
+    .flexhelper-mobile {
+        width: 90px;
+        padding-left: 10px;
+    }
+    .metrics-row-desktop {
+        min-width: 300px;
+    }
+    .flexhelper-urgent {
+        display: flex;
+        flex-direction: column;
+        margin-left: -10px;
+    }
+    p.urgent-text {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.2px;
+    }
+    .summary-box img {
+        width: 40px;
+        height: 40px;
+    }
+    .mobile-flex {
+        display: flex;
+        align-items: center;
+        width: 80px;
+        padding-right: 30px;
+    }
+    #upcomingCounter {
+        display: flex;
+        justify-content: space-between;
+    }
+    .greeting-container {
+        display: none;
+    }
+    .main-content {
+        margin-top: 20px;
+    }
+    #numberTodo, #numberDone {
+        font-size: 47px;
+        font-weight: 600;
+    }
+    .summary-box {
+        padding: 1px;
+        margin-right: 1px;
+    }
+    #todoCounter,
+    #doneCounter {
+        width: 120px;
+        padding: 10px;
+        gap: 0;
+    }
+    .main-content {
+        padding: 5px;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 20px;
+    }
+    .task-box p {
+        font-size: 47px;
+    }
+    h2.summary-mobile {
+        font-size: 14px;
+        font-weight: 400;
+    }
+    #taskInBoard,
+    #taskInProgress,
+    #taskAwaitFeedback {
+        min-width: 90px;
+        margin: 0 4px;
+    }
+    .mobile-line {
+        width: 2px;
+        height: 90%;
+        border-left: 2px solid var(--border-grey);
+    }
     .footer-mobile {
         display: block !important;
     }
     .header-left {
         display: none;
     }
-
+    #todoCounter {
+        margin-right: 10px;
+    }
 }
+
 

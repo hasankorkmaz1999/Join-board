@@ -16,18 +16,5 @@ This project was developed in collaboration with:
 - [Metafeller](https://github.com/Metafeller)
 - [Hasan Korkmaz](https://github.com/hasankorkmaz1999)
 
-## Features
 
-- Task creation, assignment, and tracking
-- Integration with Firebase for backend services
-- Intuitive drag-and-drop interface
-
-## Getting Started
-
-To get started with this project, clone the repository and follow the installation instructions below.
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Mori-Takahashi/Join-board.git
+> **🕙 release date:** Expected release date is 26.08.2024.

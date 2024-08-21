@@ -1,18 +1,31 @@
 .main-content {
     margin-top: 80px;
-    margin-left: 332px; /* Anpassung an die Breite der Seitenleiste */
+    margin-left: 332px;
     margin-right: 120px;
     padding: 20px;
     background-color: var(--body-background-grey);
     height: 85vh;
 }
 
+.joinLogo {
+    display: none;
+}
+
 .main-content p {
-    margin-bottom: 32px;
+    /* margin-bottom: 0px; */
+    /* margin-bottom: 32px; */
+    font-size: 40px;
+    font-weight: 700;
 }
 
 h1, h2, p {
     color: var(--deep-grey);
+    margin-top: 2px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 18px;
 }
 
 .contact-flex-header {
@@ -29,11 +42,14 @@ h1, h2, p {
 .greeting-container {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     margin: 20px;
     padding: 40px;
     background-color: var(--light-grey);
     border-radius: 8px;
+    /* display: none; */
+    align-items: center;
+    justify-content: space-between;
 }
 
 .greeting-flex-area {
@@ -50,6 +66,7 @@ h1, h2, p {
 
 #greeting-text {
     font-size: 47px;
+    font-weight: 600;
     color: var(--deep-grey);
 }
 
@@ -90,11 +107,12 @@ h1, h2, p {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: #F7F8FC;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    /* transition: transform 0.3s, box-shadow 0.3s; */
     text-align: center;
     color: #2A3647;
     flex: 1;
@@ -109,6 +127,7 @@ h1, h2, p {
     background-color: #2A3647;
     color: white;
     transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .summary-box:hover h2,
@@ -117,15 +136,43 @@ h1, h2, p {
 }
 
 .summary-box img {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
+    width: 72px;
+    height: 80px;
+    /* margin-bottom: 10px; */
     filter: invert(0); /* Icon bleibt dunkel */
     transition: filter 0.3s ease;
 }
 
 .summary-box:hover img {
     filter: invert(1); /* Icon wird weiß */
+}
+
+/* Summary-Box spezifische Styles */
+.metric-icon {
+    margin-right: 16px; /* Abstand zwischen dem Icon und dem Text */
+}
+
+.task-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-box p {
+    font-size: 61px;
+}
+
+.metric-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#numberTodo, #numberDone {
+    font-size: 61px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    margin-top: 8px;
 }
 
 /* Box spezifische Styles */
@@ -153,6 +200,12 @@ h1, h2, p {
     filter: none; /* Icon bleibt in seiner Originalfarbe (Rot) */
 }
 
+.vertical-seperator2 {
+    border-left: 2px solid var(--deep-grey);
+    height: 59px;
+    margin: 0 20px;
+}
+
 #taskInBoard {
     background-color: #fff;
 }
@@ -176,67 +229,41 @@ h1, h2, p {
     color: white;
 }
 
-
-
-
-
-
-
-/* Bitte nichts nach den Media Queries einfügen!
-***********************************************************************/
-
-@media (max-width: 1280px) {
-    .content-container {
-        flex-wrap: wrap;
-    }
-}    
-
-@media (max-width: 1180px) {
-    h1 {
-        font-size: 47px;
-    }
-    .contact-flex-header span {
-        font-size: 20px;
-    }
-} 
-
-@media (max-width: 850px) {
-    .header-left {
-        display: none;
-    }
-    .header-top,
-    .main-content {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .header-top {
-        width: 100%;
-    }
-    .contact-flex-header {
-        gap: 0;
-        display: flex;
-        justify-content: center;
-    }
+p.upcoming-desktop {
+    display: none;
 }
 
-@media (max-width: 590px) {
-    .vertical-seperator {
-        display: none;
-    }
-    .contact-flex-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-} 
+.mobile-flex {
+    display: flex;
+    align-items: center;
+}
 
-@media (max-width: 510px) {
-    .subheader-contact {
-        display: none;
-    }
-    .summary-box {
-        flex: 0 0 146px;
-    }
-    .metrics-row {
-        justify-content: unset;
-    }
-} 
+.mobile-line {
+    width: 2px;
+    height: 90%;
+    border-left: 2px solid var(--border-grey);
+}
+
+#upcomingCounter {
+    display: flex;
+    justify-content: space-around;
+}
+
+p.urgent-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+}
+
+#dateUpcomming {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 25.2px;
+}
+
+p.upcoming-mobile {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25.2px;
+}
+

@@ -71,11 +71,11 @@
                     </div>
                     <div class="flex-input error-red">
                         <input type="password" name="signup-password" id="signup-password" placeholder="Password" required>
-                        <img src="IMGicons/lock.svg" alt="Lock Icon">
+                        <img onclick="showPassword()" id="signup-password-Image" src="IMGicons/visibility_off.svg" alt="visibility_off"> <!-- find me -->
                     </div>
                     <div class="flex-input error-red">
                         <input type="password" name="confirm-signup-password" id="confirm-signup-password" placeholder="Confirm Password" required>
-                        <img src="IMGicons/lock.svg" alt="Lock Icon">
+                        <img onclick="showConfirmPassword()" id="confirm-signup-password-Image" src="IMGicons/visibility_off.svg" alt="visibility_off"> <!-- find me -->
                     </div>
                     <div class="error-message" id="error-message" style="color: var(--light-red); display: none;"></div>
                     <div class="remember-login">
