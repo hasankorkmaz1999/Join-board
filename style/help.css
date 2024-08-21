@@ -112,10 +112,7 @@ a.help:hover {
         z-index: 20;
         left: 16px;
     }
-    .footer-mobile {
-        display: block;
-    }
-    .footer-mobile {
+    div.footer-mobile {
         display: flex;
         align-items: center;
         position: fixed;

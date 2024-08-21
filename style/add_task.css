@@ -616,3 +616,24 @@ svg {
     font-size: 16px;
     text-transform: uppercase;
 } 
+
+
+/* Fix gegen verschieben des Inhalts bei assigned to*/
+.addTaskAssignedTo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+}
+
+.assignedto-checkboxes {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    right: 0; 
+    z-index: 1000;
+    padding: 10px;
+    border: 1px solid var(--border-grey);
+    box-sizing: border-box; 
+}
+/* End: Fix gegen verschieben des Inhalts */
