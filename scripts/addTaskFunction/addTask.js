@@ -52,7 +52,7 @@ function validateDate(dateStr) {
         errorSpan.textContent = "Please select a valid date in the present or future";
         errorSpan.style.color = '#FF7A00';
         errorSpan.classList.remove('d-non');
-        throw new Error("Das ausgewählte Datum liegt in der Vergangenheit.");
+        throw new Error("The selected date is in the past.");
     } else {
         errorSpan.classList.add('d-non');
         return true;
@@ -75,7 +75,7 @@ async function renderData(URL) {
             getAssignedTo(data, content);
         }
     } catch (error) {
-        console.error("Fehler beim Laden der Daten:", error);
+        console.error("Error loading the data:", error);
     }
 }
 
@@ -84,11 +84,11 @@ async function loadData(URL) {
     try {
         let response = await fetch(URL + ".json");
         if (!response.ok) {
-            throw new Error('Netzwerkantwort war nicht in Ordnung');
+            throw new Error('Network response was not in order');
         }
         return await response.json();
     } catch (error) {
-        console.error("Fehler beim Abrufen der Daten:", error);
+        console.error("Error when retrieving the data:", error);
         throw error;
     }
 }
