@@ -89,9 +89,9 @@
             <h2>Log in</h2>
             <div class="underline-frontpage"></div>
             <div class="login">
-                <form id="login-form" class="login-frontpage" onsubmit="return false;">
+                <form id="login-form" class="login-frontpage">
                     <div class="flex-input error-red">
-                        <input type="text" name="signup-email" id="signup-email" placeholder="Email" minlength="6" pattern="[a-zA-Z0-9_.±]">
+                        <input type="email" name="signup-email" id="signup-email" placeholder="Email" minlength="6" required>
                         <img class ="form-image" src="IMGicons/mail.svg" alt="E-Mail Icon">
                     </div>
                     <div class="flex-input error-red">
@@ -100,16 +100,17 @@
                     </div>
                     <div class="error-message" id="error-message" style="color: var(--light-red); display: none;"></div>
                     <div class="remember-login">
-                        <input type="checkbox" class="checkbox-login" required>
+                        <input type="checkbox" class="checkbox-login" id="remember-checkbox" required>
                         <p>Remember me</p>
+                    </div>
+                    <div class="buttons-frontpage">
+                        <button id="loginButton" type="submit" class="cursor-pointer button login-button-frontpage" disabled>Log in</button>
+                        <button id="guestLoginButton" class="cursor-pointer button guest-button-frontpage"><a href="summary.html">Guest Log in</a></button>
                     </div>
                 </form>
             </div>
-            <div class="buttons-frontpage">
-                <button id="loginButton" type="submit" class="cursor-pointer button login-button-frontpage" disabled>Log in</button>
-                <button id="guestLoginButton" class="cursor-pointer button guest-button-frontpage"><a href="summary.html">Guest Log in</a></button>
-            </div>
-        </div>    
+        </div>
+          
     <footer class="legal-notice">
         <ul class="footer-links">
             <li class="footer-links"><a href="privacyPolicyExternal.html" target="_blank">Privacy Policy</a></li>
@@ -129,24 +130,32 @@
     </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const emailInput = document.getElementById('signup-email');
-        const passwordInput = document.getElementById('signup-password');
-        const loginButton = document.getElementById('loginButton');
+document.addEventListener("DOMContentLoaded", function() {
+    const emailInput = document.getElementById('signup-email');
+    const passwordInput = document.getElementById('signup-password');
+    const rememberCheckbox = document.getElementById('remember-checkbox');
+    const loginButton = document.getElementById('loginButton');
 
-        function validateForm() {
-            if (emailInput.value.trim() !== "" && passwordInput.value.trim() !== "") {
-                loginButton.disabled = false;
-            } else {
-                loginButton.disabled = true;
-            }
+    function validateForm() {
+        // Check if all fields are valid and the checkbox is checked
+        const isEmailValid = emailInput.checkValidity();
+        const isPasswordValid = passwordInput.checkValidity();
+        const isCheckboxChecked = rememberCheckbox.checked;
+
+        // Enable the button if all fields are valid and the checkbox is checked
+        if (isEmailValid && isPasswordValid && isCheckboxChecked) {
+            loginButton.disabled = false;
+        } else {
+            loginButton.disabled = true;
         }
+    }
 
-        emailInput.addEventListener('input', validateForm);
-        passwordInput.addEventListener('input', validateForm);
+    // Add event listeners to validate the form on input and checkbox changes
+    emailInput.addEventListener('input', validateForm);
+    passwordInput.addEventListener('input', validateForm);
+    rememberCheckbox.addEventListener('change', validateForm);
+});
 
-        validateForm();
-    });
 </script>
 
     <script src="./scripts/login.js"></script>
