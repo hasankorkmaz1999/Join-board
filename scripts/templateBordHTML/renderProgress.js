@@ -27,6 +27,7 @@ const svgIcons = {
 };
 
 
+
 function getAvatarColor(id) {
   if (!avatarColorsMap[id]) {
     avatarColorsMap[id] = avatarColors();
@@ -182,7 +183,7 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
 
 
   return /*html*/ `
-        <div id="task-card" onclick='openSingleTaskOverlay(${JSON.stringify(
+        <div id="task-card-${key}" onclick='openSingleTaskOverlay(${JSON.stringify(
           taskData
         )}, "${key}")' draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
             ${typHTML}
