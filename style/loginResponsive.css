@@ -14,6 +14,12 @@
     justify-content: center;
 }
 
+@media (max-width: 670px) {
+    .hundertVh {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
 
 @media (max-width: 500px) {
     .header-top {
@@ -44,25 +50,30 @@
         display: flex;
         flex-direction: column;
         gap: 32px;
-        width: 98%;
+        width: 90%;
+        align-items: center;
     }
     .signup-markup {
         height: 100vH;
     }
-
-
-
+    input#signup-password,
+    input#signup-email {
+        width: 90%;
+    }
+    h2 {
+        font-size: 47px;
+    }
     .flex-input {
         display: flex;
         align-items: center;
         padding: 10px;
-        max-width: 100%;
+        max-width: 90%;
     }
     .flex-input input[type="text"] {
         flex: 1;
         border: none;
         outline: none;
-        padding: 10px;
+
         font-size: 16px;
     }
     .flex-input img.form-image {
@@ -75,12 +86,16 @@
     }
     .flex-input input[type="password"],
     .flex-input input[type="text"] {
-        padding: 8px;
         font-size: 14px;
+        width: 90%;
     }
     .flex-input img.form-image {
         width: 20px;
         height: 20px;
+        margin-left: 8px;
+    }
+    button.guest-button-frontpage {
+        width: 150px;
         margin-left: 8px;
     }
 }

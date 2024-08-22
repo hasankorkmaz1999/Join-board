@@ -223,6 +223,7 @@ h2 {
 
 .buttons-frontpage {
     margin-top: 32px;
+    display: flex;
 }
 
 .underline-frontpage {
