@@ -28,15 +28,18 @@ function init() {
 }
 let activeContactId = null; // to track the currently active contact
 
+/**
+ * Checks if the user has access to the course. If no user ID or guest token is found,
+ * redirects to the login page. If a guest token is found, logs a message indicating guest access.
+ * If an error occurs while accessing localStorage or sessionStorage, redirects to the login page with an error message.
+ */
 function forbiddenCourse() {
     try {
         let userID = localStorage.getItem('userId') || sessionStorage.getItem('userId');
         let guestToken = sessionStorage.getItem('guestToken');
         if (userID === null && guestToken === null) {
-            // Falls weder userID noch guestToken vorhanden ist, umleiten
             window.location.href = './login.html?msg=login_required';
         } else if (guestToken !== null) {
-            // Hier könntest du z.B. Einschränkungen für Gäste definieren
             console.log("Guest access granted");
         }
     } catch (error) {

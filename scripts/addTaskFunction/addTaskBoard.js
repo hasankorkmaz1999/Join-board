@@ -2,9 +2,7 @@
 //      DO NOT ADD THIS SCRIPT TO ADDTASK.HTML!     //
 /////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', function() {
-    // Überprüfen, ob die Seite in einem iFrame geladen wird oder der Session Storage 'JoinDev' auf true gesetzt ist
     if (window.self === window.top && sessionStorage.getItem('JoinDev') !== 'true') {
-        // Die Seite wird nicht in einem iFrame geladen und 'JoinDev' ist nicht true
         document.body.innerHTML = '<h1>Unfortunately the page cannot be opened like this</h1>';
         console.log("%cACCESS BLOCKED", `
             background: #ff0f0f;
@@ -53,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function devon() {
     sessionStorage.setItem('JoinDev', 'true');
-    console.log("JoinDev has been set to true in sessionStorage.");
 }
 
 /* Hier checken wir den Parameter */
@@ -176,7 +173,6 @@ async function addTaskAwaitFeedback() {
             });
     
             await response.json();
-            console.log("Task successfully added:", data);
             reloadPage();
             toastMessage("New task added successfully!");
             triggerInit();
@@ -228,7 +224,6 @@ async function startAddTaskInProgress() {
         });
 
         await response.json();
-        console.log("Task successfully added:", data);
         reloadPage();
         toastMessage("New task added successfully!");
         triggerInit();
@@ -280,7 +275,6 @@ async function startAddTask() {
         });
 
         await response.json();
-        console.log("Task successfully added:", data);
         reloadPage();
         toastMessage("New task added successfully!");
         triggerInit();
@@ -293,7 +287,6 @@ async function startAddTask() {
 }
 
 function triggerInit() {
-    // Ruft die init-Funktion im übergeordneten Fenster auf
     if (parent && parent.init) {
         parent.init();
     } else {
@@ -406,7 +399,6 @@ async function editTask(taskKey) {
         });
 
         await response.json();
-        console.log("Task successfully edited:", data);
         reloadPage();
         toastMessage("Task edited successfully!");
         triggerInit();
@@ -449,7 +441,6 @@ function validateAndSanitizeForm() {
         if (!isValid) {
             return reject(new Error("Validation failed"));
         }
-        // Symbole ersetzen, um XSS zu verhindern
         const sanitizeInput = (input) => {
             return input.replace(/[<>&"'\/\\(){}[\]=;:]/g, ' ');
         };

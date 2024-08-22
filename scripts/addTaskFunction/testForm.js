@@ -1,3 +1,9 @@
+/**
+ * Validates and sanitizes the form input fields. If validation fails, it rejects the promise with an error.
+ * If validation passes, it sanitizes the input values to prevent XSS and resolves the promise with the sanitized values.
+ *
+ * @returns {Promise<Object>} A promise that resolves with the sanitized form values or rejects with a validation error.
+ */
 function validateAndSanitizeForm() {
     return new Promise((resolve, reject) => {
         const taskTitle = document.getElementById("addTaskTitle");

@@ -7,6 +7,7 @@ function isValidLength(...values) {
     return values.every(value => value.length <= 30);
 }
 
+
 /**
  * Validates an email address.
  * @param {string} email - The email address to validate.
@@ -17,6 +18,7 @@ function isValidEmail(email) {
     return emailPattern.test(email);
 }
 
+
 /**
  * Validates a phone number.
  * @param {string} phone - The phone number to validate.
@@ -26,6 +28,7 @@ function isValidPhone(phone) {
     const phonePattern = /^[\d+]+$/;
     return phonePattern.test(phone);
 }
+
 
 /**
  * Sanitizes the input to prevent HTML injection.

@@ -1,6 +1,8 @@
 let login_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users";
 
+
 window.onload = init;
+
 
 function init() {
     showLogin('loginWindow');
@@ -9,6 +11,7 @@ function init() {
     checkRegister();
     disableButtonLogin();
 };
+
 
 function disableButtonLogin() {
     let mailInput = document.getElementById("signup-email").value;
@@ -22,11 +25,13 @@ function disableButtonLogin() {
     }
 };
 
+
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('signup-email').addEventListener('input', disableButtonLogin);
     document.getElementById('signup-password').addEventListener('input', disableButtonLogin);
     disableButtonLogin(); 
 });
+
 
 function checkRememberedUser() {
     let userId = localStorage.getItem('userId');
@@ -44,6 +49,7 @@ function checkRememberedUser() {
     }
 };
 
+
 function showLogin(elementId) {
     setTimeout(() => {
         let element = document.getElementById(elementId);
@@ -54,6 +60,7 @@ function showLogin(elementId) {
     }, 1000);
 };
 
+
 function showFooterLogin(elementId) {
     setTimeout(() => {
         let element = document.getElementById(elementId);
@@ -63,6 +70,7 @@ function showFooterLogin(elementId) {
         }
     }, 1000);
 };
+
 
 function checkRegister() {
     let urlParams = new URLSearchParams(window.location.search);
@@ -80,6 +88,7 @@ function checkRegister() {
         toastMessage("You have been successfully logged out.");
     };
 };
+
 
 document.getElementById('loginButton').addEventListener('click', function(event) {
     event.preventDefault();
@@ -113,12 +122,11 @@ document.getElementById('loginButton').addEventListener('click', function(event)
         });
 });
 
+
 document.getElementById('guestLoginButton').addEventListener('click', function(event) {
     event.preventDefault();
     
-    // Speichere einen Guest Token im localStorage
     sessionStorage.setItem('guestToken', 'true');
     
-    // Leite den Gast auf die geschützte Seite weiter
-    window.location.href = './summary.html'; // Oder die Seite, auf die Gäste Zugriff haben sollen
+    window.location.href = './summary.html';
 });
