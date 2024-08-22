@@ -1,7 +1,9 @@
 const addAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
 const assignedtoAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/contacts";
 
+
 window.onload = init;
+
 
 function init() {
     renderData(assignedtoAPI);
@@ -9,6 +11,7 @@ function init() {
     forbiddenCourse();
     initHeader();
 }
+
 
 function forbiddenCourse() {
     try {
@@ -26,7 +29,7 @@ function forbiddenCourse() {
     }
 }
 
-  /* Auswahlbutton in addTask: Low, Medium, Urgent */
+
   function setActive(button, priority) {
 
     let buttons = document.querySelectorAll('.addTaskPrioButton');
@@ -40,13 +43,11 @@ function forbiddenCourse() {
     priorityInput.value = priority;
     }
 
-// Ich habe es vorher mit einer Bibliothek versucht namens Flatpickr. Es hat leider nicht funktioniert. 
-// Flatpickr-Initialisierung wurde entfernt und stattdessen native Date-Picker-Validierung hinzugefügt.
 document.addEventListener('DOMContentLoaded', function() {
-    // Bereits vorhandener Code zur Verarbeitung der zugewiesenen Personen das doppelt vergeben war (siehe Zeile 49)
     let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
     let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 });
+
 
 function validateDate(dateStr) {
     let errorSpan = document.getElementById('duedateError');
@@ -56,7 +57,7 @@ function validateDate(dateStr) {
 
     if (selectedDate < today) {
         errorSpan.textContent = "Please select a valid date in the present or future";
-        errorSpan.style.color = '#FF7A00'; // Setzt die Farbe des Textes auf orange
+        errorSpan.style.color = '#FF7A00';
         errorSpan.classList.remove('d-non');
         throw new Error("Das ausgewählte Datum liegt in der Vergangenheit.");
     } else {
@@ -65,17 +66,13 @@ function validateDate(dateStr) {
     }
 }
 
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
-    //     let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
-    //     console.log(assignedto);
-    //     });
 
 function reloadPage() {
     setTimeout(() => {
         location.reload();
     }, 3600);
 }
+
 
 async function renderData(URL) {
     try {
@@ -89,6 +86,7 @@ async function renderData(URL) {
     }
 }
 
+
 async function loadData(URL) {
     try {
         let response = await fetch(URL + ".json");
@@ -101,6 +99,7 @@ async function loadData(URL) {
         throw error;
     }
 }
+
 
 /* !!!!Hier werden die farbe generiert!!!! */
 
@@ -127,7 +126,7 @@ function avatarColors() {
 
 /* !!!!Farbe generator ende!!!! */
 
-// Initialen (Avatare unter assignedTo)
+
 function getInitials(name) {
     return name.split(' ').map(word => word[0].toUpperCase()).join('');
 }
@@ -173,6 +172,7 @@ function addCheckboxEventListenersForStyling() {
     });
 }
 
+
 function addCheckboxEventListeners() {
     let checkboxes = document.querySelectorAll('input[name="assignedto"]');
     checkboxes.forEach(checkbox => {
@@ -189,6 +189,7 @@ function addCheckboxEventListeners() {
     });
 }
 
+
 async function getAssignedTo(data, content) {
     let key = Object.keys(data);
     for (let i = 0; i < key.length; i++) {
@@ -201,7 +202,6 @@ async function getAssignedTo(data, content) {
 // End: Initialen
 
 
-// Überwacht die Checkboxen und aktiviert die Custom boxen nach Klick
 document.addEventListener('DOMContentLoaded', () => {
     function updateAssignedToItems() {
         const assignedToItems = document.querySelectorAll('.assignedto-item');
@@ -230,7 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Render Contacts so optimiert, dass man die initialien einsehen kann bei Assigned to
 function renderContacts(assignedTo, key) {
     let initials = assignedTo.name.split(' ').map(name => name[0]).join('');
     const color = getAvatarColor(key);
@@ -253,7 +252,6 @@ async function addTask() {
         const task = sanitizedValues.taskTitle;
         const date = sanitizedValues.date;
 
-        // Validate date
         validateDate(date);
 
         const priority = document.getElementById("priority").value;
@@ -263,11 +261,10 @@ async function addTask() {
         let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
         let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 
-        // Gathering subtasks
         const subtaskElements = document.querySelectorAll("#subtaskList li");
         const subtasks = Array.from(subtaskElements).map(item => ({
             itsdone: false,
-            title: item.textContent.trim() // Ensure trimming of spaces
+            title: item.textContent.trim()
         }));
 
         let data = {
@@ -275,9 +272,9 @@ async function addTask() {
             date: date,
             priority: priority,
             category: category,
-            assignedto: assignedTo.map(name => ({ name })), // ensure correct mapping
+            assignedto: assignedTo.map(name => ({ name })),
             description: description,
-            subtasks: subtasks, // include subtasks here
+            subtasks: subtasks,
             progress: "todo",
             duedate: date,
         };
@@ -301,7 +298,6 @@ async function addTask() {
 }
 
 
-// Funktion für anzeigen im Subtask Input
 function toggleCheckmark(inputElement) {
     const checkIcon = document.getElementById('checkIcon');
     const closeIcon = document.getElementById('closeIcon');
@@ -322,14 +318,13 @@ document.getElementById('subtasks').addEventListener('input', function() {
     const inputField = this;
 
     if (inputField.value.trim() !== "") {
-        inputField.classList.add('no-plus'); // Plus-Symbol ausblenden
+        inputField.classList.add('no-plus');
     } else {
-        inputField.classList.remove('no-plus'); // Plus-Symbol wieder anzeigen
+        inputField.classList.remove('no-plus');
     }
 });
 
 
-// Event Listener für das Klicken auf das Häkchen
 document.getElementById('checkIcon').addEventListener('click', function() {
     
     const subtaskInput = document.getElementById('subtasks');
@@ -343,7 +338,7 @@ document.getElementById('checkIcon').addEventListener('click', function() {
     }
 });
 
-// Event Listener für das Klicken auf das Close-Icon
+
 document.getElementById('closeIcon').addEventListener('click', function() {
     const subtaskInput = document.getElementById('subtasks');
     subtaskInput.value = ''; 
@@ -351,7 +346,7 @@ document.getElementById('closeIcon').addEventListener('click', function() {
     subtaskInput.classList.add('no-plus');
 });
 
-// Funktion, die bei Drücken der Enter-Taste ausgeführt wird 
+
 document.getElementById("subtasks").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
@@ -383,7 +378,7 @@ function addSubtaskToList(title) {
     </div>   
     `;
 
-    // Event Listener für den Edit Button
+   
     const subtaskContainer = listItem.querySelector('.subtaskcontainer');
     const editButton = listItem.querySelector(".edit-btn");
     const saveButton = listItem.querySelector(".save-btn");
@@ -398,7 +393,7 @@ function addSubtaskToList(title) {
         subtaskContainer.classList.add('editing');
     });
 
-    // Event Listener für den Save Button
+    
     saveButton.addEventListener("click", function() {
         titleSpan.textContent = editInput.value;
         editInput.style.display = "none";
@@ -408,7 +403,7 @@ function addSubtaskToList(title) {
         subtaskContainer.classList.remove('editing'); 
     });
 
-    // Event Listener für den Delete Button
+    
     listItem.querySelector(".delete-btn").addEventListener("click", function() {
         subtaskList.removeChild(listItem);
     });
@@ -418,6 +413,7 @@ function addSubtaskToList(title) {
 
 
 let isAssignedToListOpen = false;
+
 
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
@@ -443,6 +439,7 @@ function showAssignedTo() {
     }
 }
 
+
 function closeAssignedToOnClickOutside(event) {
     let assignedto = document.getElementById('assignedto');
     let AssignedToButton = document.getElementById('AssignedToButton');
@@ -457,7 +454,6 @@ function closeAssignedToOnClickOutside(event) {
 }
 
 
-// Funktion zum Zurücksetzen des Formulars
 document.addEventListener('DOMContentLoaded', function() { 
     function clearAddTaskForm() {
         let form = document.getElementById('addTaskForm');
@@ -499,6 +495,7 @@ function clearValue() {
     document.querySelector('.prioFlex').innerHTML = resetKnopf();
     init();
 }
+
 
 function resetKnopf() {
     return /*html*/`
