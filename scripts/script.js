@@ -8,6 +8,7 @@ function init() {
     showLogin('loginWindow');
     showFooterLogin('footerAnimation');
     setupFormListeners();
+    // Initial check to disable the button
     checkFormValidity();
 }
 
@@ -48,8 +49,10 @@ function checkFormValidity() {
     const password = document.getElementById('signup-password').value.trim();
     const confirmPassword = document.getElementById('confirm-signup-password').value.trim();
 
+    // Check if name, email, and both passwords are filled
     const isFormFilled = name !== '' && email !== '' && password !== '' && confirmPassword !== '';
 
+    // Enable button only if the form is filled
     document.getElementById('loginButton').disabled = !isFormFilled;
 }
 
@@ -65,24 +68,24 @@ function validateForm() {
     let errorText = "";
 
     if (nameInput.value.length < 3) {
-        errorText += "Name must be at least 3 characters long.\n";
+        errorText += "· Name must be at least 3 characters long.\n";
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(mailInput.value)) {
-        errorText += "Please enter a valid e-mail address.\n";
+        errorText += "· Please enter a valid e-mail address.\n";
     }
 
     if (passwordInput.value.length < 6) {
-        errorText += "The password must be at least 6 characters long.\n";
+        errorText += "· The password must be at least 6 characters long.\n";
     }
 
     if (passwordInput.value !== confirmPasswordInput.value) {
-        errorText += "Passwords do not match.\n";
+        errorText += "· Passwords do not match.\n";
     }
 
     if (!privacyCheckbox.checked) {
-        errorText += "Please accept the Privacy Policy.\n";
+        errorText += "· Please accept the Privacy Policy.\n";
     }
 
     if (errorText) {
@@ -159,3 +162,4 @@ function showConfirmPassword() {
         confirmPasswordInput.type = 'password';
     }
 }
+

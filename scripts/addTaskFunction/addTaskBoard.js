@@ -49,11 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
 function devon() {
     sessionStorage.setItem('JoinDev', 'true');
 }
 
-/* Hier checken wir den Parameter */
 
 function getQueryParams() {
     let params = new URLSearchParams(window.location.search);
@@ -61,6 +61,7 @@ function getQueryParams() {
         progress: params.get('progress')
     };
 }
+
 
 function handleProgress0() {
     let button = document.getElementById('addTaskFlexButtons');
@@ -70,8 +71,8 @@ function handleProgress0() {
                 <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
             </form>
     `; 
-    // Weitere Logik für Progress 0
 }
+
 
 function handleProgress1() {
     let title = document.getElementById('addTaskH1');
@@ -85,6 +86,7 @@ function handleProgress1() {
     `; 
 }
 
+
 function handleProgress2() {
     let title = document.getElementById('addTaskH1');
     let button = document.getElementById('addTaskFlexButtons');
@@ -97,6 +99,7 @@ function handleProgress2() {
     `; 
 }
 
+
 function handleProgress3() {
     let title = document.getElementById('addTaskH1');
     let button = document.getElementById('addTaskFlexButtons');
@@ -108,6 +111,7 @@ function handleProgress3() {
             </form>
     `; 
 }
+
 
 function addTaskBoard(progress) {
     if (progress === 0) {
@@ -133,6 +137,7 @@ function addTaskBoard(progress) {
     }
 }
 
+
 async function addTaskAwaitFeedback() {
         try {
             const sanitizedValues = await validateAndSanitizeForm();
@@ -145,7 +150,6 @@ async function addTaskAwaitFeedback() {
             let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
             let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
     
-            // Sammeln der Subtasks aus der Liste
             const subtaskElements = document.querySelectorAll("#subtaskList li");
             const subtasks = Array.from(subtaskElements).map(item => ({
                 itsdone: false,
@@ -184,6 +188,7 @@ async function addTaskAwaitFeedback() {
         }
 }
 
+
 async function startAddTaskInProgress() {
     try {
         const sanitizedValues = await validateAndSanitizeForm();
@@ -196,7 +201,6 @@ async function startAddTaskInProgress() {
         let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
         let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 
-        // Sammeln der Subtasks aus der Liste
         const subtaskElements = document.querySelectorAll("#subtaskList li");
         const subtasks = Array.from(subtaskElements).map(item => ({
             itsdone: false,
@@ -235,6 +239,7 @@ async function startAddTaskInProgress() {
     }
 }
 
+
 async function startAddTask() {
     try {
         const sanitizedValues = await validateAndSanitizeForm();
@@ -247,7 +252,6 @@ async function startAddTask() {
         let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
         let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 
-        // Sammeln der Subtasks aus der Liste
         const subtaskElements = document.querySelectorAll("#subtaskList li");
         const subtasks = Array.from(subtaskElements).map(item => ({
             itsdone: false,
@@ -286,6 +290,7 @@ async function startAddTask() {
     }
 }
 
+
 function triggerInit() {
     if (parent && parent.init) {
         parent.init();
@@ -294,14 +299,15 @@ function triggerInit() {
     }
 }
 
+
 function triggerCloseAddTaskOverlay() {
-    // Ruft die closeAddTaskOverlay-Funktion im übergeordneten Fenster auf
     if (parent && parent.closeAddTaskOverlay) {
         parent.closeAddTaskOverlay();
     } else {
         console.error('closeAddTaskOverlay function not found in parent window');
     }
 }
+
 
 window.addEventListener('message', function(event) {
     const taskData = event.data.taskData;
@@ -339,6 +345,7 @@ window.addEventListener('message', function(event) {
     }
 });
 
+
 function generateEditButton(taskKey) {
     if (taskKey === null || taskKey === undefined) {
         console.log("%cTask key is missing. Unable to generate edit button.", `
@@ -360,6 +367,7 @@ function generateEditButton(taskKey) {
 `;   
     }
 }
+
 
 async function editTask(taskKey) {
     try {
@@ -409,6 +417,7 @@ async function editTask(taskKey) {
         toastMessage("Error editing task. Please try again.");
     }
 }
+
 
 function validateAndSanitizeForm() {
     return new Promise((resolve, reject) => {

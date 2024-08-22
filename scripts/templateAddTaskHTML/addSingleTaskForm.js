@@ -10,8 +10,6 @@ function addSingleTaskForm(taskData, key) {
             <p class="">Priority: <span class="taskPriority"> ${taskData.taskPriority} ${taskData.taskPriorityIcon} </span></p>
             <p class="AssignedTitle">Assigned To:</p>
 
-
-
             <div class="assignedTo-container">
 
                 <div class="avatarsinbig">
@@ -22,11 +20,7 @@ function addSingleTaskForm(taskData, key) {
                 ${taskData.assignedToFullNameHTML}
                 </div>
 
-
             </div>
-
-
-
 
             <p class="Subtasks">Subtasks</p>
 

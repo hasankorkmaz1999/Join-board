@@ -67,7 +67,6 @@ function addTaskForm() {
                         <label for="assignedto">Assigned to</label>
                             <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./IMGicons/arrow_drop_down.svg" alt="arrow_drop_down"></button>
                         <div id="assignedto" class="assignedto-checkboxes d-non">
-                            <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
                         </div>
                     </div>
                 </form>

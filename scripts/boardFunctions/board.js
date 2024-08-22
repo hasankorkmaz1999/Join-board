@@ -1,18 +1,26 @@
 let taskAPI =
   "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
+  
+  
 let contactAPI =
   "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/contacts";
+
+
 let cureentDraggedElement;
+
 
 window.onload = init;
 
+
 let tasks = {};
+
 
 function init() {
   renderData(taskAPI);
   forbiddenCourse();
   initHeader();
 }
+
 
 function forbiddenCourse() {
   try {
@@ -33,6 +41,7 @@ function forbiddenCourse() {
   }
 }
 
+
 async function renderData(URL) {
   document.getElementById("todo").innerHTML = ``;
   document.getElementById("inprogress").innerHTML = ``;
@@ -44,6 +53,7 @@ async function renderData(URL) {
   }
 }
 
+
 function disableSpinner() {
   let element = document.getElementById("spinner");
   document.getElementById("laoding").classList.add("d-non");
@@ -53,6 +63,7 @@ function disableSpinner() {
     element.innerHTML = ``;
   }
 }
+
 
 function renderTaskData(data) {
   tasks = data;
@@ -116,13 +127,16 @@ function renderTaskData(data) {
   disableSpinner();
 }
 
+
 function startDragging(id) {
   cureentDraggedElement = id;
 }
 
+
 function allowDrop(event) {
   event.preventDefault();
 }
+
 
 function showDropIndicator(event) {
   let target = event.currentTarget;
@@ -133,6 +147,7 @@ function showDropIndicator(event) {
   }
 }
 
+
 function hideDropIndicator(event) {
   let target = event.currentTarget;
   let dropIndicator = target.querySelector(".drop-indicator");
@@ -141,12 +156,14 @@ function hideDropIndicator(event) {
   }
 }
 
+
 function moveTo(category) {
   let data = {
     progress: category,
   };
   updateData(taskAPI, cureentDraggedElement, data);
 }
+
 
 function updateData(URL, id, data) {
   fetch(`${URL}/${id}.json`, {
@@ -162,6 +179,7 @@ function updateData(URL, id, data) {
     }, 100);
   });
 }
+
 
 function closeOverlay() {
   let overlay = document.getElementById("overlayforaddtask");
@@ -210,7 +228,6 @@ function doNotClose(event) {
 }
 
 
-
 function openSingleTaskOverlay(taskData, key) {
   let overlay = document.getElementById("overlayforsingletask");
   overlay.classList.remove("d-none");
@@ -222,6 +239,7 @@ function openSingleTaskOverlay(taskData, key) {
   popupContent.innerHTML = htmlContent;
   document.body.style.overflow = "hidden";
 }
+
 
 function closeSingleTaskOverlay() {
   let overlay = document.getElementById("overlayforsingletask");
@@ -235,6 +253,7 @@ function closeSingleTaskOverlay() {
     document.body.style.overflow = "auto";
   }, 500);
 }
+
 
 async function deleteTask(taskKey) {
   const deleteAPI = `https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes/${taskKey}.json`;
@@ -258,20 +277,18 @@ async function deleteTask(taskKey) {
 }
 
 
-
 document.addEventListener("DOMContentLoaded", () => {
-  // Event-Listener für Echtzeitsuche
   document
     .querySelector(".inputfieldfindtask")
     .addEventListener("input", findTask);
 });
+
 
 function findTask() {
   let searchInput = document
     .querySelector(".inputfieldfindtask")
     .value.toLowerCase();
 
-  // Leere die Spalten
   document.getElementById("todo").innerHTML = "";
   document.getElementById("inprogress").innerHTML = "";
   document.getElementById("done").innerHTML = "";
@@ -286,7 +303,6 @@ function findTask() {
     let taskTitle = task.task.toLowerCase();
     let taskDescription = task.description.toLowerCase();
 
-    // Überprüfe, ob der Titel oder die Beschreibung den Suchbegriff enthalten
     if (
       taskTitle.includes(searchInput) ||
       taskDescription.includes(searchInput)
@@ -294,7 +310,6 @@ function findTask() {
       tasksFound = true;
       let progress = task.progress;
 
-      // Render die passenden Aufgaben in der entsprechenden Spalte
       if (progress === "todo") {
         document.getElementById("todo").innerHTML += renderDivTodo(task, key);
       }
@@ -314,17 +329,18 @@ function findTask() {
     }
   }
 
-  // Zeige eine Nachricht an, wenn keine Aufgaben gefunden wurden
+  
   if (!tasksFound) {
     document.getElementById("inprogress").innerHTML =
       '<div class="no-tasksfound-banner">No tasks found</div>';
   }
 
-  // Wenn das Eingabefeld leer ist, lade die ursprünglichen Daten neu
+  
   if (searchInput === "") {
     renderData(taskAPI);
   }
 }
+
 
 async function pushInToDo(key) {
   let data = {
@@ -333,6 +349,7 @@ async function pushInToDo(key) {
   updateData(taskAPI, key, data);
 }
 
+
 async function pushInProgress(key) {
   let data = {
     progress: "inProgress",
@@ -340,12 +357,14 @@ async function pushInProgress(key) {
   updateData(taskAPI, key, data);
 }
 
+
 async function pushInAwaitFeedback(key) {
   let data = {
     progress: "AwaitingFeedback",
   };
   updateData(taskAPI, key, data);
 }
+
 
 async function pushInDone(key) {
   let data = {

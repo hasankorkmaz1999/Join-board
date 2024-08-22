@@ -18,7 +18,7 @@
 @media (max-width: 500px) {
     .header-top {
         position: fixed;
-        bottom: 80px;
+        bottom: 100px;
         left: 0;
         right: 0;
     }

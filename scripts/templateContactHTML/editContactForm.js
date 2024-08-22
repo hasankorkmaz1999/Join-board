@@ -6,9 +6,12 @@
  * @param {string} id - The unique ID of the contact.
  * @returns {string} The HTML form for editing the contact.
  */
+
+
 function editContactForm(name, phone, email, id) {
     let delID = document.getElementById('fullID');
     let fullDelID = delID.innerText;
+    
     return /*html*/`
         <div class="contactForm">
             <div class="contactFormLeft contactFormLeftFluid">
@@ -18,9 +21,6 @@ function editContactForm(name, phone, email, id) {
                 <p class="subheader-edit-mobile">Tasks are better with a team!</p>
                 <div class="mobile-edit-underline"></div>
             </div>
-
-
-
           
             <form class="contactFormRight" onsubmit="finishEditContact('${id}'); return false;">
                 <img src="./IMGicons/contacticons/kontak.png" alt="">
@@ -54,4 +54,5 @@ function editContactForm(name, phone, email, id) {
             
         </div>
     `
+
 }
