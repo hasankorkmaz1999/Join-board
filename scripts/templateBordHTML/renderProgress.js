@@ -60,6 +60,7 @@ function avatarColors() {
   return colors[colorIndex];
 }
 
+
 let lastColorIndex = -1;
 
 
@@ -103,6 +104,7 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
     }
   }
 
+
   let assignedToFullHTML = "";
   if (task.assignedto && task.assignedto.length > 0) {
     for (let j = 0; j < task.assignedto.length; j++) {
@@ -142,6 +144,7 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
     }
   }
 
+
   let progressHTML = "";
   if (totalSubtasks > 0) {
     progressHTML = `
@@ -154,6 +157,7 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
             </div>`;
   }
 
+
   let assignedToFullNameHTML = "";
   if (task.assignedto && task.assignedto.length > 0) {
     for (let j = 0; j < task.assignedto.length; j++) {
@@ -161,6 +165,7 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
       assignedToFullNameHTML += `<span class="fullnames">${assignedTo.name}</span>`;
     }
   }
+
 
   let taskData = {
     taskTitle: task.task,
@@ -174,6 +179,7 @@ function renderTaskCard(task, key, categoryClass, svgIcons) {
     assignedToFullNameHTML: assignedToFullNameHTML,
     assignedToFullHTML: assignedToFullHTML,
   };
+
 
   return /*html*/ `
         <div id="task-card" onclick='openSingleTaskOverlay(${JSON.stringify(
@@ -345,3 +351,4 @@ function updateTaskOnServer(taskKey, updatedTask) {
       console.error("Error updating task on server:", error);
     });
 }
+

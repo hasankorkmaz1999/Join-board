@@ -1,6 +1,8 @@
 window.onload = init;
 
+
 const register_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
+
 
 function init() {
     showLogin('loginWindow');
@@ -9,6 +11,7 @@ function init() {
     // Initial check to disable the button
     checkFormValidity();
 }
+
 
 function showLogin(elementId) {
     setTimeout(() => {
@@ -20,6 +23,7 @@ function showLogin(elementId) {
     }, 1000);
 }
 
+
 function showFooterLogin(elementId) {
     setTimeout(() => {
         const element = document.getElementById(elementId);
@@ -30,12 +34,14 @@ function showFooterLogin(elementId) {
     }, 1000);
 }
 
+
 function setupFormListeners() {
     const fields = ['signup-name', 'signup-email', 'signup-password', 'confirm-signup-password', 'privacy-checkbox'];
     fields.forEach(field => {
         document.getElementById(field).addEventListener('input', checkFormValidity);
     });
 }
+
 
 function checkFormValidity() {
     const name = document.getElementById('signup-name').value.trim();
@@ -49,6 +55,7 @@ function checkFormValidity() {
     // Enable button only if the form is filled
     document.getElementById('loginButton').disabled = !isFormFilled;
 }
+
 
 function validateForm() {
     const nameInput = document.getElementById("signup-name");
@@ -91,6 +98,7 @@ function validateForm() {
     }
 }
 
+
 document.getElementById('loginButton').addEventListener('click', function(event) {
     event.preventDefault();
 
@@ -129,6 +137,7 @@ document.getElementById('loginButton').addEventListener('click', function(event)
     }
 });
 
+
 function showPassword() {
     const image = document.getElementById('signup-password-Image');
     const passwordInput = document.getElementById('signup-password');
@@ -141,6 +150,7 @@ function showPassword() {
     }
 }
 
+
 function showConfirmPassword() {
     const image = document.getElementById('confirm-signup-password-Image');
     const confirmPasswordInput = document.getElementById('confirm-signup-password');
@@ -152,3 +162,4 @@ function showConfirmPassword() {
         confirmPasswordInput.type = 'password';
     }
 }
+
