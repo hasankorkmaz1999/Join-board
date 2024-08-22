@@ -264,7 +264,7 @@ a.active_board {padding-left: 90px;}
 a.active_contacts:hover {color: var(--white);}
 a.active_contacts {padding-left: 90px;}
 
-.dropdown-content {
+#dropdown-content {
     position: absolute;
     background-color: var(--white);
     min-width: 160px;
@@ -280,7 +280,7 @@ a.active_contacts {padding-left: 90px;}
 }
 
 
-.dropdown-content a {
+#dropdown-content a {
     color: rgba(205, 205, 205, 1);
     text-decoration: none;
     display: block;
