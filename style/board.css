@@ -470,11 +470,8 @@ h1 {
 }
 
 .styled-checkbox + span {
-  display: flex;
   align-items: flex-start;
-   position: relative;
-  
-
+  position: relative;
 }
 
 .styled-checkbox + span::before {
