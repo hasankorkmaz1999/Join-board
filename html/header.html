@@ -53,40 +53,7 @@
     </header>
 
     <script>
-        // Funktion, um das Menü zu togglen
-        function infoTap(event) {
-            event.stopPropagation(); // Verhindert, dass der Klick das Dokument-Event auslöst
-            var pb = document.getElementById('PB');
-            // Toggle der Sichtbarkeit des Menüs
-            pb.style.display = pb.style.display === 'none' || pb.style.display === '' ? 'block' : 'none';
-        }
 
-        // Funktion, um das Menü zu schließen, wenn außerhalb geklickt wird
-        function closeMenu(event) {
-            var pb = document.getElementById('PB');
-            // Überprüfen, ob der Klick außerhalb des Menüs war
-            if (pb.style.display === 'block' && !pb.contains(event.target)) {
-                pb.style.display = 'none';
-            }
-        }
-
-        // Event Listener für das Menü hinzufügen
-        document.addEventListener('DOMContentLoaded', function() {
-            var pb = document.getElementById('PB');
-            if (pb) {
-                pb.addEventListener('click', infoTap);
-            }
-            // Event Listener hinzufügen, um das Menü zu schließen, wenn auf die Seite geklickt wird
-            document.addEventListener('click', closeMenu);
-        });
-
-
-        function infoTap(event) {
-    event.stopPropagation(); // Verhindert, dass der Klick das Dokument-Event auslöst
-    var pb = document.getElementById('PB');
-    console.log('Menu toggled'); // Debugging-Zeile
-    pb.style.display = pb.style.display === 'none' || pb.style.display === '' ? 'block' : 'none';
-}
 
     </script>
 </body>
