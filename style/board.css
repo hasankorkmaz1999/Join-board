@@ -429,7 +429,7 @@ h1 {
   
   margin-bottom: 20px;
   border-radius: 10px;
-  padding-left: 5px;
+  
   display: flex;
   align-items: center; /* Aligns the items in the center vertically */
   
@@ -472,7 +472,8 @@ h1 {
 .styled-checkbox + span {
   display: flex;
   align-items: flex-start;
-    position: relative;
+   position: relative;
+  
 
 }
 
@@ -486,25 +487,29 @@ h1 {
   border: 2px solid #3a3a3a;
   border-radius: 3px;
   margin-right: 8px;
-  vertical-align: middle;
+ 
   margin-top: 3px;
+  line-height: 16px;
   cursor: pointer;
 }
 
 .styled-checkbox:checked + span::before {
   content: '✔';
-  display: inline-block;
-  width: 14px;
-  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px ;
+  height: 15px ;
   background-color: #fff;
   border: 2px solid #3a3a3a;
   border-radius: 3px;
   color: #3a3a3a;
-  text-align: center;
-  line-height: 12px;
-  font-size: 18px;
+  
+  line-height: 16px;
+  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
+  margin-right: 8px;
 }
 
 

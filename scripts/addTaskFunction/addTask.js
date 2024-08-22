@@ -101,8 +101,6 @@ async function loadData(URL) {
 }
 
 
-/* !!!!Hier werden die farbe generiert!!!! */
-
 function getAvatarColor(id) {
     if (!avatarColorsMap[id]) {
         avatarColorsMap[id] = avatarColors();
@@ -123,8 +121,6 @@ function avatarColors() {
     return colors[colorIndex];
 }
     let lastColorIndex = -1;
-
-/* !!!!Farbe generator ende!!!! */
 
 
 function getInitials(name) {
@@ -157,7 +153,7 @@ function addCheckboxEventListenersForStyling() {
         checkbox.addEventListener('change', function(event) {
             const parentLabel = checkbox.closest('.assignedto-item');
             if (!parentLabel) {
-                console.error('Kein Eltern-Element mit der Klasse "assignedto-item" gefunden.');
+                console.error('no elements found with ID "assignedto-item"');
                 return;
             }
 
@@ -179,7 +175,7 @@ function addCheckboxEventListeners() {
         checkbox.addEventListener('change', (event) => {
             const parentDiv = checkbox.closest('.assignedto-item');
             if (!parentDiv) {
-                console.error('Kein Eltern-Element mit der Klasse "assignedto-item" gefunden.');
+                console.error('No parent element with the class "assignedto-item" found.');
                 return;
             }
 
@@ -197,9 +193,9 @@ async function getAssignedTo(data, content) {
         content.innerHTML += renderContacts(assignedTo, key[i]);
     }
     addCheckboxEventListeners();
-    addCheckboxEventListenersForStyling() // Needed, Finger weg!
+    addCheckboxEventListenersForStyling()
 }
-// End: Initialen
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -435,7 +431,7 @@ function showAssignedTo() {
         isAssignedToListOpen = true;
         setTimeout(() => {
             document.addEventListener('click', closeAssignedToOnClickOutside);
-        }, 0); // Timeout to ensure the click on the button doesn't immediately trigger the close
+        }, 0);
     }
 }
 

@@ -238,19 +238,29 @@ function openSingleTaskOverlay(taskData, key) {
   let htmlContent = addSingleTaskForm(taskData, key);
   popupContent.innerHTML = htmlContent;
   document.body.style.overflow = "hidden";
+  overlay.setAttribute('data-current-key', key);
 }
-
 
 function closeSingleTaskOverlay() {
   let overlay = document.getElementById("overlayforsingletask");
+  let key = overlay.getAttribute('data-current-key'); 
+
   overlay.classList.remove("slide-in-right");
   overlay.classList.add("slide-out-right");
+  
   setTimeout(() => {
-    overlay.classList.add("d-none");
-    overlay.classList.remove("slide-in-right");
-    let popupContent = document.getElementsByClassName("singletaskpopup")[0];
-    popupContent.innerHTML = "";
-    document.body.style.overflow = "auto";
+      overlay.classList.add("d-none");
+      overlay.classList.remove("slide-in-right");
+      let popupContent = document.getElementsByClassName("singletaskpopup")[0];
+      popupContent.innerHTML = "";
+      document.body.style.overflow = "auto";
+      let task = tasks[key];
+      let categoryClass = task.category === "Technical Task" ? "technical-green" : "user-story-blue";
+
+      let taskCardElement = document.getElementById(`task-card-${key}`);
+      if (taskCardElement) {
+          taskCardElement.outerHTML = renderTaskCard(task, key, categoryClass, svgIcons);
+      }
   }, 500);
 }
 
