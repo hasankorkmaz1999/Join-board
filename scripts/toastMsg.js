@@ -17,6 +17,7 @@ function toastMessage(msg) {
     toastBox.classList.add('toast');
     setTimeout(() => {
         toastBox.classList.add('slide-out-right');
+        toastBox.classList.remove('slide-in-right');
     }, 3000);
     setTimeout(() => {
         toastBox.classList.add('d-none');
