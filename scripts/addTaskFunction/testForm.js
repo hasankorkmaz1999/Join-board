@@ -4,6 +4,8 @@
  *
  * @returns {Promise<Object>} A promise that resolves with the sanitized form values or rejects with a validation error.
  */
+
+
 function validateAndSanitizeForm() {
     return new Promise((resolve, reject) => {
         const taskTitle = document.getElementById("addTaskTitle");
