@@ -78,7 +78,7 @@
                         <label for="assignedto">Assigned to</label>
                             <button id="AssignedToButton" type="button" onclick="showAssignedTo()" class="addTaskAssignedToButton down">Select <img src="./IMGicons/arrow_drop_down.svg" alt="arrow_drop_down"></button>
                         <div id="assignedto" class="assignedto-checkboxes d-non">
-                        <!-- Hier werden die Checkboxen dynamisch hinzugefügt -->
+
                         </div>
                     </div>
                
@@ -95,7 +95,6 @@
                             <span class="asterisk">*</span>
                         </div>    
                         <div class="addTaskDateInner">
-                            <!-- <input type="date" id="prioDate" name="prioDate" pattern="\d{2}-\d{2}-\d{4}"> -->
                             <input type="date" id="prioDate" name="prioDate" required>
                         </div>    
                         <span id="duedateError" class="d-non">Please enter a date</span>
@@ -197,11 +196,9 @@
     <script src="./scripts/addTaskFunction/addTask.js"></script>
     <script src="./scripts/forward.js"></script>
 
-
     <script>
         includeHTML();
     </script>
-
 
 </body>
 </html>

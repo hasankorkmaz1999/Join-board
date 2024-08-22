@@ -45,7 +45,7 @@ body {
 
 .sectionstodrop {
   background-color:var(--body-background); 
-  /* height: 100vh; */
+  height: 100vh; 
 }
 
 .drop-indicator {

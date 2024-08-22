@@ -1,16 +1,18 @@
 window.onload = init;
 
-let register_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
+const register_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
 
 function init() {
     showLogin('loginWindow');
     showFooterLogin('footerAnimation');
     setupFormListeners();
+    // Initial check to disable the button
+    checkFormValidity();
 }
 
 function showLogin(elementId) {
     setTimeout(() => {
-        let element = document.getElementById(elementId);
+        const element = document.getElementById(elementId);
         if (element) {
             element.classList.remove('d-none');
             element.classList.add('scale-up-hor-center', 'd-flex', 'align-items-center', 'justify-content-center', 'hundertVh');
@@ -20,7 +22,7 @@ function showLogin(elementId) {
 
 function showFooterLogin(elementId) {
     setTimeout(() => {
-        let element = document.getElementById(elementId);
+        const element = document.getElementById(elementId);
         if (element) {
             element.classList.remove('d-non');
             element.classList.add('scale-up-hor-center', 'footer-links');
@@ -29,55 +31,54 @@ function showFooterLogin(elementId) {
 }
 
 function setupFormListeners() {
-    const fields = ['signup-name', 'signup-email', 'signup-password', 'confirm-signup-password'];
+    const fields = ['signup-name', 'signup-email', 'signup-password', 'confirm-signup-password', 'privacy-checkbox'];
     fields.forEach(field => {
         document.getElementById(field).addEventListener('input', checkFormValidity);
     });
 }
 
 function checkFormValidity() {
-    const name = document.getElementById('signup-name').value;
-    const email = document.getElementById('signup-email').value;
-    const password = document.getElementById('signup-password').value;
-    const confirmPassword = document.getElementById('confirm-signup-password').value;
+    const name = document.getElementById('signup-name').value.trim();
+    const email = document.getElementById('signup-email').value.trim();
+    const password = document.getElementById('signup-password').value.trim();
+    const confirmPassword = document.getElementById('confirm-signup-password').value.trim();
 
-    const isValid = name.trim() !== '' &&
-                    email.trim() !== '' &&
-                    password.trim() !== '' &&
-                    confirmPassword.trim() !== '';
+    // Check if name, email, and both passwords are filled
+    const isFormFilled = name !== '' && email !== '' && password !== '' && confirmPassword !== '';
 
-    document.getElementById('loginButton').disabled = !isValid;
+    // Enable button only if the form is filled
+    document.getElementById('loginButton').disabled = !isFormFilled;
 }
 
 function validateForm() {
-    let nameInput = document.getElementById("signup-name");
-    let mailInput = document.getElementById("signup-email");
-    let passwordInput = document.getElementById("signup-password");
-    let confirmPasswordInput = document.getElementById("confirm-signup-password");
-    let privacyCheckbox = document.getElementById("privacy-checkbox");
-    let errorMessage = document.getElementById('error-message');
+    const nameInput = document.getElementById("signup-name");
+    const mailInput = document.getElementById("signup-email");
+    const passwordInput = document.getElementById("signup-password");
+    const confirmPasswordInput = document.getElementById("confirm-signup-password");
+    const privacyCheckbox = document.getElementById("privacy-checkbox");
+    const errorMessage = document.getElementById('error-message');
 
     let errorText = "";
 
     if (nameInput.value.length < 3) {
-        errorText += "Name must be at least 3 characters long.\n";
+        errorText += "· Name must be at least 3 characters long.\n";
     }
 
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(mailInput.value)) {
-        errorText += "Please enter a valid e-mail address.\n";
+        errorText += "· Please enter a valid e-mail address.\n";
     }
 
     if (passwordInput.value.length < 6) {
-        errorText += "The password must be at least 6 characters long.\n";
+        errorText += "· The password must be at least 6 characters long.\n";
     }
 
     if (passwordInput.value !== confirmPasswordInput.value) {
-        errorText += "Passwords do not match.\n";
+        errorText += "· Passwords do not match.\n";
     }
 
     if (!privacyCheckbox.checked) {
-        errorText += "Please accept the Privacy Policy.\n";
+        errorText += "· Please accept the Privacy Policy.\n";
     }
 
     if (errorText) {
@@ -94,11 +95,11 @@ document.getElementById('loginButton').addEventListener('click', function(event)
     event.preventDefault();
 
     if (validateForm()) {
-        let name = document.getElementById('signup-name').value;
-        let email = document.getElementById('signup-email').value;
-        let password = document.getElementById('signup-password').value;
+        const name = document.getElementById('signup-name').value;
+        const email = document.getElementById('signup-email').value;
+        const password = document.getElementById('signup-password').value;
 
-        let userData = {
+        const userData = {
             "email": email,
             "name": name,
             "password": password
@@ -121,7 +122,7 @@ document.getElementById('loginButton').addEventListener('click', function(event)
             }
         })
         .catch(error => {
-            let errorMessage = document.getElementById('error-message');
+            const errorMessage = document.getElementById('error-message');
             errorMessage.innerText = 'Fehler bei der Registrierung: ' + error.message;
             errorMessage.style.display = 'block';
         });
@@ -129,8 +130,8 @@ document.getElementById('loginButton').addEventListener('click', function(event)
 });
 
 function showPassword() {
-    let image = document.getElementById('signup-password-Image');
-    let passwordInput = document.getElementById('signup-password');
+    const image = document.getElementById('signup-password-Image');
+    const passwordInput = document.getElementById('signup-password');
     if (passwordInput.type === 'password') {
         image.src = './IMGicons/visibility.svg';
         passwordInput.type = 'text';
@@ -141,8 +142,8 @@ function showPassword() {
 }
 
 function showConfirmPassword() {
-    let image = document.getElementById('confirm-signup-password-Image');
-    let confirmPasswordInput = document.getElementById('confirm-signup-password');
+    const image = document.getElementById('confirm-signup-password-Image');
+    const confirmPasswordInput = document.getElementById('confirm-signup-password');
     if (confirmPasswordInput.type === 'password') {
         image.src = './IMGicons/visibility.svg';
         confirmPasswordInput.type = 'text';

@@ -99,7 +99,7 @@
     </section>
 
     <section class="boardsections">
-        <!-- To do Section -->
+       
         <div class="boardsection-mobile">
             <span class="boardsectiontext">To do</span>
             <img onclick="openAddTaskOverlay(1)" src="IMGicons/boardicons/plus button.svg" alt="">
@@ -110,11 +110,9 @@
                 <img onclick="openAddTaskOverlay(1)" src="IMGicons/boardicons/plus button.svg" alt="">
             </div>
             <div class="sectionstodrop" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)" ondragenter="showDropIndicator(event)" ondragleave="hideDropIndicator(event)">
-                <!-- render todo -->
             </div>
         </div>
     
-        <!-- In Progress Section -->
         <div class="boardsection-mobile">
             <span class="boardsectiontextdone">In progress</span>
             <img onclick="openAddTaskOverlay(2)" src="IMGicons/boardicons/plus button.svg" alt="">
@@ -125,11 +123,10 @@
                 <img onclick="openAddTaskOverlay(2)" src="IMGicons/boardicons/plus button.svg" alt="">
             </div>
             <div class="sectionstodrop" id="inprogress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)" ondragenter="showDropIndicator(event)" ondragleave="hideDropIndicator(event)">
-                <!-- render in progress -->
             </div>
         </div>
     
-        <!-- Await Feedback Section -->
+        
         <div class="boardsection-mobile">
             <span class="boardsectiontextdone">Await feedback</span>
             <img onclick="openAddTaskOverlay(3)" src="IMGicons/boardicons/plus button.svg" alt="">
@@ -140,11 +137,10 @@
                 <img onclick="openAddTaskOverlay(3)" src="IMGicons/boardicons/plus button.svg" alt="">
             </div>
             <div class="sectionstodrop" id="awaitingfeedback" ondrop="moveTo('AwaitingFeedback')" ondragover="allowDrop(event)" ondragenter="showDropIndicator(event)" ondragleave="hideDropIndicator(event)">
-                <!-- render Await feedback -->
             </div>
         </div>
     
-        <!-- Done Section -->
+     
         <div class="boardsection-mobile">
             <span class="boardsectiontextdone">Done</span>
         </div>
@@ -152,8 +148,7 @@
             <div class="boardsection">
                 <span class="boardsectiontextdone">Done</span>
             </div>
-            <div class="sectionstodrop" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)" ondragenter="showDropIndicator(event)" ondragleave="hideDropIndicator(event)">
-                <!-- render done -->
+            <div class="sectionstodrop" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)" ondragenter="showDropIndicator(event)" ondragleave="hideDropIndicator(event)">   
             </div>
         </div>
     </section>
@@ -194,8 +189,6 @@
     <script src="./scripts/templateAddTaskHTML/addSingleTaskForm.js"></script>
     <script src="./scripts/templateBordHTML/renderProgress.js"></script>
     <script src="./scripts/hader.js"></script>
-<!--     <script src="./scripts/addTaskFunction/testForm.js"></script>
-    <script src="./scripts/addTaskFunction/addTask.js"></script> -->
 
     
     

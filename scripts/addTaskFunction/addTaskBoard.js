@@ -2,9 +2,7 @@
 //      DO NOT ADD THIS SCRIPT TO ADDTASK.HTML!     //
 /////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', function() {
-    // Überprüfen, ob die Seite in einem iFrame geladen wird oder der Session Storage 'JoinDev' auf true gesetzt ist
     if (window.self === window.top && sessionStorage.getItem('JoinDev') !== 'true') {
-        // Die Seite wird nicht in einem iFrame geladen und 'JoinDev' ist nicht true
         document.body.innerHTML = '<h1>Unfortunately the page cannot be opened like this</h1>';
         console.log("%cACCESS BLOCKED", `
             background: #ff0f0f;
@@ -53,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function devon() {
     sessionStorage.setItem('JoinDev', 'true');
-    console.log("JoinDev has been set to true in sessionStorage.");
 }
 
 /* Hier checken wir den Parameter */
@@ -176,7 +173,6 @@ async function addTaskAwaitFeedback() {
             });
     
             await response.json();
-            console.log("Task successfully added:", data);
             reloadPage();
             toastMessage("New task added successfully!");
             triggerInit();
@@ -228,7 +224,6 @@ async function startAddTaskInProgress() {
         });
 
         await response.json();
-        console.log("Task successfully added:", data);
         reloadPage();
         toastMessage("New task added successfully!");
         triggerInit();
@@ -280,7 +275,6 @@ async function startAddTask() {
         });
 
         await response.json();
-        console.log("Task successfully added:", data);
         reloadPage();
         toastMessage("New task added successfully!");
         triggerInit();
@@ -293,7 +287,6 @@ async function startAddTask() {
 }
 
 function triggerInit() {
-    // Ruft die init-Funktion im übergeordneten Fenster auf
     if (parent && parent.init) {
         parent.init();
     } else {
@@ -324,7 +317,6 @@ window.addEventListener('message', function(event) {
             priorityButton.click();
         }
 
-
         if (taskData.assignedto && taskData.assignedto.length > 0) {
             taskData.assignedto.forEach(person => {
                 let checkbox = document.querySelector(`input[name="assignedto"][value="${person.name}"]`);
@@ -337,13 +329,12 @@ window.addEventListener('message', function(event) {
             console.log("No persons assigned to this task.");
         }
 
-
         let subtaskList = document.getElementById('subtaskList');
         subtaskList.innerHTML = ''; 
         taskData.subtasks.forEach(subtask => {
-            addSubtaskToList(subtask.title, subtask.itsdone);
+            addSubtaskToList(subtask.title.trim(), subtask.itsdone);
         });
-        document.getElementById('addTaskH1').innerHTML = 'Edit Task (Beta)';
+        document.getElementById('addTaskH1').innerHTML = 'Edit Task';
         document.getElementById('addTaskFlexButtons').innerHTML = generateEditButton(taskKey);
     }
 });
@@ -382,11 +373,10 @@ async function editTask(taskKey) {
         let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
         let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 
-        // Sammeln der Subtasks aus der Liste
         const subtaskElements = document.querySelectorAll("#subtaskList li");
         const subtasks = Array.from(subtaskElements).map(item => ({
             itsdone: false,
-            title: item.textContent
+            title: item.textContent.trim()
         }));
 
         let data = {
@@ -409,7 +399,6 @@ async function editTask(taskKey) {
         });
 
         await response.json();
-        console.log("Task successfully edited:", data);
         reloadPage();
         toastMessage("Task edited successfully!");
         triggerInit();
@@ -419,4 +408,48 @@ async function editTask(taskKey) {
         console.error("Error validating or editing task:", error);
         toastMessage("Error editing task. Please try again.");
     }
+}
+
+function validateAndSanitizeForm() {
+    return new Promise((resolve, reject) => {
+        const taskTitle = document.getElementById("addTaskTitle");
+        const taskTitleError = document.getElementById("taskTitleError");
+        const duedateError = document.getElementById("duedateError");
+        const description = document.getElementById("description");
+        const date = document.getElementById("prioDate");
+
+        let isValid = true;
+
+        if (!taskTitle.value.trim()) {
+            taskTitleError.classList.remove('d-non');
+            taskTitleError.classList.add('addTaskerrorMessage');
+            isValid = false;
+        } else {
+            taskTitleError.classList.remove('addTaskerrorMessage');
+            taskTitleError.classList.add('d-none');
+        }
+
+        if (!date.value.trim()) {
+            duedateError.classList.remove('d-non');
+            duedateError.classList.add('addTaskerrorMessage');
+            isValid = false;
+        } else {
+            duedateError.classList.remove('addTaskerrorMessage');
+            duedateError.classList.add('d-non');
+        }
+
+        if (!isValid) {
+            return reject(new Error("Validation failed"));
+        }
+        const sanitizeInput = (input) => {
+            return input.replace(/[<>&"'\/\\(){}[\]=;:]/g, ' ');
+        };
+        const sanitizedValues = {
+            taskTitle: sanitizeInput(taskTitle.value),
+            description: sanitizeInput(description.value),
+            date: date.value,
+            subtasks: Array.from(document.querySelectorAll("#subtaskList li")).map(item => sanitizeInput(item.textContent.trim()))
+        };
+        resolve(sanitizedValues);
+    });
 }

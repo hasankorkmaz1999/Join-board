@@ -50,31 +50,29 @@ function addSingleTaskForm(taskData, key) {
 
 
 function editTask(key) {
-    // Get the task data by key
+    
     const task = tasks[key];
 
-    // Open the iframe with the form
+    
     openEditTaskIframe(task, key);
     closeSingleTaskOverlay();
 }
 
 function openEditTaskIframe(task, key) {
-    // Open the iframe
-    console.log(key);
     
     let overlay = document.getElementById('overlayforaddtask');
     overlay.classList.remove('d-none');
     overlay.classList.add('slide-in-right');
 
     let iframe = document.createElement('iframe');
-    iframe.src = `add_task_board.html?taskId=${key}`; // Pass the task ID to the iframe via query params
+    iframe.src = `add_task_board.html?taskId=${key}`; 
 
     let popupContent = document.getElementById('addtaskpopup');
-    popupContent.innerHTML = ''; // Clear previous content
+    popupContent.innerHTML = ''; 
     popupContent.appendChild(iframe);
     document.body.style.overflow = 'hidden';
 
-    // Send the task data to the iframe once it's loaded
+    
     iframe.onload = function() {
         iframe.contentWindow.postMessage({ taskData: task, taskKey: key}, '*');
     };
@@ -93,8 +91,8 @@ function toggleIconVisibility() {
 
 function clearSubtaskInput() {
     const subtaskInput = document.getElementById('subtaskedit');
-    subtaskInput.value = ''; // Clear the input field
-    toggleIconVisibility(); // Hide icons after clearing
+    subtaskInput.value = ''; 
+    toggleIconVisibility(); 
 }
 
 
@@ -104,8 +102,8 @@ function addSubtaskFromInput() {
     
     if (subtaskTitle) {
         addSubtaskToList(subtaskTitle);
-        subtaskInput.value = ''; // Clear the input field
-        toggleIconVisibility(); // Hide the icon after adding the subtask
+        subtaskInput.value = ''; 
+        toggleIconVisibility(); 
     }
 }
 

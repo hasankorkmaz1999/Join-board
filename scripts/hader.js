@@ -1,5 +1,6 @@
 const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users';
 
+
 async function initHeader(attempt = 1) {
     let check = document.getElementById('PB');
     if (check) {
@@ -47,20 +48,22 @@ async function initHeader(attempt = 1) {
     }
 }
 
+
 function getInitials(fullName) {
-    const nameParts = fullName.trim().split(/\s+/); // Teilt den Namen in Teile, basierend auf Leerzeichen
+    const nameParts = fullName.trim().split(/\s+/); 
     let initials = '';
 
     if (nameParts.length > 0) {
-        initials += nameParts[0].charAt(0).toUpperCase(); // Erster Buchstabe des ersten Namens
+        initials += nameParts[0].charAt(0).toUpperCase(); 
     }
     
     if (nameParts.length > 1) {
-        initials += nameParts[nameParts.length - 1].charAt(0).toUpperCase(); // Erster Buchstabe des letzten Namens
+        initials += nameParts[nameParts.length - 1].charAt(0).toUpperCase(); 
     }
 
-    return initials.substring(0, 2); // Stellt sicher, dass nur maximal 2 Buchstaben zurückgegeben werden
+    return initials.substring(0, 2); 
 }
+
 
 function infoTap() {
     let infoDIV = document.getElementById('dropdown-content');
@@ -74,6 +77,7 @@ function infoTap() {
     }
 }
 
+
 function logout() {
     try {
         localStorage.removeItem('userId');
@@ -85,4 +89,3 @@ function logout() {
         window.location.href = './login.html?msg=error_localStorage';
     }
 };
-

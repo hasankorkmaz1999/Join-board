@@ -111,16 +111,14 @@
             </div>
         </div>
           
-    <footer class="legal-notice">
-        <ul class="footer-links">
-            <li class="footer-links"><a href="privacyPolicyExternal.html" target="_blank">Privacy Policy</a></li>
-            <li class="footer-links"><a href="legalNoticeExternal.html" target="_blank">Legal notice</a></li>
-        </ul>
-    </footer>
+        <footer class="legal-notice">
+            <ul class="footer-links">
+                <li class="footer-links"><a href="privacyPolicyExternal.html" target="_blank">Privacy Policy</a></li>
+                <li class="footer-links"><a href="legalNoticeExternal.html" target="_blank">Legal notice</a></li>
+            </ul>
+        </footer>
 
     </div>
-
-
 
     <script>
         window.addEventListener("load", function() {
@@ -128,35 +126,6 @@
             document.body.classList.add("loaded");
         });
     </script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const emailInput = document.getElementById('signup-email');
-    const passwordInput = document.getElementById('signup-password');
-    const rememberCheckbox = document.getElementById('remember-checkbox');
-    const loginButton = document.getElementById('loginButton');
-
-    function validateForm() {
-        // Check if all fields are valid and the checkbox is checked
-        const isEmailValid = emailInput.checkValidity();
-        const isPasswordValid = passwordInput.checkValidity();
-        const isCheckboxChecked = rememberCheckbox.checked;
-
-        // Enable the button if all fields are valid and the checkbox is checked
-        if (isEmailValid && isPasswordValid && isCheckboxChecked) {
-            loginButton.disabled = false;
-        } else {
-            loginButton.disabled = true;
-        }
-    }
-
-    // Add event listeners to validate the form on input and checkbox changes
-    emailInput.addEventListener('input', validateForm);
-    passwordInput.addEventListener('input', validateForm);
-    rememberCheckbox.addEventListener('change', validateForm);
-});
-
-</script>
 
     <script src="./scripts/login.js"></script>
     <script src="./scripts/toastMsg.js"></script>
