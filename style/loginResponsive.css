@@ -19,6 +19,9 @@
         width: 90%;
         margin: 0 auto;
     }
+    button.guest-button-frontpage {
+        margin-left: 8px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -96,6 +99,5 @@
     }
     button.guest-button-frontpage {
         width: 150px;
-        margin-left: 8px;
     }
 }
