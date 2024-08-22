@@ -466,6 +466,9 @@ svg {
     max-height: 200px;
     overflow: auto;
     border-radius: 10px;
+}
+
+.addTaskAssignedTo {
     background-color: var(--white);
 }
 
