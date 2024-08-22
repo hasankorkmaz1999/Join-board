@@ -7,7 +7,6 @@ function validateAndSanitizeForm() {
         const description = document.getElementById("description");
         const date = document.getElementById("prioDate");
         const category = document.getElementById("category");
-        const subtasks = document.getElementById("subtaskList");
 
         let isValid = true;
 
