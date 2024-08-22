@@ -10,8 +10,6 @@ function addSingleTaskForm(taskData, key) {
             <p class="">Priority: <span class="taskPriority"> ${taskData.taskPriority} ${taskData.taskPriorityIcon} </span></p>
             <p class="AssignedTitle">Assigned To:</p>
 
-
-
             <div class="assignedTo-container">
 
                 <div class="avatarsinbig">
@@ -22,19 +20,13 @@ function addSingleTaskForm(taskData, key) {
                 ${taskData.assignedToFullNameHTML}
                 </div>
 
-
             </div>
 
-
-
-
             <p class="Subtasks">Subtasks</p>
-
 
             <div class="subtasks-container">
                <p class="subtaskhtml" >${taskData.subtasksHTML} </p> 
             </div>
-
 
             <div class="editanddeletetask">
                 <div onclick='deleteTask("${key}")' class="deletebuttontask">Delete</div>
@@ -48,15 +40,14 @@ function addSingleTaskForm(taskData, key) {
 }
 
 
-
 function editTask(key) {
     
     const task = tasks[key];
 
-    
     openEditTaskIframe(task, key);
     closeSingleTaskOverlay();
 }
+
 
 function openEditTaskIframe(task, key) {
     
@@ -78,6 +69,7 @@ function openEditTaskIframe(task, key) {
     };
 }
 
+
 function toggleIconVisibility() {
     const subtaskInput = document.getElementById('subtaskedit');
     const iconsWrapper = document.querySelector('.icons-wrapper');
@@ -88,6 +80,7 @@ function toggleIconVisibility() {
         iconsWrapper.classList.add('hidden');
     }
 }
+
 
 function clearSubtaskInput() {
     const subtaskInput = document.getElementById('subtaskedit');
@@ -106,6 +99,7 @@ function addSubtaskFromInput() {
         toggleIconVisibility(); 
     }
 }
+
 
 function addSubtaskToList(title) {
     const subtaskList = document.getElementById("subtaskList");
@@ -128,6 +122,7 @@ function deleteSubtask(deleteBtn) {
     const subtaskDiv = deleteBtn.closest('.subtasklistedit');
     subtaskDiv.remove();
 }
+
 
 function editSubtask(editBtn) {
     const subtaskDiv = editBtn.closest('.subtasklistedit');
@@ -159,6 +154,7 @@ function editSubtask(editBtn) {
         subtaskDiv.onmouseover = null;
     };
 }
+
 
 function saveSubtaskEdit(saveBtn, inputField) {
     const subtaskDiv = saveBtn.closest('.subtasklistedit'); 
