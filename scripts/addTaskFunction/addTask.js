@@ -43,12 +43,6 @@ function forbiddenCourse() {
     priorityInput.value = priority;
     }
 
-document.addEventListener('DOMContentLoaded', function() {
-    let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
-    let assignedto = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
-});
-
-
 function validateDate(dateStr) {
     let errorSpan = document.getElementById('duedateError');
     let selectedDate = new Date(dateStr);
@@ -414,7 +408,6 @@ let isAssignedToListOpen = false;
 function showAssignedTo() {
     let assignedto = document.getElementById('assignedto');
     let arrowrInButton = document.getElementById('AssignedToButton');
-    let assignedToItems = document.querySelectorAll('.assignedto-item');
 
     if (assignedto.classList.contains('d-flex')) {
         assignedto.classList.remove('d-flex');
