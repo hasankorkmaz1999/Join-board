@@ -62,11 +62,11 @@
             <div class="login">
                 <form id="login-form" class="login-frontpage" onsubmit="return false;">
                     <div class="flex-input error-red">
-                        <input type="text" name="signup-name" id="signup-name" placeholder="Name" minlength="6">
+                        <input type="text" name="signup-name" id="signup-name" placeholder="Name" minlength="6" required>
                         <img src="IMGicons/person.svg" alt="Name Icon">
                     </div>
                     <div class="flex-input error-red">
-                        <input type="text" name="signup-email" id="signup-email" placeholder="Email" minlength="6" pattern="[a-zA-Z0-9_.±]">
+                        <input type="text" name="signup-email" id="signup-email" placeholder="Email" minlength="6" pattern="[a-zA-Z0-9_.±]" required>
                         <img src="IMGicons/mail.svg" alt="E-Mail Icon">
                     </div>
                     <div class="flex-input error-red">
@@ -80,7 +80,7 @@
                     <div class="error-message" id="error-message" style="color: var(--light-red); display: none;"></div>
                     <div class="remember-login">
                         <input type="checkbox" class="checkbox-login" required>
-                        <p class="privacy-link">I accept the <a href="privacyPolicy.html">Privacy policy</a></p>
+                        <p class="privacy-link">I accept the <a href="privacyPolicyExternal.html" target="_blank">Privacy policy</a></p>
                     </div>
                 </form>
             </div>

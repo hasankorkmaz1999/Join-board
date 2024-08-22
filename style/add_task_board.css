@@ -145,6 +145,7 @@ input#addTaskTitle {
     font-size: 20px;
     width: 100%;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .prioFlex {
@@ -238,7 +239,7 @@ p.create-mobile {
     margin: 0 !important;
     cursor: pointer;
     font-size: 20px;
-    width: 120px;
+    width: 160px;
     height: 52px;
     background-color: var(--white);
     border: 1px solid var(--deep-grey);
@@ -246,6 +247,9 @@ p.create-mobile {
     margin-right: 20px;
     color: var(--black);
     transition: border-color 0.3s ease, color 0.3s ease;
+    word-spacing: 0.4em;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .cancelbutton:hover {
@@ -344,6 +348,7 @@ input#subtasks {
     background-repeat: no-repeat;
     background-position: right 15px center; 
     background-size: 20px;  
+    cursor: pointer;
 }
 
 input#subtasks.no-plus {
@@ -368,6 +373,7 @@ select#category,
     font-weight: 400;
     line-height: 24px;
     font-family: 'Inter';
+    cursor: pointer;
 }
 
 option {
@@ -382,6 +388,7 @@ option {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
 }
 
 .addTaskDateInner input[type="date"] {
@@ -391,6 +398,7 @@ option {
     font-family: 'Inter';
     font-weight: 400;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .addTaskDateInner input[type="date"]::-webkit-calendar-picker-indicator {
@@ -400,6 +408,7 @@ option {
     transform: translateY(-50%);
     width: 20px;  
     height: 20px; 
+    cursor: pointer;
 }
 
 .flexhelper {
@@ -615,6 +624,11 @@ svg {
     text-transform: uppercase;
 } 
 
+.cancel-container {
+    display: flex;
+    align-items: center;
+}
+
 /* End 
 ************************************************************************************/
 
@@ -622,4 +636,31 @@ svg {
     .joinLogo {
         display: none;
     }
+}
+
+@media (max-width: 400px) {
+    .cancelbutton {
+        margin: 0 !important;
+        cursor: pointer;
+        font-size: 16px;
+        width: 180px;
+        height: 52px;
+        background-color: var(--white);
+        border: 1px solid var(--deep-grey);
+        border-radius: 10px;
+        margin-right: 20px;
+        color: var(--black);
+        transition: border-color 0.3s ease, color 0.3s ease;
+        gap: 20px;
+    }
+
+    .cancel-container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .addTaskFlexButtons button, .addTaskPriority button {
+        margin-bottom: 20px;
+    }
+
 }

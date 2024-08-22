@@ -10,3 +10,10 @@
     display: block;
   }
 
+  .PB {
+    display: none;
+}
+
+.help-icon-header {
+    display: none;
+}
