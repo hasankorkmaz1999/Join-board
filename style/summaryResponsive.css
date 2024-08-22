@@ -31,6 +31,9 @@
         gap: 0;
         display: flex;
     }
+    .footer-mobile {
+        display: block !important;
+    }
 }
 
 @media (max-width: 738px) {
@@ -159,9 +162,7 @@
         height: 90%;
         border-left: 2px solid var(--border-grey);
     }
-    .footer-mobile {
-        display: block !important;
-    }
+
     .header-left {
         display: none;
     }
