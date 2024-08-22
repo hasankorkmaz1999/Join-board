@@ -324,7 +324,6 @@ window.addEventListener('message', function(event) {
             priorityButton.click();
         }
 
-
         if (taskData.assignedto && taskData.assignedto.length > 0) {
             taskData.assignedto.forEach(person => {
                 let checkbox = document.querySelector(`input[name="assignedto"][value="${person.name}"]`);
@@ -337,13 +336,12 @@ window.addEventListener('message', function(event) {
             console.log("No persons assigned to this task.");
         }
 
-
         let subtaskList = document.getElementById('subtaskList');
         subtaskList.innerHTML = ''; 
         taskData.subtasks.forEach(subtask => {
-            addSubtaskToList(subtask.title, subtask.itsdone);
+            addSubtaskToList(subtask.title.trim(), subtask.itsdone);
         });
-        document.getElementById('addTaskH1').innerHTML = 'Edit Task (Beta)';
+        document.getElementById('addTaskH1').innerHTML = 'Edit Task';
         document.getElementById('addTaskFlexButtons').innerHTML = generateEditButton(taskKey);
     }
 });
@@ -382,11 +380,10 @@ async function editTask(taskKey) {
         let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
         let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
 
-        // Sammeln der Subtasks aus der Liste
         const subtaskElements = document.querySelectorAll("#subtaskList li");
         const subtasks = Array.from(subtaskElements).map(item => ({
             itsdone: false,
-            title: item.textContent
+            title: item.textContent.trim()
         }));
 
         let data = {
