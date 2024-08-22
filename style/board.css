@@ -477,15 +477,12 @@ h1 {
 
 }
 
-
-
 .styled-checkbox + span::before {
   content: '';
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 15px ;
-  height: 15px ;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 18px !important;
+  height: 18px !important;
   background-color: #fff;
   border: 2px solid #3a3a3a;
   border-radius: 3px;
