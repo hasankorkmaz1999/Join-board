@@ -188,6 +188,21 @@
         justify-content: space-between;
         width: 252px;
     }
+    .singletaskpopup {
+        width: 80%;
+    }
+    h2.taskTitleOverlay {
+        font-size: 20px;
+    }
+    p {
+        font-size: 14px;
+    }
+    .fullnames {
+        padding: 20px 6px;
+    }
+    span.subtasktitles {
+        font-size: 14px;
+    }
 }
 
 
