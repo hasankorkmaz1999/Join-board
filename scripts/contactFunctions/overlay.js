@@ -7,6 +7,7 @@ function addNewContact() {
     overlay.classList.add('slide-in-right');
 }
 
+
 /**
  * Closes the overlay.
  */

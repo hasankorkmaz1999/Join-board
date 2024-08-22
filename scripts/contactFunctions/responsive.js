@@ -2,6 +2,8 @@
  * Changes the visibility of the mobile edit contacts button based on the viewport size.
  * @param {boolean} viewquery - Indicates whether the view query is true or false.
  */
+
+
 function mobileButtonChange(viewquery) {
     let divElement = document.getElementById('editContactsMobile');
     if (viewquery === true) {
@@ -17,6 +19,8 @@ function mobileButtonChange(viewquery) {
         }
     }
 }
+
+
 /**
  * Adjusts the contact view for responsiveness based on the viewport size.
  * @param {string} id - The ID of the contact.
@@ -24,6 +28,8 @@ function mobileButtonChange(viewquery) {
  * @param {string} email - The email of the contact.
  * @param {string} phone - The phone number of the contact.
  */
+
+
 function contactResponsive(id, name, email, phone) {
     if (window.innerWidth <= 1000) {
         document.getElementById('sidebar').style.display = 'd-none';
@@ -38,9 +44,13 @@ function contactResponsive(id, name, email, phone) {
         document.getElementById('main-content').style.display = 'none';
     }
 }
+
+
 /**
  * Closes the single contact view and resets the view to show the sidebar.
  */
+
+
 function closeSingleContact() {
     document.getElementById('addNewContactMobile').style.display = 'block';
     let contactContainer = document.getElementById('contact-container');
@@ -58,7 +68,7 @@ function closeSingleContact() {
     }, 650);
 }
 
-// Event listener for window resize to adjust the view.
+
 window.addEventListener('resize', function() {
     if (window.innerWidth < 1000) {
         document.getElementById('main-content').style.display = 'none';
@@ -70,6 +80,8 @@ window.addEventListener('resize', function() {
 /**
  * Opens the mobile edit contacts window.
  */
+
+
 function editContactsMobile() {
     let mobileEditWindow = document.getElementById('mobileEditorDeleteWindow');
     let overlay = document.getElementById('overlayformobile');
@@ -84,10 +96,14 @@ function editContactsMobile() {
         mobileEditWindow.classList.add('mobileEditorDeleteWindow');
     }, 50);
 }
+
+
 /**
  * Renders the responsive edit buttons for the mobile view.
  * @returns {string} The HTML string for the edit buttons.
  */
+
+
 function renderResponsiveEditButtons() {
     let id = document.getElementById('fullID');
     let fullID = id.innerText;
@@ -96,9 +112,13 @@ function renderResponsiveEditButtons() {
         <span onclick="deletContacts('${fullID}'); closeOverlayButton();" class="mobileEditorButtons"><img class="mobileEditorButtons" src="./IMGicons/delete.svg" alt="delete icon"> Delete</span>
     `;
 }
+
+
 /**
  * Closes the mobile edit contacts window.
  */
+
+
 function closeOverlayButton() {
     let mobileEditWindow = document.getElementById('mobileEditorDeleteWindow');
     let overlay = document.getElementById('overlayformobile');
@@ -114,6 +134,4 @@ function closeOverlayButton() {
         overlay.classList.add('d-non');
     }, 200);
 }
-
-
 
