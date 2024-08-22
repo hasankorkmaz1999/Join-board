@@ -142,10 +142,6 @@ h2 {
     display: flex;
 }
 
-#loginWindow {
-    margin: -30px 12px 0 12px;
-}
-
 .align-items-center {
     align-items: center;
 }

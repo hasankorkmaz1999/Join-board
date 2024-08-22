@@ -3,35 +3,10 @@ window.onload = init;
 let register_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
 
 function init() {
-    disableButtonLogin();
     showLogin('loginWindow');
     showFooterLogin('footerAnimation');
+    setupFormListeners();
 }
-
-function disableButtonLogin() {
-    let nameInput = document.getElementById("signup-name").value;
-    let mailInput = document.getElementById("signup-email").value;
-    let passwordInput = document.getElementById("signup-password").value;
-    let confirmPasswordInput = document.getElementById("confirm-signup-password").value;
-    let privacyCheckbox = document.getElementById("privacy-checkbox").checked;
-    let button = document.getElementById("loginButton");
-
-    if (nameInput.length >= 6 && mailInput.length > 1 && passwordInput.length >= 6 && 
-        confirmPasswordInput === passwordInput && privacyCheckbox) {
-        button.disabled = false;
-    } else {
-        button.disabled = true;
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('signup-name').addEventListener('input', disableButtonLogin);
-    document.getElementById('signup-email').addEventListener('input', disableButtonLogin);
-    document.getElementById('signup-password').addEventListener('input', disableButtonLogin);
-    document.getElementById('confirm-signup-password').addEventListener('input', disableButtonLogin);
-    document.getElementById('privacy-checkbox').addEventListener('change', disableButtonLogin);
-    disableButtonLogin(); 
-});
 
 function showLogin(elementId) {
     setTimeout(() => {
@@ -53,77 +28,104 @@ function showFooterLogin(elementId) {
     }, 1000);
 }
 
-document.getElementById('loginButton').addEventListener('click', function(event) {
-    event.preventDefault();
+function setupFormListeners() {
+    const fields = ['signup-name', 'signup-email', 'signup-password', 'confirm-signup-password'];
+    fields.forEach(field => {
+        document.getElementById(field).addEventListener('input', checkFormValidity);
+    });
+}
 
-    let name = document.getElementById('signup-name').value;
-    let email = document.getElementById('signup-email').value;
-    let password = document.getElementById('signup-password').value;
-    let confirmPassword = document.getElementById('confirm-signup-password').value;
-    let privacyCheckbox = document.getElementById('privacy-checkbox').checked;
+function checkFormValidity() {
+    const name = document.getElementById('signup-name').value;
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    const confirmPassword = document.getElementById('confirm-signup-password').value;
+
+    const isValid = name.trim() !== '' &&
+                    email.trim() !== '' &&
+                    password.trim() !== '' &&
+                    confirmPassword.trim() !== '';
+
+    document.getElementById('loginButton').disabled = !isValid;
+}
+
+function validateForm() {
+    let nameInput = document.getElementById("signup-name");
+    let mailInput = document.getElementById("signup-email");
+    let passwordInput = document.getElementById("signup-password");
+    let confirmPasswordInput = document.getElementById("confirm-signup-password");
+    let privacyCheckbox = document.getElementById("privacy-checkbox");
     let errorMessage = document.getElementById('error-message');
-    errorMessage.style.display = 'none';
 
-    if (name.length < 6) {
-        errorMessage.innerText = 'Name must be at least 6 characters long.';
-        errorMessage.style.display = 'block';
-        return;
+    let errorText = "";
+
+    if (nameInput.value.length < 3) {
+        errorText += "Name must be at least 3 characters long.\n";
     }
 
     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        errorMessage.innerText = 'Please enter a valid e-mail address.';
-        errorMessage.style.display = 'block';
-        return;
+    if (!emailPattern.test(mailInput.value)) {
+        errorText += "Please enter a valid e-mail address.\n";
     }
 
-    if (password.length < 6) {
-        errorMessage.innerText = 'The password must be at least 6 characters long.';
-        errorMessage.style.display = 'block';
-        return;
+    if (passwordInput.value.length < 6) {
+        errorText += "The password must be at least 6 characters long.\n";
     }
 
-    if (password !== confirmPassword) {
-        errorMessage.innerText = 'Passwords do not match.';
-        errorMessage.style.display = 'block';
-        return;
+    if (passwordInput.value !== confirmPasswordInput.value) {
+        errorText += "Passwords do not match.\n";
     }
 
-    if (!privacyCheckbox) {
-        errorMessage.innerText = 'Please accept the Privacy Policy.';
-        errorMessage.style.display = 'block';
-        return;
+    if (!privacyCheckbox.checked) {
+        errorText += "Please accept the Privacy Policy.\n";
     }
 
-    // Prepare data to be sent to the API
-    let userData = {
-        "email": email,
-        "name": name,
-        "password": password
-    };
-
-    // Make the API call to register the user
-    fetch(register_API + '/users.json', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-    })
-    .then(response => {
-        if (response.ok) {
-            // Redirect to login.html with a success message
-            window.location.href = 'login.html?msg=signup_success';
-        } else {
-            return response.json().then(data => {
-                throw new Error(data.error || 'Registration failed');
-            });
-        }
-    })
-    .catch(error => {
-        errorMessage.innerText = 'Fehler bei der Registrierung: ' + error.message;
+    if (errorText) {
+        errorMessage.innerText = errorText;
         errorMessage.style.display = 'block';
-    });
+        return false;
+    } else {
+        errorMessage.style.display = 'none';
+        return true;
+    }
+}
+
+document.getElementById('loginButton').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    if (validateForm()) {
+        let name = document.getElementById('signup-name').value;
+        let email = document.getElementById('signup-email').value;
+        let password = document.getElementById('signup-password').value;
+
+        let userData = {
+            "email": email,
+            "name": name,
+            "password": password
+        };
+
+        fetch(register_API + '/users.json', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = 'login.html?msg=signup_success';
+            } else {
+                return response.json().then(data => {
+                    throw new Error(data.error || 'Registration failed');
+                });
+            }
+        })
+        .catch(error => {
+            let errorMessage = document.getElementById('error-message');
+            errorMessage.innerText = 'Fehler bei der Registrierung: ' + error.message;
+            errorMessage.style.display = 'block';
+        });
+    }
 });
 
 function showPassword() {
