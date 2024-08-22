@@ -22,6 +22,7 @@ label, span.asterisk {
 label {
     display: block;
     height: 30px;
+    background-color: var(--body-background-grey);
 }
 
 span.asterisk {
