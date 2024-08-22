@@ -8,13 +8,16 @@ function init() {
     showFooterLogin('footerAnimation');
 }
 
-// Fehlermeldung für Login
 function disableButtonLogin() {
+    let nameInput = document.getElementById("signup-name").value;
     let mailInput = document.getElementById("signup-email").value;
     let passwordInput = document.getElementById("signup-password").value;
+    let confirmPasswordInput = document.getElementById("confirm-signup-password").value;
+    let privacyCheckbox = document.getElementById("privacy-checkbox").checked;
     let button = document.getElementById("loginButton");
 
-    if (mailInput.length > 1 && passwordInput.length > 1) {
+    if (nameInput.length >= 6 && mailInput.length > 1 && passwordInput.length >= 6 && 
+        confirmPasswordInput === passwordInput && privacyCheckbox) {
         button.disabled = false;
     } else {
         button.disabled = true;
@@ -22,12 +25,14 @@ function disableButtonLogin() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('signup-name').addEventListener('input', disableButtonLogin);
     document.getElementById('signup-email').addEventListener('input', disableButtonLogin);
     document.getElementById('signup-password').addEventListener('input', disableButtonLogin);
+    document.getElementById('confirm-signup-password').addEventListener('input', disableButtonLogin);
+    document.getElementById('privacy-checkbox').addEventListener('change', disableButtonLogin);
     disableButtonLogin(); 
 });
 
-//Animation für das öffnen der loginseite
 function showLogin(elementId) {
     setTimeout(() => {
         let element = document.getElementById(elementId);
@@ -51,11 +56,19 @@ function showFooterLogin(elementId) {
 document.getElementById('loginButton').addEventListener('click', function(event) {
     event.preventDefault();
 
-    let email = document.getElementById('signup-email').value;
     let name = document.getElementById('signup-name').value;
+    let email = document.getElementById('signup-email').value;
     let password = document.getElementById('signup-password').value;
+    let confirmPassword = document.getElementById('confirm-signup-password').value;
+    let privacyCheckbox = document.getElementById('privacy-checkbox').checked;
     let errorMessage = document.getElementById('error-message');
     errorMessage.style.display = 'none';
+
+    if (name.length < 6) {
+        errorMessage.innerText = 'Name must be at least 6 characters long.';
+        errorMessage.style.display = 'block';
+        return;
+    }
 
     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
@@ -66,6 +79,18 @@ document.getElementById('loginButton').addEventListener('click', function(event)
 
     if (password.length < 6) {
         errorMessage.innerText = 'The password must be at least 6 characters long.';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        errorMessage.innerText = 'Passwords do not match.';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    if (!privacyCheckbox) {
+        errorMessage.innerText = 'Please accept the Privacy Policy.';
         errorMessage.style.display = 'block';
         return;
     }
