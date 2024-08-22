@@ -1,6 +1,7 @@
 // blendet das kleine Menu bei klick auf die Seite aus
 let menuOpen = false;
 
+
 function toggleMenu() {
   const menu = document.getElementById('dropdown-content');
   if (menu) {
@@ -13,6 +14,7 @@ function toggleMenu() {
     }
   }
 }
+
 
 document.addEventListener('click', function(event) {
   const menu = document.getElementById('dropdown-content');
@@ -31,12 +33,14 @@ document.addEventListener('click', function(event) {
   }
 });
 
+
 document.addEventListener('click', function(event) {
   const menu = document.getElementById('dropdown-content');
   if (menu && menu.contains(event.target)) {
     event.stopPropagation();
   }
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
   const menu = document.getElementById('dropdown-content');
