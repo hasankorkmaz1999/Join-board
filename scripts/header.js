@@ -1,6 +1,12 @@
 const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users';
 
-
+/**
+ * Initializes the header by attempting to load the user's initials and display them.
+ * If the user cannot be loaded, retries the initialization after 2 seconds, up to 2 attempts.
+ * 
+ * @param {number} [attempt=1] - The current attempt number. Defaults to 1.
+ * @returns {Promise<void>} A promise that resolves when the header initialization is complete.
+ */
 async function initHeader(attempt = 1) {
     let check = document.getElementById('PB');
     if (check) {
@@ -48,7 +54,13 @@ async function initHeader(attempt = 1) {
     }
 }
 
-
+/**
+ * Generates initials from a full name.
+ * The initials are created from the first letter of the first and last names.
+ * 
+ * @param {string} fullName - The full name of the user.
+ * @returns {string} The initials generated from the full name.
+ */
 function getInitials(fullName) {
     const nameParts = fullName.trim().split(/\s+/);
     let initials = '';
@@ -64,7 +76,10 @@ function getInitials(fullName) {
     return initials.substring(0, 2);
 }
 
-
+/**
+ * Toggles the visibility of the information dropdown.
+ * If the dropdown is visible, it hides it; if hidden, it shows it.
+ */
 function infoTap() {
     let infoDIV = document.getElementById('dropdown-content');
     let checkClass = infoDIV.classList.contains('dropdown-content');
@@ -77,7 +92,11 @@ function infoTap() {
     }
 }
 
-
+/**
+ * Logs the user out by removing their ID from localStorage and sessionStorage,
+ * then redirects to the login page with a logout message.
+ * If an error occurs, it redirects to the login page with an error message.
+ */
 function logout() {
     try {
         localStorage.removeItem('userId');
@@ -88,4 +107,4 @@ function logout() {
         console.error("Kein Zugriff auf localStorage oder sessionStorage möglich: ", error);
         window.location.href = './login.html?msg=error_localStorage';
     }
-};
+}
