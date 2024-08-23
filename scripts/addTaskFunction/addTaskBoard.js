@@ -63,56 +63,6 @@ function getQueryParams() {
 }
 
 
-function handleProgress0() {
-    let button = document.getElementById('addTaskFlexButtons');
-    button.innerHTML = `
-            <button id="createbutton" type="button" onclick="addTaskBoard(0)" class="createbutton">
-                <p class="create-mobile">Create Task</p>
-                <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
-            </form>
-    `; 
-}
-
-
-function handleProgress1() {
-    let title = document.getElementById('addTaskH1');
-    let button = document.getElementById('addTaskFlexButtons');
-    title.innerHTML = `Create Task in To-Do`;
-    button.innerHTML = `
-            <button id="createbutton" type="button" onclick="addTaskBoard(1)" class="createbutton">
-                <p class="create-mobile">Create Task</p>
-                <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
-            </form>
-    `; 
-}
-
-
-function handleProgress2() {
-    let title = document.getElementById('addTaskH1');
-    let button = document.getElementById('addTaskFlexButtons');
-    title.innerHTML = `Create Task in Progress`;
-    button.innerHTML = `
-            <button id="createbutton" type="button" onclick="addTaskBoard(2)" class="createbutton">
-                <p class="create-mobile">Create Task</p>
-                <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
-            </form>
-    `; 
-}
-
-
-function handleProgress3() {
-    let title = document.getElementById('addTaskH1');
-    let button = document.getElementById('addTaskFlexButtons');
-    title.innerHTML = `Create Task Awaiting Feedback`;
-    button.innerHTML = `
-            <button id="createbutton" type="button" onclick="addTaskBoard(3)" class="createbutton">
-                <p class="create-mobile">Create Task</p>
-                <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
-            </form>
-    `; 
-}
-
-
 function addTaskBoard(progress) {
     if (progress === 0) {
         startAddTask();
@@ -146,6 +96,8 @@ async function addTaskAwaitFeedback() {
             const priority = document.getElementById("priority").value;
             const category = sanitizedValues.category;
             const description = sanitizedValues.description;
+
+            validateDate(date);
     
             let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
             let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
@@ -183,7 +135,7 @@ async function addTaskAwaitFeedback() {
             triggerCloseAddTaskOverlay();
     
         } catch (error) {
-            console.error("Fehler bei der Validierung oder beim Hinzufügen der Aufgabe:", error);
+            console.error("Error during validation or when adding the task:", error);
             toastMessage("Error adding task. Please try again.");
         }
 }
@@ -197,6 +149,8 @@ async function startAddTaskInProgress() {
         const priority = document.getElementById("priority").value;
         const category = sanitizedValues.category;
         const description = sanitizedValues.description;
+
+        validateDate(date);
 
         let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
         let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
@@ -248,6 +202,8 @@ async function startAddTask() {
         const priority = document.getElementById("priority").value;
         const category = sanitizedValues.category;
         const description = sanitizedValues.description;
+
+        validateDate(date);
 
         let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
         let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
@@ -377,12 +333,14 @@ function generateEditButton(taskKey) {
 
 async function editTask(taskKey) {
     try {
-        const sanitizedValues = await validateAndSanitizeForm();
+        const sanitizedValues = await validateAndSanitizeFormBOARD();
         const task = sanitizedValues.taskTitle;
         const date = sanitizedValues.date;
         const priority = document.getElementById("priority").value;
         const category = sanitizedValues.category;
         const description = sanitizedValues.description;
+
+        validateDate(date);
 
         let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
         let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
@@ -424,47 +382,19 @@ async function editTask(taskKey) {
     }
 }
 
+function validateDate(dateStr) {
+    let errorSpan = document.getElementById('duedateError');
+    let selectedDate = new Date(dateStr);
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-function validateAndSanitizeForm() {
-    return new Promise((resolve, reject) => {
-        const taskTitle = document.getElementById("addTaskTitle");
-        const taskTitleError = document.getElementById("taskTitleError");
-        const duedateError = document.getElementById("duedateError");
-        const description = document.getElementById("description");
-        const date = document.getElementById("prioDate");
-
-        let isValid = true;
-
-        if (!taskTitle.value.trim()) {
-            taskTitleError.classList.remove('d-non');
-            taskTitleError.classList.add('addTaskerrorMessage');
-            isValid = false;
-        } else {
-            taskTitleError.classList.remove('addTaskerrorMessage');
-            taskTitleError.classList.add('d-none');
-        }
-
-        if (!date.value.trim()) {
-            duedateError.classList.remove('d-non');
-            duedateError.classList.add('addTaskerrorMessage');
-            isValid = false;
-        } else {
-            duedateError.classList.remove('addTaskerrorMessage');
-            duedateError.classList.add('d-non');
-        }
-
-        if (!isValid) {
-            return reject(new Error("Validation failed"));
-        }
-        const sanitizeInput = (input) => {
-            return input.replace(/[<>&"'\/\\(){}[\]=;:]/g, ' ');
-        };
-        const sanitizedValues = {
-            taskTitle: sanitizeInput(taskTitle.value),
-            description: sanitizeInput(description.value),
-            date: date.value,
-            subtasks: Array.from(document.querySelectorAll("#subtaskList li")).map(item => sanitizeInput(item.textContent.trim()))
-        };
-        resolve(sanitizedValues);
-    });
+    if (selectedDate < today) {
+        errorSpan.textContent = "Please select a valid date in the present or future";
+        errorSpan.style.color = '#FF7A00';
+        errorSpan.classList.remove('d-non');
+        throw new Error("The selected date is in the past.");
+    } else {
+        errorSpan.classList.add('d-non');
+        return true;
+    }
 }

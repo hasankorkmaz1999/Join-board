@@ -55,7 +55,9 @@ const svgIcons = {
     return colors[lastColorIndex];
   }
   
+
   let lastColorIndex = -1;
+  
   
   function renderTaskCard(task, key, categoryClass, svgIcons) {
     const priorityIcon = task.priority ? (svgIcons[task.priority.toLowerCase()] || "") : "";
