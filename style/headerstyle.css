@@ -290,10 +290,31 @@ a.active_contacts {padding-left: 90px;}
     padding-top: 5px;
 }
 
-.hoverEffect:hover{
+.hoverEffect:hover {
     color: var(--white);
     cursor: pointer;
     text-decoration: underline;
+}
+
+.hoverEffect a:hover {
+    color: var(--white);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+a.hoverEffect:hover {
+    color: var(--white);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.hoverEffect {
+    transition: color 0.3s ease; 
+}
+
+#dropdown-content .hoverEffect:hover,
+#dropdown-content .hoverEffect a:hover {
+    color: white !important;
 }
 
 .user-select-none {
