@@ -1,13 +1,12 @@
 /**
- * A boolean flag to track the state of the menu.
+ * A flag to track the state of the menu (open or closed).
  * @type {boolean}
  */
 let menuOpen = false;
 
 /**
- * Toggles the visibility of the dropdown menu.
- * If the menu is currently closed, it will be displayed.
- * If the menu is currently open, it will be hidden.
+ * Toggles the display state of the dropdown menu.
+ * If the menu is currently closed, it will be opened and vice versa.
  */
 function toggleMenu() {
   const menu = document.getElementById('dropdown-content');
@@ -23,11 +22,9 @@ function toggleMenu() {
 }
 
 /**
- * Event listener for document click events.
- * Toggles the dropdown menu if the menu button is clicked.
- * Hides the dropdown menu if a click occurs outside the menu while it is open.
- * 
- * @param {MouseEvent} event - The click event.
+ * Event listener for document clicks.
+ * Toggles the menu if the menu button is clicked.
+ * Closes the menu if a click occurs outside the menu while it is open.
  */
 document.addEventListener('click', function(event) {
   const menu = document.getElementById('dropdown-content');
@@ -45,11 +42,23 @@ document.addEventListener('click', function(event) {
 });
 
 /**
- * Another event listener for document click events.
- * (Note: This seems to be an incomplete function and might need further implementation.)
- * 
- * @param {MouseEvent} event - The click event.
+ * Event listener for document clicks.
+ * Stops propagation if the click occurs inside the menu.
  */
 document.addEventListener('click', function(event) {
   const menu = document.getElementById('dropdown-content');
+  if (menu && menu.contains(event.target)) {
+    event.stopPropagation();
+  }
+});
+
+/**
+ * Event listener for DOM content loaded.
+ * Ensures the menu is hidden when the page is first loaded.
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  const menu = document.getElementById('dropdown-content');
+  if (menu) {
+    menu.style.display = 'none';
+  }
 });
