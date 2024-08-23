@@ -1,6 +1,9 @@
-const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users';
-
-
+/**
+ * Initializes the header by loading user data and setting the initials in the header element.
+ * Retries once if the first attempt fails.
+ * 
+ * @param {number} attempt - The current attempt number (default is 1).
+ */
 async function initHeader(attempt = 1) {
     let check = document.getElementById('PB');
     if (check) {
@@ -48,7 +51,12 @@ async function initHeader(attempt = 1) {
     }
 }
 
-
+/**
+ * Extracts the initials from a full name.
+ * 
+ * @param {string} fullName - The full name of the user.
+ * @returns {string} The initials of the user.
+ */
 function getInitials(fullName) {
     const nameParts = fullName.trim().split(/\s+/); 
     let initials = '';
@@ -64,7 +72,9 @@ function getInitials(fullName) {
     return initials.substring(0, 2); 
 }
 
-
+/**
+ * Toggles the visibility of the info dropdown.
+ */
 function infoTap() {
     let infoDIV = document.getElementById('dropdown-content');
     let checkClass = infoDIV.classList.contains('dropdown-content');
@@ -77,7 +87,10 @@ function infoTap() {
     }
 }
 
-
+/**
+ * Logs out the user by removing user data from localStorage and sessionStorage,
+ * then redirects to the login page.
+ */
 function logout() {
     try {
         localStorage.removeItem('userId');
@@ -88,4 +101,4 @@ function logout() {
         console.error("Kein Zugriff auf localStorage oder sessionStorage möglich: ", error);
         window.location.href = './login.html?msg=error_localStorage';
     }
-};
+}
