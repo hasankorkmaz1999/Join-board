@@ -157,7 +157,7 @@ const svgIcons = {
       </div>
       <img onclick="openMobileMenu('${key}')" class="responsive-dots" 
         src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
-      <div class="miniMenu" id="${key}">
+      <div class="miniMenu d-none" id="${key}">
         <span class="featTxt" style="text-decoration:none;cursor:unset;">Move to:</span>
         <span class="mini-menu" onclick="pushInToDo('${key}')">To-Do</span>
         <span class="mini-menu" onclick="pushInProgress('${key}')">In Progress</span>
