@@ -31,7 +31,8 @@ span.asterisk {
 .addTaskContainer {
     max-width: 1920px;
     margin-left: 332px;
-    margin-top: 80px;;
+    margin-top: 80px;
+    margin-right: 80px;
 }
 
 .joinLogo,
