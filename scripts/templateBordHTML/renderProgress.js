@@ -58,77 +58,111 @@ const svgIcons = {
 
   let lastColorIndex = -1;
   
+
+  // Refactoring Start
+
   
-  function renderTaskCard(task, key, categoryClass, svgIcons) {
-    const priorityIcon = task.priority ? (svgIcons[task.priority.toLowerCase()] || "") : "";
-    const typHTML = `<span class="${categoryClass}">${task.category}</span>`;
-    const progress = calculateProgress(task.subtasks);
-    const subtasksHTML = renderSubtasks(task.subtasks, key);
-    const assignedToHTML = renderAssignedTo(task.assignedto, key, false);
-    const progressHTML = renderProgress(task.subtasks, key, progress);
-    const assignedToFullHTML = renderAssignedTo(task.assignedto, key, true);
-    const taskData = prepareTaskData(task, priorityIcon, typHTML, subtasksHTML, assignedToHTML, assignedToFullHTML);
-    
-    return buildTaskCardHTML(key, taskData, typHTML, progressHTML, assignedToHTML, priorityIcon);
-  }
-  
-  function renderSubtasks(subtasks, key) {
-    let subtasksHTML = "";
-    if (subtasks && subtasks.length > 0) {
-      subtasks.forEach((subtask, i) => {
-        subtasksHTML += `
-          <div class="subtask-item">
-            <label>
-              <input class="styled-checkbox" type="checkbox" id="subtask-checkbox-${key}-${i}" 
-                ${subtask.itsdone ? "checked" : ""} 
-                onclick="toggleSubtaskStatus(&#39;${key}&#39;, ${i}, this.checked)">
-              <span class="subtasktitles">${subtask.title}</span>
-            </label>
-          </div>`;
-      });
-    }
-    return subtasksHTML;
-  }
-  
-  function renderAssignedTo(assignedToList, key, full = false) {
-    let assignedToHTML = "";
-    if (assignedToList && assignedToList.length > 0) {
-      assignedToHTML = assignedToList.slice(0, full ? assignedToList.length : 3).map((assignedTo, j) => {
-        const initials = getInitials(assignedTo.name);
-        const avatarColor = getAvatarColor(assignedTo.name);
-        return `
-          <div class="assignedtoItem" style="background-color: ${avatarColor}; border-radius: 50%; width: 40px; height: 40px; 
-          display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
-            <span class="assignedtoavatar">${initials}</span>
-          </div>`;
-      }).join("");
-  
-      if (!full && assignedToList.length > 3) {
-        assignedToHTML += `
-          <div class="assignedtoItem" style="background-color: #ccc; border-radius: 50%; width: 40px; height: 40px; 
-          display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
-            <span class="assignedtoavatar">+${assignedToList.length - 3}</span>
-          </div>`;
+// Hilfsfunktionen für das Rendern der Task-Karte
+function getPriorityIcon(task, svgIcons) {
+  return task.priority ? svgIcons[task.priority.toLowerCase()] || "" : "";
+}
+
+
+function getCategoryHTML(categoryClass, task) {
+  return `<span class="${categoryClass}">${task.category}</span>`;
+}
+
+
+function generateSubtaskHTML(task, key) {
+  let subtasksHTML = "";
+  if (task.subtasks && task.subtasks.length > 0) {
+      for (let i = 0; i < task.subtasks.length; i++) {
+          let subtask = task.subtasks[i];
+          subtasksHTML += `
+              <div class="subtask-item">
+                  <label>
+                      <input class="styled-checkbox" type="checkbox" id="subtask-checkbox-${key}-${i}" 
+                      ${subtask.itsdone ? "checked" : ""} 
+                      onclick="toggleSubtaskStatus('${key}', ${i}, this.checked)">
+                      <span class="subtasktitles">${subtask.title}</span>
+                  </label>
+              </div>`;
       }
-    }
-    return assignedToHTML;
   }
+  return subtasksHTML;
+}
+
+
+function generateAssignedToHTML(task, key) {
+  let assignedToHTML = "";
+  if (task.assignedto && task.assignedto.length > 0) {
+      let maxNamesToShow = 3;
+      let remainingNames = task.assignedto.length - maxNamesToShow;
+
+      for (let j = 0; j < task.assignedto.length && j < maxNamesToShow; j++) {
+          let assignedTo = task.assignedto[j];
+          let initials = getInitials(assignedTo.name);
+          let avatarColor = getAvatarColor(assignedTo.name);
+
+          assignedToHTML += `
+              <div class="assignedtoItem" style="background-color: ${avatarColor}; 
+              border-radius: 50%; width: 40px; height: 40px; display: flex; 
+              align-items: center; justify-content: center; color: white; font-weight: bold;">  
+                  <span class="assignedtoavatar">${initials}</span>
+              </div>`;
+      }
+
+      if (remainingNames > 0) {
+          assignedToHTML += `
+              <div class="assignedtoItem" style="background-color: #ccc; border-radius: 50%; 
+              width: 40px; height: 40px; display: flex; align-items: center; 
+              justify-content: center; color: white; font-weight: bold;">  
+                  <span class="assignedtoavatar">+${remainingNames}</span>
+              </div>`;
+      }
+  }
+  return assignedToHTML;
+}
+
+
+function generateProgressHTML(task, key, progress) {
+  let completedSubtasks = task.subtasks.filter(subtask => subtask.itsdone).length;
+  let totalSubtasks = task.subtasks.length;
   
-  function renderProgress(subtasks, key, progress) {
-    if (!subtasks || subtasks.length === 0) return "";
-    const completedSubtasks = subtasks.filter(subtask => subtask.itsdone).length;
-    return `
+  return totalSubtasks > 0 ? `
       <div class="Progress">
-        <span class="progress-bar-container">
-          <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"
-            data-tooltip="${completedSubtasks}/${subtasks.length} Subtasks"></div>
-        </span>
-        <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${subtasks.length} Subtasks</span>
-      </div>`;
+          <span class="progress-bar-container">
+              <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"
+                  data-tooltip="${completedSubtasks}/${totalSubtasks} Subtasks"></div>
+          </span>
+          <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
+      </div>` : "";
+}
+
+
+function generateAssignedToFullHTML(task) {
+  let assignedToFullNameHTML = "";
+  if (task.assignedto && task.assignedto.length > 0) {
+      for (let j = 0; j < task.assignedto.length; j++) {
+          let assignedTo = task.assignedto[j];
+          assignedToFullNameHTML += `<span class="fullnames">${assignedTo.name}</span>`;
+      }
   }
-  
-  function prepareTaskData(task, priorityIcon, typHTML, subtasksHTML, assignedToHTML, assignedToFullHTML) {
-    return {
+  return assignedToFullNameHTML;
+}
+
+
+// Hauptfunktion: renderTaskCard
+function renderTaskCard(task, key, categoryClass, svgIcons) {
+  let priorityIcon = getPriorityIcon(task, svgIcons);
+  let typHTML = getCategoryHTML(categoryClass, task);
+  let progress = calculateProgress(task.subtasks);
+  let subtasksHTML = generateSubtaskHTML(task, key);
+  let assignedToHTML = generateAssignedToHTML(task, key);
+  let progressHTML = generateProgressHTML(task, key, progress);
+  let assignedToFullHTML = generateAssignedToFullHTML(task);
+
+  let taskData = {
       taskTitle: task.task,
       taskDescription: task.description,
       taskPriorityIcon: priorityIcon,
@@ -137,34 +171,35 @@ const svgIcons = {
       dueDate: task.duedate,
       subtasksHTML: subtasksHTML,
       assignedToHTML: assignedToHTML,
-      assignedToFullNameHTML: renderAssignedTo(task.assignedto, "", true),
+      assignedToFullNameHTML: assignedToFullHTML,
       assignedToFullHTML: assignedToFullHTML,
-    };
-  }
-  
-  function buildTaskCardHTML(key, taskData, typHTML, progressHTML, assignedToHTML, priorityIcon) {
-    return `
+  };
+
+  return /*html*/ `
       <div id="task-card-${key}" onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' 
-        draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
-        ${typHTML}
-        <div class="task-title">${taskData.taskTitle}</div>
-        <div class="task-description">${taskData.taskDescription}</div>
-        ${progressHTML}
-        <div class="taskpriority">
-          <div class="assignedToHTML">${assignedToHTML}</div>
-          ${priorityIcon}
-        </div>
+      draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
+          ${typHTML}
+          <div class="task-title">${task.task}</div>
+          <div class="task-description">${task.description}</div>
+          ${progressHTML}
+          <div class="taskpriority">
+              <div class="assignedToHTML">${assignedToHTML}</div>
+              ${priorityIcon}
+          </div>
       </div>
-      <img onclick="openMobileMenu('${key}')" class="responsive-dots" 
-        src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
+      <img onclick="openMobileMenu('${key}')" class="responsive-dots" src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
       <div class="miniMenu" id="${key}">
-        <span class="featTxt" style="text-decoration:none;cursor:unset;">Move to:</span>
-        <span class="mini-menu" onclick="pushInToDo('${key}')">To-Do</span>
-        <span class="mini-menu" onclick="pushInProgress('${key}')">In Progress</span>
-        <span class="mini-menu" onclick="pushInAwaitFeedback('${key}')">Await feedback</span>
-        <span class="mini-menu" onclick="pushInDone('${key}')">Done</span>
+          <span class="featTxt" style="text-decoration:none;cursor:unset;">Move to:</span>
+          <span class="mini-menu" onclick="pushInToDo('${key}')">To-Do</span>
+          <span class="mini-menu" onclick="pushInProgress('${key}')">In Progress</span>
+          <span class="mini-menu" onclick="pushInAwaitFeedback('${key}')">Await feedback</span>
+          <span class="mini-menu" onclick="pushInDone('${key}')">Done</span>
       </div>`;
-  }
+}
+
+  
+  // Refactoring Ende
+
   
   function openMobileMenu(key) {
     const menu = document.getElementById(key);
