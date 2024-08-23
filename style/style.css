@@ -100,6 +100,7 @@ button.guest-button-frontpage {
     border: 1px solid var(--deepest-grey);
     font-size: 1rem;
     font-weight: bold;
+    margin-left: 8px;
 }
 
 button.guest-button-frontpage a {
@@ -464,68 +465,75 @@ cursor: pointer;
 
 @keyframes slide-in-right {
     0% {
-        transform: translate(500px, -50%);
+        transform: translateX(100%);
         opacity: 0;
     }
     100% {
-        transform: translate(0, -50%);
+        transform: translateX(-50%);
         opacity: 1;
     }
 }
 
 @-webkit-keyframes slide-in-right {
     0% {
-      -webkit-transform: translateX(500px);
-              transform: translateX(500px);
-      opacity: 0;
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+        opacity: 0;
     }
     100% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      opacity: 1;
+        -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+        opacity: 1;
     }
 }
 
 
-  .slide-out-right {
+.slide-out-right {
     -webkit-animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
             animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 @-webkit-keyframes slide-out-right {
     0% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      opacity: 1;
+        -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+        opacity: 1;
     }
     100% {
-      -webkit-transform: translateX(500px);
-              transform: translateX(500px);
-      opacity: 0;
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+        opacity: 0;
     }
 }
 @keyframes slide-out-right {
     0% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      opacity: 1;
+        -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+        opacity: 1;
     }
     100% {
-      -webkit-transform: translateX(500px);
-              transform: translateX(500px);
-      opacity: 0;
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+        opacity: 0;
     }
 }
 
 .toast {
-   background-color: var(--deepest-grey);
-   color: var(--white);
-   border-radius: 20px;
-   z-index: 99;
-   width: 326px;
-   height: 60px;
-   margin: 0 auto;
-   top: 40px;
-   left: 40%;
-   position: absolute;
+    background-color: var(--deepest-grey);
+    color: var(--white);
+    border-radius: 20px;
+    z-index: 99;
+    width: 320px;
+    height: 60px;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+ }
+
+.toast-div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

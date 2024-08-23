@@ -1,4 +1,8 @@
 
+body {
+    overflow-x: hidden;
+  }
+
 .back-arrow {
     background-image: url(../IMGicons/arrow-left-line.svg);
     background-repeat: no-repeat;
