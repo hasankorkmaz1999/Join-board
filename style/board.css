@@ -33,6 +33,7 @@
 body {
  background-color: var(--body-background); 
  width: 100%;
+ overflow-x: hidden;
 }
 
 
