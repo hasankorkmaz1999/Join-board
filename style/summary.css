@@ -1,7 +1,8 @@
 .main-content {
+    max-width: 1920px;
     margin-top: 80px;
     margin-left: 332px;
-    margin-right: 120px;
+
     padding: 20px;
     background-color: var(--body-background-grey);
     height: 85vh;
@@ -65,9 +66,13 @@ h2 {
 }
 
 #greeting-text {
-    font-size: 47px;
+    font-size: 31px;
     font-weight: 600;
     color: var(--deep-grey);
+}
+
+#greeting-container {
+    margin: 0 auto;
 }
 
 .text-align-center {
