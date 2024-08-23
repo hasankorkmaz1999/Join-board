@@ -64,6 +64,9 @@ function disableSpinner() {
   }
 }
 
+
+// Refactoring Start
+
 // Refaktoring Start
 
 function renderTaskData(data) {
@@ -159,16 +162,25 @@ function displayNoTasksBanners(taskCounts, todoDIV, inprogressDIV, doneDIV, awai
 
   if (taskCounts.inProgressTasksCount === 0) {
       inprogressDIV.innerHTML = '<div class="no-tasks-banner">No tasks in Progress</div>';
+  if (taskCounts.inProgressTasksCount === 0) {
+      inprogressDIV.innerHTML = '<div class="no-tasks-banner">No tasks in Progress</div>';
   }
 
+  if (taskCounts.awaitingFeedbackTasksCount === 0) {
+      awaitingfeedbackDIV.innerHTML = '<div class="no-tasks-banner">No tasks awaiting Feedback</div>';
   if (taskCounts.awaitingFeedbackTasksCount === 0) {
       awaitingfeedbackDIV.innerHTML = '<div class="no-tasks-banner">No tasks awaiting Feedback</div>';
   }
 
   if (taskCounts.doneTasksCount === 0) {
       doneDIV.innerHTML = '<div class="no-tasks-banner">No tasks done</div>';
+  if (taskCounts.doneTasksCount === 0) {
+      doneDIV.innerHTML = '<div class="no-tasks-banner">No tasks done</div>';
   }
 }
+
+
+// Refactoring Ende
 
 // Refaktoring Ende
 

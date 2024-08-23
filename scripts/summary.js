@@ -16,6 +16,7 @@ function init() {
   forbiddenCourse();
   loadDeadline();
   initHeader();
+  fadeOutAnimation();
 }
 
 
@@ -196,4 +197,20 @@ async function loadDeadline() {
   let tasks = await loadData(taskAPI); 
   countUrgentTasks(tasks); 
   findNextDeadline(tasks); 
+}
+
+
+function fadeOutAnimation() {
+  if (window.innerWidth <= 850) {
+    document.body.style.overflow = "hidden";
+    setTimeout(function (){
+      document.getElementById('greeting-container').classList.add('fade-out');
+    }, 1500);
+    setTimeout(function (){
+      document.getElementById('greeting-container').classList.add('d-none');
+      document.getElementById('greeting-container').classList.remove('fade-out');
+      document.getElementById('greeting-container').classList.remove('greeting-container');
+      document.body.style.overflow = "auto";
+    }, 2500);
+  }
 }

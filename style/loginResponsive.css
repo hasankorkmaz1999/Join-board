@@ -1,4 +1,8 @@
 
+body {
+    overflow-x: hidden;
+  }
+
 .back-arrow {
     background-image: url(../IMGicons/arrow-left-line.svg);
     background-repeat: no-repeat;
@@ -98,5 +102,32 @@
     }
     button.guest-button-frontpage {
         width: 150px;
+    }
+}
+
+
+/* iPhone SE (1. Generation) */
+@media only screen 
+  and (device-width: 320px) 
+  and (device-height: 568px) 
+  and (-webkit-device-pixel-ratio: 2) {
+    .header-top {
+        position: fixed;
+        top: -20px;
+        left: 0;
+        right: 0;
+    }
+}
+
+/* iPhone SE (2. Generation) */
+@media only screen 
+  and (device-width: 375px) 
+  and (device-height: 667px) 
+  and (-webkit-device-pixel-ratio: 2) {
+    .header-top {
+        position: fixed;
+        top: -20px;
+        left: 0;
+        right: 0;
     }
 }
