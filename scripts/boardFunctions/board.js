@@ -278,6 +278,7 @@ function openSingleTaskOverlay(taskData, key) {
   overlay.setAttribute('data-current-key', key);
 }
 
+
 function closeSingleTaskOverlay() {
   let overlay = document.getElementById("overlayforsingletask");
   let key = overlay.getAttribute('data-current-key'); 
