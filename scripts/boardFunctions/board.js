@@ -64,9 +64,7 @@ function disableSpinner() {
   }
 }
 
-
-// Refactoring Start
-
+// Refaktoring Start
 
 function renderTaskData(data) {
   tasks = data;
@@ -90,12 +88,14 @@ function renderTaskData(data) {
   disableSpinner();
 }
 
+
 function clearTaskDivs(todoDIV, inprogressDIV, doneDIV, awaitingfeedbackDIV) {
   todoDIV.innerHTML = "";
   inprogressDIV.innerHTML = "";
   doneDIV.innerHTML = "";
   awaitingfeedbackDIV.innerHTML = "";
 }
+
 
 function initializeTaskCounts() {
   return {
@@ -105,6 +105,7 @@ function initializeTaskCounts() {
       doneTasksCount: 0
   };
 }
+
 
 function updateTaskDivs(task, key, taskCounts) {
   let progress = task.progress;
@@ -120,11 +121,13 @@ function updateTaskDivs(task, key, taskCounts) {
   }
 }
 
+
 function updateTaskDiv(progressType, taskCounts, renderFunction, task, key) {
   let divID = getDivID(progressType);
   document.getElementById(divID).innerHTML += renderFunction(task, key);
   incrementTaskCount(taskCounts, progressType);
 }
+
 
 function getDivID(progressType) {
   return {
@@ -134,6 +137,7 @@ function getDivID(progressType) {
       AwaitingFeedback: "awaitingfeedback"
   }[progressType];
 }
+
 
 function incrementTaskCount(taskCounts, progressType) {
   if (progressType === "todo") {
@@ -146,6 +150,7 @@ function incrementTaskCount(taskCounts, progressType) {
       taskCounts.doneTasksCount++;
   }
 }
+
 
 function displayNoTasksBanners(taskCounts, todoDIV, inprogressDIV, doneDIV, awaitingfeedbackDIV) {
   if (taskCounts.todoTasksCount === 0) {
@@ -165,9 +170,7 @@ function displayNoTasksBanners(taskCounts, todoDIV, inprogressDIV, doneDIV, awai
   }
 }
 
-
-// Refactoring Ende
-
+// Refaktoring Ende
 
 function startDragging(id) {
   cureentDraggedElement = id;
@@ -282,6 +285,7 @@ function openSingleTaskOverlay(taskData, key) {
   overlay.setAttribute('data-current-key', key);
 }
 
+
 function closeSingleTaskOverlay() {
   let overlay = document.getElementById("overlayforsingletask");
   let key = overlay.getAttribute('data-current-key'); 
@@ -335,62 +339,74 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function findTask() {
-  let searchInput = document
-    .querySelector(".inputfieldfindtask")
-    .value.toLowerCase();
+// Refactoring Start
 
+
+function getSearchInput() {
+  return document.querySelector(".inputfieldfindtask").value.toLowerCase();
+}
+
+
+function clearTaskDivs() {
   document.getElementById("todo").innerHTML = "";
   document.getElementById("inprogress").innerHTML = "";
   document.getElementById("done").innerHTML = "";
   document.getElementById("awaitingfeedback").innerHTML = "";
+}
+
+
+function taskMatchesSearch(task, searchInput) {
+  let taskTitle = task.task.toLowerCase();
+  let taskDescription = task.description.toLowerCase();
+  return taskTitle.includes(searchInput) || taskDescription.includes(searchInput);
+}
+
+
+function renderTaskByProgress(progress, task, key) {
+  if (progress === "todo") {
+      document.getElementById("todo").innerHTML += renderDivTodo(task, key);
+  } else if (progress === "inProgress") {
+      document.getElementById("inprogress").innerHTML += renderDivInprogress(task, key);
+  } else if (progress === "done") {
+      document.getElementById("done").innerHTML += renderDivDone(task, key);
+  } else if (progress === "AwaitingFeedback") {
+      document.getElementById("awaitingfeedback").innerHTML += renderDivawaitingfeedback(task, key);
+  }
+}
+
+
+function displayNoTasksFoundMessage() {
+  document.getElementById("inprogress").innerHTML = '<div class="no-tasksfound-banner">No tasks found</div>';
+}
+
+
+function findTask() {
+  let searchInput = getSearchInput();
+
+  clearTaskDivs();
 
   let keys = Object.keys(tasks);
   let tasksFound = false;
 
-  for (let i = 0; i < keys.length; i++) {
-    let key = keys[i];
-    let task = tasks[key];
-    let taskTitle = task.task.toLowerCase();
-    let taskDescription = task.description.toLowerCase();
+  keys.forEach(key => {
+      let task = tasks[key];
+      if (taskMatchesSearch(task, searchInput)) {
+          tasksFound = true;
+          renderTaskByProgress(task.progress, task, key);
+      }
+  });
 
-    if (
-      taskTitle.includes(searchInput) ||
-      taskDescription.includes(searchInput)
-    ) {
-      tasksFound = true;
-      let progress = task.progress;
-
-      if (progress === "todo") {
-        document.getElementById("todo").innerHTML += renderDivTodo(task, key);
-      }
-      if (progress === "inProgress") {
-        document.getElementById("inprogress").innerHTML += renderDivInprogress(
-          task,
-          key
-        );
-      }
-      if (progress === "done") {
-        document.getElementById("done").innerHTML += renderDivDone(task, key);
-      }
-      if (progress === "AwaitingFeedback") {
-        document.getElementById("awaitingfeedback").innerHTML +=
-          renderDivawaitingfeedback(task, key);
-      }
-    }
-  }
-
-  
   if (!tasksFound) {
-    document.getElementById("inprogress").innerHTML =
-      '<div class="no-tasksfound-banner">No tasks found</div>';
+      displayNoTasksFoundMessage();
   }
 
-  
   if (searchInput === "") {
-    renderData(taskAPI);
+      renderData(taskAPI);
   }
 }
+
+
+// Refactoring Ende
 
 
 async function pushInToDo(key) {

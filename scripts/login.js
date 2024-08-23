@@ -40,8 +40,10 @@ function checkRememberedUser() {
             .then(response => response.json())
             .then(userData => {
                 if (userData) {
+                    document.querySelector('.remember-login input').checked = true;
                     document.getElementById('signup-email').value = userData.email;
                     document.getElementById('signup-password').value = userData.password;
+                    disableButtonLogin();
                     document.getElementById('loginButton').click();
                 }
             })

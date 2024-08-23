@@ -42,6 +42,7 @@ function forbiddenCourse() {
     priorityInput.value = priority;
     }
 
+    
 function validateDate(dateStr) {
     let errorSpan = document.getElementById('duedateError');
     let selectedDate = new Date(dateStr);
