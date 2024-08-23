@@ -64,6 +64,7 @@ function disableSpinner() {
   }
 }
 
+// Refaktoring Start
 
 function renderTaskData(data) {
   tasks = data;
@@ -73,60 +74,96 @@ function renderTaskData(data) {
   let doneDIV = document.getElementById("done");
   let awaitingfeedbackDIV = document.getElementById("awaitingfeedback");
 
-  todoDIV.innerHTML = "";
-  inprogressDIV.innerHTML = "";
-  doneDIV.innerHTML = "";
-  awaitingfeedbackDIV.innerHTML = "";
+  clearTaskDivs(todoDIV, inprogressDIV, doneDIV, awaitingfeedbackDIV);
 
-  let todoTasksCount = 0;
-  let inProgressTasksCount = 0;
-  let awaitingFeedbackTasksCount = 0;
-  let doneTasksCount = 0;
+  let taskCounts = initializeTaskCounts();
 
-  for (let i = 0; i < keys.length; i++) {
-    let key = keys[i];
-    let task = data[key];
-    let progress = task.progress;
+  keys.forEach(key => {
+      let task = data[key];
+      updateTaskDivs(task, key, taskCounts);
+  });
 
-    if (progress === "todo") {
-      todoDIV.innerHTML += renderDivTodo(task, key);
-      todoTasksCount++;
-    }
-    if (progress === "inProgress") {
-      inprogressDIV.innerHTML += renderDivInprogress(task, key);
-      inProgressTasksCount++;
-    }
-    if (progress === "done") {
-      doneDIV.innerHTML += renderDivDone(task, key);
-      doneTasksCount++;
-    }
-    if (progress === "AwaitingFeedback") {
-      awaitingfeedbackDIV.innerHTML += renderDivawaitingfeedback(task, key);
-      awaitingFeedbackTasksCount++;
-    }
-  }
-
-  if (todoTasksCount === 0) {
-    todoDIV.innerHTML = '<div class="no-tasks-banner">No tasks To Do</div>';
-  }
-
-  if (inProgressTasksCount === 0) {
-    inprogressDIV.innerHTML =
-      '<div class="no-tasks-banner">No tasks in Progress</div>';
-  }
-
-  if (awaitingFeedbackTasksCount === 0) {
-    awaitingfeedbackDIV.innerHTML =
-      '<div class="no-tasks-banner">No tasks awaiting Feedback</div>';
-  }
-
-  if (doneTasksCount === 0) {
-    doneDIV.innerHTML = '<div class="no-tasks-banner">No tasks done</div>';
-  }
+  displayNoTasksBanners(taskCounts, todoDIV, inprogressDIV, doneDIV, awaitingfeedbackDIV);
 
   disableSpinner();
 }
 
+function clearTaskDivs(todoDIV, inprogressDIV, doneDIV, awaitingfeedbackDIV) {
+  todoDIV.innerHTML = "";
+  inprogressDIV.innerHTML = "";
+  doneDIV.innerHTML = "";
+  awaitingfeedbackDIV.innerHTML = "";
+}
+
+function initializeTaskCounts() {
+  return {
+      todoTasksCount: 0,
+      inProgressTasksCount: 0,
+      awaitingFeedbackTasksCount: 0,
+      doneTasksCount: 0
+  };
+}
+
+function updateTaskDivs(task, key, taskCounts) {
+  let progress = task.progress;
+
+  if (progress === "todo") {
+      updateTaskDiv("todo", taskCounts, renderDivTodo, task, key);
+  } else if (progress === "inProgress") {
+      updateTaskDiv("inProgress", taskCounts, renderDivInprogress, task, key);
+  } else if (progress === "done") {
+      updateTaskDiv("done", taskCounts, renderDivDone, task, key);
+  } else if (progress === "AwaitingFeedback") {
+      updateTaskDiv("AwaitingFeedback", taskCounts, renderDivawaitingfeedback, task, key);
+  }
+}
+
+function updateTaskDiv(progressType, taskCounts, renderFunction, task, key) {
+  let divID = getDivID(progressType);
+  document.getElementById(divID).innerHTML += renderFunction(task, key);
+  incrementTaskCount(taskCounts, progressType);
+}
+
+function getDivID(progressType) {
+  return {
+      todo: "todo",
+      inProgress: "inprogress",
+      done: "done",
+      AwaitingFeedback: "awaitingfeedback"
+  }[progressType];
+}
+
+function incrementTaskCount(taskCounts, progressType) {
+  if (progressType === "todo") {
+      taskCounts.todoTasksCount++;
+  } else if (progressType === "inProgress") {
+      taskCounts.inProgressTasksCount++;
+  } else if (progressType === "AwaitingFeedback") {
+      taskCounts.awaitingFeedbackTasksCount++;
+  } else if (progressType === "done") {
+      taskCounts.doneTasksCount++;
+  }
+}
+
+function displayNoTasksBanners(taskCounts, todoDIV, inprogressDIV, doneDIV, awaitingfeedbackDIV) {
+  if (taskCounts.todoTasksCount === 0) {
+      todoDIV.innerHTML = '<div class="no-tasks-banner">No tasks To Do</div>';
+  }
+
+  if (taskCounts.inProgressTasksCount === 0) {
+      inprogressDIV.innerHTML = '<div class="no-tasks-banner">No tasks in Progress</div>';
+  }
+
+  if (taskCounts.awaitingFeedbackTasksCount === 0) {
+      awaitingfeedbackDIV.innerHTML = '<div class="no-tasks-banner">No tasks awaiting Feedback</div>';
+  }
+
+  if (taskCounts.doneTasksCount === 0) {
+      doneDIV.innerHTML = '<div class="no-tasks-banner">No tasks done</div>';
+  }
+}
+
+// Refaktoring Ende
 
 function startDragging(id) {
   cureentDraggedElement = id;
