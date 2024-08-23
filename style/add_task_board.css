@@ -52,6 +52,13 @@ margin-left: -80px;
     overflow-y: scroll;
 }
 
+#subtaskList li {
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .subtaskcontainer:hover  {
     background-color: rgba(172, 172, 172, 0.2);
    

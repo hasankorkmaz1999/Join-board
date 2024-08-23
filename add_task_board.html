@@ -134,8 +134,16 @@
                             
                         </div>
                     </div>
-    
-                    
+
+                    <div id="addTaskCategory" class="addTaskCategory">
+                        <label for="category">Category<span class="asterisk">*</span></label>
+                        <select id="category" name="category">
+                            <option value="null">Select task Category</option>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
+                        </select>
+                        <span id="addTaskCategoryError" class="d-non">Please enter a category</span>
+                    </div>
     
                     <div class="addTaskSubtasks">
                         <label for="subtasks">Subtasks</label>

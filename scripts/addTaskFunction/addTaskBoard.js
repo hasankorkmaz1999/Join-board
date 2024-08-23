@@ -336,10 +336,16 @@ window.addEventListener('message', function(event) {
         }
 
         let subtaskList = document.getElementById('subtaskList');
-        subtaskList.innerHTML = ''; 
-        taskData.subtasks.forEach(subtask => {
-            addSubtaskToList(subtask.title.trim(), subtask.itsdone);
-        });
+        subtaskList.innerHTML = '';
+        try {
+            taskData.subtasks.forEach(subtask => {
+                addSubtaskToList(subtask.title.trim(), subtask.itsdone);
+            });
+        } catch (error) {
+            console.warn("No task available", error);
+        }
+
+        document.getElementById('addTaskCategory').innerHTML = "";
         document.getElementById('addTaskH1').innerHTML = 'Edit Task';
         document.getElementById('addTaskFlexButtons').innerHTML = generateEditButton(taskKey);
     }
