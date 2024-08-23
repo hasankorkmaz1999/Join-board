@@ -1,9 +1,6 @@
-/**
- * Initializes the header by loading user data and setting the initials in the header element.
- * Retries once if the first attempt fails.
- * 
- * @param {number} attempt - The current attempt number (default is 1).
- */
+const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users';
+
+
 async function initHeader(attempt = 1) {
     let check = document.getElementById('PB');
     if (check) {
@@ -11,9 +8,9 @@ async function initHeader(attempt = 1) {
             const userID1 = sessionStorage.getItem('userId');
             const userId = localStorage.getItem('userId');
             const guestToken = sessionStorage.getItem('guestToken');
-    
+
             let user = null;
-    
+
             if (userID1) {
                 user = await loadData(`${PB_API}/${userID1}`);
             } else if (userId) {
@@ -21,17 +18,17 @@ async function initHeader(attempt = 1) {
             } else if (guestToken) {
                 user = await loadData(`${PB_API}/${guestToken}`);
             }
-    
+
             if (!user || !user.name) {
                 throw new Error("User or user name could not be loaded");
             }
-    
+
             const initials = getInitials(user.name);
             document.getElementById('PB').innerHTML = initials;
-    
+
         } catch (error) {
             console.warn(`Error initializing the header (Demo Login):`, error);
-            
+
             if (attempt < 2) {
                 console.warn("Fail: Initiation of profile picture in 2 seconds...");
                 setTimeout(() => initHeader(attempt + 1), 2000);
@@ -41,7 +38,7 @@ async function initHeader(attempt = 1) {
         }
     } else {
         console.warn(`No header element found, try ${attempt} of 2`);
-        
+
         if (attempt < 2) {
             console.warn("Another attempt to find the header in 2 seconds...");
             setTimeout(() => initHeader(attempt + 1), 2000);
@@ -51,30 +48,23 @@ async function initHeader(attempt = 1) {
     }
 }
 
-/**
- * Extracts the initials from a full name.
- * 
- * @param {string} fullName - The full name of the user.
- * @returns {string} The initials of the user.
- */
+
 function getInitials(fullName) {
-    const nameParts = fullName.trim().split(/\s+/); 
+    const nameParts = fullName.trim().split(/\s+/);
     let initials = '';
 
     if (nameParts.length > 0) {
-        initials += nameParts[0].charAt(0).toUpperCase(); 
-    }
-    
-    if (nameParts.length > 1) {
-        initials += nameParts[nameParts.length - 1].charAt(0).toUpperCase(); 
+        initials += nameParts[0].charAt(0).toUpperCase();
     }
 
-    return initials.substring(0, 2); 
+    if (nameParts.length > 1) {
+        initials += nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+    }
+
+    return initials.substring(0, 2);
 }
 
-/**
- * Toggles the visibility of the info dropdown.
- */
+
 function infoTap() {
     let infoDIV = document.getElementById('dropdown-content');
     let checkClass = infoDIV.classList.contains('dropdown-content');
@@ -87,10 +77,7 @@ function infoTap() {
     }
 }
 
-/**
- * Logs out the user by removing user data from localStorage and sessionStorage,
- * then redirects to the login page.
- */
+
 function logout() {
     try {
         localStorage.removeItem('userId');
@@ -101,4 +88,4 @@ function logout() {
         console.error("Kein Zugriff auf localStorage oder sessionStorage möglich: ", error);
         window.location.href = './login.html?msg=error_localStorage';
     }
-}
+};
