@@ -1,8 +1,14 @@
+/**
+ * Generates the HTML for displaying a single task in the overlay view.
+ * 
+ * @param {object} taskData - The data object containing task details.
+ * @param {string} key - The key of the task.
+ * @returns {string} The HTML string for the single task form.
+ */
 function addSingleTaskForm(taskData, key) {
-   
     return /*html*/`
         <img onclick="closeSingleTaskOverlay()" class="closeXaddtask" src="./IMGicons/close.svg" alt="Icon Close">
-        <div  onclick="doNotClose(event)" class="single-task-content">
+        <div onclick="doNotClose(event)" class="single-task-content">
             <p class="taskCategoryHTML">${taskData.taskCategoryHTML}</p>
             <h2 class="taskTitleOverlay">${taskData.taskTitle}</h2>
             <p>${taskData.taskDescription}</p>
@@ -11,24 +17,19 @@ function addSingleTaskForm(taskData, key) {
             <p class="AssignedTitle">Assigned To:</p>
 
             <div class="assignedTo-container">
-
                 <div class="avatarsinbig">
-                ${taskData.assignedToFullHTML}
+                    ${taskData.assignedToFullHTML}
                 </div>
-
                 <div class="fullname">
-                ${taskData.assignedToFullNameHTML}
+                    ${taskData.assignedToFullNameHTML}
                 </div>
-
             </div>
 
             <p class="Subtasks">Subtasks</p>
 
-
             <div class="subtasks-container">
-               <p class="subtaskhtml" >${taskData.subtasksHTML} </p> 
+               <p class="subtaskhtml">${taskData.subtasksHTML}</p> 
             </div>
-
 
             <div class="editanddeletetask">
                 <div onclick='deleteTask("${key}")' class="deletebuttontask">Delete</div>
@@ -38,40 +39,46 @@ function addSingleTaskForm(taskData, key) {
             <div id="edit-task-form-container"></div>
         </div>
     `;
-
 }
 
-
-
+/**
+ * Opens the edit task form for the specified task.
+ * 
+ * @param {string} key - The key of the task to edit.
+ */
 function editTask(key) {
-    
     const task = tasks[key];
-
-    
     openEditTaskIframe(task, key);
     closeSingleTaskOverlay();
 }
 
+/**
+ * Opens an iframe for editing the task, passing the task data to the iframe.
+ * 
+ * @param {object} task - The task object containing details about the task.
+ * @param {string} key - The key of the task.
+ */
 function openEditTaskIframe(task, key) {
-    
     let overlay = document.getElementById('overlayforaddtask');
     overlay.classList.remove('d-none');
     overlay.classList.add('slide-in-right');
 
     let iframe = document.createElement('iframe');
-    iframe.src = `add_task_board.html?taskId=${key}`; 
+    iframe.src = `add_task_board.html?taskId=${key}`;
 
     let popupContent = document.getElementById('addtaskpopup');
-    popupContent.innerHTML = ''; 
+    popupContent.innerHTML = '';
     popupContent.appendChild(iframe);
     document.body.style.overflow = 'hidden';
 
-    
     iframe.onload = function() {
         iframe.contentWindow.postMessage({ taskData: task, taskKey: key}, '*');
     };
 }
 
+/**
+ * Toggles the visibility of the subtask icons based on the input field's value.
+ */
 function toggleIconVisibility() {
     const subtaskInput = document.getElementById('subtaskedit');
     const iconsWrapper = document.querySelector('.icons-wrapper');
@@ -83,24 +90,34 @@ function toggleIconVisibility() {
     }
 }
 
+/**
+ * Clears the subtask input field and hides the icons.
+ */
 function clearSubtaskInput() {
     const subtaskInput = document.getElementById('subtaskedit');
-    subtaskInput.value = ''; 
-    toggleIconVisibility(); 
+    subtaskInput.value = '';
+    toggleIconVisibility();
 }
 
-
+/**
+ * Adds a subtask to the list based on the input field's value.
+ */
 function addSubtaskFromInput() {
     const subtaskInput = document.getElementById('subtaskedit');
     const subtaskTitle = subtaskInput.value.trim();
     
     if (subtaskTitle) {
         addSubtaskToList(subtaskTitle);
-        subtaskInput.value = ''; 
-        toggleIconVisibility(); 
+        subtaskInput.value = '';
+        toggleIconVisibility();
     }
 }
 
+/**
+ * Adds a subtask to the DOM list.
+ * 
+ * @param {string} title - The title of the subtask to add.
+ */
 function addSubtaskToList(title) {
     const subtaskList = document.getElementById("subtaskList");
     const listItem = document.createElement("div");
@@ -117,12 +134,21 @@ function addSubtaskToList(title) {
     subtaskList.appendChild(listItem);
 }
 
-
+/**
+ * Deletes a subtask from the DOM list.
+ * 
+ * @param {HTMLElement} deleteBtn - The delete button that was clicked.
+ */
 function deleteSubtask(deleteBtn) {
     const subtaskDiv = deleteBtn.closest('.subtasklistedit');
     subtaskDiv.remove();
 }
 
+/**
+ * Allows editing of a subtask in the DOM list.
+ * 
+ * @param {HTMLElement} editBtn - The edit button that was clicked.
+ */
 function editSubtask(editBtn) {
     const subtaskDiv = editBtn.closest('.subtasklistedit');
     const subtaskLi = subtaskDiv.querySelector('.subtaskedit');
@@ -154,12 +180,17 @@ function editSubtask(editBtn) {
     };
 }
 
+/**
+ * Saves the edited subtask and replaces the input field with the updated text.
+ * 
+ * @param {HTMLElement} saveBtn - The save button that was clicked.
+ * @param {HTMLInputElement} inputField - The input field containing the new subtask title.
+ */
 function saveSubtaskEdit(saveBtn, inputField) {
     const subtaskDiv = saveBtn.closest('.subtasklistedit'); 
     const newTitle = inputField.value.trim();
     
     if (newTitle) {
-       
         const updatedSubtaskLi = document.createElement('li');
         updatedSubtaskLi.className = 'subtaskedit';
         updatedSubtaskLi.textContent = newTitle;
@@ -178,4 +209,3 @@ function saveSubtaskEdit(saveBtn, inputField) {
         subtaskDiv.onmouseover = null;
     }
 }
-
