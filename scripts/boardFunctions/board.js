@@ -331,62 +331,133 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function findTask() {
-  let searchInput = document
-    .querySelector(".inputfieldfindtask")
-    .value.toLowerCase();
+// Refactoring Start
 
+
+function getSearchInput() {
+  return document.querySelector(".inputfieldfindtask").value.toLowerCase();
+}
+
+
+function clearTaskDivs() {
   document.getElementById("todo").innerHTML = "";
   document.getElementById("inprogress").innerHTML = "";
   document.getElementById("done").innerHTML = "";
   document.getElementById("awaitingfeedback").innerHTML = "";
+}
+
+
+function taskMatchesSearch(task, searchInput) {
+  let taskTitle = task.task.toLowerCase();
+  let taskDescription = task.description.toLowerCase();
+  return taskTitle.includes(searchInput) || taskDescription.includes(searchInput);
+}
+
+
+function renderTaskByProgress(progress, task, key) {
+  if (progress === "todo") {
+      document.getElementById("todo").innerHTML += renderDivTodo(task, key);
+  } else if (progress === "inProgress") {
+      document.getElementById("inprogress").innerHTML += renderDivInprogress(task, key);
+  } else if (progress === "done") {
+      document.getElementById("done").innerHTML += renderDivDone(task, key);
+  } else if (progress === "AwaitingFeedback") {
+      document.getElementById("awaitingfeedback").innerHTML += renderDivawaitingfeedback(task, key);
+  }
+}
+
+
+function displayNoTasksFoundMessage() {
+  document.getElementById("inprogress").innerHTML = '<div class="no-tasksfound-banner">No tasks found</div>';
+}
+
+
+function findTask() {
+  let searchInput = getSearchInput();
+
+  clearTaskDivs();
 
   let keys = Object.keys(tasks);
   let tasksFound = false;
 
-  for (let i = 0; i < keys.length; i++) {
-    let key = keys[i];
-    let task = tasks[key];
-    let taskTitle = task.task.toLowerCase();
-    let taskDescription = task.description.toLowerCase();
+  keys.forEach(key => {
+      let task = tasks[key];
+      if (taskMatchesSearch(task, searchInput)) {
+          tasksFound = true;
+          renderTaskByProgress(task.progress, task, key);
+      }
+  });
 
-    if (
-      taskTitle.includes(searchInput) ||
-      taskDescription.includes(searchInput)
-    ) {
-      tasksFound = true;
-      let progress = task.progress;
-
-      if (progress === "todo") {
-        document.getElementById("todo").innerHTML += renderDivTodo(task, key);
-      }
-      if (progress === "inProgress") {
-        document.getElementById("inprogress").innerHTML += renderDivInprogress(
-          task,
-          key
-        );
-      }
-      if (progress === "done") {
-        document.getElementById("done").innerHTML += renderDivDone(task, key);
-      }
-      if (progress === "AwaitingFeedback") {
-        document.getElementById("awaitingfeedback").innerHTML +=
-          renderDivawaitingfeedback(task, key);
-      }
-    }
-  }
-
-  
   if (!tasksFound) {
-    document.getElementById("inprogress").innerHTML =
-      '<div class="no-tasksfound-banner">No tasks found</div>';
+      displayNoTasksFoundMessage();
   }
 
-  
   if (searchInput === "") {
-    renderData(taskAPI);
+      renderData(taskAPI);
   }
 }
+
+
+
+// function findTask() {
+//   let searchInput = document
+//     .querySelector(".inputfieldfindtask")
+//     .value.toLowerCase();
+
+//   document.getElementById("todo").innerHTML = "";
+//   document.getElementById("inprogress").innerHTML = "";
+//   document.getElementById("done").innerHTML = "";
+//   document.getElementById("awaitingfeedback").innerHTML = "";
+
+//   let keys = Object.keys(tasks);
+//   let tasksFound = false;
+
+//   for (let i = 0; i < keys.length; i++) {
+//     let key = keys[i];
+//     let task = tasks[key];
+//     let taskTitle = task.task.toLowerCase();
+//     let taskDescription = task.description.toLowerCase();
+
+//     if (
+//       taskTitle.includes(searchInput) ||
+//       taskDescription.includes(searchInput)
+//     ) {
+//       tasksFound = true;
+//       let progress = task.progress;
+
+//       if (progress === "todo") {
+//         document.getElementById("todo").innerHTML += renderDivTodo(task, key);
+//       }
+//       if (progress === "inProgress") {
+//         document.getElementById("inprogress").innerHTML += renderDivInprogress(
+//           task,
+//           key
+//         );
+//       }
+//       if (progress === "done") {
+//         document.getElementById("done").innerHTML += renderDivDone(task, key);
+//       }
+//       if (progress === "AwaitingFeedback") {
+//         document.getElementById("awaitingfeedback").innerHTML +=
+//           renderDivawaitingfeedback(task, key);
+//       }
+//     }
+//   }
+
+  
+//   if (!tasksFound) {
+//     document.getElementById("inprogress").innerHTML =
+//       '<div class="no-tasksfound-banner">No tasks found</div>';
+//   }
+
+  
+//   if (searchInput === "") {
+//     renderData(taskAPI);
+//   }
+// }
+
+
+// Refactoring Ende
 
 
 async function pushInToDo(key) {
