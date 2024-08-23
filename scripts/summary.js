@@ -201,7 +201,7 @@ async function loadDeadline() {
 
 
 function fadeOutAnimation() {
-  if (window.innerWidth <= 510) {
+  if (window.innerWidth <= 850) {
     document.body.style.overflow = "hidden";
     setTimeout(function (){
       document.getElementById('greeting-container').classList.add('fade-out');

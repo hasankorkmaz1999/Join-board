@@ -34,6 +34,19 @@
     .footer-mobile {
         display: block !important;
     }
+    .greeting-flex-area {
+        text-align: center;
+        align-items: center;
+    }
+
+    .greeting-container {
+        position: absolute;
+        background-color: white;
+        margin: 0;
+        width: 99%;
+        height: 99%;
+        padding: 0;
+    }
 }
 
 @media (max-width: 738px) {
