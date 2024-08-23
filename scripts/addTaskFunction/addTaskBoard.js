@@ -1,6 +1,11 @@
 ///////////////////////////////////////////////////////
 //      DO NOT ADD THIS SCRIPT TO ADDTASK.HTML!     //
 /////////////////////////////////////////////////////
+
+/**
+ * Event listener for the DOM content loaded event. 
+ * It checks if the page is loaded in a correct environment and initializes the task form based on URL parameters.
+ */
 document.addEventListener('DOMContentLoaded', function() {
     if (window.self === window.top && sessionStorage.getItem('JoinDev') !== 'true') {
         document.body.innerHTML = '<h1>Unfortunately the page cannot be opened like this</h1>';
@@ -12,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
             text-align: center;
             border-radius: 4px;
            `);
-        
         
         setTimeout(function() {
             window.location.href = './index.html';
@@ -49,12 +53,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
+/**
+ * Enables developer mode by setting a session storage item.
+ */
 function devon() {
     sessionStorage.setItem('JoinDev', 'true');
 }
 
-
+/**
+ * Retrieves the query parameters from the URL.
+ * 
+ * @returns {object} An object containing the query parameters.
+ */
 function getQueryParams() {
     let params = new URLSearchParams(window.location.search);
     return {
@@ -62,18 +72,19 @@ function getQueryParams() {
     };
 }
 
-
+/**
+ * Initializes the add task board based on the provided progress parameter.
+ * 
+ * @param {string} progress - The progress status (e.g., "0", "1", "2", "3").
+ */
 function addTaskBoard(progress) {
     if (progress === 0) {
         startAddTask();
-    }
-    if (progress === 1) {
+    } else if (progress === 1) {
         startAddTask();
-    }
-    if (progress === 2) {
+    } else if (progress === 2) {
         startAddTaskInProgress();
-    }
-    if (progress === 3) {
+    } else if (progress === 3) {
         addTaskAwaitFeedback();
     } else {
         console.log("%cForm validation response error... More info under me ↓", `
@@ -87,60 +98,64 @@ function addTaskBoard(progress) {
     }
 }
 
-
+/**
+ * Adds a new task with the "Awaiting Feedback" status to the board.
+ */
 async function addTaskAwaitFeedback() {
-        try {
-            const sanitizedValues = await validateAndSanitizeForm();
-            const task = sanitizedValues.taskTitle;
-            const date = sanitizedValues.date;
-            const priority = document.getElementById("priority").value;
-            const category = sanitizedValues.category;
-            const description = sanitizedValues.description;
+    try {
+        const sanitizedValues = await validateAndSanitizeForm();
+        const task = sanitizedValues.taskTitle;
+        const date = sanitizedValues.date;
+        const priority = document.getElementById("priority").value;
+        const category = sanitizedValues.category;
+        const description = sanitizedValues.description;
 
-            validateDate(date);
-    
-            let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
-            let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
-    
-            const subtaskElements = document.querySelectorAll("#subtaskList li");
-            const subtasks = Array.from(subtaskElements).map(item => ({
-                itsdone: false,
-                title: item.textContent
-            }));
-    
-            let data = {
-                task: task,
-                date: date,
-                priority: priority,
-                category: category,
-                assignedto: assignedTo.map(name => ({ name })),
-                description: description,
-                subtasks: subtasks,
-                progress: "AwaitingFeedback",
-                duedate: date,
-            };
-    
-            let response = await fetch(addAPI + ".json", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            });
-    
-            await response.json();
-            reloadPage();
-            toastMessage("New task added successfully!");
-            triggerInit();
-            triggerCloseAddTaskOverlay();
-    
-        } catch (error) {
-            console.error("Error during validation or when adding the task:", error);
-            toastMessage("Error adding task. Please try again.");
-        }
+        validateDate(date);
+
+        let assignedToCheckboxes = document.querySelectorAll('input[name="assignedto"]:checked');
+        let assignedTo = Array.from(assignedToCheckboxes).map(checkbox => checkbox.value);
+
+        const subtaskElements = document.querySelectorAll("#subtaskList li");
+        const subtasks = Array.from(subtaskElements).map(item => ({
+            itsdone: false,
+            title: item.textContent
+        }));
+
+        let data = {
+            task: task,
+            date: date,
+            priority: priority,
+            category: category,
+            assignedto: assignedTo.map(name => ({ name })),
+            description: description,
+            subtasks: subtasks,
+            progress: "AwaitingFeedback",
+            duedate: date,
+        };
+
+        let response = await fetch(addAPI + ".json", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        await response.json();
+        reloadPage();
+        toastMessage("New task added successfully!");
+        triggerInit();
+        triggerCloseAddTaskOverlay();
+
+    } catch (error) {
+        console.error("Error during validation or when adding the task:", error);
+        toastMessage("Error adding task. Please try again.");
+    }
 }
 
-
+/**
+ * Adds a new task with the "In Progress" status to the board.
+ */
 async function startAddTaskInProgress() {
     try {
         const sanitizedValues = await validateAndSanitizeForm();
@@ -193,7 +208,9 @@ async function startAddTaskInProgress() {
     }
 }
 
-
+/**
+ * Adds a new task with the "To Do" status to the board.
+ */
 async function startAddTask() {
     try {
         const sanitizedValues = await validateAndSanitizeForm();
@@ -246,7 +263,9 @@ async function startAddTask() {
     }
 }
 
-
+/**
+ * Triggers the `init` function in the parent window if it exists.
+ */
 function triggerInit() {
     if (parent && parent.init) {
         parent.init();
@@ -255,7 +274,9 @@ function triggerInit() {
     }
 }
 
-
+/**
+ * Triggers the `closeAddTaskOverlay` function in the parent window if it exists.
+ */
 function triggerCloseAddTaskOverlay() {
     if (parent && parent.closeAddTaskOverlay) {
         parent.closeAddTaskOverlay();
@@ -264,7 +285,11 @@ function triggerCloseAddTaskOverlay() {
     }
 }
 
-
+/**
+ * Handles the receipt of a message from the parent window, setting the task form fields based on the received data.
+ * 
+ * @param {MessageEvent} event - The message event containing task data.
+ */
 window.addEventListener('message', function(event) {
     const taskData = event.data.taskData;
     let taskKey = event.data.taskKey;
@@ -307,9 +332,14 @@ window.addEventListener('message', function(event) {
     }
 });
 
-
+/**
+ * Generates the HTML for the edit button in the task form.
+ * 
+ * @param {string} taskKey - The key of the task to edit.
+ * @returns {string} The HTML string for the edit button.
+ */
 function generateEditButton(taskKey) {
-    if (taskKey === null || taskKey === undefined) {
+    if (!taskKey) {
         console.log("%cTask key is missing. Unable to generate edit button.", `
             background: #ff9966;
             padding: .5rem 1rem;
@@ -325,12 +355,15 @@ function generateEditButton(taskKey) {
         <button id="createbutton" type="button" onclick="editTask('${taskKey}')" class="createbutton">
             <p class="create-mobile">Edit Task</p>
             <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
-    </form>
-`;   
+    </form>`;
     }
 }
 
-
+/**
+ * Edits an existing task with the provided data.
+ * 
+ * @param {string} taskKey - The key of the task to edit.
+ */
 async function editTask(taskKey) {
     try {
         const sanitizedValues = await validateAndSanitizeFormBOARD();
@@ -382,6 +415,13 @@ async function editTask(taskKey) {
     }
 }
 
+/**
+ * Validates the selected due date to ensure it is in the present or future.
+ * Displays an error message if the date is invalid.
+ * 
+ * @param {string} dateStr - The due date string in ISO format.
+ * @returns {boolean} True if the date is valid; otherwise, false.
+ */
 function validateDate(dateStr) {
     let errorSpan = document.getElementById('duedateError');
     let selectedDate = new Date(dateStr);
