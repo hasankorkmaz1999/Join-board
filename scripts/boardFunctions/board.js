@@ -88,12 +88,14 @@ function renderTaskData(data) {
   disableSpinner();
 }
 
+
 function clearTaskDivs(todoDIV, inprogressDIV, doneDIV, awaitingfeedbackDIV) {
   todoDIV.innerHTML = "";
   inprogressDIV.innerHTML = "";
   doneDIV.innerHTML = "";
   awaitingfeedbackDIV.innerHTML = "";
 }
+
 
 function initializeTaskCounts() {
   return {
@@ -103,6 +105,7 @@ function initializeTaskCounts() {
       doneTasksCount: 0
   };
 }
+
 
 function updateTaskDivs(task, key, taskCounts) {
   let progress = task.progress;
@@ -118,11 +121,13 @@ function updateTaskDivs(task, key, taskCounts) {
   }
 }
 
+
 function updateTaskDiv(progressType, taskCounts, renderFunction, task, key) {
   let divID = getDivID(progressType);
   document.getElementById(divID).innerHTML += renderFunction(task, key);
   incrementTaskCount(taskCounts, progressType);
 }
+
 
 function getDivID(progressType) {
   return {
@@ -132,6 +137,7 @@ function getDivID(progressType) {
       AwaitingFeedback: "awaitingfeedback"
   }[progressType];
 }
+
 
 function incrementTaskCount(taskCounts, progressType) {
   if (progressType === "todo") {
@@ -144,6 +150,7 @@ function incrementTaskCount(taskCounts, progressType) {
       taskCounts.doneTasksCount++;
   }
 }
+
 
 function displayNoTasksBanners(taskCounts, todoDIV, inprogressDIV, doneDIV, awaitingfeedbackDIV) {
   if (taskCounts.todoTasksCount === 0) {
