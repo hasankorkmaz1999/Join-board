@@ -195,9 +195,25 @@ function prepareTaskData(task, priorityIcon, typHTML, subtasksHTML, assignedToHT
       dueDate: task.duedate,
       subtasksHTML: subtasksHTML,
       assignedToHTML: assignedToHTML,
-      assignedToFullNameHTML: renderAssignedTo(task.assignedto, "", true),
+      assignedToFullNameHTML: assignedToFullNameHTML(task.assignedto, "", true),
       assignedToFullHTML: assignedToFullHTML,
   };
+}
+
+function assignedToFullNameHTML(assignedToList, key, full = false) {
+  let assignedToHTML = "";
+  if (assignedToList && assignedToList.length > 0) {
+      assignedToHTML = assignedToList.slice(0, full ? assignedToList.length : 3).map((assignedTo, j) => {
+          return `
+                  <span class="fullnames" >${assignedTo.name}</span>`;
+      }).join("");
+
+      if (!full && assignedToList.length > 3) {
+          assignedToHTML += `
+                  <span class="fullnames">+${assignedToList.length - 3}</span>`;
+      }
+  }
+  return assignedToHTML;
 }
 
 /**
