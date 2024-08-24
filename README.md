@@ -1,7 +1,5 @@
 # Join - A Kanban Board
 
-> **⚠️ Important Information:** This project is still under development and does not represent the final version.
-
 ## About the Project
 
 Join is an innovative Kanban board designed to make task organization and management more efficient. It uses Firebase as its backend, providing a robust and scalable foundation for managing tasks and workflows.
@@ -25,5 +23,3 @@ This project was developed in collaboration with:
   <img alt="Iphone 14 Pro Max image of the add task" src="https://raw.githubusercontent.com/Mori-Takahashi/Join-board/main/image/localhost_63342_Join-board_add_task.html(Iphone%2014%20Pro).png" width="200"/>
   <img alt="Iphone 14 Pro Max image of the Contact site" src="https://raw.githubusercontent.com/Mori-Takahashi/Join-board/main/image/localhost_63342_Join-board_contacts.html(Iphone%2014%20Pro).png" width="200"/>
 </div>
-
-> **🕙 release date:** Expected release date is 26.08.2024.
