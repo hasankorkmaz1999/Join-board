@@ -37,6 +37,7 @@
     .greeting-flex-area {
         text-align: center;
         align-items: center;
+        margin: 0 auto;
     }
 
     .greeting-container {
@@ -135,6 +136,7 @@
     .greeting-flex-area {
         text-align: center;
         align-items: center;
+        margin: 0 auto;
     }
 
     .greeting-container {
@@ -144,6 +146,9 @@
         width: 99%;
         height: 99%;
         padding: 0;
+    }
+    .greeting h1 {
+        font-size: unset
     }
     .main-content {
         margin-top: 20px;

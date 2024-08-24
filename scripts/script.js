@@ -1,9 +1,11 @@
 window.onload = init;
 
-
 const register_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
 
-
+/**
+ * Initializes the registration page by setting up the form listeners, displaying the login window and footer, 
+ * and checking the form validity to disable or enable the submit button.
+ */
 function init() {
     showLogin('loginWindow');
     showFooterLogin('footerAnimation');
@@ -12,7 +14,11 @@ function init() {
     checkFormValidity();
 }
 
-
+/**
+ * Displays the login window by removing the 'd-none' class and adding animation classes after a delay.
+ * 
+ * @param {string} elementId - The ID of the login window element to display.
+ */
 function showLogin(elementId) {
     setTimeout(() => {
         const element = document.getElementById(elementId);
@@ -23,7 +29,11 @@ function showLogin(elementId) {
     }, 1000);
 }
 
-
+/**
+ * Displays the footer animation by removing the 'd-non' class and adding animation classes after a delay.
+ * 
+ * @param {string} elementId - The ID of the footer element to display.
+ */
 function showFooterLogin(elementId) {
     setTimeout(() => {
         const element = document.getElementById(elementId);
@@ -34,7 +44,9 @@ function showFooterLogin(elementId) {
     }, 1000);
 }
 
-
+/**
+ * Sets up event listeners for the form fields to check form validity when the user inputs data.
+ */
 function setupFormListeners() {
     const fields = ['signup-name', 'signup-email', 'signup-password', 'confirm-signup-password', 'privacy-checkbox'];
     fields.forEach(field => {
@@ -42,7 +54,10 @@ function setupFormListeners() {
     });
 }
 
-
+/**
+ * Checks the validity of the form by ensuring all required fields are filled.
+ * Enables or disables the submit button based on the form's completeness.
+ */
 function checkFormValidity() {
     const name = document.getElementById('signup-name').value.trim();
     const email = document.getElementById('signup-email').value.trim();
@@ -56,7 +71,12 @@ function checkFormValidity() {
     document.getElementById('loginButton').disabled = !isFormFilled;
 }
 
-
+/**
+ * Validates the form data by checking the name length, email format, password length, password match, and privacy checkbox.
+ * Displays an error message if validation fails.
+ * 
+ * @returns {boolean} Returns true if the form is valid; otherwise, false.
+ */
 function validateForm() {
     const nameInput = document.getElementById("signup-name");
     const mailInput = document.getElementById("signup-email");
@@ -98,7 +118,11 @@ function validateForm() {
     }
 }
 
-
+/**
+ * Handles the form submission by validating the form and sending the user data to the server.
+ * If the registration is successful, redirects to the login page with a success message.
+ * If an error occurs, displays an error message.
+ */
 document.getElementById('loginButton').addEventListener('click', function(event) {
     event.preventDefault();
 
@@ -137,7 +161,9 @@ document.getElementById('loginButton').addEventListener('click', function(event)
     }
 });
 
-
+/**
+ * Toggles the visibility of the password field by changing its type and updating the associated image.
+ */
 function showPassword() {
     const image = document.getElementById('signup-password-Image');
     const passwordInput = document.getElementById('signup-password');
@@ -150,7 +176,9 @@ function showPassword() {
     }
 }
 
-
+/**
+ * Toggles the visibility of the confirm password field by changing its type and updating the associated image.
+ */
 function showConfirmPassword() {
     const image = document.getElementById('confirm-signup-password-Image');
     const confirmPasswordInput = document.getElementById('confirm-signup-password');
@@ -162,5 +190,3 @@ function showConfirmPassword() {
         confirmPasswordInput.type = 'password';
     }
 }
-
-

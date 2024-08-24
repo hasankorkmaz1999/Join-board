@@ -751,6 +751,7 @@ margin-bottom: 25px;
 }
 
 .main-content {
+    max-width: 1880px;
     margin-top: 80px;
     margin-left: 296px; 
     padding: 20px;
@@ -1049,6 +1050,7 @@ h1, h2, p {
 
 /*Style für die To do In Progress etc. Sektion */
 .boardsections {
+  max-width: 1920px;
   margin-left: 260px; 
   background-color: var(--body-background);
   display: flex;

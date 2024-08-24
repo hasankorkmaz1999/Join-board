@@ -1,32 +1,112 @@
 {
     "folders": [
         {
-            "name": "backgroundcolorJS",
-            "link": "./backgroundcolorJS/index.html"
+            "name": "addSingleTaskForm",
+            "link": "./addSingleTaskForm/index.html"
         },
         {
-            "name": "contactJS",
-            "link": "./contactJS/index.html"
+            "name": "addTask",
+            "link": "./addTask/index.html"
         },
         {
-            "name": "loaddataJS",
-            "link": "./loaddataJS/index.html"
+            "name": "addTaskBoard",
+            "link": "./addTaskBoard/index.html"
         },
         {
-            "name": "overlayJS",
-            "link": "./overlayJS/index.html"
+            "name": "addTaskBoardHTML",
+            "link": "./addTaskBoardHTML/index.html"
         },
         {
-            "name": "responsiveJS",
-            "link": "./responsiveJS/index.html"
+            "name": "addTaskContactForm",
+            "link": "./addTaskContactForm/index.html"
         },
         {
-            "name": "toastmsgJS",
-            "link": "./toastmsgJS/index.html"
+            "name": "backgrundColor",
+            "link": "./backgrundColor/index.html"
         },
         {
-            "name": "valueJS",
-            "link": "./valueJS/index.html"
+            "name": "buttonfHTML",
+            "link": "./buttonfHTML/index.html"
+        },
+        {
+            "name": "checkValue",
+            "link": "./checkValue/index.html"
+        },
+        {
+            "name": "contacts",
+            "link": "./contacts/index.html"
+        },
+        {
+            "name": "editContactForm",
+            "link": "./editContactForm/index.html"
+        },
+        {
+            "name": "FormValidation",
+            "link": "./FormValidation/index.html"
+        },
+        {
+            "name": "forward",
+            "link": "./forward/index.html"
+        },
+        {
+            "name": "header",
+            "link": "./header/index.html"
+        },
+        {
+            "name": "infoTap",
+            "link": "./infoTap/index.html"
+        },
+        {
+            "name": "loadData",
+            "link": "./loadData/index.html"
+        },
+        {
+            "name": "login",
+            "link": "./login/index.html"
+        },
+        {
+            "name": "overlay",
+            "link": "./overlay/index.html"
+        },
+        {
+            "name": "reloadPage",
+            "link": "./reloadPage/index.html"
+        },
+        {
+            "name": "renderBigView",
+            "link": "./renderBigView/index.html"
+        },
+        {
+            "name": "renderContact",
+            "link": "./renderContact/index.html"
+        },
+        {
+            "name": "renderProgress-original",
+            "link": "./renderProgress-original/index.html"
+        },
+        {
+            "name": "responsive",
+            "link": "./responsive/index.html"
+        },
+        {
+            "name": "script",
+            "link": "./script/index.html"
+        },
+        {
+            "name": "summary",
+            "link": "./summary/index.html"
+        },
+        {
+            "name": "toastMsg",
+            "link": "./toastMsg/index.html"
+        },
+        {
+            "name": "validateAndSanitizeFormBOARD",
+            "link": "./validateAndSanitizeFormBOARD/index.html"
+        },
+        {
+            "name": "w3include",
+            "link": "./w3include/index.html"
         }
     ]
 }
