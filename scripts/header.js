@@ -14,6 +14,7 @@ async function initHeader(attempt = 1) {
             const userID1 = sessionStorage.getItem('userId');
             const userId = localStorage.getItem('userId');
             const guestToken = sessionStorage.getItem('guestToken');
+            checkClickIcon(userID1, userId, guestToken);
 
             let user = null;
 
@@ -106,5 +107,25 @@ function logout() {
     } catch (error) {
         console.error("Kein Zugriff auf localStorage oder sessionStorage möglich: ", error);
         window.location.href = './login.html?msg=error_localStorage';
+    }
+}
+
+
+function checkClickIcon(userID1, userId, guestToken) {
+    let elseHTML = document.getElementById('logoClick');
+    let para = [userID1, userId, guestToken];
+    if (para.every(param => param === null && param === undefined)) {
+        elseHTML.innerHTML = `
+        <img class="join_logo" onclick="window.close()" src="IMGicons/headericons/joinlogo.png" alt="Logo Join">
+                
+                <div class="sidebar-nav headericons">
+                    <p class="sidebarlist active" id="nav-summary"><a class ="active_summary abc" href="summary.html">Summary</a></p>
+                    <p class="sidebarlist active" id="nav-add-task"><a class ="active_addtask abc" href="add_task.html">Add Task</a></p>
+                    <p class="sidebarlist active" id="nav-board"><a class ="active_board abc" href="board.html">Board</a></p>
+                    <p class="sidebarlist active" id="nav-contacts"><a class ="active_contacts abc" href="contacts.html">Contacts</a></p>
+                </div>
+        `;
+    } else {
+        console.log("OK!")
     }
 }
