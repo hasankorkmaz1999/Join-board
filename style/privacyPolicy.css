@@ -106,7 +106,7 @@ a.help:hover {
         display: block;
     }
     .footer-mobile {
-        display: flex;
+        display: flex !important;
         align-items: center;
         position: fixed;
         bottom: 0;

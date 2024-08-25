@@ -47,6 +47,10 @@ body {
     display: none;
   }
 
+.margin-5 {
+    margin: 5px 0;
+}
+
 .join_logo {
     height: 121px;
     width: 100px;
