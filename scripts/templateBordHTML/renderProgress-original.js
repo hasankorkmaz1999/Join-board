@@ -166,11 +166,11 @@ function renderProgress(subtasks, key, progress) {
   const completedSubtasks = subtasks.filter(subtask => subtask.itsdone).length;
   return `
       <div class="Progress">
-          <span class="progress-bar-container">
-              <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"
-                  data-tooltip="${completedSubtasks}/${subtasks.length} Subtasks"></div>
+            <span class="progress-bar-container">
+              <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"></div>
           </span>
           <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${subtasks.length} Subtasks</span>
+          <span class="tooltiptext">${completedSubtasks} of ${subtasks.length} done</span>
       </div>`;
 }
 

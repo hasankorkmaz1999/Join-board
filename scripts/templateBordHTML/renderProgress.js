@@ -131,10 +131,6 @@ let totalSubtasks = task.subtasks.length;
 
 return totalSubtasks > 0 ? `
     <div class="Progress">
-        <span class="progress-bar-container">
-            <div id="progress-bar-${key}" class="progress-bar" style="width: ${progress}%;"
-                data-tooltip="${completedSubtasks}/${totalSubtasks} Subtasks"></div>
-        </span>
         <span id="subtask-progress-${key}" class="subtask-progress">${completedSubtasks}/${totalSubtasks} Subtasks</span>
     </div>` : "";
 }

@@ -382,7 +382,7 @@ html, body {
   margin-right: 5px;
   position: relative;
   display: inline-block;
-  
+
 }
 
 .progress-bar-container .progress-bar::after {
@@ -1189,7 +1189,7 @@ iframe {
 }
 
 .tooltip .top {
-  min-width:200px; 
+  min-width:200px;
   top:-20px;
   left:50%;
   transform:translate(-50%, -100%);
@@ -1313,4 +1313,26 @@ span.mini-menu a:hover {
 
 .progress-window::-webkit-scrollbar {
   display: none; 
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.Progress .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  margin-bottom: 55px;
+}
+
+.Progress:hover .tooltiptext {
+  visibility: visible;
 }
