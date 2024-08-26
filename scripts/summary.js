@@ -218,15 +218,18 @@ async function loadDeadline() {
  * Handles the fade-out animation for the greeting container on smaller screens.
  */
 function fadeOutAnimation() {
-  if (window.innerWidth <= 850) {
+  if (window.innerWidth <= 8000) {
     document.body.style.overflow = "hidden";
+    document.getElementById('header-left').classList.add('d-none');
     setTimeout(function () {
       document.getElementById('greeting-container').classList.add('fade-out');
+      document.getElementById('header-left').classList.remove('d-none');
     }, 1500);
     setTimeout(function () {
       document.getElementById('greeting-container').classList.add('d-none');
       document.getElementById('greeting-container').classList.remove('fade-out');
       document.getElementById('greeting-container').classList.remove('greeting-container');
+      
       document.body.style.overflow = "auto";
     }, 2500);
   }
