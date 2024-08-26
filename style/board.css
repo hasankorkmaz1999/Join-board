@@ -36,6 +36,10 @@ body {
  overflow-x: hidden;
 }
 
+.iphone-se {
+  width: 375px;
+}
+
 
 .boardsection-mobile {
   display: none;

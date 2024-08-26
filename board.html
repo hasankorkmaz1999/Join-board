@@ -206,10 +206,11 @@
             return isIOS && isCorrectResolution;
             }
 
-            if (isIPhoneSE()) {
+            if (isIPhoneSE()) 
+                setTimeout(function () {
             document.getElementById('footer-mobile').classList.add('iphone-se');
+        }, 500); 
             
-            }
     </script>
 
 </body>
