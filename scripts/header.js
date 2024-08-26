@@ -1,4 +1,4 @@
-const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users';
+const PB_API = 'https://join-c6967-default-rtdb.europe-west1.firebasedatabase.app/users';
 
 /**
  * Initializes the header by attempting to load the user's initials and display them.

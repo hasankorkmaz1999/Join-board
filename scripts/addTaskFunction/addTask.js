@@ -1,5 +1,5 @@
-const addAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
-const assignedtoAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/contacts";
+const addAPI = "https://join-c6967-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
+const assignedtoAPI = "https://join-c6967-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/contacts";
 
 window.onload = init;
 

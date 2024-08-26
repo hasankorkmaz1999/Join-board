@@ -1,4 +1,4 @@
-let login_API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/users";
+let login_API = "https://join-c6967-default-rtdb.europe-west1.firebasedatabase.app/users";
 
 /**
  * Initializes the login page by displaying the login window and footer, checking for a remembered user, 

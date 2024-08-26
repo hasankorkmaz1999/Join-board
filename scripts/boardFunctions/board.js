@@ -1,5 +1,5 @@
-let taskAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
-let contactAPI = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/contacts";
+let taskAPI = "https://join-c6967-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes";
+let contactAPI = "https://join-c6967-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/contacts";
 
 let cureentDraggedElement;
 
@@ -400,7 +400,7 @@ function closeSingleTaskOverlay() {
  * @param {string} taskKey - The key of the task to delete.
  */
 async function deleteTask(taskKey) {
-    const deleteAPI = `https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes/${taskKey}.json`;
+    const deleteAPI = `https://join-c6967-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes/${taskKey}.json`;
 
     try {
         const response = await fetch(deleteAPI, { method: "DELETE" });

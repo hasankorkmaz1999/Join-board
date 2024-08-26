@@ -290,7 +290,7 @@ function calculateProgress(subtasks) {
 
 function updateTaskOnServer(taskKey, updatedTask) {
   fetch(
-    `https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes/${taskKey}.json`,
+    `https://join-c6967-default-rtdb.europe-west1.firebasedatabase.app/demoUser/users/user1ID/notes/${taskKey}.json`,
     {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },

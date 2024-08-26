@@ -2,7 +2,7 @@
  * The URL of the main API endpoint.
  * @constant {string}
  */
-let API = "https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase.app/";
+let API = "https://join-c6967-default-rtdb.europe-west1.firebasedatabase.app/";
 /**
  * The URL of the endpoint for editing contacts.
  * @constant {string}
