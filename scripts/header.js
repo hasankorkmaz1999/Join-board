@@ -9,13 +9,13 @@ const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase
  */
 async function initHeader(attempt = 1) {
     let check = document.getElementById('PB');
+    const userID1 = sessionStorage.getItem('userId');
+    const userId = localStorage.getItem('userId');
+    const guestToken = sessionStorage.getItem('guestToken');
+    checkClickIcon(userID1, userId, guestToken);
     if (check) {
         try {
-            const userID1 = sessionStorage.getItem('userId');
-            const userId = localStorage.getItem('userId');
-            const guestToken = sessionStorage.getItem('guestToken');
             checkClickIcon(userID1, userId, guestToken);
-
             let user = null;
 
             if (userID1) {
