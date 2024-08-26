@@ -110,7 +110,12 @@ function logout() {
     }
 }
 
-
+/**
+ * Checks whether the user is logged in and replaces the onclick on the logo
+ * @param userID1 - User token in session Storage
+ * @param userId - User token in local Storage
+ * @param guestToken - guest Token in session Storage (true = OK)
+ */
 function checkClickIcon(userID1, userId, guestToken) {
     let elseHTML = document.getElementById('logoClick');
     let para = [userID1, userId, guestToken];
