@@ -119,7 +119,7 @@ function logout() {
 function checkClickIcon(userID1, userId, guestToken) {
     setTimeout(function() {
         let elseHTML = document.getElementById('logoClick');
-        if (userID1 === null, userId === null, guestToken === null) {
+        if (userID1 === null && userId === null && guestToken === null) {
             elseHTML.innerHTML = `
             <img class="join_logo" onclick="window.close()" src="IMGicons/headericons/joinlogo.png" alt="Logo Join">
                 
