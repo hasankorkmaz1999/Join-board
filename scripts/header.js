@@ -130,7 +130,5 @@ function checkClickIcon(userID1, userId, guestToken) {
                     <p class="sidebarlist active" id="nav-contacts"><a class ="active_contacts abc" href="contacts.html">Contacts</a></p>
                 </div>
         `;
-    } else {
-        console.log("OK!")
     }
 }
