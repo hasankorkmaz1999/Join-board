@@ -70,7 +70,10 @@
     .addTaskH1 { 
         margin-left: 32px;
     }
+    .addTaskContainer {
+        margin: 0 0 70px 0;
 
+    }
     .subheader-contact {
         display: none;
     }
