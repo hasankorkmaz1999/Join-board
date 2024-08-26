@@ -294,28 +294,36 @@ window.addEventListener('message', function(event) {
     const taskData = event.data.taskData;
     let taskKey = event.data.taskKey;
     if (taskData) {
-
         document.getElementById('addTaskTitle').value = taskData.task;
         document.getElementById('description').value = taskData.description;
         document.getElementById('prioDate').value = taskData.duedate;
-        
+        showAssignedTo(); // Make sure this function populates the checkboxes
+
+        // Set the priority button
         let priorityButton = document.querySelector(`.addTaskPrioButtonEdit.prio-${taskData.priority.toLowerCase()}`);
         if (priorityButton) {
             priorityButton.click();
         }
 
-        if (taskData.assignedto && taskData.assignedto.length > 0) {
-            taskData.assignedto.forEach(person => {
-                let checkbox = document.querySelector(`input[name="assignedto"][value="${person.name}"]`);
-                if (checkbox) {
-                    checkbox.checked = true;
-                    checkbox.dispatchEvent(new Event('change')); 
-                }
-            });
-        } else {
-            console.log("No persons assigned to this task.");
-        }
+        // Automatically select the checkboxes for assigned users
+        setTimeout(() => {
+            if (taskData.assignedto && taskData.assignedto.length > 0) {
+                taskData.assignedto.forEach(person => {
+                    let checkbox = document.querySelector(`input[name="assignedto"][value="${person.name}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        checkbox.dispatchEvent(new Event('change'));
+                    } else {
+                        console.warn(`Checkbox for ${person.name} not found.`);
+                    }
+                });
+            } else {
+                console.log("No persons assigned to this task.");
+            }
+        }, 500)
 
+
+        // Handle subtasks
         let subtaskList = document.getElementById('subtaskList');
         subtaskList.innerHTML = '';
         try {
@@ -326,6 +334,7 @@ window.addEventListener('message', function(event) {
             console.warn("No task available", error);
         }
 
+        // Adjust the form to reflect editing state
         document.getElementById('addTaskCategory').innerHTML = "";
         document.getElementById('addTaskH1').innerHTML = 'Edit Task';
         document.getElementById('addTaskFlexButtons').innerHTML = generateEditButton(taskKey);
