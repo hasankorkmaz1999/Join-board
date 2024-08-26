@@ -52,19 +52,30 @@ img.mobile-menu {
     border-radius: 12px;
     width: 60px;
     height: 50px;
+    justify-content: flex-end;
 }
 span.mobile {
     color: var(--links-grey);
-    font-size: 14px !important;
+    font-size: 12px !important;
     line-height: 16.8px;
+    text-decoration: none;
 }
 span.mobile:hover {
     color: var(--white);
 }
 
+.footer-link-summary:active {
+    text-decoration: none;
+}
+
 .mobile-menu-botton:hover {
     background-color: var(--deepest-grey);
     color: var(--white) !important;
+    text-decoration: none;
+}
+
+.mobile-menu-botton:active {
+    text-decoration: none;
 }
 
 .footer-mobile {
@@ -85,18 +96,18 @@ span.mobile:hover {
 }
 
 a.footer-link {
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 14px !important;
 }
 
 .footer-link a {
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 14px !important;
 }
 
 span.mobile a {
-    text-decoration: none;
-    font-size: 14px !important;
+    text-decoration: none !important;
+    font-size: 12px !important;
 }
 
 .footer-mobile {
@@ -108,17 +119,20 @@ span.mobile a {
     background-repeat: no-repeat;
     background-position: center 6px;
     color: var(--white);
+    text-decoration: none;
 }
 .mobile-summary:hover {
     background-image: url(./../IMGicons/mobile_summary_active.svg);
     background-repeat: no-repeat;
     background-position: center 6px;
+    text-decoration: none;
 }
 
 .mobile-board {
     background-image: url(./../IMGicons/mobile_board.svg);
     background-repeat: no-repeat;
     background-position: center 6px;
+    text-decoration: none;
 }
 .mobile-board:hover {
     background-image: url(./../IMGicons/mobile_board_active.svg);
@@ -130,6 +144,7 @@ span.mobile a {
     background-image: url(./../IMGicons/mobile_add_task.svg);
     background-repeat: no-repeat;
     background-position: center 6px;
+    text-decoration: none;
 }
 .mobile-addTask:hover {
     background-image: url(./../IMGicons/mobile_addTask_active.svg);
@@ -141,6 +156,7 @@ span.mobile a {
     background-image: url(./../IMGicons/mobile_contacts.svg);
     background-repeat: no-repeat;
     background-position: center 6px;
+    text-decoration: none;
 }
 .mobile-contacts:hover {
     background-image: url(./../IMGicons/mobile_contact_active.svg);
@@ -151,6 +167,7 @@ span.mobile a {
     background-image: url(./../IMGicons/mobile_contact_active.svg);
     background-repeat: no-repeat;
     background-position: center 6px;
+    text-decoration: none;
 }
 
 </style>
@@ -158,26 +175,18 @@ span.mobile a {
 
 <div class="footer-mobile">
     <div class="menu-mobile">
-        <div onclick="window.location.href ='../summary.html'" class="mobile-menu-botton mobile-summary">
-            <a href="../summary.html" class="footer-link">
-                <span class="mobile footer-link-summary">Summary</span>
-            </a>
-        </div>
-        <div onclick="window.location.href ='../board.html'" class="mobile-menu-botton mobile-board">
-            <a href="../board.html" class="footer-link">
-                <span class="mobile footer-link-board">Board</span>
-            </a>
-        </div>
-        <div onclick="window.location.href ='../add_task.html'" class="mobile-menu-botton mobile-addTask">
-            <a href="../add_task.html" class="footer-link">
-                <span class="mobile footer-link-addTask">Add Tasks</span>
-            </a>
-        </div>
-        <div onclick="window.location.href ='../contacts.html'" class="mobile-menu-botton mobile-contacts">
-            <a href="../contacts.html" class="footer-link">
-                <span class="mobile footer-link-contacts">Contacts</span>
-            </a>
-        </div>
+        <a href="../summary.html" class="mobile-menu-botton mobile-summary">
+            <span class="mobile footer-link-summary">Summary</span>
+        </a>
+        <a href="../board.html" class="mobile-menu-botton mobile-board">
+            <span class="mobile footer-link-board">Board</span>
+        </a>
+        <a href="../add_task.html" class="mobile-menu-botton mobile-addTask">
+            <span class="mobile footer-link-addTask">Add Tasks</span>
+        </a>
+        <a href="../contacts.html" class="mobile-menu-botton mobile-contacts">
+            <span class="mobile footer-link-contacts">Contacts</span>
+        </a>
     </div>
 </div>
 
