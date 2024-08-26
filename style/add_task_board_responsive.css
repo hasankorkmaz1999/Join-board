@@ -67,7 +67,6 @@
     .addTaskH1 { 
         margin-left: 32px;
     }
-
     .subheader-contact {
         display: none;
     }
@@ -75,7 +74,8 @@
         display: block;
     }
     .addTaskContainer {
-        margin-bottom: 70px;
+        margin-bottom: 0 0 70px 0;
+
     }
     .footer-mobile {
         display: block !important;
@@ -88,6 +88,9 @@
         top: 16px;
         z-index: 20;
         left: 16px;
+    }
+    #addTaskContainer {
+        margin-top: 0;
     }
 }    
 
@@ -122,8 +125,6 @@
     svg {
         width: 16px;
     }
-
-
 }    
 
 @media (max-width: 360px) {
@@ -139,9 +140,7 @@
     p.create-mobile {
         font-size: 16px;
     }
-    .createbutton {
-        /* width: 130px; */
-    }
+
     p.required {
         font-size: 12px;
     }

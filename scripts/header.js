@@ -9,12 +9,13 @@ const PB_API = 'https://joinapi-ad635-default-rtdb.europe-west1.firebasedatabase
  */
 async function initHeader(attempt = 1) {
     let check = document.getElementById('PB');
+    const userID1 = sessionStorage.getItem('userId');
+    const userId = localStorage.getItem('userId');
+    const guestToken = sessionStorage.getItem('guestToken');
+    checkClickIcon(userID1, userId, guestToken);
     if (check) {
         try {
-            const userID1 = sessionStorage.getItem('userId');
-            const userId = localStorage.getItem('userId');
-            const guestToken = sessionStorage.getItem('guestToken');
-
+            checkClickIcon(userID1, userId, guestToken);
             let user = null;
 
             if (userID1) {
@@ -107,4 +108,28 @@ function logout() {
         console.error("Kein Zugriff auf localStorage oder sessionStorage möglich: ", error);
         window.location.href = './login.html?msg=error_localStorage';
     }
+}
+
+/**
+ * Checks whether the user is logged in and replaces the onclick on the logo
+ * @param userID1 - User token in session Storage
+ * @param userId - User token in local Storage
+ * @param guestToken - guest Token in session Storage (true = OK)
+ */
+function checkClickIcon(userID1, userId, guestToken) {
+    setTimeout(function() {
+        let elseHTML = document.getElementById('logoClick');
+        if (userID1 === null && userId === null && guestToken === null) {
+            elseHTML.innerHTML = `
+            <img class="join_logo" onclick="window.close()" src="IMGicons/headericons/joinlogo.png" alt="Logo Join">
+                
+                <div class="sidebar-nav headericons">
+                    <p class="sidebarlist active" id="nav-summary"><a class ="active_summary abc" href="summary.html">Summary</a></p>
+                    <p class="sidebarlist active" id="nav-add-task"><a class ="active_addtask abc" href="add_task.html">Add Task</a></p>
+                    <p class="sidebarlist active" id="nav-board"><a class ="active_board abc" href="board.html">Board</a></p>
+                    <p class="sidebarlist active" id="nav-contacts"><a class ="active_contacts abc" href="contacts.html">Contacts</a></p>
+                </div>
+        `;
+        }
+    }, 100);
 }

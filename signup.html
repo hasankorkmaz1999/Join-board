@@ -65,15 +65,15 @@
                         <img src="IMGicons/person.svg" alt="Name Icon">
                     </div>
                     <div class="flex-input error-red">
-                        <input type="email" name="signup-email" id="signup-email" placeholder="Email" required>
+                        <input type="email" name="signup-email" id="signup-email" placeholder="Email" autocomplete="email" required>
                         <img src="IMGicons/mail.svg" alt="E-Mail Icon">
                     </div>
                     <div class="flex-input error-red">
-                        <input type="password" name="signup-password" id="signup-password" placeholder="Password" minlength="6" required>
+                        <input type="password" name="signup-password" id="signup-password" placeholder="Password" minlength="6" autocomplete="new-password" required>
                         <img onclick="showPassword()" id="signup-password-Image" src="IMGicons/visibility_off.svg" alt="visibility_off">
                     </div>
                     <div class="flex-input error-red">
-                        <input type="password" name="confirm-signup-password" id="confirm-signup-password" placeholder="Confirm Password" required>
+                        <input type="password" name="confirm-signup-password" id="confirm-signup-password" placeholder="Confirm Password" autocomplete="new-password" required>
                         <img onclick="showConfirmPassword()" id="confirm-signup-password-Image" src="IMGicons/visibility_off.svg" alt="visibility_off">
                     </div>
                     <div class="error-message" id="error-message" style="color: var(--light-red); display: none;"></div>

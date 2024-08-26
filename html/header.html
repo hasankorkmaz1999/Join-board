@@ -9,7 +9,7 @@
     <link src="../fonts/figtree/styles.css">
     <link src="../style/headerstyle.css">
     <link src="../style/privacyPolicy.css">
-    <script src="./scripts/hader.js"></script>
+    <script src="./scripts/header.js"></script>
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@
             <div class="kanban"><p class="subheader-contact">Kanban Project Management Tool</p></div>
             <div class="user">
                 <a href="../help.html"><img class="help-icon-header" src="IMGicons/help.svg" alt="Help icon"></a>
-                <div id="PB" class="PB user-select-none" onclick="infoTap()">MM</div>
+                <div id="PB" class="PB user-select-none" onclick="infoTap()">G</div>
             </div>
             <div class="d-none" id="dropdown-content">
                 <div class="hoverEffect"><a class="hoverEffect" href="../legalNotice.html">Legal Notice</a></div>
@@ -27,8 +27,8 @@
         </div>
     
         <div class="header-left">
-            <div class="header-flex">
-                <div class="joinLogo"><a href="summary.html"><img class="joinLogo" src="IMGicons/join-logo.svg" alt="Join Logo"></a></div>
+            <div id="logoClick" class="header-flex">
+                <img class="join_logo" onclick="window.location.href = '../summary.html'" src="IMGicons/join_logo_white.svg" alt="Logo Join">
                 
                 <div class="sidebar-nav headericons">
                     <p class="sidebarlist active" id="nav-summary"><a class ="active_summary abc" href="summary.html">Summary</a></p>
@@ -39,8 +39,8 @@
             </div>
 
             <div class="sidebar-nav lastpart official-menu">
-                <p class="sidebarlist active margin-5" ><a class ="active_footer active_policy abc" href="privacyPolicy.html" target="_blank">Privacy Policy</a></p>
-                <p class="sidebarlist active margin-5" ><a class ="active_footer active_legal abc" href="legalNotice.html" target="_blank">Legal notice</a></p>
+                <p class="sidebarlist active margin-5" ><a class ="active_footer active_policy abc" href="privacyPolicy.html">Privacy Policy</a></p>
+                <p class="sidebarlist active margin-5" ><a class ="active_footer active_legal abc" href="legalNotice.html">Legal notice</a></p>
             </div>
 
             <div class="sidebar-nav lastpart legal-menu">

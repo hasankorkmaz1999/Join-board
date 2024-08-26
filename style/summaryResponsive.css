@@ -1,4 +1,6 @@
-
+.joinLogo {
+    display: none
+}
 
 @media (max-width: 1280px) {
     .content-container {
@@ -16,6 +18,16 @@
 } 
 
 @media (max-width: 850px) {
+    .joinLogo {
+        display: block;
+        width: 39px;
+        height: 39px;
+        position: absolute;
+        top: 16px;
+        z-index: 20;
+        left: 16px;
+    }
+    .subheader-contact,
     .header-left {
         display: none;
     }
@@ -81,15 +93,7 @@
     .metrics-row {
         justify-content: unset;
     }
-    .joinLogo {
-        display: block;
-        width: 39px;
-        height: 39px;
-        position: absolute;
-        top: 16px;
-        z-index: 20;
-        left: 16px;
-    }
+
     p.upcoming-mobile {
         display: block;
         font-size: 16px;
