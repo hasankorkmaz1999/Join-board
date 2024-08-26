@@ -136,7 +136,8 @@
         margin-top: 46px;
         width: 100%;
         align-items: center;
-        flex-direction: row;
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
     }
     p.create-mobile {
         font-size: 16px;
@@ -157,5 +158,17 @@
     }
     .addTaskFlexButtons .cancelbutton {
         display: none;
+    }
+    .addTaskContainer {
+        margin-right: 0;
+    }
+    .joinLogo {
+        display: block;
+        width: 39px;
+        height: 39px;
+        position: absolute;
+        top: 16px;
+        z-index: 20;
+        left: 16px;
     }
 }
