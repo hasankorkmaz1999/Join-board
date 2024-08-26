@@ -190,5 +190,27 @@
         includeHTML();
     </script>
 
+    <script>
+        function isIPhoneSE() {
+            const ua = navigator.userAgent;
+            const screenWidth = window.screen.width;
+            const screenHeight = window.screen.height;
+            
+            // Überprüft, ob es sich um ein iOS-Gerät handelt
+            const isIOS = /iPhone|iPod/.test(ua) && !window.MSStream;
+            
+            // Überprüft die Bildschirmauflösung des iPhone SE (1. und 2. Generation)
+            const isCorrectResolution = (screenWidth === 320 && screenHeight === 568) || 
+                                        (screenWidth === 375 && screenHeight === 667);
+            
+            return isIOS && isCorrectResolution;
+            }
+
+            if (isIPhoneSE()) {
+            document.getElementById('footer-mobile').classList.add('iphone-se');
+            
+            }
+    </script>
+
 </body>
 </html>
