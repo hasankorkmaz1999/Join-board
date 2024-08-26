@@ -7,3 +7,4 @@ notes
 .idea/
 start.bat
 generator.ps1
+qodana.yaml
