@@ -55,6 +55,7 @@ body {
     height: 121px;
     width: 100px;
     margin: 60px;
+    cursor: pointer;
 }
 
 .headericons {
