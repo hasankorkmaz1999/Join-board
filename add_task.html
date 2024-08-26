@@ -46,7 +46,7 @@
     </style>
 </head>
 <body onload="includeHTML()">
-    <div class="joinLogo"><img class="joinLogo" src="IMGicons/join-logo.svg" alt="Join Logo"></div>
+    <div class="joinLogo"><a href="summary.html"><img class="joinLogo" src="IMGicons/join-logo.svg" alt="Join Logo"></a></div>
     <div w3-include-html="html/header.html"></div>
 
 
@@ -172,9 +172,8 @@
             <div id="addTaskFlexButtons" class="addTaskFlexButtons">
                 <button onclick="clearValue()" id="clearbutton" type="button" class="cancelbutton">Clear &#10006;</button>
                 <button id="createbutton" type="button" onclick="addTask()" class="createbutton">
-                    <p class="create-mobile">Create Task</p></button>
-                    <img class="check-icon-mobile" src="./IMGicons/check.svg" alt="Icon check">
-            </form>
+                    <p class="create-mobile">Create Task &#10004;</p></button>
+                </button>
             </div>
         </div>
     </div>
