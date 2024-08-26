@@ -51,15 +51,6 @@
         align-items: center;
         margin: 0 auto;
     }
-
-    .greeting-container {
-        position: absolute;
-        background-color: white;
-        margin: 0;
-        width: 100%;
-        height: 120%;
-        padding: 0;
-    }
 }
 
 @media (max-width: 738px) {
@@ -147,15 +138,20 @@
         position: absolute;
         background-color: white;
         margin: 0;
-        width: 100%;
-        height: 120%;
         padding: 0;
+        z-index: 9999;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        left: 0;
     }
+
     .greeting h1 {
         font-size: unset
     }
     .main-content {
         margin-top: 20px;
+        margin-bottom: 120px;
     }
     #numberTodo, #numberDone {
         font-size: 47px;

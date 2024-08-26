@@ -37,7 +37,7 @@ body {
 }
 
 .iphone-se {
-  width: 375px;
+  width: 375px !important;
 }
 
 
@@ -1340,3 +1340,5 @@ span.mini-menu a:hover {
 .Progress:hover .tooltiptext {
   visibility: visible;
 }
+
+
