@@ -117,11 +117,11 @@ function logout() {
  * @param guestToken - guest Token in session Storage (true = OK)
  */
 function checkClickIcon(userID1, userId, guestToken) {
-    let elseHTML = document.getElementById('logoClick');
-    let para = [userID1, userId, guestToken];
-    if (para.every(param => param === null && param === undefined)) {
-        elseHTML.innerHTML = `
-        <img class="join_logo" onclick="window.close()" src="IMGicons/headericons/joinlogo.png" alt="Logo Join">
+    setTimeout(function() {
+        let elseHTML = document.getElementById('logoClick');
+        if (userID1 === null, userId === null, guestToken === null) {
+            elseHTML.innerHTML = `
+            <img class="join_logo" onclick="window.close()" src="IMGicons/headericons/joinlogo.png" alt="Logo Join">
                 
                 <div class="sidebar-nav headericons">
                     <p class="sidebarlist active" id="nav-summary"><a class ="active_summary abc" href="summary.html">Summary</a></p>
@@ -130,5 +130,6 @@ function checkClickIcon(userID1, userId, guestToken) {
                     <p class="sidebarlist active" id="nav-contacts"><a class ="active_contacts abc" href="contacts.html">Contacts</a></p>
                 </div>
         `;
-    }
+        }
+    }, 100);
 }
