@@ -4,6 +4,10 @@
     display: none;
 }
 
+.footer-mobile {
+    display: none;
+}
+
 .back-button-big {
     background-image: url(../IMGicons/arrow-left-line.svg);
     background-repeat: no-repeat;
@@ -12,10 +16,7 @@
     cursor: pointer;
 }
 
-.header-mobile,
-.footer-mobile {
-    display: none;
-}
+
 
 .d-none {
     display: none;
@@ -95,18 +96,11 @@
 }
 
 @media (max-width: 975px) {
-    .contact-name {
-        font-size: 16px;
-    }
+   
 }
 
 @media (max-width: 940px) {
-    .contact-name {
-        font-size: 16px;
-    }
-    .contact-email {
-        font-size: 14px;
-    }
+
 }
 
 @media (max-width: 1000px) {
@@ -119,14 +113,11 @@
     .sidebar {
         width: 95%;
     }
-    /* .sidebarlist a {
-        padding: 0;
-    } */
-    .contact-email {
-        font-size: 12px;
-    }
+   
+   
     .main-content {
         padding: 40px 20px;
+        display: none;
     }
 }
 
@@ -148,18 +139,6 @@
 }
    
 
-@media (max-width: 1000px) {
-
-}
-
-@media (min-width: 1000px) {
-
-    #main-content,
-    .contact-container {
-        display: block;
-    }
-}
-
 @media (max-width: 660px) {
     .subheader-contact {
         display: none;
@@ -167,23 +146,17 @@
 
 }
 
-@media (max-width: 550px) {
+@media (max-width: 850px) {
     .main-content {
-        display: none;
-    }
-    .contact-flex-header {
         margin-top: 80px;
+        padding: 40px 20px;
+        display: none;
+        height: 500px;
     }
-    .footer-mobile {
-        display: flex !important;
-        align-items: center;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 80px;
-        background-color: var(--deep-grey);
-    }
+
+
+   
+    
     header {
         display: none;
     }
@@ -195,8 +168,26 @@
     }
     .container {
         margin-left: 0;
-        height: auto;
+       height: 400px;
     }
+
+    .footer-mobile {
+        display: block;
+        display: flex !important;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        height: 80px;
+        background-color: var(--deep-grey);
+        transform: translateZ(0);
+        z-index: 1000; /* Höherer Z-Index sicherstellen */
+    }
+
+.editoverlay1 {
+    z-index: 100000000;
+}
+
     .header-mobile {
         display: block;
         position: fixed;
@@ -296,7 +287,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 10000;
+        z-index: 1;
     }
     .mobileEditorDeleteWindow {
         display: flex;

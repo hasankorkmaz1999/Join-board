@@ -268,6 +268,8 @@ button {
     align-items: center;
 }
 
+
+
 .footer-link {
     display: flex;
     align-items: center;
@@ -349,7 +351,7 @@ span.mobile a {
 
 /************************************************/
 .main-content {
-    flex-grow: 1;
+   flex: 1;
     padding: 40px;
     background-color: #f5f5f5;
 }
@@ -643,6 +645,7 @@ form.addContact {
 
 .contactForm {
     max-width: 1220px;
+    z-index: 10;
 }
 
 .cancelbutton {

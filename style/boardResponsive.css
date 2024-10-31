@@ -1,27 +1,5 @@
-.responsive-dots {
-    width: 20px;
-    height: 20px;
-    align-items: flex-end;
-    display: none;
-}
 
-.miniMenu {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    background-color: var(--deep-grey);
-    border-radius: 16px;
-    display: none;
-}
-.miniMenu span {
-    cursor: pointer;
-}
-.miniMenu span:hover {
-    text-decoration: underline;
-}
-.featTxt {
-    font-weight: bold;
-}
+
 
 #addTaskMobile {
     display: none;
@@ -59,12 +37,33 @@
 }
 
 @media (max-width: 830px) {
+    .toast {
+        /* Restliche Stile für den Toast */
+        background-color: var(--deepest-grey);
+        color: var(--white);
+        border-radius: 20px;
+        z-index: 99;
+        width: 80%;
+        max-width: 326px;
+        height: 60px;
+        position: fixed;
+        bottom: 30%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        text-align: center;
+      }
+      
+    
+
     .responsive-dots {
         display: flex;
     }
-    .miniMenu {
-        display: flex;
-    }
+  
     #addTaskMobile {
         display: block;
     }
@@ -94,6 +93,7 @@
     .task-cards {
         margin: 10px;
         margin-bottom: 20px;
+        cursor: pointer;
     }
     .boardsection-mobile {
         display: flex;
@@ -161,6 +161,28 @@
 }
 
 @media (max-width: 550px) {
+
+    .toast {
+        /* Restliche Stile für den Toast */
+        background-color: var(--deepest-grey);
+        color: var(--white);
+        border-radius: 20px;
+        z-index: 99;
+        width: 80%;
+        max-width: 326px;
+        height: 60px;
+        position: fixed;
+        bottom: 30%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        text-align: center;
+        display: none;
+      }
 
     .inputfieldfindtask {
         width: 250px;

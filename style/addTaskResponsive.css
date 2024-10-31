@@ -55,7 +55,7 @@
     }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 850px) {
     .header-left {
         display: none;
     }

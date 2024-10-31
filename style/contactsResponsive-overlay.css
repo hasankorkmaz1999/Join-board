@@ -84,7 +84,7 @@
         overflow: hidden;
         flex-direction: column;
         align-items: center;
-        z-index: 2;
+        z-index: 100000;
     }
     .contactFormLeft {
         border-top-left-radius: 20px;

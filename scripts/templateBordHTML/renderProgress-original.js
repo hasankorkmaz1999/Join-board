@@ -227,36 +227,130 @@ function assignedToFullNameHTML(assignedToList, key, full = false) {
 * @param {string} priorityIcon - The SVG icon representing the task's priority.
 * @returns {string} The HTML string for the task card.
 */
+/* function buildTaskCardHTML(key, taskData, typHTML, progressHTML, assignedToHTML, priorityIcon) {
+  // Check if the dots element already exists
+  const dotsId = `responsive-dots-${key}`;
+  const existingDots = document.getElementById(dotsId);
+
+  return `
+    <div id="task-card-${key}" onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' 
+        draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
+        ${typHTML}
+        <div class="task-title">${taskData.taskTitle}</div>
+        <div class="task-description">${taskData.taskDescription}</div>
+        ${progressHTML}
+        <div class="taskpriority">
+            <div class="assignedToHTML">${assignedToHTML}</div>
+            ${priorityIcon}
+        </div>
+    </div>
+    ${!existingDots ? `<img id="${dotsId}" onclick="openMobileMenu('${key}')" class="responsive-dots" 
+        src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">` : ""}
+    <div style="display: none" class="miniMenu" id="${key}">
+        <span class="featTxt" style="text-decoration:none;cursor:unset;">Move to:</span>
+        <span class="mini-menu" onclick="pushInToDo('${key}')">To-Do</span>
+        <span class="mini-menu" onclick="pushInProgress('${key}')">In Progress</span>
+        <span class="mini-menu" onclick="pushInAwaitFeedback('${key}')">Await feedback</span>
+        <span class="mini-menu" onclick="pushInDone('${key}')">Done</span>
+    </div>`;
+}
+ */
+
+
 function buildTaskCardHTML(key, taskData, typHTML, progressHTML, assignedToHTML, priorityIcon) {
   return `
-      <div id="task-card-${key}" onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' 
-          draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
-          ${typHTML}
-          <div class="task-title">${taskData.taskTitle}</div>
-          <div class="task-description">${taskData.taskDescription}</div>
-          ${progressHTML}
-          <div class="taskpriority">
-              <div class="assignedToHTML">${assignedToHTML}</div>
-              ${priorityIcon}
-          </div>
-      </div>
-      <img onclick="openMobileMenu('${key}')" class="responsive-dots" 
-          src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
-      <div style="display: none" class="miniMenu" id="${key}">
-          <span class="featTxt" style="text-decoration:none;cursor:unset;">Move to:</span>
-          <span class="mini-menu" onclick="pushInToDo('${key}')">To-Do</span>
-          <span class="mini-menu" onclick="pushInProgress('${key}')">In Progress</span>
-          <span class="mini-menu" onclick="pushInAwaitFeedback('${key}')">Await feedback</span>
-          <span class="mini-menu" onclick="pushInDone('${key}')">Done</span>
-      </div>`;
+    <div id="task-card-${key}" onclick='openSingleTaskOverlay(${JSON.stringify(taskData)}, "${key}")' 
+        draggable="true" ondragstart="startDragging('${key}')" class="task-cards no-copy">
+        
+        <!-- Overlay, das beim Öffnen des Menüs angezeigt wird -->
+        <div class="overlay" id="overlay-${key}" onclick="closeMiniMenu(event, '${key}')"></div>
+        
+        ${typHTML}
+        <div class="task-title">${taskData.taskTitle}</div>
+        <div class="task-description">${taskData.taskDescription}</div>
+        ${progressHTML}
+        <div class="taskpriority">
+            <div class="assignedToHTML">${assignedToHTML}</div>
+            ${priorityIcon}
+        </div>
+        
+        <!-- Responsive Dots Icon -->
+        <img id="responsive-dots-${key}" onclick="toggleMobileMenu(event, '${key}')" class="responsive-dots" 
+            src="../../IMGicons/three-dots-vertical.svg" alt="dotsResponsive">
+        
+        <!-- Mini Menu -->
+        <div class="miniMenu" id="miniMenu-${key}">
+            <span class="featTxt">Move to:</span>
+            <span class="mini-menu" onclick="pushInToDo(event, '${key}')">To-Do</span>
+            <span class="mini-menu" onclick="pushInProgress(event, '${key}')">In Progress</span>
+            <span class="mini-menu" onclick="pushInAwaitFeedback(event, '${key}')">Await feedback</span>
+            <span class="mini-menu" onclick="pushInDone(event, '${key}')">Done</span>
+        </div>
+    </div>`;
 }
+
+
+
+function toggleMobileMenu(event, key) {
+  event.stopPropagation(); // Verhindert das Öffnen des Task-Overlays
+  
+  const menu = document.getElementById(`miniMenu-${key}`);
+  const overlay = document.getElementById(`overlay-${key}`);
+  
+  // Schließe andere offene Menüs und Overlays
+  document.querySelectorAll(".miniMenu.show").forEach((openMenu) => {
+      if (openMenu !== menu) {
+          openMenu.classList.remove("show");
+      }
+  });
+  document.querySelectorAll(".overlay.show").forEach((openOverlay) => {
+      if (openOverlay !== overlay) {
+          openOverlay.classList.remove("show");
+      }
+  });
+
+  // Toggle die Anzeige des Menüs und des Overlays
+  menu.classList.toggle("show");
+  overlay.classList.toggle("show");
+
+  // Wenn das Menü geöffnet ist, füge einen globalen Klick-Event-Listener hinzu
+  if (menu.classList.contains("show")) {
+    document.addEventListener("click", (e) => closeMiniMenuOnOutsideClick(e, key));
+  } else {
+    document.removeEventListener("click", (e) => closeMiniMenuOnOutsideClick(e, key));
+  }
+}
+
+// Funktion zum Schließen des Menüs und des Overlays beim Klick außerhalb des Menüs
+function closeMiniMenu(event, key) {
+  event.stopPropagation(); // Verhindert andere Klick-Events
+  document.getElementById(`miniMenu-${key}`).classList.remove("show");
+  document.getElementById(`overlay-${key}`).classList.remove("show");
+}
+
+// Funktion, die das Menü schließt, wenn außerhalb geklickt wird
+function closeMiniMenuOnOutsideClick(event, key) {
+  const menu = document.getElementById(`miniMenu-${key}`);
+  const overlay = document.getElementById(`overlay-${key}`);
+  const dots = document.getElementById(`responsive-dots-${key}`);
+
+  if (!menu.contains(event.target) && !dots.contains(event.target)) {
+    menu.classList.remove("show");
+    overlay.classList.remove("show");
+    document.removeEventListener("click", (e) => closeMiniMenuOnOutsideClick(e, key));
+  }
+}
+
+
+
+
 
 /**
 * Opens the mobile menu for the given task key, positioning it correctly on the screen.
 * 
 * @param {string} key - The key of the task for which to open the mobile menu.
 */
-function openMobileMenu(key) {
+/* function openMobileMenu(key) {
   const menu = document.getElementById(key);
   document.querySelectorAll(".miniMenu.show").forEach((openMenu) => {
       if (openMenu !== menu) {
@@ -270,7 +364,7 @@ function openMobileMenu(key) {
   } else {
       positionMenu(menu, key);
   }
-}
+} */
 
 /**
 * Hides the specified menu element by setting its display style to none.
@@ -288,27 +382,20 @@ function hideMenu(menu) {
 * @param {HTMLElement} menu - The menu element to position.
 * @param {string} key - The key of the task for which to position the menu.
 */
-function positionMenu(menu, key) {
+/* function positionMenu(menu, key) {
   const imgElement = document.querySelector(`img[onclick="openMobileMenu('${key}')"]`);
   const imgRect = imgElement.getBoundingClientRect();
-  const menuWidth = menu.offsetWidth;
-  const viewportWidth = window.innerWidth;
 
-  menu.style.top = `${imgRect.bottom + window.scrollY}px`;
-  menu.style.left = `${imgRect.right + menuWidth > viewportWidth ? imgRect.left - menuWidth : imgRect.right}px`;
+  // Entferne `window.scrollY` und prüfe die Positionierung
+  menu.style.top = `${imgRect.top}px`;
+  menu.style.left = `${imgRect.left - menu.offsetWidth}px`;
+
   menu.style.display = "flex";
   setTimeout(() => menu.classList.add("show"), 100);
-}
+} */
 
-document.addEventListener("click", function (event) {
-  const targetElement = event.target;
-  if (!targetElement.classList.contains("responsive-dots") && !targetElement.closest(".miniMenu")) {
-      document.querySelectorAll(".miniMenu.show").forEach((menu) => {
-          menu.classList.remove("show");
-          setTimeout(() => hideMenu(menu), 300);
-      });
-  }
-});
+
+
 
 /**
 * Renders a task card for a task in the To-Do section.

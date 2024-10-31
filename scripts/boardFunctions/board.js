@@ -515,7 +515,8 @@ function findTask() {
  * 
  * @param {string} key - The key of the task to move.
  */
-async function pushInToDo(key) {
+async function pushInToDo(event, key) {
+    event.stopPropagation();
     let data = { progress: "todo" };
     updateData(taskAPI, key, data);
 }
@@ -525,7 +526,8 @@ async function pushInToDo(key) {
  * 
  * @param {string} key - The key of the task to move.
  */
-async function pushInProgress(key) {
+async function pushInProgress(event, key) {
+    event.stopPropagation();
     let data = { progress: "inProgress" };
     updateData(taskAPI, key, data);
 }
@@ -535,7 +537,8 @@ async function pushInProgress(key) {
  * 
  * @param {string} key - The key of the task to move.
  */
-async function pushInAwaitFeedback(key) {
+async function pushInAwaitFeedback(event, key) {
+    event.stopPropagation();
     let data = { progress: "AwaitingFeedback" };
     updateData(taskAPI, key, data);
 }
@@ -545,7 +548,8 @@ async function pushInAwaitFeedback(key) {
  * 
  * @param {string} key - The key of the task to move.
  */
-async function pushInDone(key) {
+async function pushInDone(event, key) {
+    event.stopPropagation();
     let data = { progress: "done" };
     updateData(taskAPI, key, data);
 }

@@ -7,13 +7,13 @@
 function mobileButtonChange(viewquery) {
     let divElement = document.getElementById('editContactsMobile');
     if (viewquery === true) {
-        if (window.innerWidth <= 550) {
+        if (window.innerWidth <= 850) {
             divElement.classList.remove('d-none');
             divElement.classList.add('edit-contact-mobile');
         }
     }
     if (viewquery === false) {
-        if (window.innerWidth <= 550) {
+        if (window.innerWidth <= 850) {
             divElement.classList.add('d-none');
             divElement.classList.remove('edit-contact-mobile');
         }
@@ -33,7 +33,8 @@ function mobileButtonChange(viewquery) {
 function contactResponsive(id, name, email, phone) {
     if (window.innerWidth <= 1000) {
         document.getElementById('sidebar').style.display = 'd-none';
-        // document.getElementById('main-content').style.display = 'block';
+        
+        
 
         let currentHighlightedDiv = document.querySelector('.contact-item.active');
         if (currentHighlightedDiv) {
@@ -69,13 +70,13 @@ function closeSingleContact() {
 }
 
 
-window.addEventListener('resize', function() {
+/* window.addEventListener('resize', function() {
     if (window.innerWidth < 1000) {
         document.getElementById('main-content').style.display = 'none';
         document.getElementById('sidebar').style.display = 'block';
     }
 });
-
+ */
 
 /**
  * Opens the mobile edit contacts window.
@@ -85,13 +86,13 @@ window.addEventListener('resize', function() {
 function editContactsMobile() {
     let mobileEditWindow = document.getElementById('mobileEditorDeleteWindow');
     let overlay = document.getElementById('overlayformobile');
-
+   
     mobileEditWindow.innerHTML = renderResponsiveEditButtons();
     mobileEditWindow.classList.remove('d-none');
     mobileEditWindow.classList.add('slide-in-right');
     overlay.classList.remove('d-non');
     overlay.classList.add('overlayformobile');
-
+   
     setTimeout(() => {
         mobileEditWindow.classList.add('mobileEditorDeleteWindow');
     }, 50);

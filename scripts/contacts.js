@@ -116,8 +116,10 @@ function openContact(id, name, email, phone) {
     document.getElementById('main-content').style.display = 'block';
     document.getElementById('sidebar').style.display = 'none';
     document.getElementById('addNewContactMobile').style.display = 'none';
+    document.getElementById('footer-mobile').style.display = 'none';
     } else {
         document.getElementById('main-content').style.display = 'block';
+        
     }
     
 }
