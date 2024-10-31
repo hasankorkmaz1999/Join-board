@@ -86,17 +86,23 @@ function closeSingleContact() {
 function editContactsMobile() {
     let mobileEditWindow = document.getElementById('mobileEditorDeleteWindow');
     let overlay = document.getElementById('overlayformobile');
-   
+    let editButton = document.getElementById('editContactsMobile'); // Edit Button Element
+
+    // Inhalt des mobilen Edit Fensters setzen und einblenden
     mobileEditWindow.innerHTML = renderResponsiveEditButtons();
     mobileEditWindow.classList.remove('d-none');
     mobileEditWindow.classList.add('slide-in-right');
     overlay.classList.remove('d-non');
     overlay.classList.add('overlayformobile');
-   
+
+    // Edit-Button ausblenden
+    editButton.classList.add('d-none');
+
     setTimeout(() => {
         mobileEditWindow.classList.add('mobileEditorDeleteWindow');
     }, 50);
 }
+
 
 
 /**

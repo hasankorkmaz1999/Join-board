@@ -237,6 +237,7 @@ function showEditOverlay() {
  * Closes the edit overlay.
  */
 function closeEditOverlay() {
+    let editButton = document.getElementById('editContactsMobile');
     let divID = document.getElementById('overlayEdit');
     divID.classList.add('slide-out-right');
     setTimeout(() => {
@@ -244,6 +245,7 @@ function closeEditOverlay() {
         divID.classList.add('d-non');
         divID.classList.remove('slide-in-right');
         divID.classList.remove('slide-out-right');
+        editButton.classList.remove('d-none');
     }, 500);
 }
 /**
