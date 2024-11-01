@@ -98,7 +98,8 @@
     .boardsection-mobile {
         display: flex;
         justify-content: space-between;
-        width: 200px;
+        width: 230px;
+        margin-left: 20px;
     }
     .boardsection {
         display: none;
