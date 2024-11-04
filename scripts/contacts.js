@@ -40,10 +40,8 @@ function forbiddenCourse() {
         if (userID === null && guestToken === null) {
             window.location.href = './login.html?msg=login_required';
         } else if (guestToken !== null) {
-            console.log("Guest access granted");
         }
     } catch (error) {
-        console.error("Kein Zugriff auf localStorage oder sessionStorage möglich: ", error);
         window.location.href = './login.html?msg=error_localStorage';
     }
 }
@@ -202,10 +200,8 @@ async function editContacts(id) {
             loadEditData(data, id);
             showEditOverlay(); // Nur aufrufen, wenn die Daten erfolgreich geladen wurden.
         } else {
-            console.error("No data found");
         }
     } catch (error) {
-        console.error("Error in editContacts function:", error);
     }
 }
 /**
@@ -222,7 +218,6 @@ function loadEditData(data, id) {
         let renderEditView = document.getElementById('overlayEdit');
         renderEditView.innerHTML = editContactForm(name, phone, email, id);
     } else {
-        console.error("No contact found with ID:", id);
     }
 }
 /**
@@ -350,7 +345,6 @@ async function saveContact(id, contactData) {
         closeEditOverlay();
         toastMessage("Contact has been revised");
     } catch (error) {
-        console.error('Error saving contact:', error);
     }
 }
 /**
@@ -475,7 +469,6 @@ async function deletContacts(id) {
         reloadPage();
         
     } catch (error) {
-        console.error('Error deleting contact:', error);
     }
     
 }

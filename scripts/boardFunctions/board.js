@@ -27,10 +27,9 @@ function forbiddenCourse() {
         if (userID === null && guestToken === null) {
             window.location.href = "./login.html?msg=login_required";
         } else if (guestToken !== null) {
-            console.log("Guest access granted");
+          
         }
     } catch (error) {
-        console.error("No access to localStorage or sessionStorage possible: ", error);
         window.location.href = "./login.html?msg=error_localStorage";
     }
 }
@@ -59,7 +58,6 @@ function disableSpinner() {
     let element = document.getElementById("spinner");
     document.getElementById("laoding").classList.add("d-non");
     if (element === null) {
-        console.error("Spinner not found!");
     } else {
         element.innerHTML = ``;
     }
@@ -409,10 +407,8 @@ async function deleteTask(taskKey) {
             closeSingleTaskOverlay();
             location.reload();
         } else {
-            console.error("Error deleting task:", response.statusText);
         }
     } catch (error) {
-        console.error("Error:", error);
     }
 }
 

@@ -28,10 +28,8 @@ function forbiddenCourse() {
     if (userID === null && guestToken === null) {
       window.location.href = "./login.html?msg=login_required";
     } else if (guestToken !== null) {
-      console.log("Guest access granted");
     }
   } catch (error) {
-    console.error("No access to localStorage or sessionStorage possible: ", error);
     window.location.href = "./login.html?msg=error_localStorage";
   }
 }
@@ -152,7 +150,6 @@ function displayGreeting() {
     }
   } catch (error) {
     greeting = "Hello,";
-    console.error("Error while getting the current hour: " + error);
   }
   greetingText.innerText = greeting;
 }

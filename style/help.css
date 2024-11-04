@@ -15,6 +15,7 @@ body {
     margin-top: 0;
 }
 
+
 .main-content p {
     margin-bottom: 32px;
 }
@@ -44,7 +45,7 @@ h1, h2, p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 80px;
+    margin-top: 10px;
 }
 
 .joinLogo {
@@ -69,7 +70,7 @@ a.help:hover {
     margin-bottom: 16px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .header-left {
         display: none;
     }
@@ -112,52 +113,27 @@ a.help:hover {
         z-index: 20;
         left: 16px;
     }
-    div.footer-mobile {
-        display: flex;
-        align-items: center;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 80px;
-        background-color: var(--deep-grey);
+    .footer-mobile {
+        display: block !important;
     }
-    .menu-mobile {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
+
+    .mobile-menu-botton   {
+    
+     display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    padding: 10px 6px !important;
+    border-radius: 12px !important;
+    width: 60px !important;
+    height: 50px !important;
+    justify-content: flex-end !important;
     }
-    .mobile-menu-botton {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: pointer;
-        padding: 10px 6px;
-        border-radius: 12px;
-    }
-    .footer-link {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+
+    .mobile-addTask {
+        background-image: url(./../IMGicons/mobile_add_task.svg);
+        background-repeat: no-repeat;
+        background-position: center 6px  !important;
         text-decoration: none;
-    }
-    img.mobile-menu {
-        width: 24px;
-        height: 24px;
-        padding-bottom: 8px;
-    }
-    span.mobile {
-        color: var(--links-grey);
-        font-size: 14px;
-        line-height: 16.8px;
-        font-weight: 400;
-    }
-    span.mobile a {
-        text-decoration: none;
-    }
-    .mobile-menu-botton:hover {
-        background-color: var(--deepest-grey);
-        color: var(--white) !important;
     }
 }

@@ -53,9 +53,13 @@
     </style>
 </head>
 <body onload="includeHTML()">
-    <div w3-include-html="./html/header.html"></div>
-    <div w3-include-html="./html/header-mobile.html"></div>
+    <header w3-include-html="./html/header.html"></header>
+   
     <div w3-include-html="html/menu-mobile.html"></div>
+
+    <div class="joinLogo"><a href="summary.html"><img class="joinLogo" src="IMGicons/join-logo.svg" alt="Join Logo"></a></div>
+
+    
     <div class="container">
         <div id="sidebar" class="sidebar">
             <button type="button" disabled onclick="addNewContact()" class="add-contact-btn " id="add-contact-btn">Add new contact <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">

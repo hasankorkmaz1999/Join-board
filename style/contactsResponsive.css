@@ -140,9 +140,7 @@
    
 
 @media (max-width: 660px) {
-    .subheader-contact {
-        display: none;
-    }
+  
 
 }
 
@@ -154,16 +152,33 @@
         height: 500px;
     }
 
-
-   
-    
-    header {
+    .subheader-contact {
         display: none;
     }
+
+    .joinLogo {
+        display: block;
+        width: 39px;
+        height: 39px;
+        position: absolute;
+        top: 16px;
+        z-index: 20;
+        left: 16px;
+    }
+
+
+   .header-left {
+    display: none;
+   }
+    
+   .header-top {
+    width: 100%;
+    margin: 0;
+}
     #sidebar {
         width: 90%;
         overflow-y: unset;
-        margin-top: 50px;
+        margin-top: 10px;
         margin-bottom: 80px;
     }
     .container {
@@ -171,24 +186,15 @@
        height: 400px;
     }
 
-    .footer-mobile {
-        display: block;
-        display: flex !important;
-        align-items: center;
-        position: fixed;
-        bottom: 0;
-        width: 100vw;
-        height: 80px;
-        background-color: var(--deep-grey);
-        transform: translateZ(0);
-        z-index: 1000; /* Höherer Z-Index sicherstellen */
+     .footer-mobile {
+        display: block !important;
     }
 
 .editoverlay1 {
     z-index: 100000000;
 }
 
-    .header-mobile {
+   /*  .header-mobile {
         display: block;
         position: fixed;
         top: 0;
@@ -217,7 +223,7 @@
         height: 56px;
         margin: 20px;
         cursor: pointer;
-    }
+    } */
     .add-contact-btn {
         display: none;
     }
@@ -355,7 +361,7 @@
         padding-top: 8px;
     }
     .contact-name-big {
-        font-size: 36px;
+        font-size: 26px;
         font-weight: 700;
         line-height: 43.2px;
     }
@@ -370,9 +376,17 @@
     }
 }
 
-@media (max-width: 330px) {
+@media (max-width: 350px) {
+.avatar {
+   
+}
+
+.main-content {
+    margin-top: 10px;
+}
+
     #sidebar {
-        min-width: unset;
-        width: 280px;
+       padding-right: 0px;
+        width: 260px;
     }
 }

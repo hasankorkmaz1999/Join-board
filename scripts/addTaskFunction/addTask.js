@@ -24,10 +24,8 @@ function forbiddenCourse() {
         if (userID === null && guestToken === null) {
             window.location.href = './login.html?msg=login_required';
         } else if (guestToken !== null) {
-            console.log("Guest access granted");
         }
     } catch (error) {
-        console.error("No access to localStorage or sessionStorage possible: ", error);
         window.location.href = './login.html?msg=error_localStorage';
     }
 }
@@ -96,7 +94,6 @@ async function renderData(URL) {
             getAssignedTo(data, content);
         }
     } catch (error) {
-        console.error("Error loading the data:", error);
     }
 }
 
@@ -114,7 +111,6 @@ async function loadData(URL) {
         }
         return await response.json();
     } catch (error) {
-        console.error("Error when retrieving the data:", error);
         throw error;
     }
 }
@@ -191,7 +187,6 @@ function addCheckboxEventListenersForStyling() {
         checkbox.addEventListener('change', function(event) {
             const parentLabel = checkbox.closest('.assignedto-item');
             if (!parentLabel) {
-                console.error('no elements found with ID "assignedto-item"');
                 return;
             }
 
@@ -215,7 +210,6 @@ function addCheckboxEventListeners() {
         checkbox.addEventListener('change', (event) => {
             const parentDiv = checkbox.closest('.assignedto-item');
             if (!parentDiv) {
-                console.error('No parent element with the class "assignedto-item" found.');
                 return;
             }
 
@@ -313,7 +307,6 @@ async function addTask() {
         toastMessage("New task added successfully!");
 
     } catch (error) {
-        console.warn("Error during validation or when adding the task (Are all mandatory fields filled in?):", error);
         toastMessage("Error adding task. Please try again.");
     }
 }
@@ -488,7 +481,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (form) {
             form.reset();
         } else {
-            console.error("Formular nicht gefunden!");
         }
     }
 
@@ -498,14 +490,7 @@ document.addEventListener('DOMContentLoaded', function() {
             clearAddTaskForm();
         });
     } catch (error) {
-        console.log("%cIframe detected therefore the function clearbutton is not possible", `
-            background: #99cc33;
-            padding: .5rem 1rem;
-            color: #fff;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 4px;
-        `);
+       
     }
 });
 
